@@ -1,4 +1,0 @@
-
-Type hinting hands-on 
-=====================
-
