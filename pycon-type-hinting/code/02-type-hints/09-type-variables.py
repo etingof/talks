@@ -10,9 +10,9 @@ b: str = make_a_copy('xxx')  # mypy: OK
 c: str = make_a_copy([1])    # mypy: Incompatible types in assignment (expression
                              #       has type List[int], variable has type "str")
 # Continuing
-N = TypeVar('N', str, bytes)  # Type variable denoting either of types
+U = TypeVar('U', str, bytes)  # Type variable denoting either of types
 
-def concat(x: N, y: N) -> N:  # Generic function
+def concat(x: U, y: U) -> U:  # Generic function
     return x+y
 
 concat('a', 'b')    # mypy: OK

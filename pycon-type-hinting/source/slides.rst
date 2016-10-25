@@ -110,21 +110,27 @@ When it is safe to carry out an operation on a variable of given type?
     # is it safe to bit-shift integers, floats?
     result = divide_by_256(real_numbers)
 
-Type consistency rules
-======================
+Subtype relationships
+=====================
 
-`T2` is consistent with `T1` if:
+`T2` is a subtype of `T1` if:
 
 * Any possible value of `T2` also belongs to values of `T1` and
 * Any operation allowed on `T1` also works on `T2`
 
-When `T2` is consistent with `T1`:
+.. code-block:: python
 
+    t1 = t2  # safe
+    t2 = t1  # unsafe
+
+When `T2` is a subtype of `T1`:
+
+* Evety type is also a subtype of itself
 * The set of `T2` values may only be smaller
 * The set of operations on `T2` may only be larger
 
-Computing type consistency
-==========================
+Computing subtype relationships
+===============================
 
 Approaches:
 
@@ -132,15 +138,6 @@ Approaches:
 * By interface (duck typing)
 
 Both are implemented in *typing.py* (Python 3.5+) and *MyPy*.
-
-Benefits of type checking
-=========================
-
-* Catches bugs early! Including highly latent ones.
-* Improves code readability
-* Makes refactoring less stressful
-* Facilitates documentation builders
-* Helps IDEs offering meaningful warnings and hints
 
 Gradual typing in Python
 ========================
@@ -163,7 +160,7 @@ Function and variable annotations
 =================================
 
 * Function parameters: optional expression following parameter name
-* Funciton return: optional expression following '->' token
+* Function return: optional expression following '->' token
 * Global, local, class variable: optional expression following name
 
 .. code-block:: python
@@ -240,48 +237,15 @@ either regular Python types:
 
     n = list_multiplication([1, 2, 3], 10)
 
-Setting up type checker
-=======================
-
-* Python 3.6 (install from source)
-* The mypy-lang static type checker
-
-.. code-block:: bash
-
-    $ wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0b2.tgz
-    $ tar zxf Python-3.6.0b2.tgz && cd Python-3.6.0b2 && ./configure && make
-    && sudo make install
-    $ python3.6 -m venv venv
-    $ source venv/bin/activate
-    $ pip install mypy-lang
-    $ pip install typed_ast
-    $ mypy --python-version 3.6 --fast-parser <path-to-your-python-files>
-    $ git clone https://github.com/etingof/talks/tree/master/
-    pycon-type-hinting
-
 Inferring types
 ===============
 
-* Type checker can sometimes spot an issue in a fully dynamic code
+Type checker can sometimes spot an issue in a fully dynamic code
 
 .. literalinclude:: /../code/02-type-hints/00-inferring-types.py
    :language: python
 
 *File: code/02-type-hints/00-inferring-types.py*
-
-Ever consistent Any type
-========================
-
-* Non-hinted variables belong to `Any` type
-* `Any` is a subclass of `object`
-* `object` is a subclass of `Any`
-
-.. code-block:: python
-
-    from typing import Any
-
-    issubclass(object, Any)  # yields True
-    issubclass(Any, object)  # yields True
 
 Typing based on class hierarchy
 ===============================
@@ -313,7 +277,78 @@ Typing based on ABC
 * Class hierarchy based type checking is too rigid
 * Abstract Base Classes capture interfaces (e.g. qualities), not relationships
 * ABCs from modules `collections.abc` or `typing` can be used in type hinting
-* ABC samples: `Sequence`, `Mapping`, `Iterable`, `Generator`, `Callable` etc.
+
+Fundamentals: Any
+===========================
+
+* Non-hinted variables belong to `Any` type
+* `Any` is a subclass of `object`
+* `object` is a subclass of `Any`
+
+.. code-block:: python
+
+    from typing import Any
+
+    issubclass(object, Any)  # yields True
+    issubclass(Any, object)  # yields True
+
+Fundamentals: Union
+=============================
+
+Types that are subtype of at least one of types (int, str) are subtypes of `Union`
+
+.. code-block:: python
+
+    from typing import Union
+
+    def sum_of_numbers(*numbers: Union[int, float]) -> float:
+        return sum(numbers)
+
+Fundamentals: Tuple
+=============================
+
+Two syntaxes:
+
+* Fixed set of types e.g. (1, 1.2) is an instance of `Tuple[int, float]`
+* Variadic set of homogeneous types e.g. (1, 2, 3) is an instance of `Tuple[int, ...]`
+
+.. code-block:: python
+
+    from typing import Tuple
+
+    Tuple[int, str]
+    Tuple[int, ...]
+
+.. nextslide::
+
+.. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
+   :language: python
+
+*File: code/02-type-hints/06-tuple-of-different-types.py*
+
+Fundamentals: Callable
+================================
+
+A function with positional argument types and return type:
+
+.. literalinclude:: /../code/02-type-hints/07-callback-types.py
+   :language: python
+
+*File: code/02-type-hints/07-callback-types.py*
+
+Container types
+===============
+
+Built-in container types extended to support generic type behaviour
+
+.. code-block:: python
+
+    from typing import Sequence, Mapping, List, Dict
+
+    Sequence[int]
+    Mapping[int, str]
+    List[Sequence[int]]
+    Dict[str: List[Dict[int: List[int]]]]
 
 Typing iterables
 ================
@@ -331,62 +366,12 @@ Typing containers
 
 *File: code/02-type-hints/04-container-types.py*
 
-Generic types
-=============
-
-* ABCs from `typing` can be parameterized to denote types of elements in a container
-* AKA *generic types*
-
-.. code-block:: python
-
-    from typing import Sequence, Mapping, List, Dict
-
-    Sequence[int]
-    Mapping[int, str]
-    List[Sequence[int]]
-    Dict[str: List[Dict[int: List[int]]]]
-
-Typing container elements
-=========================
+.. nextslide::
 
 .. literalinclude:: /../code/02-type-hints/05-container-types-with-elements.py
    :language: python
 
 *File: code/02-type-hints/05-sequence-types-with-elements.py*
-
-Typing tuples of different types
-================================
-
-.. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
-   :language: python
-
-*File: code/02-type-hints/06-tuple-of-different-types.py*
-
-Typing a choice of types
-========================
-
-* A variable can belong to more than just a single type
-* Type hint class `Union[X, Y]` means either `X` or `Y`
-
-.. code-block:: python
-
-    from typing import Union
-
-    def sum_of_numbers(*numbers: Union[int, float]) -> float:
-        return sum(numbers)
-
-Typing callables
-================
-
-* Use case: typing a callback function variable
-* Syntax: `Callable[[arg1, arg2, ...], return]`
-
-.. nextslide::
-
-.. literalinclude:: /../code/02-type-hints/07-callback-types.py
-   :language: python
-
-*File: code/02-type-hints/07-callback-types.py*
 
 Typing generators
 =================
@@ -408,11 +393,16 @@ Typing generators
 
 *File: code/02-type-hints/08-generator-types.py*
 
-Generic user types
-==================
+Generic functions
+=================
 
-* We can parameterize functions with generic types
-* Use case: dynamic variables with interlocking types
+* Generic type: takes generic or concrete type and produces generic or concrete type
+* Generic function: takes generic types as `type variables`
+* Type checker substitutes type variable with concrete type
+
+.. nextslide::
+
+Unconstrained type variable:
 
 .. literalinclude:: /../code/02-type-hints/09-type-variables.py
    :language: python
@@ -420,11 +410,9 @@ Generic user types
 
 *File: code/02-type-hints/09-type-variables.py*
 
-Restricting concrete types
-==========================
+.. nextslide::
 
-* Concrete type of a generic type variable can be restricted
-* `TypeVar` is different from `Union` as it does not allow combinations of restricted types
+Constrained type variable:
 
 .. literalinclude:: /../code/02-type-hints/09-type-variables.py
    :language: python
@@ -432,10 +420,13 @@ Restricting concrete types
 
 *File: code/02-type-hints/09-type-variables.py*
 
-Generic user classes
-====================
+Defining generic types
+======================
 
-* Class can be parameterized with type(s):
+* By subclassing `Generic` class
+* New generic types are parameterizable with generic or concrete types.
+
+.. nextslide::
 
 .. literalinclude:: /../code/02-type-hints/10-generic-classes.py
    :language: python
@@ -445,7 +436,7 @@ Generic user classes
 
 .. nextslide::
 
-* Concrete type would be inferred from annotation:
+Concrete type inferred from annotation:
 
 .. literalinclude:: /../code/02-type-hints/10-generic-classes.py
    :language: python
@@ -453,16 +444,130 @@ Generic user classes
 
 *File: code/02-type-hints/10-generic-classes.py*
 
+Benefits of type checking
+=========================
+
+* Catches bugs early! Including highly latent ones.
+* Improves code readability
+* Makes refactoring less stressful
+* Facilitates documentation builders
+* Helps IDEs offering meaningful warnings and hints
+
+Consider: code readabilty
+=========================
+
+With legacy docstrings:
+
+.. code-block:: python
+
+    def ahoj(name='nobody'):
+        """Greet a person
+
+        :param name: string value
+        :rtype: string value
+        """
+        return 'Ahoj {}!'.format(name)
+
+with Type Hints:
+
+.. code-block:: python
+
+    def ahoj(name: str = 'nobody') -> str:
+        """Greet a person"""
+        return 'Ahoj {}!'.format(name)
+
+Consider: IDE
+=============
+
+PyCharm 2016 supports type hinting in function annotations and comments:
+
+.. figure:: pycharm.png
+
+What type hints IS NOT
+======================
+
+* Does not turn Python statically typed
+* No changes to runtime
+* No code generation
+* No performance overhead
+
+Type hints in aged Python
+=========================
+
+* Variable annotations in comments up to 3.6
+* Function and variable annotations in comments up to 3.0
+* Up to 3.5, `typing` module is shipped as a PyPI package
+
 Practice time!
 ==============
 
-Assignments that follow:
+Game plan:
 
-1. Get `mypy` static type checking operational
+0. Set up the environment
+1. Fix type consistency error
 2. Fix bugs as reported by type checker
 3. Complete type annotations
 4. Type annotate fully dynamic code
 
+Set up the environment
+======================
+
+* Install `Python 3.6` (probably from source)
+* Install `mypy-lang` package
+* Clone examples and assignments repo
+
+.. code-block:: bash
+
+    $ git clone https://github.com/etingof/talks/tree/master/
+    pycon-type-hinting
+    $ sh pycon-type-hinting/03-practice/00-setup.sh
+    $ cd pycon-type-hinting/code/03-practice
+
+.. nextslide::
+
+What is in the script:
+
+.. code-block:: bash
+
+    $ wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0b2.tgz
+    $ tar zxf Python-3.6.0b2.tgz && cd Python-3.6.0b2 && ./configure
+    && make && sudo make install
+    $
+    $ python3.6 -m venv venv
+    $ source venv/bin/activate
+    $ pip install mypy-lang typed_ast
+    $ cd pycon-type-hinting/code/03-practice
+
+Assignment 1
+============
+
+Fix type consistency error:
+
+.. code-block:: bash
+
+    (venv) $ mypy --python-version 3.6 --fast-parser 01-fib.py
+    Incompatible types in assignment (expression has type List[int],
+    variable has type Iterator[int])
+    (venv) $
+
+Assignment 2
+============
+
+There might be a problem in container type declaration. Could
+you fix it?
+
+.. code-block:: bash
+
+    (venv) $ mypy --python-version 3.6 --fast-parser 02-linked-list.py
+
+Assignment 3
+============
+
+Fix bugs as found by static type checker:
+
+.. code-block:: bash
+
+    (venv) $ mypy --python-version 3.6 --fast-parser 02-linked-list.py
 
 Annotating your own code
 ========================
@@ -480,11 +585,6 @@ Summary
 * Static typing can harden your code
 * ...and makes it more readable
 * ...and easier refactorable
-
-Thank you!
-==========
-
-Q&A
 
 Further reading
 ===============
