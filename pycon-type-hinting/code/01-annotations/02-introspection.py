@@ -1,8 +1,3 @@
-"""Accessing annotations at runtime
-
-Facilitates automatic documentation generators.
-"""
-
 def count_letters(s: 'input string',
                   l: 'letters to count') -> 'count of letters "l" found':
     return s.count(l)

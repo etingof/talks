@@ -6,7 +6,7 @@
 Type hinting hands-on
 =====================
 
-*by Ilya Etingof, Red Hat Product Security*
+*by Ilya Etingof*
 
 Agenda
 ======
@@ -48,50 +48,14 @@ Demystifying the buzzwords
 
 .. code-block:: python
 
-    x = 1      # `x` name points to integer object
-    x = '1'    # now repoint `x` to a string object -- that's dynamic
+    x = 1           # `x` name points to integer object
+    x = '1'         # now repoint `x` to a string object -- that's dynamic
 
-    x += 1     # fails on `+` operation -- sign of strong typing
-    x += b'0'  # but this succeeds -- sign of weak typing
+    x = '1' + 1     # fails on `+` operation -- sign of strong typing
+    x = '1' + b'1'  # but this succeeds -- sign of weak typing
 
-Strong vs weak typing
-=====================
-
-It is not either strong or weak...
-
-========= ==================================== =====================================================
-    -               Strong Typing                                       Weak Typing
-========= ==================================== =====================================================
-  Good      Reliable                             Convenient
-  Bad       More work for programmer             Error prone
-  Details   Prefers dealing with similar types   Goes to great lengths automatically adapting values
-========= ==================================== =====================================================
-
-Static vs dynamic typing
-========================
-
-If it is not either static or dynamic, then it is *gradual*!
-
-====== ========================== ====================
-   -              Static                 Dynamic
-====== ========================== ====================
-  Good   Reliably determines type   Less work
-  Bad    More work                  Hard to infer type
-====== ========================== ====================
-
-Type checking
-=============
-
-Two steps, typically at compile time:
-
-1. Figure out what type given variable belongs to (easy with static typing)
-2. Decide would it be safe to carry out given operation on that variable (easier with strong typing)
-
-The more dynamic and weak typed the language is, the harder it is to determine
-type consistency precisely and reliably.
-
-Type consistency
-================
+Types compatibility
+===================
 
 When it is safe to carry out an operation on a variable of given type?
 
@@ -100,39 +64,16 @@ When it is safe to carry out an operation on a variable of given type?
 
 .. code-block:: python
 
-    fractional_numbers = [0.0, 255.0, 65535.0]
-    natural_numbers = [255, 5125]
-    rational_numbers = fractional_numbers + natural_numbers
+    1 + 1     # OK
+    1.0 + 1   # OK
 
-    def divide_by_256(numbers):
-        return [number >> 8 for number in numbers]
+    1 << 8    # OK
+    1.0 << 8  # FAIL
 
-    # is it safe to bit-shift integers, floats?
-    result = divide_by_256(rational_numbers)
+Computing types compatibility
+=============================
 
-Subtype relationships
-=====================
-
-`T2` is a subtype of `T1` if:
-
-* Any possible value of `T2` also belongs to values of `T1` and
-* Any operation allowed on `T1` also works on `T2`
-
-.. code-block:: python
-
-    t1 = t2  # safe
-    t2 = t1  # unsafe
-
-When `T2` is a subtype of `T1`:
-
-* Evety type is also a subtype of itself
-* The set of `T2` values may only be smaller
-* The set of operations on `T2` may only be larger
-
-Computing subtype relationships
-===============================
-
-Approaches:
+Approaches to subtype relationships computation:
 
 * By relationships (inheritance)
 * By interface (duck typing)
@@ -173,6 +114,8 @@ Function and variable annotations
 Annotation examples
 ===================
 
+Documenting with annotations:
+
 .. literalinclude:: /../code/01-annotations/00-documentation.py
    :language: python
 
@@ -180,12 +123,16 @@ Annotation examples
 
 .. nextslide::
 
+You can annotate with pretty much any object:
+
 .. literalinclude:: /../code/01-annotations/01-computed.py
    :language: python
 
 *File: code/01-annotations/01-computed.py*
 
 .. nextslide::
+
+Annotations are stored in `__annotations__` as a dict:
 
 .. literalinclude:: /../code/01-annotations/02-introspection.py
    :language: python
@@ -204,7 +151,7 @@ Type annotations
 ================
 
 This is where ends meet: annotating function and variables with
-either regular Python types:
+either regular Python types...
 
 .. code-block:: python
 
@@ -227,32 +174,39 @@ either regular Python types:
 
     n = list_multiplication([1, 2, 3], 10)
 
-Inferring types
-===============
+Running type checker
+====================
 
-Type checker can sometimes spot an issue in a fully dynamic code
+* Performed by a stand-alone program
+* Not in run time
+* Infers types or consumes type annotations
+* Type consistency evaluation based on class hierarchy
+
+.. code-block:: bash
+
+    $ mypy --python-version 3.6 --fast-parser example.py
+
+.. nextslide::
+
+Can analyze unannotated code...:
 
 .. literalinclude:: /../code/02-type-hints/00-inferring-types.py
    :language: python
 
 *File: code/02-type-hints/00-inferring-types.py*
 
-Typing based on class hierarchy
-===============================
+.. nextslide::
 
-* Each Python class can serve as a type hint to type checker
-* Subclass is a subtype of a superclass
-
-Typing built-ins
-================
+...or code annotated with built-in types...:
 
 .. literalinclude:: /../code/02-type-hints/01-builtin-types.py
    :language: python
 
 *File: code/02-type-hints/01-builtin-types.py*
 
-Typing user classes
-===================
+.. nextslide::
+
+...or code annotated with user classes...:
 
 .. literalinclude:: /../code/02-type-hints/02-user-types.py
    :language: python
@@ -263,21 +217,8 @@ Typing based on ABC
 ===================
 
 * Class hierarchy based type checking is too rigid
-* Abstract Base Classes capture interfaces (e.g. qualities), not relationships
-* ABCs from modules `collections.abc` or `typing` can be used in type hinting
-
-Type construction
-=================
-
-* Subscription syntax reused
-
-.. code-block:: python
-
-    Subtype = SuperType[OtherType]
-
-    # as round brackets already taken
-
-    obj = Type(initializer)
+* Can use Abstract Base Classes that capture interfaces, not hierarchy
+* In `typing`, ABCs extended to support type hinting
 
 Fundamentals: Any
 =================
@@ -364,28 +305,6 @@ A function with positional argument types and return type:
 
 *File: code/02-type-hints/07-callback-types.py*
 
-Container types
-===============
-
-Built-in container types extended to support generic type behaviour
-
-.. code-block:: python
-
-    from typing import Sequence, Mapping, List, Dict
-
-    Sequence[int]
-    Mapping[int, str]
-    List[Sequence[int]]
-    Dict[str: List[Dict[int: List[int]]]]
-
-Typing iterables
-================
-
-.. literalinclude:: /../code/02-type-hints/03-iterable-types.py
-   :language: python
-
-*File: code/02-type-hints/03-iterable-types.py*
-
 Typing containers
 =================
 
@@ -401,25 +320,15 @@ Typing containers
 
 *File: code/02-type-hints/05-sequence-types-with-elements.py*
 
-Typing generators
-=================
+Typing everything known
+=======================
 
-* Syntax: `Generator[YieldType, SendType, ReturnType]`
-* Simple generators can also be hinted with `Iterable`
+Other type hints from `typing`:
 
-.. literalinclude:: /../code/02-type-hints/08-generator-types.py
-   :language: python
-   :end-before: # Continuing
-
-*File: code/02-type-hints/08-generator-types.py*
-
-.. nextslide::
-
-.. literalinclude:: /../code/02-type-hints/08-generator-types.py
-   :language: python
-   :start-after: # Continuing
-
-*File: code/02-type-hints/08-generator-types.py*
+* `Iterable`: general iterable
+* `Callable`: variable pointing to a callback function
+* `Generator`: variable holding generator objects
+* `Awaitable`: asyncio coroutine return
 
 Generic functions
 =================
@@ -435,16 +344,6 @@ Unconstrained type variable:
 .. literalinclude:: /../code/02-type-hints/09-type-variables.py
    :language: python
    :end-before: # Continuing
-
-*File: code/02-type-hints/09-type-variables.py*
-
-.. nextslide::
-
-Constrained type variable:
-
-.. literalinclude:: /../code/02-type-hints/09-type-variables.py
-   :language: python
-   :start-after: # Continuing
 
 *File: code/02-type-hints/09-type-variables.py*
 
@@ -531,7 +430,7 @@ Practice time!
 
 Game plan:
 
-0. Set up the environment
+0. Log into the lab
 1. Fix type consistency error
 2. Fix bugs as reported by type checker
 3. Complete type annotations
@@ -540,31 +439,18 @@ Game plan:
 Set up the environment
 ======================
 
-* Install `Python 3.6` (probably from source)
-* Install `mypy-lang` package
-* Clone examples and assignments repo
+* Get lab access credentials
+* Choose your student ID
+* Log into the lab machine
+* Do the assignments
 
 .. code-block:: bash
 
-    $ git clone https://github.com/etingof/talks/tree/master/
-    pycon-type-hinting
-    $ sh pycon-type-hinting/03-practice/00-setup.sh
-    $ cd pycon-type-hinting/code/03-practice
-
-.. nextslide::
-
-What is in the script:
-
-.. code-block:: bash
-
-    $ wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0b2.tgz
-    $ tar zxf Python-3.6.0b2.tgz && cd Python-3.6.0b2 && ./configure
-    && make && sudo make install
-    $
-    $ python3.6 -m venv venv
-    $ source venv/bin/activate
-    $ pip install mypy-lang typed_ast
-    $ cd pycon-type-hinting/code/03-practice
+    $ git clone https://github.com/etingof/talks.git
+    $ cd talks/pycon-type-hinting
+    $ ssh -i student.pem studentXX@209.132.178.69
+    Enter passphrase for key 'student.pem':
+    [studentXX@pycon ~]$ cd code
 
 Assignment 1
 ============
@@ -573,10 +459,10 @@ Fix type consistency error:
 
 .. code-block:: bash
 
-    (venv) $ mypy --python-version 3.6 --fast-parser 01-fib.py
+    $ mypy 01-fib.py
     Incompatible types in assignment (expression has type List[int],
     variable has type Iterator[int])
-    (venv) $
+    $
 
 Assignment 2
 ============
@@ -586,7 +472,7 @@ you fix it?
 
 .. code-block:: bash
 
-    (venv) $ mypy --python-version 3.6 --fast-parser 02-linked-list.py
+    $ mypy 02-linked-list.py
 
 Assignment 3
 ============
@@ -595,7 +481,7 @@ Fix bugs as found by static type checker:
 
 .. code-block:: bash
 
-    (venv) $ mypy --python-version 3.6 --fast-parser 02-linked-list.py
+    $ mypy 02-linked-list.py
 
 Annotating your own code
 ========================
