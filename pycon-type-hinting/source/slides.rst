@@ -6,7 +6,7 @@
 Type hinting hands-on
 =====================
 
-*by Ilya Etingof*
+*by Ilya Etingof, Red Hat Product Security*
 
 Agenda
 ======
@@ -15,7 +15,7 @@ Agenda
 * Why type checking?
 * Function and variable annotations
 * Type hints
-* Practicing Python gradual typing (you will need Python 3.6!)
+* Practicing Python gradual typing
 
 What is a variable?
 ===================
@@ -27,7 +27,7 @@ Variable is:
 
 * Storage + name
 * Name gets hold of stored data/code
-* Introduces scoping and inheritance
+* Name introduces scoping and inheritance
 * Type defines a way to structure and interpret data
 
 Concepts of Type:
@@ -102,13 +102,13 @@ When it is safe to carry out an operation on a variable of given type?
 
     fractional_numbers = [0.0, 255.0, 65535.0]
     natural_numbers = [255, 5125]
-    real_numbers = fractional_numbers + natural_numbers
+    rational_numbers = fractional_numbers + natural_numbers
 
     def divide_by_256(numbers):
         return [number >> 8 for number in numbers]
 
     # is it safe to bit-shift integers, floats?
-    result = divide_by_256(real_numbers)
+    result = divide_by_256(rational_numbers)
 
 Subtype relationships
 =====================
@@ -137,8 +137,6 @@ Approaches:
 * By relationships (inheritance)
 * By interface (duck typing)
 
-Both are implemented in *typing.py* (Python 3.5+) and *MyPy*.
-
 Gradual typing in Python
 ========================
 
@@ -165,12 +163,12 @@ Function and variable annotations
 
 .. code-block:: python
 
-    # foo(identifier [: expression] [= expression]): [-> expression]
+    # foo(identifier [: expression] [= expression]) [-> expression]:
     def foo(bar: 'bar goes in') -> 'bar goes out':
         return bar
 
     # identifier [: expression] [= expression]
-    y: 'ordinate = 1
+    y: 'ordinate' = 1
 
 Annotation examples
 ===================
@@ -193,14 +191,6 @@ Annotation examples
    :language: python
 
 *File: code/01-annotations/02-introspection.py*
-
-Type hints
-==========
-
-A collection of Python classes designed to:
-
-* Represent built-in and custom types to type checker
-* Compute type consistency
 
 Type hints classes
 ==================
@@ -251,9 +241,7 @@ Typing based on class hierarchy
 ===============================
 
 * Each Python class can serve as a type hint to type checker
-* Everything is an object, class is an object factory
-* Any instance of a subclass is consistent with all superclasses
-* All values are compatible with the `object` type
+* Subclass is a subtype of a superclass
 
 Typing built-ins
 ================
@@ -278,10 +266,22 @@ Typing based on ABC
 * Abstract Base Classes capture interfaces (e.g. qualities), not relationships
 * ABCs from modules `collections.abc` or `typing` can be used in type hinting
 
-Fundamentals: Any
-===========================
+Type construction
+=================
 
-* Non-hinted variables belong to `Any` type
+* Subscription syntax reused
+
+.. code-block:: python
+
+    Subtype = SuperType[OtherType]
+
+    # as round brackets already taken
+
+    obj = Type(initializer)
+
+Fundamentals: Any
+=================
+
 * `Any` is a subclass of `object`
 * `object` is a subclass of `Any`
 
@@ -289,11 +289,30 @@ Fundamentals: Any
 
     from typing import Any
 
-    issubclass(object, Any)  # yields True
     issubclass(Any, object)  # yields True
+    issubclass(object, Any)  # yields True
+
+    issubclass(int, object)  # yields True
+    issubclass(object, int)  # yields False
+
+.. nextslide::
+
+Non-hinted variables implicitly belong to `Any` type
+
+.. code-block:: python
+
+    from typing import Any
+
+    def func(x: int, y: Any):
+        return x + y
+
+    func(1, 1)       # mypy: OK
+    func(1, 'text')  # mypy: OK
+    func('text', 1)  # mypy: Argument 1 to "func" has incompatible
+                     #       type "str"; expected "int
 
 Fundamentals: Union
-=============================
+===================
 
 Types that are subtype of at least one of types (int, str) are subtypes of `Union`
 
@@ -305,12 +324,12 @@ Types that are subtype of at least one of types (int, str) are subtypes of `Unio
         return sum(numbers)
 
 Fundamentals: Tuple
-=============================
+===================
 
 Two syntaxes:
 
-* Fixed set of types e.g. (1, 1.2) is an instance of `Tuple[int, float]`
-* Variadic set of homogeneous types e.g. (1, 2, 3) is an instance of `Tuple[int, ...]`
+* Fixed set of types e.g. (1, 1.2)
+* Variadic set of homogeneous types e.g. (1, 2, 3)
 
 .. code-block:: python
 
@@ -323,11 +342,20 @@ Two syntaxes:
 
 .. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
    :language: python
+   :end-before: # Continuing
+
+*File: code/02-type-hints/06-tuple-of-different-types.py*
+
+.. nextslide::
+
+.. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
+   :language: python
+   :start-after: # Continuing
 
 *File: code/02-type-hints/06-tuple-of-different-types.py*
 
 Fundamentals: Callable
-================================
+======================
 
 A function with positional argument types and return type:
 
