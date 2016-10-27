@@ -1,4 +1,6 @@
-"""Run mypy to find a bug in the following code. Fix the bug.
+"""
+This code will fail at runtime...
+Could you use `mypy` to discover the problem at compile time and fix it?
 """
 from typing import Iterator
 
@@ -10,7 +12,7 @@ def fib(n: int) -> Iterator[int]:
         a, b = b, a + b
 
 def prettify_ints(seq: Iterator[int]) -> str:
-    return '| '.join(seq)
+    return ', '.join(seq)
 
 
 if __name__ == '__main__':

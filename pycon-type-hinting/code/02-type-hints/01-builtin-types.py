@@ -1,7 +1,7 @@
 def count_letters(s: str, l: str) -> int:
     return s.count(l)
 
-sentence: str = 'Beautiful is better than ugly.'
+sentence = 'Beautiful is better than ugly.'
 t_count: int
 
 # mypy: Argument 2 to "count_letters" has incompatible type

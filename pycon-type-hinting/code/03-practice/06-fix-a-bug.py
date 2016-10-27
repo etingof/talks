@@ -1,3 +1,7 @@
+"""
+This code will fail at runtime...
+Could you use `mypy` to discover the problem at compile time and fix it?
+"""
 from typing import Tuple
 
 def make_dict(items: Tuple[Tuple[str, int], ...]) -> dict:

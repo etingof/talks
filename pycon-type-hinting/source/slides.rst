@@ -40,11 +40,12 @@ Many ways to define what Type is:
 
 May get incredibly complicated.
 
-Demystifying the buzzwords
-==========================
+The buzzwords
+=============
 
-* Static vs Dynamic: name<->storage type [re]binding
-* Strong vs Weak: degree of automatic value adaptation
+* Static vs Dynamic: ability of a name binding to unrelated types
+* Strong vs Weak: implicit value coercion to an unrelated type
+* Manifestly vs Implicitly typed: how name-to-type binding is established
 
 .. code-block:: python
 
@@ -76,7 +77,7 @@ Computing types compatibility
 Approaches to subtype relationships computation:
 
 * By relationships (inheritance)
-* By interface (duck typing)
+* By interface/protocol (duck typing)
 
 Gradual typing in Python
 ========================
@@ -178,13 +179,21 @@ Running type checker
 ====================
 
 * Performed by a stand-alone program
-* Not in run time
+* At compile and/or run time
 * Infers types or consumes type annotations
 * Type consistency evaluation based on class hierarchy
 
 .. code-block:: bash
 
-    $ mypy --python-version 3.6 --fast-parser example.py
+    $ mypy example.py
+
+.. code-block:: python
+
+    @ensure_annotations
+    def f(x: int, y: float) -> float:
+        return x+y
+
+    f(1, 2.3)  # ensure.EnsureError is raised
 
 .. nextslide::
 
@@ -262,7 +271,7 @@ Types that are subtype of at least one of types (int, str) are subtypes of `Unio
     from typing import Union
 
     def sum_of_numbers(*numbers: Union[int, float]) -> float:
-        return sum(numbers)
+        return float(sum(numbers))
 
 Fundamentals: Tuple
 ===================
@@ -295,16 +304,6 @@ Two syntaxes:
 
 *File: code/02-type-hints/06-tuple-of-different-types.py*
 
-Fundamentals: Callable
-======================
-
-A function with positional argument types and return type:
-
-.. literalinclude:: /../code/02-type-hints/07-callback-types.py
-   :language: python
-
-*File: code/02-type-hints/07-callback-types.py*
-
 Typing containers
 =================
 
@@ -323,7 +322,7 @@ Typing containers
 Typing everything known
 =======================
 
-Other type hints from `typing`:
+Many specialized type hints in `typing` module:
 
 * `Iterable`: general iterable
 * `Callable`: variable pointing to a callback function
@@ -333,7 +332,6 @@ Other type hints from `typing`:
 Generic functions
 =================
 
-* Generic type: takes generic or concrete type and produces generic or concrete type
 * Generic function: takes generic types as `type variables`
 * Type checker substitutes type variable with concrete type
 
@@ -371,16 +369,16 @@ Concrete type inferred from annotation:
 
 *File: code/02-type-hints/10-generic-classes.py*
 
-Benefits of type checking
-=========================
+Benefits of gradual typing
+==========================
 
-* Catches bugs early! Including highly latent ones.
-* Improves code readability
-* Makes refactoring less stressful
-* Facilitates documentation builders
-* Helps IDEs offering meaningful warnings and hints
+* Facilitates static analysis
+* Also serves as documentation
+* Helps understanding the codebase
+* Lets you refactor aggressively
+* Powers IDEs nifty features (code completion etc)
 
-Consider: code readabilty
+Benefits: code readabilty
 =========================
 
 With legacy docstrings:
@@ -395,7 +393,7 @@ With legacy docstrings:
         """
         return 'Ahoj {}!'.format(name)
 
-with Type Hints:
+with Type Hints (with `sphinx-autodoc-annotation`):
 
 .. code-block:: python
 
@@ -403,8 +401,8 @@ with Type Hints:
         """Greet a person"""
         return 'Ahoj {}!'.format(name)
 
-Consider: IDE
-=============
+Benefits: IDE support
+=====================
 
 PyCharm 2016 supports type hinting in function annotations and comments:
 
@@ -418,79 +416,43 @@ What type hints IS NOT
 * No code generation
 * No performance overhead
 
-Type hints in aged Python
-=========================
-
-* Variable annotations in comments up to 3.6
-* Function and variable annotations in comments up to 3.0
-* Up to 3.5, `typing` module is shipped as a PyPI package
-
 Practice time!
 ==============
 
-Game plan:
-
-0. Log into the lab
-1. Fix type consistency error
-2. Fix bugs as reported by type checker
-3. Complete type annotations
-4. Type annotate fully dynamic code
-
-Set up the environment
-======================
-
 * Get lab access credentials
-* Choose your student ID
-* Log into the lab machine
-* Do the assignments
+* Choose your student ID (take last octet of your IP)
+* Log into the lab machine as studentXX
+* Do as many assignments as you can
 
 .. code-block:: bash
 
-    $ git clone https://github.com/etingof/talks.git
-    $ cd talks/pycon-type-hinting
+    $ wget -o student.pem https://goo.gl/jQp34P
     $ ssh -i student.pem studentXX@209.132.178.69
     Enter passphrase for key 'student.pem':
     [studentXX@pycon ~]$ cd code
 
-Assignment 1
-============
+Assignment: fix bugs in code
+============================
 
-Fix type consistency error:
+In this assignment you are requested to find and fix
+wrong/misplaced function call parameters.
 
-.. code-block:: bash
+* Run `mypy` over scripts `*-fix-a-bug.py` one by one
+* Analyze the problems type checker is reporting
+* Fix the errors, re-run `mypy` and the scripts
 
-    $ mypy 01-fib.py
-    Incompatible types in assignment (expression has type List[int],
-    variable has type Iterator[int])
-    $
+Assignment: fix annotations
+===========================
 
-Assignment 2
-============
+In this assignment you are requested to improve type annotations
+so that type checker would be able to find and report an issue
+before you hit it at run time.
 
-There might be a problem in container type declaration. Could
-you fix it?
+Run each of the `*-fix-annotations.py` scripts
 
-.. code-block:: bash
-
-    $ mypy 02-linked-list.py
-
-Assignment 3
-============
-
-Fix bugs as found by static type checker:
-
-.. code-block:: bash
-
-    $ mypy 02-linked-list.py
-
-Annotating your own code
-========================
-
-* Setup `mypy`
-* Make it running successfully over unannotated code (--check-untyped-defs)
-* Invoke `mypy` from git commit hook or your favorite CI
-* Gradually annotate your codebase starting from core parts
-* Disallow unannotated commits (--disallow-untyped-defs)
+* Analyze what causes script to fail
+* Improve type annotations
+* Run `mypy` to make sure it catches the problem
 
 Summary
 =======
@@ -506,6 +468,7 @@ Further reading
 * `Literature Overview for Type Hints <https://www.python.org/dev/peps/pep-0482/>`_
 * `The theory of type hints <https://www.python.org/dev/peps/pep-0483/>`_
 * `Type hints <https://www.python.org/dev/peps/pep-0484/>`_
+* `Gradual Typing for Functional Languages <http://scheme2006.cs.uchicago.edu/13-siek.pdf>`_
 * `Function Annotations <https://www.python.org/dev/peps/pep-3107/>`_
 * `Variable annotations <https://www.python.org/dev/peps/pep-0526/>`_
 * `MyPy Syntax Cheat Sheet <http://mypy.readthedocs.io/en/latest/cheat_sheet.html>`_
