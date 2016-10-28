@@ -13,13 +13,11 @@ b = make_dict(['x', 1])     # mypy: Argument 1 to "make_dict" has
 # Continuing
 from typing import Any
 
-def make_items(**d) -> Tuple[Tuple[str, Any], ...]:
-    return tuple(d.items())
+def sum_ints(numbers: Tuple[int, ...]) -> int:
+    return sum(numbers)
 
-c = make_items(x=1, y=2)  # mypy: OK
+sum_ints((1, 2, 3))  # mypy: OK
 
-d = 'x', 1
-d = make_items(x=1, y=2)  # mypy: Incompatible types in assignment
-                          #       (expression has type
-                          #       Tuple[Tuple[str, Any], ...],
-                          #       variable has type "Tuple[str, int]")
+sum_ints((1, '2'))   # mypy: Argument 1 to "sum_ints" has
+                     #       incompatible type "Tuple[int, str]";
+                     #       expected Tuple[int, ...]

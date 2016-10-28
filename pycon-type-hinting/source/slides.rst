@@ -6,7 +6,7 @@
 Type hinting hands-on
 =====================
 
-*by Ilya Etingof*
+*by Ilya Etingof, Red Hat Product Security*
 
 Agenda
 ======
@@ -63,7 +63,7 @@ Willingness to coerce to unrelated type when no one is looking:
 What about Python?
 ==================
 
-* Strong and dynamic
+* On stronger and dynamic sides of spectrum
 * Can be static, more or less
 
 Gradual typing in Python
@@ -286,13 +286,6 @@ Two syntaxes:
 Type hints: containers
 ======================
 
-.. literalinclude:: /../code/02-type-hints/04-container-types.py
-   :language: python
-
-*File: code/02-type-hints/04-container-types.py*
-
-.. nextslide::
-
 .. literalinclude:: /../code/02-type-hints/05-container-types-with-elements.py
    :language: python
 
@@ -303,9 +296,10 @@ Other type hints
 
 Many specialized type hints in `typing` module:
 
-* `Iterable`: general iterable
-* `Callable`: callback function
-* `Generator`: generator objects
+* `Sequence`: type supporting sequence protocol
+* `Iterable`: type supporting iterator protocol
+* `Callable`: function type
+* `Generator`: generator type
 * `Awaitable`: asyncio coroutine return
 * ... and other predefined in `typing.py`
 
@@ -329,7 +323,7 @@ Defining generic types
 
 * By subclassing `Generic` class
 * New generic types are parameterizable with generic or concrete types.
-* Way to statically type related atteibutes and method parameters
+* Way to statically type related attributes and method parameters
 
 .. nextslide::
 
@@ -388,6 +382,13 @@ PyCharm 2016 supports type hinting in function annotations and comments:
 
 .. figure:: pycharm.png
 
+Hey, what about the batteries?
+==============================
+
+* Optional stub files (.pyi) keep the signatures
+* The `typeshed` repo (https://github.com/python/typeshed) maintains stubs
+* Python lib and some third-party libs already covered
+
 What type hints IS NOT
 ======================
 
@@ -396,11 +397,19 @@ What type hints IS NOT
 * No code generation
 * No performance overhead
 
+Summary
+=======
+
+* Python remains dynamically typed language
+* Static typing can harden your code
+* ...and makes it more readable
+* ...and easier refactorable
+
 Practice time!
 ==============
 
 * Get lab access credentials
-* Choose your student ID (take last octet of your IP)
+* Choose your student ID (use your seat number 01..64)
 * Log into the lab machine as studentXX
 * Do as many assignments as you can
 
@@ -433,14 +442,6 @@ Run each of the `*-fix-annotations.py` scripts
 * Analyze what causes script to fail
 * Improve type annotations
 * Run `mypy` to make sure it catches the problem
-
-Summary
-=======
-
-* Python remains dynamically typed language
-* Static typing can harden your code
-* ...and makes it more readable
-* ...and easier refactorable
 
 Further reading
 ===============

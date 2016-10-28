@@ -6,9 +6,8 @@ def select_values(d: Dict[str, int], s: str) -> List[int]:
 l: List[int]
 s: str
 
-l = select_values({1: 'x'}, 'x')  # mypy: List item 0 has incompatible
-                                  # type "Tuple[int, str]"
+# mypy: OK
+l = select_values({'x': 1}, 'x')
 
-s = select_values({'x': 1}, 'x')  # mypy: Incompatible types in
-                                  # assignment (expression has type
-                                  # List[int], variable has type "str")
+# mypy: List item 0 has incompatible type "Tuple[int, str]"
+l = select_values({1: 'x'}, 'x')
