@@ -1,4 +1,5 @@
-def count_letters(s: 'input string', l: 'letters to count') -> 'count of letters "l" found':
+def count_letters(s: 'input string',
+                  l: 'letters to count') -> 'count of letters "l" found':
     return s.count(l)
 
 sentence: 'data we work on' = 'Beautiful is better than ugly.'

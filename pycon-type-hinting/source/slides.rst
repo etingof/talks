@@ -22,62 +22,49 @@ What is a variable?
 
 BTW, that's an interview question! ;-)
 
-Variable is:
-============
+Variable
+========
 
-* Storage + name
+* Named storage
 * Name gets hold of stored data/code
 * Name introduces scoping and inheritance
-* Type defines a way to structure and interpret data
+* Type helps structuring and interpreting the data
 
 Concepts of Type:
 =================
 
-Many ways to define what Type is:
+How many types we need? How different they are? How types relate to each other? What is type?
 
-* ...based on all possible values
-* ...based on all operations that could be performed on variables of given Type (AKA duck typing)
+Ways to define type:
 
-May get incredibly complicated.
+* Based on all possible values
+* Based on all operations that could be performed on values of given Type
 
-The buzzwords
-=============
+Static vs Dynamic
+=================
 
-* Static vs Dynamic: ability of a name binding to unrelated types
-* Strong vs Weak: implicit value coercion to an unrelated type
-* Manifestly vs Implicitly typed: how name-to-type binding is established
+Strength of name-to-type binding:
 
 .. code-block:: python
 
-    x = 1           # `x` name points to integer object
-    x = '1'         # now repoint `x` to a string object -- that's dynamic
+    x = 1    # `x` name points to integer object
+    x = '1'  # now point `x` to a string object -- that's dynamic
 
-    x = '1' + 1     # fails on `+` operation -- sign of strong typing
-    x = '1' + b'1'  # but this succeeds -- sign of weak typing
+Strong vs Weak
+==============
 
-Types compatibility
-===================
-
-When it is safe to carry out an operation on a variable of given type?
-
-* Variables of the same type are always safe to deal with
-* Variables of different types? It depends...
+Willingness to coerce to unrelated type when no one is looking:
 
 .. code-block:: python
 
-    1 + 1     # OK
-    1.0 + 1   # OK
+    x = '1' + 1  # fails on `+` operation -- sign of stronger typing
+    y = 1 + 1.0  # but this succeeds -- sign of weaker typing
 
-    1 << 8    # OK
-    1.0 << 8  # FAIL
+What about Python?
+==================
 
-Computing types compatibility
-=============================
-
-Approaches to subtype relationships computation:
-
-* By relationships (inheritance)
-* By interface/protocol (duck typing)
+* Strong and dynamic
+* Can be static, more or less
 
 Gradual typing in Python
 ========================
@@ -93,8 +80,6 @@ Annotations
 * Python expressions attaching arbitrary (!) objects to names
 * Can annotate function parameters, return values, variables
 * 100% optional, no predefined semantics
-* Python 3: part of the language
-* Python 2: mini-language embedded into comments
 
 Function and variable annotations
 =================================
@@ -140,14 +125,6 @@ Annotations are stored in `__annotations__` as a dict:
 
 *File: code/01-annotations/02-introspection.py*
 
-Type hints classes
-==================
-
-* Part of Python 3.5 (the `typing` module)
-* Designed for type checker use only (a separate program)
-* Should never be instantiated by user code
-* Do not impose performance penalties or compatibility issues
-
 Type annotations
 ================
 
@@ -162,9 +139,18 @@ either regular Python types...
         else:
             return n * factorial(n-1)
 
-.. nextslide::
+...or type hints.
 
-...or type hints classes (to capture the semantics of more complex types):
+Type hints classes
+==================
+
+* Based on Abstract Base Classes (ABC)
+* Captures semantics of types relationship based on interfaces/protocols
+* Designed for type checker use only (a separate program)
+* Should never be instantiated by user code
+* Do not impose performance penalties or compatibility issues
+
+.. nextslide::
 
 .. code-block:: python
 
@@ -197,7 +183,7 @@ Running type checker
 
 .. nextslide::
 
-Can analyze unannotated code...:
+Can analyze non-annotated code...:
 
 .. literalinclude:: /../code/02-type-hints/00-inferring-types.py
    :language: python
@@ -222,15 +208,8 @@ Can analyze unannotated code...:
 
 *File: code/02-type-hints/02-user-types.py*
 
-Typing based on ABC
-===================
-
-* Class hierarchy based type checking is too rigid
-* Can use Abstract Base Classes that capture interfaces, not hierarchy
-* In `typing`, ABCs extended to support type hinting
-
-Fundamentals: Any
-=================
+Type hints: Any
+===============
 
 * `Any` is a subclass of `object`
 * `object` is a subclass of `Any`
@@ -261,8 +240,8 @@ Non-hinted variables implicitly belong to `Any` type
     func('text', 1)  # mypy: Argument 1 to "func" has incompatible
                      #       type "str"; expected "int
 
-Fundamentals: Union
-===================
+Type hints: Union
+=================
 
 Types that are subtype of at least one of types (int, str) are subtypes of `Union`
 
@@ -273,8 +252,8 @@ Types that are subtype of at least one of types (int, str) are subtypes of `Unio
     def sum_of_numbers(*numbers: Union[int, float]) -> float:
         return float(sum(numbers))
 
-Fundamentals: Tuple
-===================
+Type hints: Tuple
+=================
 
 Two syntaxes:
 
@@ -304,8 +283,8 @@ Two syntaxes:
 
 *File: code/02-type-hints/06-tuple-of-different-types.py*
 
-Typing containers
-=================
+Type hints: containers
+======================
 
 .. literalinclude:: /../code/02-type-hints/04-container-types.py
    :language: python
@@ -319,25 +298,25 @@ Typing containers
 
 *File: code/02-type-hints/05-sequence-types-with-elements.py*
 
-Typing everything known
-=======================
+Other type hints
+================
 
 Many specialized type hints in `typing` module:
 
 * `Iterable`: general iterable
-* `Callable`: variable pointing to a callback function
-* `Generator`: variable holding generator objects
+* `Callable`: callback function
+* `Generator`: generator objects
 * `Awaitable`: asyncio coroutine return
+* ... and other predefined in `typing.py`
 
 Generic functions
 =================
 
 * Generic function: takes generic types as `type variables`
 * Type checker substitutes type variable with concrete type
+* Way to statically type related function arguments and return value
 
 .. nextslide::
-
-Unconstrained type variable:
 
 .. literalinclude:: /../code/02-type-hints/09-type-variables.py
    :language: python
@@ -350,6 +329,7 @@ Defining generic types
 
 * By subclassing `Generic` class
 * New generic types are parameterizable with generic or concrete types.
+* Way to statically type related atteibutes and method parameters
 
 .. nextslide::
 
