@@ -8,6 +8,6 @@ from datetime import datetime
 if __name__ == '__main__':
     count = 0
     with tempfile.TemporaryFile() as fp:
-        fp.write(datetime.now())  #tz='CEST'))
+        fp.write(datetime.now(tz='CEST'))
         fp.seek('start')
         count += fp.read(1)

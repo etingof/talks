@@ -418,7 +418,7 @@ Practice time!
     $ wget -o student.pem https://goo.gl/jQp34P
     $ ssh -i student.pem studentXX@209.132.178.69
     Enter passphrase for key 'student.pem':
-    [studentXX@pycon ~]$ cd code
+    [studentXX@pycon ~]$ cd practice
 
 Assignment: fix bugs in code
 ============================
