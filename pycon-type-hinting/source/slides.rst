@@ -237,6 +237,15 @@ Can analyze non-annotated code...:
 
 *File: code/02-type-hints/02-user-types.py*
 
+Wait, is it a lecture?
+======================
+
+Let's get used to the tools, practice is coming!
+
+.. figure:: snake-clipart-image-4.png
+   :scale: 80 %
+   :align: center
+
 Type hints: Any
 ===============
 
@@ -445,6 +454,7 @@ Practice time!
 .. code-block:: bash
 
     $ wget -o student.pem https://goo.gl/jQp34P
+    $ chmod 600 student.pem
     $ ssh -i student.pem studentXX@209.132.178.69
     Enter passphrase for key 'student.pem':
     [studentXX@pycon ~]$ cd practice
@@ -483,3 +493,16 @@ Further reading
 * `Variable annotations <https://www.python.org/dev/peps/pep-0526/>`_
 * `MyPy Syntax Cheat Sheet <http://mypy.readthedocs.io/en/latest/cheat_sheet.html>`_
 * This talk's materials `https://github.com/etingof/talks/tree/master/pycon-type-hinting <https://github.com/etingof/talks/tree/master/pycon-type-hinting>`_
+
+Plan "B"
+========
+
+If OpenStack instance fails:
+
+
+
+Solutions
+=========
+
+* Are available in here
+
