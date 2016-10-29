@@ -427,18 +427,11 @@ Hey, what about the batteries?
 * The `typeshed` repo (https://github.com/python/typeshed) maintains stubs
 * Python lib and some third-party libs already covered
 
-What type hints IS NOT
-======================
-
-* Does not turn Python statically typed
-* No changes to runtime
-* No code generation
-* No performance overhead
-
 Summary
 =======
 
 * Python remains dynamically typed language
+* Type hints do not influence your program
 * Static typing can harden your code
 * ...and makes it more readable
 * ...and easier refactorable
@@ -482,6 +475,19 @@ Run each of the `*-fix-annotations.py` scripts
 * Improve type annotations
 * Run `mypy` to make sure it catches the problem
 
+Type hints cheetsheet
+=====================
+
+Type classes uses in assignments:
+
+* Tuple[T, ...]
+* Tuple[T1, T2]
+* Dict[KT, VT]
+* Callable[..., ReturnType]
+* Generator[YieldType, SendType, ReturnType]
+* T = TypeVar['T']
+* Generic[T]
+
 Further reading
 ===============
 
@@ -498,11 +504,3 @@ Plan "B"
 ========
 
 If OpenStack instance fails:
-
-
-
-Solutions
-=========
-
-* Are available in here
-

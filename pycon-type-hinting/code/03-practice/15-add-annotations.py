@@ -2,8 +2,12 @@
 This code will fail at runtime...
 Could you help `mypy` catching the problem at compile time?
 """
+
+
 def sum_up_anything_similar(a, b):
-    return a + b
+    """Sums up two parameters, returns their sum"""
+    return sum([a, b])
+
 
 if __name__ == '__main__':
     sum_up_anything_similar(b'x', b'y') + b'z'
@@ -17,4 +21,3 @@ if __name__ == '__main__':
     # (hint: he always runs `mypy` prior to commit)
     sum_up_anything_similar('x', 'y') + 3
     sum_up_anything_similar(1, 2) + 'z'
-    sum_up_anything_similar('x', [])

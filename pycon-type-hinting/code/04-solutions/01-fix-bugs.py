@@ -12,7 +12,7 @@ def fib(n: int) -> Iterator[int]:
         a, b = b, a + b
 
 def prettify_ints(seq: Iterator[int]) -> str:
-    return ', '.join(seq)
+    return ', '.join([str(x) for x in seq])
 
 
 if __name__ == '__main__':
