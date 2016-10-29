@@ -478,7 +478,7 @@ Run each of the `*-fix-annotations.py` scripts
 Type hints cheetsheet
 =====================
 
-Type classes uses in assignments:
+Type hints uses in hands-on assignments:
 
 * Tuple[T, ...]
 * Tuple[T1, T2]
@@ -499,8 +499,3 @@ Further reading
 * `Variable annotations <https://www.python.org/dev/peps/pep-0526/>`_
 * `MyPy Syntax Cheat Sheet <http://mypy.readthedocs.io/en/latest/cheat_sheet.html>`_
 * This talk's materials `https://github.com/etingof/talks/tree/master/pycon-type-hinting <https://github.com/etingof/talks/tree/master/pycon-type-hinting>`_
-
-Plan "B"
-========
-
-If OpenStack instance fails:
