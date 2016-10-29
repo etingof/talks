@@ -28,12 +28,29 @@ Variable
 * Named storage
 * Name gets hold of stored data/code
 * Name introduces scoping and inheritance
-* Type helps structuring and interpreting the data
 
-Concepts of Type:
-=================
+Define Type
+===========
 
-How many types we need? How different they are? How types relate to each other? What is type?
+.. figure:: snake-clipart-image-1.png
+   :scale: 150 %
+   :align: center
+
+.. nextslide::
+
+Type helps structuring and interpreting the data
+
+How many types we need?
+=======================
+
+How different they are? How types relate to each other? What is type?
+
+.. figure:: dragon-clipart-image-1.png
+   :scale: 50 %
+   :align: center
+
+Concepts of Type
+================
 
 Ways to define type:
 
@@ -42,6 +59,12 @@ Ways to define type:
 
 Static vs Dynamic
 =================
+
+.. figure:: snake-clipart-image-2.png
+   :scale: 150 %
+   :align: center
+
+.. nextslide::
 
 Strength of name-to-type binding:
 
@@ -52,6 +75,12 @@ Strength of name-to-type binding:
 
 Strong vs Weak
 ==============
+
+.. figure:: snake-clipart-image-3.png
+   :scale: 150 %
+   :align: center
+
+.. nextslide::
 
 Willingness to coerce to unrelated type when no one is looking:
 
@@ -453,3 +482,4 @@ Further reading
 * `Function Annotations <https://www.python.org/dev/peps/pep-3107/>`_
 * `Variable annotations <https://www.python.org/dev/peps/pep-0526/>`_
 * `MyPy Syntax Cheat Sheet <http://mypy.readthedocs.io/en/latest/cheat_sheet.html>`_
+* This talk's materials `https://github.com/etingof/talks/tree/master/pycon-type-hinting <https://github.com/etingof/talks/tree/master/pycon-type-hinting>`_
