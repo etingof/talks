@@ -446,36 +446,36 @@ Practice time!
 
 .. code-block:: bash
 
-    $ wget -o student.pem https://goo.gl/jQp34P
+    $ wget -o student.pem http://bit.ly/pyconcz
     $ chmod 600 student.pem
     $ ssh -i student.pem studentXX@209.132.178.69
-    Enter passphrase for key 'student.pem':
+    Enter passphrase for key 'student.pem': python
     [studentXX@pycon ~]$ cd practice
 
-Assignment: fix bugs in code
-============================
+Assignment: fix bugs
+====================
 
 In this assignment you are requested to find and fix
 wrong/misplaced function call parameters.
 
-* Run `mypy` over scripts `*-fix-a-bug.py` one by one
+* Run `mypy` over scripts `*-fix-bugs.py` one by one
 * Analyze the problems type checker is reporting
 * Fix the errors, re-run `mypy` and the scripts
 
-Assignment: fix annotations
-===========================
+Assignment: add type hints
+==========================
 
 In this assignment you are requested to improve type annotations
 so that type checker would be able to find and report an issue
 before you hit it at run time.
 
-Run each of the `*-fix-annotations.py` scripts
+Run each of the `*-add-annotations.py` scripts
 
 * Analyze what causes script to fail
 * Improve type annotations
 * Run `mypy` to make sure it catches the problem
 
-Type hints cheetsheet
+Type hints cheatsheet
 =====================
 
 Type hints uses in hands-on assignments:
