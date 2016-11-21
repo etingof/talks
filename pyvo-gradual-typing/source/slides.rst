@@ -2,8 +2,8 @@
 .. Type hinting hands-on slides file, created by
    hieroglyph-quickstart on Sat Nov 19 20:06:37 2016.
 
-Python gradual typing
-=====================
+Optional static typing
+======================
 
 *by Ilya Etingof, Red Hat Product Security*
 
@@ -14,7 +14,8 @@ Agenda
 * Why type checking?
 * Function and variable annotations
 * Type hints
-* Gradual typing use cases
+* Static typing showcases
+* Adoption of static typing
 
 Variable
 ========
@@ -258,7 +259,7 @@ Types that are subtype of at least one of types (int, str) are subtypes of `Unio
 Type hints: Tuple
 =================
 
-First syntax: structures
+First syntax: to model structures
 
 * Fixed set of types
 * `Tuple[int, str]` -> `(1, 'ahoj')`
@@ -271,7 +272,7 @@ First syntax: structures
 
 .. nextslide::
 
-First syntax: structures
+First syntax: to model structures
 
 .. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
    :language: python
@@ -279,7 +280,7 @@ First syntax: structures
 
 .. nextslide::
 
-Second syntax: arrays
+Second syntax: to model arrays
 
 * Variadic set of homogeneous types
 * `Tuple[int, ...]` -> `(1, 2, 3)`
@@ -292,7 +293,7 @@ Second syntax: arrays
 
 .. nextslide::
 
-Second syntax: arrays
+Second syntax: to model arrays
 
 .. literalinclude:: /../code/02-type-hints/06-tuple-of-different-types.py
    :language: python
@@ -300,6 +301,8 @@ Second syntax: arrays
 
 Type hints: containers
 ======================
+
+Use case: to type dictionaries and lists
 
 .. literalinclude:: /../code/02-type-hints/05-container-types-with-elements.py
    :language: python
@@ -316,8 +319,89 @@ Many specialized type hints in `typing` module:
 * `Awaitable`: asyncio coroutine return
 * ... and other predefined in `typing.py`
 
-Benefits of gradual typing
-==========================
+Practice time
+=============
+
+Challenge: annotate function to catch mistyped parameter
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 5
+
+    def count_letters(sentence: str, letter) -> int:
+        return sentence.count(letter)
+
+    cnt = 0
+    cnt += count_letters('Beautiful is better than ugly.', 1)
+
+.. nextslide::
+
+Solution:
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 1,5
+
+    def count_letters(sentence: str, letter: str) -> int:
+        return sentence.count(letter)
+
+    cnt = 0
+    cnt += count_letters('Beautiful is better than ugly.', 1)
+
+.. nextslide::
+
+Something fishy is going on here... Can `mypy` catch that?
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 13
+
+    class Employee(object):
+        def work(self): print('Employee is working...')
+
+    class Manager(Employee):
+        def fire(self): print('Manager fires someone!')
+
+    def work(x): x.work()
+    def fire(x): x.fire()
+
+    e = Employee(); m = Manager()
+
+    work(m); work(e)
+    fire(m); fire(e)
+
+.. nextslide::
+
+Annotation ensures firing power belongs to `Manager` objects:
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 7, 8, 13
+
+    class Employee(object):
+        def work(self): print('Employee is working...')
+
+    class Manager(Employee):
+        def fire(self): print('Manager fires someone!')
+
+    def work(x: Employee): x.work()
+    def fire(x: Manager): x.fire()
+
+    e = Employee(); m = Manager()
+
+    work(m); work(e)
+    fire(m); fire(e)
+
+.. nextslide::
+
+Catch mistyped dicts
+
+.. nextslide::
+
+Catch mistyped duck-typed objects
+
+Benefits of static typing
+=========================
 
 * Facilitates static analysis
 * Also serves as documentation
@@ -355,8 +439,8 @@ PyCharm 2016 supports type hinting in function annotations and comments:
 
 .. figure:: pycharm.png
 
-Can I use gradual typing?
-=========================
+Can I use static typing?
+========================
 
 If you are at Python:
 
@@ -365,6 +449,16 @@ If you are at Python:
 * 3.1..3.4: like 3.5 plus need to `pip install typing`
 * 2.7: like 3.4 plus all annotations go to comments
 * 2.6: I admire your seniority, oh... ;-)
+
+Should I use gradual typing?
+============================
+
+
+How to annotate existing code?
+==============================
+
+
+
 
 Hey, what about the batteries?
 ==============================
@@ -381,36 +475,6 @@ The plot:
 * You see code snippet with a bug highlighted
 * Figure out what type hint would help catching the bug
 * You see the solution
-
-Practice time
-=============
-
-Bad parameter type:
-
-.. code-block:: python
-   :linenos:
-   :emphasize-lines: 5
-
-    def count_letters(sentence: str, letter) -> int:
-        return sentence.count(letter)
-
-    cnt = 0
-    cnt += count_letters('Beautiful is better than ugly.', 1)
-
-.. nextslide::
-
-Bad parameter type is caught:
-
-.. code-block:: python
-   :linenos:
-   :emphasize-lines: 1,5
-
-    def count_letters(sentence: str, letter: str) -> int:
-        return sentence.count(letter)
-
-    cnt = 0
-    cnt += count_letters('Beautiful is better than ugly.', 1)
-
 
 
 Tough subject ahead
@@ -431,8 +495,6 @@ Generic functions
 .. literalinclude:: /../code/02-type-hints/09-type-variables.py
    :language: python
    :end-before: # Continuing
-
-*File: code/02-type-hints/09-type-variables.py*
 
 Defining generic types
 ======================
@@ -457,6 +519,26 @@ Concrete type inferred from annotation:
 
 Practice time
 =============
+
+The Evil Spirit has planted itself into Programmer's soul and he utterly
+forgot to keep function input/output compatible. Can you save Programmer
+from failing miserably? (hint: he always runs `mypy` prior to commit)
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 8, 9
+
+    T = typing.TypeVar('T')
+
+    def sum_up_anything_similar(a: T, b: T) -> T:
+        return sum([a, b])
+
+    sum_up_anything_similar('x', 'y') + 'z'
+    sum_up_anything_similar(1, 2) + 3
+    sum_up_anything_similar('x', 'y') + 3
+    sum_up_anything_similar(1, 2) + 'z'
+
+
 
 Summary
 =======
