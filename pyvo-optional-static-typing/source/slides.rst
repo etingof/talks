@@ -175,9 +175,18 @@ Static typing:
 Static typing in Python
 =======================
 
-* Long running research
-* Highly controversial topic
+* Long running research dating back to 2004
 * Many implementations: PyContracts, typechecker, mypy etc.
+* Highly controversial topic
+
+Opposition argues
+=================
+
+That static typing:
+
+* Undermines language's dynamic nature
+* Litters code with type definitions
+* Introduces ugly syntax
 
 PyContracts
 ===========
@@ -221,7 +230,7 @@ Mypy
 * Runs at linting time
 * Ensures proper types of function args, return and free variables
 * Infers variables types from first assignment
-* Validates types by inheritance
+* Validates types only by inheritance (at present)
 * Influences type hints
 
 Common grounds: type hints
