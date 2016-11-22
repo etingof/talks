@@ -11,10 +11,8 @@ Agenda
 ======
 
 * Variables, types and their interplay
-* Why type checking?
-* Function and variable annotations
-* Type hints
-* Static typing showcases
+* Why checking types?
+* Type checkers
 * Adoption of static typing
 
 Variable
@@ -164,20 +162,26 @@ Structural typing is hard to implement!
 Is it worth the trouble?
 ========================
 
-Static typing:
+Dynamic typing is error-prone:
 
-* Helps catching bugs early
-* Lets you omit some runtime checks
-* Serves as documentation
-* Powers IDEs automation
-* Comforts your refactoring
+.. code-block:: python
+
+    def gcd(a, b):
+        while a:
+            a, b = b%a, a
+        return b
+
+    >>> gcd(4, 6)
+    2
+    >>> gcd('a', 'b')
+    TypeError: not all arguments converted during string formatting
 
 Static typing in Python
 =======================
 
 * Long running research dating back to 2004
 * Many implementations: PyContracts, typechecker, mypy etc.
-* Highly controversial topic
+* Highly controversial topic!
 
 PyContracts
 ===========
@@ -224,8 +228,8 @@ Mypy
 * Validates types only by inheritance (at present)
 * Influences type hints
 
-Common grounds: type hints
-==========================
+Type hints
+==========
 
 Common framework for all type checkers. In stdlib since Python 3.5.
 
@@ -234,8 +238,8 @@ Based on two otherwise independent features:
 * Function and variable annotations
 * Type hints
 
-Function and variable annotations
-=================================
+Annotations
+===========
 
 * Python expressions attaching arbitrary (!) objects to names
 * Can annotate function parameters, return values, variables
@@ -249,11 +253,13 @@ Function and variable annotations
 
 .. code-block:: python
 
-    >>> def exp2(arg: 'in') -> 'out':
-    ...   return arg**2
-    ...
-    >>> exp2.__annotations__
-    {'arg': 'in', 'return': 'out'}
+    def gcd(a: 'arg1', b: 'arg2') -> 'out':
+        while a:
+            a, b = b%a, a
+        return b
+
+    >>> gcd.__annotations__
+    {'a': 'arg1', 'b': 'arg2', 'return': 'out'}
 
 Type annotations
 ================
@@ -263,11 +269,10 @@ with built-in types or user classes:
 
 .. code-block:: python
 
-    def factorial(n: int) -> int:
-        if n == 0:
-            return 1
-        else:
-            return n * factorial(n-1)
+    def gcd(a: int, b: int) -> int:
+        while a:
+            a, b = b%a, a
+        return b
 
 Type hints classes
 ==================
@@ -319,12 +324,11 @@ Large collection of type hints in `typing` module:
 * Generic variables and classes
 * ...and many more
 
-But that obfuscates my code!
-============================
+Obfuscating?
+============
 
-* Optional stub files (.pyi) to keep just annotations
-  and keep your code clean
-* Also works for C extensions and third-party code
+* Stub files (.pyi) for annotations to keep code clean
+* Also works for C extensions and third-party libs
 * The `typeshed` repo (https://github.com/python/typeshed) maintains
   stubs for stdlib and some other packages
 
@@ -333,15 +337,17 @@ But that obfuscates my code!
     def select_values(d: Dict[str, int], s: str) -> List[int]:
         ...
 
-What is good about it?
+Bright sides
+============
+
+* Improves linting accuracy
+* Lets you omit some runtime checks
+* Serves as documentation
+* Powers IDEs automation
+* Comforts your refactoring
+
+Hints static analysers
 ======================
-
-* Improves static analysis
-* Improves code readability
-* Makes IDEs more helpful
-
-Running static analysis
-=======================
 
 Run `mypy` over your code:
 
@@ -369,8 +375,8 @@ Running `mypy` over this code yields:
     Argument 1 to "make_dict" has incompatible type
     "Tuple[int, str]"; expected "Tuple[str, int]"
 
-Improving code readabilty
-=========================
+Improves code readabilty
+========================
 
 With legacy docstrings:
 
@@ -392,16 +398,16 @@ with Type Hints (with `sphinx-autodoc-annotation`):
         """Greet a person"""
         return 'Ahoj {}!'.format(name)
 
-Making IDEs better
-==================
+Makes IDEs better
+=================
 
 PyCharm 2016 supports type hinting in function
 annotations and comments:
 
 .. figure:: pycharm.png
 
-I do not like it!
-=================
+Critique
+========
 
 * Undermines duck typing
 * Does not catch all typing bugs
@@ -409,8 +415,8 @@ I do not like it!
 * Litters code with typs definitions
 * Stubs maintenance is a pain
 
-Why should I use it?
-====================
+Is it worth it?
+===============
 
 * The larger your project
 * ...the larger your team
