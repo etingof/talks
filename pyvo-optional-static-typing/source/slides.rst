@@ -95,9 +95,9 @@ What about Python?
 Could we make it static when we need to?
 
 Static                        Dynamic
-|-----------------------------|
-                ^
-                Gradual
+^-----------------------------^
+-                ^
+-                Gradual
 
 What is type checking?
 ======================
@@ -178,15 +178,6 @@ Static typing in Python
 * Long running research dating back to 2004
 * Many implementations: PyContracts, typechecker, mypy etc.
 * Highly controversial topic
-
-Opposition argues
-=================
-
-That static typing:
-
-* Undermines language's dynamic nature
-* Litters code with type definitions
-* Introduces ugly syntax
 
 PyContracts
 ===========
@@ -282,7 +273,7 @@ Type hints classes
 ==================
 
 * Isolate the complexities of types relationship computation
-* Implement inheritance and interface based validation
+* Implement inheritance and partially (!) interface validation
 * Designed for type checker use only
 * Do not impose runtime performance penalty
 * `import typing`
@@ -328,13 +319,12 @@ Large collection of type hints in `typing` module:
 * Generic variables and classes
 * ...and many more
 
-.. nextslide::
-
 But that obfuscates my code!
 ============================
 
 * Optional stub files (.pyi) to keep just annotations
   and keep your code clean
+* Also works for C extensions and third-party code
 * The `typeshed` repo (https://github.com/python/typeshed) maintains
   stubs for stdlib and some other packages
 
@@ -342,6 +332,13 @@ But that obfuscates my code!
 
     def select_values(d: Dict[str, int], s: str) -> List[int]:
         ...
+
+What is good about it?
+======================
+
+* Improves static analysis
+* Improves code readability
+* Makes IDEs more helpful
 
 Running static analysis
 =======================
@@ -403,8 +400,25 @@ annotations and comments:
 
 .. figure:: pycharm.png
 
-Can I use gradual typing?
-========================
+I do not like it!
+=================
+
+* Undermines duck typing
+* Does not catch all typing bugs
+* Introduces ugly syntax
+* Litters code with typs definitions
+* Stubs maintenance is a pain
+
+Why should I use it?
+====================
+
+* The larger your project
+* ...the larger your team
+* ...the heavier you refactor your code
+* the more you need it!
+
+Can I use it?
+=============
 
 If you are at Python:
 
@@ -413,14 +427,6 @@ If you are at Python:
 * 3.1..3.4: like 3.5 plus need to `pip install typing`
 * 2.7: like 3.4 plus all annotations go to comments
 * 2.6: I admire your seniority, but... ;-)
-
-Should I use gradual typing?
-============================
-
-* The larger your project
-* ...the larger your team
-* ...the heavier you refactor your code
-* the more you need it!
 
 Where do I start?
 =================
