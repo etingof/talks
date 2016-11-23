@@ -63,59 +63,40 @@ Willingness to automatically coerce types:
 Which is better?
 ================
 
-* Is Strong better than Weak?
-* Is Dynamic better than Static?
+.. figure:: type-systems.png
+   :scale: 70 %
+   :align: center
 
 .. nextslide::
 
+.. figure:: languages.png
+   :scale: 70 %
+   :align: center
 
-Different strengths and weaknesses:
+Convenience & Safety?
+=====================
 
-========= ================================ =================
-    -           Strong Typing                Weak Typing
-========= ================================ =================
-  Good      More deterministic behavior      Convenience
-========= ================================ =================
-
-====== ========================== ==============
-   -              Static            Dynamic
-====== ========================== ==============
-  Good   Better error checking      Convenience
-====== ========================== ==============
-
-What about Python?
-==================
-
-* On stronger side of the spectrum
-* Highly dynamic by design
-
-Could we make it static when we need to?
-
-Static                        Dynamic
-^-----------------------------^
--                ^
--                Gradual
+* Stay dynamic and strong
+* Tighten type checking when requested
 
 What is type checking?
 ======================
-
-Static typing implies types validation.
 
 Two challenges:
 
 1. What type given variable belongs to?
 2. Is it safe to use given type?
 
-Computing types relationships
-=============================
+How to compare types?
+=====================
 
 Approaches:
 
 * By inheritance relationship (AKA nominal)
 * By interface (AKA structural)
 
-Testing inheritance
-===================
+Compare inheritance chain
+=========================
 
 Python types are arranged in a tree with `object` at its root:
 
@@ -128,7 +109,7 @@ Python types are arranged in a tree with `object` at its root:
     >>> issubclass(int, object)
     True
 
-Testing interfaces
+Compare interfaces
 ==================
 
 Unrelated types may exhibit identical behaviour (AKA duck typing):
@@ -361,7 +342,7 @@ Run `mypy` over your code:
 
     from typing import Tuple
 
-    def make_dict(*items: Tuple[str, int]):
+    def make_dict(\*items: Tuple[str, int]):
         return dict(items)
 
     make_dict((1, 'x'))
