@@ -34,6 +34,14 @@ Ways to define type
 * All possible values
 * All applicable operations
 
+Names and types
+===============
+
+Can we:
+
+* Use name with different type?
+* Interpret typed data differently?
+
 Static vs Dynamic
 =================
 
@@ -86,6 +94,12 @@ Two challenges:
 
 1. What type given variable belongs to?
 2. Is it safe to use given type?
+
+How to figure type?
+===================
+
+* Infer from assignment
+* Rely on programmer
 
 How to compare types?
 =====================
@@ -198,8 +212,10 @@ Mypy
 Common framework
 ================
 
-* Based on two Python features: annotations and type hints
-* In stdlib since Python 3.5
+Based on two Python features:
+
+* Function annotations
+* Type hints (AKA `typing.py`)
 
 Annotations
 ===========
@@ -241,10 +257,9 @@ Type hints classes
 ==================
 
 * Compute types relationship
-* Inheritance and interface-based validation
+* Inheritance and (partial) interface-based validation
 * For type checkers use only
 * Do not impose runtime performance penalty
-* `import typing`
 
 .. nextslide::
 
@@ -310,7 +325,7 @@ Stub files
 
 * Stub files (.pyi) for annotations to keep code clean
 * Works for C extensions and third-party libs
-* Stubs for stdlibs maintained in `typeshed` github repo
+* Stubs for stdlib maintained in `typeshed` github repo
 
 .. code-block:: python
 
@@ -325,8 +340,8 @@ Why static typing?
 * Serves as documentation
 * Powers IDEs automation
 
-Hints static analysers
-======================
+Helps static analyser
+=====================
 
 Run `mypy` over your code:
 
@@ -401,7 +416,7 @@ Should I use it?
 * The larger your project
 * ...the larger your team
 * ...the heavier you refactor your code
-* the more you need it!
+* the more you may need it!
 
 Can I use it?
 =============
