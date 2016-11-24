@@ -10,10 +10,10 @@ Optional static typing
 Agenda
 ======
 
-* Variables, types and their interplay
-* Why checking types?
-* Type checkers
-* Adoption of static typing
+* Recap: variables, types and their interplay
+* Types and languages
+* Type checking in Python
+* Adoption of type hints
 
 Variable
 ========
@@ -68,14 +68,15 @@ Willingness to automatically coerce types:
     # but this succeeds -- sign of weaker typing
     y = 1 + 1.0
 
-Which is better?
-================
+Languages & types
+=================
 
 .. figure:: languages.png
    :scale: 70 %
    :align: center
 
-.. nextslide::
+Which is better?
+================
 
 .. figure:: type-systems.png
    :scale: 70 %
@@ -99,6 +100,16 @@ What type is permitted?
 =======================
 
 * Infer from assignment
+
+.. code-block:: python
+
+    # consider `x` is of type `int` from now on
+    x = 1
+
+    # this looks like a typing error
+    x = '1'
+
+
 * Rely on programmer's declaration
 
 How to compare types?
@@ -116,12 +127,15 @@ Python types are arranged in a tree with `object` at its root:
 
 .. code-block:: python
 
-    >>> issubclass(bool, int)
-    True
-    >>> issubclass(float, int)
-    False
-    >>> issubclass(int, object)
-    True
+    >>> bool.__bases__
+    (<class 'int'>,)
+    >>> int.__bases__
+    (<class 'object'>,)
+    >>> float.__bases__
+    (<class 'object'>,)
+    >>> object.__bases__
+    ()
+    >>>
 
 Compare interfaces
 ==================
@@ -130,8 +144,8 @@ Unrelated types may look similar enough:
 
 .. code-block:: python
 
-    >>> issubclass(UserDict, dict)
-    False
+    >>> UserDict.__bases__
+    (<class 'collections.abc.MutableMapping'>,)
     >>> hasattr(UserDict, '__getitem__') and hasattr(dict, '__getitem__')
     True
     >>> hasattr(UserDict, 'keys') and hasattr(dict, 'keys')
@@ -160,8 +174,8 @@ Static typing in Python
 =======================
 
 * Long running research dating back to 2004
-* Many implementations: PyContracts, typechecker, mypy etc.
 * Highly controversial topic!
+* Many tools: PyContracts, typechecker, mypy etc.
 
 PyContracts
 ===========
@@ -241,6 +255,7 @@ Type hints classes
 * Inheritance and (partial) interface-based validation
 * For type checkers use only
 * Do not impose runtime performance penalty
+* PEP484
 
 .. nextslide::
 
@@ -300,18 +315,6 @@ Type hints classes:
 * `Awaitable`: asyncio coroutine return
 * Generic variables and classes
 * ...and many more
-
-Stub files
-==========
-
-* Stub files (.pyi) for annotations to keep code clean
-* Works for C extensions and third-party libs
-* Stubs for stdlib maintained in `typeshed` github repo
-
-.. code-block:: python
-
-    def select_values(d: Dict[str, int], s: str) -> List[int]:
-        ...
 
 Why static typing?
 ==================
@@ -379,7 +382,7 @@ Critique
 * Undermines duck typing
 * Does not catch all typing bugs
 * Introduces ugly syntax
-* Litters code with typs definitions
+* Litters code with types definitions
 * Stubs maintenance is a pain
 
 Should I use it?
@@ -409,7 +412,14 @@ Where do I start?
 * Gradually annotate your code starting from core
   parts
 * ...try Google's `PyType` for generating `.pyi` stubs
-* Disallow unannotated commits entirely
+* Extreme: disallow unannotated commits entirely
+
+Summary
+=======
+
+* Dynamic typing is good
+* ...but we could do better!
+* The technology is maturing, keep an eye on it
 
 Questions?
 ==========
@@ -417,3 +427,10 @@ Questions?
 .. figure:: snake-clipart-image-4.png
    :scale: 70 %
    :align: center
+
+Practice
+========
+
+A dozen of short scripts to play with:
+
+https://github.com/etingof/talks/tree/master/pyvo-optional-static-typing/code
