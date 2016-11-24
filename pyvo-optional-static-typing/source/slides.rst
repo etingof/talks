@@ -71,35 +71,35 @@ Willingness to automatically coerce types:
 Which is better?
 ================
 
-.. figure:: type-systems.png
+.. figure:: languages.png
    :scale: 70 %
    :align: center
 
 .. nextslide::
 
-.. figure:: languages.png
+.. figure:: type-systems.png
    :scale: 70 %
    :align: center
 
-Convenience & Safety?
+Convenience + Safety?
 =====================
 
 * Stay dynamic and strong
-* Tighten type checking when requested
+* Check types when requested
 
-What is type checking?
-======================
+Type checking process
+=====================
 
-Two challenges:
+Two tests:
 
-1. What type given variable belongs to?
-2. Is it safe to use given type?
+1. What type is permitted for a variable?
+2. Is used type compatible with the permitted one?
 
-How to figure type?
-===================
+What type is permitted?
+=======================
 
 * Infer from assignment
-* Rely on programmer
+* Rely on programmer's declaration
 
 How to compare types?
 =====================
@@ -126,7 +126,7 @@ Python types are arranged in a tree with `object` at its root:
 Compare interfaces
 ==================
 
-Unrelated types may exhibit identical behaviour (AKA duck typing):
+Unrelated types may look similar enough:
 
 .. code-block:: python
 
@@ -181,25 +181,6 @@ Validates types by inheritance:
          # Requires b to be a nonempty list, and the return
          # value to have the same length.
          ...
-
-.. nextslide::
-
-Enforces interface contract:
-
-.. code-block:: python
-   :emphasize-lines: 3
-
-    class Base(with_metaclass(ContractsMeta, object)):
-        @abstractmethod
-        @contract(probability='float,>=0,<=1')
-        def sample(self, probability):
-            ...
-
-    class Derived(Base):
-        # The contract above is automatically enforced,
-        # without this class having to know about PyContracts!
-        def sample(self, probability):
-            ....
 
 Mypy
 ====
@@ -263,7 +244,7 @@ Type hints classes
 
 .. nextslide::
 
-Largely based on ABCs:
+Type hints are similar to ABCs:
 
 .. code-block:: python
    :emphasize-lines: 3
@@ -310,7 +291,7 @@ Can get insanely detailed:
 
 .. nextslide::
 
-Collection of type hints in `typing` module:
+Type hints classes:
 
 * `Sequence`: type supporting sequence protocol
 * `Iterable`: type supporting iterator protocol
@@ -343,21 +324,12 @@ Why static typing?
 Helps static analyser
 =====================
 
-Run `mypy` over your code:
-
-* Annotated with type hints
-* ...built-in types
-* ...user classes
-* ...or not annotated at all
-
-.. nextslide::
-
 .. code-block:: python
    :emphasize-lines: 3
 
     from typing import Tuple
 
-    def make_dict(\*items: Tuple[str, int]):
+    def make_dict(*items: Tuple[str, int]):
         return dict(items)
 
     make_dict((1, 'x'))
