@@ -367,6 +367,48 @@ by either adding access control into setter:
 
 ### Context managers
 
+It is a common situation in a program when we want to get a resource,
+use it and cleanup afterwards. Straightforward implementation would
+look like this:
+
+    resource = allocate()
+    try:
+        resource.use()
+    finally:
+        resource.deallocate()
+
+In Python we could refactor that into something succinct leveraging
+the context manager protocol:
+
+    with allocate_resource() as resource:
+        resource.use()
+        
+The expression follows `with` keyword must support the context
+manager protocol. It is comprised from two "magic" methods (`__enter__`
+and `__exit__`) implemented by the object following `with`. These
+methods are guaranteed to be called in order at the borders of `with`
+block.
+
+Context managers are idiomatic in Python for all sorts of resource 
+control situations: working with files, connections, locks, processes.
+To give a few examples, this code will ensure that connection to
+web server is closed once execution gets out of `with` block: 
+    
+    conn = sqlite3.connect(':memory:')
+    with conn:
+        conn.execute('create table mytable (id int primary key, name char(50))')
+        conn.execute('insert into mytable(id) values (?)', (1, 'avni'))
+
+    with contextlib.closing(urllib.urlopen('http://redhat.com')) as connection:
+        connection.readlines()
+
+While `closing` context manager object silently consumes given
+exception should it be thrown: 
+
+    with contextlib.suppress(IOError):
+        os.unlink('non-existing-file.txt')
+
+
 ### Decorators
 
 ### ABC
