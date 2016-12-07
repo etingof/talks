@@ -1,24 +1,25 @@
 
-Enjoyable Python code review
-============================
+Pythonic code review
+====================
 
 Most of us, programmers, go through the technical interviews every once
 in a while. At other times many of us sit at the opposite side of the 
 table running these interviews. I found that code review process may 
-have something in common with job interviews.
+turn into something similar to a harsh job interview.
 
 While it is clearly in the best interest of all team members to end up
-with high quality code, differences in technical background,
-cultural differences, previous experience, personalities and even temper
-may get in the way influencing people's behaviour.
+with high quality code, variations in technical background,
+cultural differences, preconceptions from previous experiences, 
+personality quirks and even temper may get in the way influencing people's
+behaviour.
 
 Consider an imaginary pull request. There we typically have two actors:
 author and code reviewers. Sometimes authors tend to overestimate the
 quality  of their code what provokes them to be overly defensive and 
 even hostile to any argument. People reviewing the code may find themselves
-being in a position of power to judge on the author's work. Once the actors
-find a matter where they take orthogonal and strong enough positions, then
-all is fair in love and war.
+being in a position of power to judge author's work. Once the actors
+discover a matter where they take orthogonal and strong enough 
+positions, all is fair in love and war.
 
 Another interesting phenomena I encountered while reviewing Python code
 can probably be attributed to Python's best qualities - clarity and easiness
@@ -123,8 +124,8 @@ that. That gives me a warm feeling of author belonging to the same
 trade guild and confidence that we both know what to expect from the
 code.
 
-Pythonic touch
---------------
+When I'm a Pythonista
+---------------------
 
 The definition of code being Pythonic tends to be somewhat vague and
 subjective. Speaking from my experience in the fields, let me offer 
@@ -132,7 +133,7 @@ you a handful of code refactoring suggestions leveraging features
 that are native to Python so that people with different backgrounds
 may be unaware of them.
 
-### Keyword args
+### Readable signatures
 
 Different from many languages, in Python, all names of function
 parameters are always part of function signature:
@@ -149,7 +150,7 @@ to improve code readability. Function author should be aware of
 callers possibly binding to once announced name and restrain from 
 changing names in public APIs.
 
-### Exceptions
+### Informative exceptions
 
 Raising exception is a primary vehicle for communicating errors in
 a Python program. It's easier to ask for forgiveness than permission,
@@ -170,7 +171,7 @@ helps clearly communicating errors that are specific to your problem
 and tell errors bubbling up from your code from other, less expected
 failures.
 
-### Strings concatenation
+### Fast strings concatenation
 
 For Perl programmers, who are used to `.` operator, it may be tempting to
 merge Python strings by `+`'ing them up. But proper way is to `join()`
@@ -180,10 +181,54 @@ them:
     'Red Hat'
 
 Despite recent CPython optimization in that regard, older and other 
-Python implementations still suffer from quadratic behaviour of strings
+Python implementations still suffer from quadratic behaviour of string
 concatenation operation.
 
-### Named tuples
+### Pythonic loops
+
+Probably most straightforward loop implementation would look like
+this:
+
+    choices = ['red', 'green', 'blue']
+    i = 0
+    while i < len(choices):
+        print('{}) {}'.format(i, choices[i]))
+        i += 1
+
+Not quite concise, right? Folks coming from C, Java or JavaScript
+might do:
+
+    choices = ['red', 'green', 'blue']
+    for i in range(len(choices)):
+        print('{}) {}'.format(i, choices[i]))
+
+Despite simple and familiar appearance, there is no really
+a `for` loop in Python in the sense of C, Java or JavaScript
+(because it's in fact a
+[foreach](https://en.wikipedia.org/wiki/Foreach_loop) loop).
+In Python we would adapt a collection we need to loop over
+to make it convenient for looping:
+
+    choices = ['red', 'green', 'blue']
+    for idx, choice in enumerate(choices):
+        print('{}) {}'.format(idx, choice))
+
+What if we got many collections to loop over? As naive as it
+could get:
+
+    preferences = ['first', 'second', 'third']
+    choices = ['red', 'green', 'blue']
+    for i in range(len(choices)):
+        print('{}) {}'.format(preferences[i], choices[i]))
+
+But there is a better way:
+
+    preferences = ['first', 'second', 'third']
+    choices = ['red', 'green', 'blue']
+    for preference, choice in zip(preferences, choices):
+        print('{}) {}'.format(preference, choice))
+
+### Named tuples for readability
 
 Wrapping structured stuff into a tuple is a recipe for communicating 
 multiple items with a function. Trouble is that it quickly becomes 
@@ -225,7 +270,7 @@ But there is a handy shortcut:
 The namespace object acts like any class instance -- you can
 add/reassign/remove attributes at any moment.
 
-### Dictionaries
+### Dictionary features
 
 Python dict is a well-understood canonical data type much like 
 Perl `hash` or Java `HashMap`. In Python, however, we have a few 
@@ -260,15 +305,11 @@ Dictionary that maintains key insertion order:
     >>> list(d)
     ['y', 'x']
 
-### Loops, Iterators and Generators
+### Iterators and Generators
  
-Despite simple and familiar appearance, there is a huge amount of
-power is hiding beneath the `for` loop. It is considered highly
-Pythonic to take advantage of them. 
-
-To start with, `for` loop implicitly operates over `Iterable`s.
-Objects representing a collection of something are good candidates
-for being iterable:
+When it comes to collections, especially large or expensive 
+to compute, the concept of iterability kicks right in. To start
+with, `for` loop implicitly operates over `Iterable` objects:
 
     for x in [1, 2, 3]:
         print(x)
@@ -325,12 +366,14 @@ or Ruby offer them, so this is something worth noting:
     Viliam
     Ilya
 
-The concept of iterable is firmly built into Python infrastructure.
+The concept of iterable type is firmly built into Python infrastructure
+and it is considered Pythonic to leverage iterability features.
+
 Besides being handled by built-in operators, there is a collection
 of higher-order functions in the `itertools` module operating over
 iterables.
 
-### Properties
+### Properties for better encapsulation
  
 Java and C++ are particularly famous for promoting object state
 protection by operating via "accessor" methods also known as 
@@ -365,7 +408,7 @@ by either adding access control into setter:
     >>> team.members = []
     RuntimeError('This team is precious!',)
 
-### Context managers
+### Context managers to control resources
 
 It is a common situation in a program when we want to get a resource,
 use it and cleanup afterwards. Straightforward implementation would
@@ -377,7 +420,7 @@ look like this:
     finally:
         resource.deallocate()
 
-In Python we could refactor that into something succinct leveraging
+In Python we could refactor that into something more succinct leveraging
 the context manager protocol:
 
     with allocate_resource() as resource:
@@ -385,20 +428,15 @@ the context manager protocol:
         
 The expression follows `with` keyword must support the context
 manager protocol. It is comprised from two "magic" methods (`__enter__`
-and `__exit__`) implemented by the object following `with`. These
-methods are guaranteed to be called in order at the borders of `with`
+and `__exit__`) that must be implemented by the object following `with`.
+These methods are guaranteed to be called in order at the borders of `with`
 block.
 
 Context managers are idiomatic in Python for all sorts of resource 
 control situations: working with files, connections, locks, processes.
 To give a few examples, this code will ensure that connection to
 web server is closed once execution gets out of `with` block: 
-    
-    conn = sqlite3.connect(':memory:')
-    with conn:
-        conn.execute('create table mytable (id int primary key, name char(50))')
-        conn.execute('insert into mytable(id) values (?)', (1, 'avni'))
-
+ 
     with contextlib.closing(urllib.urlopen('http://redhat.com')) as connection:
         connection.readlines()
 
@@ -408,12 +446,104 @@ exception should it be thrown:
     with contextlib.suppress(IOError):
         os.unlink('non-existing-file.txt')
 
+### Decorators to extend functionality
 
-### Decorators
+Python decorators work by wrapping a function with another
+function. Use cases include memoization, locking, pre/post-processing,
+access control, timing and many more.
 
-### ABC
+Consider a straightforward memoization implementation:
+
+    cache = {}
+    def compute(arg):
+        if arg not in cache:
+             cache[arg] = do_heavy_computation(arg)
+         return cache[arg]
+
+This is where Python decorators come in handy:
+
+    def universal_memoization_decorator(computing_func):
+        cache = {}
+        def wrapped(arg):
+            if arg not in cache:
+                cache[arg] = computing_func(arg)
+            return cache[arg]
+        return wrapped
+        
+    @universal_memoization_decorator
+    def compute(arg)
+        return do_heavy_computation(arg)
+
+The power of decorators come from their ability to modify function
+behaviour in a non-invasive and universal way. That opens up
+[possibilities](https://wiki.python.org/moin/PythonDecoratorLibrary)
+to put business logic into a specialized decorator and reuse it across
+the whole codebase.
+
+Python standard library offers a bunch of ready-made decorators. For
+example, the above memoization is already implemented:
+
+    @functools.lru_cache
+    def compute(arg):
+        return do_heavy_computation(arg)
+
+Other projects, like Django, use them extensively.
+
+### Duck typed objects
+
+Duck typing is highly encouraged in Python. Frequent use-case involves
+emulating base Python types such as containers:
+    
+    class DictLikeType:
+        def __init__(self, *args, **kwargs):
+            self._dict = dict(*args, **kwargs)
+            
+        def __getitem__(self, key): 
+            return self._dict[key]
+            
+        ...
+
+Full container protocol emulation requires many magic methods to
+be present and properly implemented. That can become laborious and
+error prone. Better way would be to base user containers on top
+of a [respective](https://docs.python.org/3/library/collections.abc.html)
+abstract base class:
+
+    class DictLikeType(collections.abc.MutableMapping):
+        def __init__(self, *args, **kwargs):
+            self.store = dict(*args, **kwargs)
+    
+        def __getitem__(self, key):
+            return self.store[key]
+            
+        ...
+        
+Not only you'd have to implement less magic methods, the ABC harness
+makes sure that all mandatory methods are in place.
+
+### Type checks
+
+Type checking based on types hierarchy is a popular pattern in Python
+programs. People with background in statically-typed languages tend
+to introduce type checks like this:
+
+    if not isinstance(x, list):
+        x = [x]
+
+It is not discouraged in Python, though it would be more generic and
+reliable to compare types against abstract base types:
+
+    if not isinstance(x, collections.abc.MutableSequence):
+        x = [x]
+
+That makes type check compatible with both built-in and user types
+that inherit from abstract base classes.
 
 Tools
 -----
 
-linter, timeit, dis
+It may occur to a reviewer, that a more efficient solution is possibly
+viable. To back his refactoring proposal with hard numbers, as opposed to
+intuition, a quick analysis may come in handy. Among the tools I personally
+use in code reviews are `dis` (for bytecode-level execution flow analysis)
+and `timeit` (for ad-hoc running time measurement).
