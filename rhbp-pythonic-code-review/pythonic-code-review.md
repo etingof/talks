@@ -60,8 +60,8 @@ For mature Pythonistas coding with newbies, code review is a way to teach
 them how we do things in Python up to the extent of brewing idiomatic Python
 coders out of them.
 
-Optimize for healthy team
--------------------------
+For the greater good
+--------------------
 
 The best we can do on the psychological side is that author is to 
 relinquish emotional attachment to their code, while reviewers 
@@ -525,6 +525,11 @@ by either adding access control into setter:
     ['Jan', 'Viliam', 'Ilya']
     >>> team.members = []
     RuntimeError('This team is too precious to touch!',)
+
+Python properties are implemented on top of 
+`descriptors <https://docs.python.org/3/reference/datamodel.html#descriptors>`_ 
+which is a lower-level and more universal mechanism to get hold on attribute
+access.
 
 Context managers to guard resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
