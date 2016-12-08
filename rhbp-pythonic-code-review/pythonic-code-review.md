@@ -127,8 +127,8 @@ compliance up to the cost of nitpicking and bikesheding.
 I praise authors coding on the shoulders of giants -- abstracting
 problem into canonical data structures/algorithms and working from
 there. That gives me a warm feeling of author belonging to the same 
-trade guild and confidence that we both know what to expect from the
-code.
+trade guild as myself and confidence that we both know what to expect 
+from the code.
 
 When I'm a Pythonista
 ---------------------
@@ -156,9 +156,9 @@ them to a class is an option to consider. Such class might never
 need instantiation, though.
 
 Free-standing functions are easy to grasp, concise and light. When a
-function does not cause side-effects, it's also good for a 
+function does not cause side-effects, it's also good for 
 `functional <https://docs.python.org/3.6/howto/functional.html>`_
-programming model.
+programming.
 
 Pythonic loops
 ^^^^^^^^^^^^^^
@@ -233,7 +233,7 @@ Comprehensions, no tiny loops
 
 Even perfectly Pythonic loop can be further improved by turning it
 into a list or dictionary comprehension. Consider quite a mundane 
-loop building a sublist on a condition:
+for-loop building a sublist on a condition:
 
 .. code-block:: python
 
@@ -272,6 +272,9 @@ The outcome is twofold: caller can explicitly refer to parameter name
 to improve code readability. Function author should be aware of
 callers possibly binding to once announced name and restrain from 
 changing names in public APIs.
+
+At any rate, passing named parameters to the functions we call
+adds to code readability.
 
 Named tuples for readability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -528,7 +531,7 @@ by either adding access control into setter:
 
 Python properties are implemented on top of 
 `descriptors <https://docs.python.org/3/reference/datamodel.html#descriptors>`_ 
-which is a lower-level and more universal mechanism to get hold on attribute
+which is a lower-level but more universal mechanism to get hold on attribute
 access.
 
 Context managers to guard resources
@@ -654,7 +657,7 @@ emulating built-in Python types such as containers:
 
 Full container protocol emulation requires many magic methods to
 be present and properly implemented. That can become laborious and
-error prone. Better way would be to base user containers on top
+error prone. A better way is to base user containers on top
 of a `respective <https://docs.python.org/3/library/collections.abc.html>`_
 abstract base class:
 
