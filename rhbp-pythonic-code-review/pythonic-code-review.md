@@ -313,7 +313,7 @@ in a tight loop.
 Exceptions, no checks
 ^^^^^^^^^^^^^^^^^^^^^
 
-Raising exception is a primary vehicle for communicating errors in
+Raising an exception is a primary vehicle for communicating errors in
 a Python program. It's easier to ask for forgiveness than permission,
 right?
 
@@ -329,16 +329,16 @@ right?
     except ResourceDoesNotExist:
         ...
 
-It is generally advisable to subclass build-in exception classes. That
-helps clearly communicating errors that are specific to our problem
-and tell errors bubbling up from our code from other, less expected
-failures.
+It is generally advisable to subclass built-in exception classes. That
+helps to clearly communicate errors that are specific to our problem
+and differentiate errors that bubble up from our code from other, less
+expected failures.
 
 Ad-hoc namespaces
 ^^^^^^^^^^^^^^^^^
 
 When we encounter colliding variables, we might want to isolate them from
-each other. Most obvious way is to wrap at least one of them
+each other. The most obvious way is to wrap at least one of them
 into a class:
 
 .. code-block:: python
@@ -365,7 +365,7 @@ Dictionary goodies
 ^^^^^^^^^^^^^^^^^^
 
 Python `dict <https://docs.python.org/3/library/stdtypes.html#dict>`_
-is a well-understood canonical data type much like Perl `hash` or 
+is a well-understood canonical data type much like a Perl `hash` or a 
 Java `HashMap`. In Python, however, we have a few  more built-in 
 features like returning a value for a missing key:
 
@@ -374,7 +374,7 @@ features like returning a value for a missing key:
     >>> {}.get('missing key', 'failover value')
     'failover value'
 
-Conditionally setting key if it's not present:
+Conditionally setting a key if it's not present:
 
 .. code-block:: python
 
@@ -383,7 +383,7 @@ Conditionally setting key if it's not present:
     >>> {'key': 'old value'}.setdefault('key', 'new value')
     'old value'
 
-Automatically generate initial value for missing keys:
+Or automatically generate an initial value for missing keys:
 
 .. code-block:: python
 
@@ -392,7 +392,7 @@ Automatically generate initial value for missing keys:
     >>> d['missing key']
     1
 
-Dictionary that maintains key insertion order:
+A dictionary that maintains key insertion order:
 
 .. code-block:: python
 
@@ -411,9 +411,9 @@ Newcomers may not be aware of these nifty little tools -- let's tell them!
 Go for iterables
 ^^^^^^^^^^^^^^^^
  
-When it comes to collections, especially large or expensive 
+When it comes to collections, especially large or expensive ones
 to compute, the concept of `iterability <https://docs.python.org/3/glossary.html#term-iterable>`_
-kicks right in. To start with, `for` loop implicitly operates over 
+kicks right in. To start with, a `for` loop implicitly operates over 
 `Iterable` objects:
 
 .. code-block:: python
@@ -445,7 +445,7 @@ iterable by supporting the iteration protocol:
             finally:
                 self.index += 1
 
-so they could be iterated over a loop:
+so they can be iterated over a loop:
 
 .. code-block:: python
 
@@ -457,7 +457,7 @@ so they could be iterated over a loop:
     Viliam
     Ilya
 
-As well as in many other contexts where an iterable is expected:
+as well as in many other contexts where an iterable is expected:
 
 .. code-block:: python
 
@@ -481,8 +481,9 @@ Iterable user functions are known as `generators <https://docs.python.org/3/glos
     Viliam
     Ilya
 
-The concept of iterable type is firmly built into Python infrastructure
-and it is considered Pythonic to leverage iterability features.
+The concept of an iterable type is firmly built into the Python 
+infrastructure and it is considered Pythonic to leverage iterability
+features.
 
 Besides being handled by built-in operators, there is a collection
 of functions in the 
@@ -494,7 +495,7 @@ Properties for gradual encapsulation
  
 Java and C++ are particularly famous for promoting object state
 protection by operating via "accessor" methods also known as 
-getters/setters. Pythonic alternative to them is based on
+getters/setters. A Pythonic alternative to them is based on
 the `property` feature. Unlike Java programmers, Pythonistas do
 not begin with planting getters and setters into their code. They
 start out with simple, unprotected attributes:
@@ -507,7 +508,7 @@ start out with simple, unprotected attributes:
     team = Team()
     print(team.members)
 
-Once a need for protection arises, we turn attribute into 
+Once a need for protection arises, we turn an attribute into a 
 `property <https://docs.python.org/3/library/functions.html#property>`_
 by either adding access control into setter:
 
@@ -538,9 +539,8 @@ access.
 Context managers to guard resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is a common situation in a program when we want to get a resource,
-use it and cleanup afterwards. Simplistic implementation might
-look like this:
+It is common for programs to acquire resources, use them, and clean
+up after. A simplistic implementation might look like this:
 
 .. code-block:: python
 
@@ -551,7 +551,7 @@ look like this:
     finally:
         resource.deallocate()
 
-In Python we could refactor that into something more succinct leveraging
+In Python, we could refactor this into something more succinct, leveraging
 the `context manager protocol <https://docs.python.org/3/library/stdtypes.html#typecontextmanager>`_:
 
 .. code-block:: python
@@ -560,22 +560,22 @@ the `context manager protocol <https://docs.python.org/3/library/stdtypes.html#t
     with allocate_resource() as resource:
         resource.use()
         
-The expression following `with` must support the context manager
+The expression following a `with` must support the context manager
 protocol. Its `__enter__` and `__exit__` magic methods will be called
 respectively before and after the statements inside the `with` block.
 
 Context managers are idiomatic in Python for all sorts of resource 
 control situations: working with files, connections, locks, processes.
-To give a few examples, this code will ensure that connection to
-web server is closed once execution gets out of `with` block: 
+To give a few examples, this code will ensure that a connection to
+web server is closed once the execution gets out of `with` block: 
 
 .. code-block:: python
  
-    with contextlib.closing(urllib.urlopen('http://redhat.com')) as conn:
+    with contextlib.closing(urllib.urlopen('https://redhat.com')) as conn:
         conn.readlines()
 
-While `suppress` context manager object silently ignores given
-exception should it come out of `with` statement body: 
+The `supress` context manager silently ignores the specified
+exception if it occurs within the body of the with statement:
 
 .. code-block:: python
 
@@ -588,7 +588,7 @@ Decorators to add functionality
 Python `decorators <https://www.python.org/dev/peps/pep-0318/>`_
 work by wrapping a function with another function. Use cases 
 include memoization, locking, pre/post-processing, access control, 
-timing and many more.
+timing, and many more.
 
 Consider a straightforward memoization implementation:
 
@@ -598,8 +598,8 @@ Consider a straightforward memoization implementation:
     cache = {}
     def compute(arg):
         if arg not in cache:
-             cache[arg] = do_heavy_computation(arg)
-         return cache[arg]
+            cache[arg] = do_heavy_computation(arg)
+        return cache[arg]
 
 This is where Python decorators come in handy:
 
@@ -618,13 +618,13 @@ This is where Python decorators come in handy:
     def compute(arg)
         return do_heavy_computation(arg)
 
-The power of decorators come from their ability to modify function
+The power of decorators comes from their ability to modify function
 behaviour in a non-invasive and universal way. That opens up
 `possibilities <https://wiki.python.org/moin/PythonDecoratorLibrary>`_
 to offload business logic into a specialized decorator and reuse it across
 the whole codebase.
 
-Python standard library offers a bunch of ready-made decorators. For
+The Python standard library offers many of ready-made decorators. For
 example, the above memoization tool is readily available in standard
 library:
 
@@ -642,7 +642,7 @@ Duck typing
 ^^^^^^^^^^^
 
 `Duck typing <https://en.wikipedia.org/wiki/Duck_typing>`_ is highly
-encouraged in Python for being more productive and flexible. Frequent 
+encouraged in Python for being more productive and flexible. A frequent 
 use-case involves emulating built-in Python types such as containers:
 
 .. code-block:: python
@@ -682,7 +682,7 @@ Type checks
 ^^^^^^^^^^^
 
 Type checking based on types hierarchy is a popular pattern in Python
-programs. People with background in statically-typed languages tend
+programs. People with a background in statically-typed languages tend
 to introduce ad-hoc type checks like this:
 
 .. code-block:: python
@@ -700,7 +700,7 @@ general and reliable by testing against abstract base types:
     if not isinstance(x, collections.abc.MutableSequence):
         raise ApplicationError('A sequence type is expected')
 
-That immediately makes type check compatible with both built-in and 
+That immediately makes a type check compatible with both built-in and 
 user types that inherit from abstract base classes.
 
 Static typing tends to make programs more reliable by leveraging explicit
