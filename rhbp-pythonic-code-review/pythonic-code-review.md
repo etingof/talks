@@ -4,45 +4,46 @@ Pythonic code review
 
 *Ilya Etingof, Red Hat Product Security*
 
-Most of us, programmers, go through technical interviews every once
-in a while. At other times many of us sit at the opposite side of the 
+Most of us programmers go through technical interviews every once
+in a while. At other times, many of us sit on the opposite side of the 
 table running these interviews. Stakes are high, emotions run strong,
-intellectual pressure builds up. I found that an unfortunate code review 
+intellectual pressure builds up. I have found that an unfortunate code review 
 may turn into something similar to a harsh job interview.
 
 While it is theoretically in the best interest of the whole team to 
 end up with high quality code, variations in individual's technical 
 background, cultural differences, preconceptions built up on previous 
-experience, personality quirks, and even temper may get in the way of 
-luring people into a fierce fight over relatively unimportant matters.
+experience, personality quirks, and even temper may lure
+people into a fierce fight over relatively unimportant matters.
 
 Consider an imaginary pull request. There we typically have two actors:
-author and code reviewers. Sometimes authors tend to overestimate the
-quality  of their code what provokes them to be overly defensive and 
+the author and code reviewers. Sometimes authors tend to overestimate the
+quality  of their code which provokes them to be overly defensive and possibly
 even hostile to any argument. People reviewing the code may find themselves
 being in a position of power to judge author's work. Once the actors
 collide over a matter where they take orthogonal and sufficiently
 strong sides, all is fair in love and war.
 
 Another interesting phenomena I encountered while reviewing Python code
-can probably be attributed to Python's low entry barrier for newcomers.
+can probably be attributed to Python's low barrier to entry for newcomers.
 Programmers switching over from other languages bring along customs and 
-idioms they are used to at their mother tongue. I could frequently 
-tell former Java, Perl or Bash programmer from their Python code. As 
+idioms they are used to in their "mother tongue". I can usually figure out
+from their Python code whether the author is a former Java, Perl, or Bash
+programmer.  As
 much as I admire other technologies and expertise, I believe it is 
 most efficient and enjoyable to code in harmony with the language rather 
 than stretching it beyond its intended design. 
 
 In this blog post I'll focus on my personal experience in authoring
 and reviewing Python code from both psychological and technical
-perspectives. Keeping in mind my ultimate goal of striking a balance 
+perspectives. And I'll do so keeping in mind the ultimate goal of striking a balance 
 between code reviews being enjoyable and technically fruitful.
 
 Why we review code
 ------------------
 
 The most immediate purpose of a code review is to make code better by
-focusing more eyeballs at it. But code review seems to be a lot more
+focusing more eyeballs on it. But code review seems to be a lot more
 than that!
  
 It is also a way for the engineers to communicate, learn and even 
@@ -51,13 +52,13 @@ both senior and junior engineers work together, a code review provides the
 opportunity for the junior engineers to observe masters at work and learn 
 from them. 
 
-Seniors, in turn, get a chance to couch fellow engineers, be challenged and
-thus prove their authority (which is healthy). Everyone could see the
-problem from different perspectives, that ultimately contributes to a
+Seniors, in turn, get a chance to coach fellow engineers, be challenged and
+thus prove their authority (which is healthy). Everyone can see the
+problem from different perspectives, which ultimately contributes to a
 better outcome.
 
 For mature Pythonistas coding with newbies, code review is a way to teach
-them how we do things in Python up to the extent of brewing idiomatic Python
+them how we do things in Python with the goal of creating idiomatic Python
 coders out of them.
 
 For the greater good
@@ -65,40 +66,39 @@ For the greater good
 
 The best we can do on the psychological side is to, as an author, relinquish 
 our emotional attachment to our code and, as a reviewer, consciously 
-restrain ourselves from attacking other authors' ideas, focusing on 
+restrain ourselves from attacking other authors' ideas, focusing instead on 
 mentoring them.
 
-For a review to be a productive and relatively comforting experience, 
+For a review to be a productive and relatively comfortable experience, 
 a reviewer should stay positive, thankful, honestly praise the author's
 work and talent in a genuine matter. Suggested changes should be justified 
-by solid technical grounds but never the reviewer's personal taste.
+by solid technical grounds, and never by the reviewer's personal taste.
 
 For authors it may help to keep reminding themselves how much time and
-effort it might have taken for reviewers to work with author's 
+effort it might have taken for reviewers to work with the author's 
 code -- their feedback is precious! 
 
 As idealistic as it sounds, my approach aims at downplaying my ego by
-optimizing for a healthier team and an enjoyable job. I suspect that it might 
-come at the cost of compromised quality of the code we collectively produce.
+optimizing for a healthier team and an enjoyable job. I suspect that it may
+come at the cost of compromised quality of the code we collectively produce, but to me that is worth it.
 My hope here is that even if we do merge suboptimal code at times, we will 
-eventually learn from that and refactor later. That's way cheaper compared 
-to ending up with a stressed, despaired and demotivated team effectively 
-stuck at its project.
+eventually learn from that and refactor later. That's a much cheaper cost compared 
+to ending up with a stressed, despaired and demotivated colleague.
 
 When I'm an author
 ------------------
 
-As an author, I'm not taking PRs lightly. My day's worth of code is 
+As an author, I'm not taking Pull Requests (PRs) lightly. My day's worth of code is 
 likely to keep fellow reviewers busy for a good couple of hours.
 I know that it's a hard and expensive endeavour. Proper code 
 review may require my team mates to reverse engineer business logic 
 behind a change, trace code execution, conduct thought experiments, 
-search for edge cases. I do keep that in mind and feel grateful for
+and search for edge cases. I do keep that in mind and feel grateful for
 their time.
 
 I try to keep my changes small. The larger the change is, the more effort 
 it would take for reviewers to finish the review. That gives smaller, 
-isolated changes better chances for a quality treatment, while huge 
+isolated changes a better chance for quality treatment, while huge 
 and messy blobs of diffs risk turning a blind eye on my PR.
 
 Well-debugged code accompanied with tests, properly documented changes 
@@ -113,7 +113,7 @@ When I'm a reviewer
 To me, the most important qualities of code is to be clean
 and as Pythonic as circumstances permit.
 
-Clean code tends to be well-structured where logically distinct parts
+Clean code tends to be well-structured, where logically distinct parts
 are isolated from each other via clearly visible boundaries. Ideally,
 each part is specialized on solving a single problem. As Zen of Python
 puts it: "If the implementation is easy to explain, it may be 
@@ -123,12 +123,12 @@ Signs of clear code include self-documented functions and variables
 describing problem entities, not implementation details.
 
 Readability counts, indeed, though I would not sweat full PEP8
-compliance up to the cost of nitpicking and bikesheding.
+compliance where it becomes nitpicking and bikesheding.
 
 I praise the author's coding on the shoulders of giants -- abstracting
-problem into canonical data structures/algorithms and working from
-there. That gives me a warm feeling of author belonging to the same 
-trade guild as myself and confidence that we both know what to expect 
+problems into canonical data structures/algorithms and working from
+there. That gives me the warm feeling of the author belonging to the same 
+trade guild as myself, and confidence that we both know what to expect 
 from the code.
 
 When I'm a Pythonista
@@ -140,10 +140,10 @@ up idioms and language evolution. I keep that in mind and restrain
 myself from evangelizing my personal perception of what's Pythonic 
 towards fellow Pythonistas.
 
-Speaking from my experience in the fields, let me offer the reader a 
-handful of code observations I encountered along with the suggestions
-leveraging features that are native to Python so that people with
-different backgrounds may be unaware of them.
+Speaking from my experience in the field, let me offer the reader a 
+handful of code observations I have encountered, along with suggestions
+leveraging features that are native to Python of which people with
+different backgrounds may be unaware.
 
 Justified programming model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -153,12 +153,12 @@ probably because Java heavily enforces the OOP paradigm. Python programmers
 enjoy a freedom of picking a programming model that is best suited for 
 the task.
 
-Choice of object-based implementation looks reasonable to me when
+The choice of object-based implementations look reasonable to me when
 there is a clear abstraction for the task being solved. Statefulness
 and duck-typed objects are another strong reason for going the OOP way.
 
-If author's priority is to keep related functions together, pushing
-them to a class is an option to consider. Such class might never
+If the author's priority is to keep related functions together, pushing
+them to a class is an option to consider. Such claseses may never
 need instantiation, though.
 
 Free-standing functions are easy to grasp, concise and light. When a
@@ -189,7 +189,7 @@ or with `for` loops like this:
     for i in range(len(choices)):
         print('{}) {}'.format(i, choices[i]))
 
-When index is not required, a more Pythonic way would be to run a 
+When the index is not required, a more Pythonic way would be to run a 
 `for` loop over a collection:
 
 .. code-block:: python
@@ -213,7 +213,7 @@ As a side note, Python's `for` loop is quite different
 from what we have in C, Java or JavaScript. Technically, it's a
 `foreach <https://en.wikipedia.org/wiki/Foreach_loop>`_ loop.
 
-What if we got many collections to loop over? As naive as it
+What if we have many collections to loop over? As naive as it
 could get:
 
 .. code-block:: python
@@ -237,9 +237,9 @@ But there is a better way -- use `zip <https://docs.python.org/3/library/functio
 Comprehensions, no tiny loops
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Even perfectly a Pythonic loop can be further improved by turning it
+Even a perfectly Pythonic loop can be further improved by turning it
 into a list or dictionary comprehension. Consider quite a mundane 
-for-loop building a sublist on a condition:
+for-loop building a sub-list on a condition:
 
 .. code-block:: python
 
@@ -276,7 +276,7 @@ parameters are always part of function signature:
 
 The outcome is twofold: a caller can explicitly refer to a parameter name 
 to improve code readability. The function's author should be aware of 
-callers possibly binding to a once announced name and restrain from 
+callers possibly binding to a once-announced name and restrain from 
 changing names in public APIs.
 
 At any rate, passing named parameters to the functions we call
@@ -310,9 +310,9 @@ getting hold of them:
     Team(lead='Jan', eng_1='Viliam', eng_2='Ilya')
     >>> lead = team.lead
 
-Using named tuples improves readability at a cost of creating an extra
-class. Keep in mind, though, that `namedtuple` factory function
-creates new class by `exec`'ing a template -- that may slow things down
+Using named tuples improves readability at the cost of creating an extra
+class. Keep in mind, though, that `namedtuple` factory functions
+create a new class by `exec`'ing a template -- that may slow things down
 in a tight loop. 
 
 Exceptions, no checks
@@ -339,7 +339,7 @@ down your code.
 
 It is generally advisable to subclass built-in exception classes. That
 helps to clearly communicate errors that are specific to our problem
-and differentiate errors that bubble up from our code from other, less
+and differentiate errors that bubble up to our code from other, less
 expected failures.
 
 Ad-hoc namespaces
@@ -356,14 +356,14 @@ into a class:
         pass
 
     ns = NS()
-    ns.fruites = ['apple', 'orange']
+    ns.fruits = ['apple', 'orange']
 
 But there is a handy Pythonic shortcut:
 
 .. code-block:: python
 
     # Pythonic!
-    ns = types.SimpleNamespace(fruites=['apple', 'orange'])
+    ns = types.SimpleNamespace(fruits=['apple', 'orange'])
 
 The `SimpleNamespace <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_
 object acts like any class instance -- we can add, change or remove 
@@ -429,7 +429,7 @@ kicks right in. To start with, a `for` loop implicitly operates over
     for x in [1, 2, 3]:
         print(x)
 
-    for line in open('myfile.txt'):
+    for line in open('myfile.txt', 'r'):
         print(line)
 
 Many built-in types are already iterable. User objects can become 
@@ -502,8 +502,8 @@ Properties for gradual encapsulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 Java and C++ are particularly famous for promoting object state
-protection by operating via "accessor" methods also known as 
-getters/setters. A Pythonic alternative to them is based on
+protection by operating via "accessor" methods (also known as 
+getters/setters). A Pythonic alternative to them is based on
 the `property` feature. Unlike Java programmers, Pythonistas do
 not begin with planting getters and setters into their code. They
 start out with simple, unprotected attributes:
@@ -518,7 +518,7 @@ start out with simple, unprotected attributes:
 
 Once a need for protection arises, we turn an attribute into a 
 `property <https://docs.python.org/3/library/functions.html#property>`_
-by either adding access control into setter:
+by adding access controls into the setter:
 
 .. code-block:: python
 
@@ -548,7 +548,7 @@ Context managers to guard resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is common for programs to acquire resources, use them, and clean
-up after. A simplistic implementation might look like this:
+up afterwards. A simplistic implementation might look like this:
 
 .. code-block:: python
 
@@ -575,7 +575,7 @@ respectively before and after the statements inside the `with` block.
 Context managers are idiomatic in Python for all sorts of resource 
 control situations: working with files, connections, locks, processes.
 To give a few examples, this code will ensure that a connection to
-web server is closed once the execution gets out of `with` block: 
+a web server is closed once the execution runs out of `with` block: 
 
 .. code-block:: python
  
@@ -583,7 +583,7 @@ web server is closed once the execution gets out of `with` block:
         conn.readlines()
 
 The `supress` context manager silently ignores the specified
-exception if it occurs within the body of the with statement:
+exception if it occurs within the body of the `with` statement:
 
 .. code-block:: python
 
@@ -632,8 +632,8 @@ behaviour in a non-invasive and universal way. That opens up
 to offload business logic into a specialized decorator and reuse it across
 the whole codebase.
 
-The Python standard library offers many of ready-made decorators. For
-example, the above memoization tool is readily available in standard
+The Python standard library offers many ready-made decorators. For
+example, the above memoization tool is readily available in the standard
 library:
 
 .. code-block:: python
@@ -643,7 +643,7 @@ library:
     def compute(arg):
         return do_heavy_computation(arg)
 
-Decorators made their way into public APIs in large projects like
+Decorators have made their way into public APIs in large projects like
 Django or PyTest.
 
 Duck typing
@@ -665,7 +665,7 @@ use-case involves emulating built-in Python types such as containers:
         ...
 
 Full container protocol emulation requires many magic methods to
-be present and properly implemented. That can become laborious and
+be present and properly implemented. This can become laborious and
 error prone. A better way is to base user containers on top
 of a `respective <https://docs.python.org/3/library/collections.abc.html>`_
 abstract base class:
@@ -682,8 +682,8 @@ abstract base class:
             
         ...
         
-Not only we'd have to implement less magic methods, the ABC harness
-ensures that all mandatory protocol methods are in place. That
+Not only would we have to implement less magic methods, the ABC harness
+ensures that all mandatory protocol methods are in the place. This
 partly mitigates the inherent fragility of dynamic typing.
 
 Type checks
@@ -708,14 +708,14 @@ general and reliable by testing against abstract base types:
     if not isinstance(x, collections.abc.MutableSequence):
         raise ApplicationError('A sequence type is expected')
 
-That immediately makes a type check compatible with both built-in and 
+This immediately makes a type check compatible with both built-in and 
 user types that inherit from abstract base classes.
 
 Static typing tends to make programs more reliable by leveraging explicit
 type information, computing types compatibility based on hierarchy
-and failing gracefully when type error is discovered.
+and failing gracefully when a type error is discovered.
 
-Alternative to ad-hoc type checks is 
+Alternative to ad-hoc type checks is the 
 `gradual typing <https://www.python.org/dev/peps/pep-0484/>`_ technique 
 which is fully supported since Python 3.6. Static typing in Python
 is based on the idea of annotating important variables with type 
@@ -729,7 +729,7 @@ over the annotated code like this:
     
     d: dict = filter_by_key('x': 1, 'y': 2}, 'x')
 
-In type hints technique is adopted by a project, type annotations can
+When type hint techniques are adopted by a project, type annotations can
 fully replace ad-hoc type checks throughout the code.
 
 Pythonista's power tools
@@ -737,8 +737,8 @@ Pythonista's power tools
 
 It may occur to a reviewer, that a more efficient solution is possibly
 viable here and there. To establish solid technical grounds by backing
-his refactoring proposal with hard numbers, as opposed to intuition or
-personal preference, a quick analysis may come in handy. 
+his refactoring proposal with hard numbers rather than intuition or
+personal preference, so a quick analysis may come in handy. 
 
 Among the tools I use when researching for a better solution are 
 `dis <https://docs.python.org/3/library/dis.html>`_ 
