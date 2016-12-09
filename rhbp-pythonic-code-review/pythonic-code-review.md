@@ -329,6 +329,9 @@ right?
     except ResourceDoesNotExist:
         ...
 
+Beware likely failing exceptions in tight loops, though -- those may slow
+down your code.
+
 It is generally advisable to subclass built-in exception classes. That
 helps to clearly communicate errors that are specific to our problem
 and differentiate errors that bubble up from our code from other, less
@@ -728,11 +731,16 @@ Pythonista's power tools
 ------------------------
 
 It may occur to a reviewer, that a more efficient solution is possibly
-viable here and there. To back his refactoring proposal with hard numbers, 
-as opposed to intuition, a quick analysis may come in handy. 
+viable here and there. To establish solid technical grounds by backing
+his refactoring proposal with hard numbers, as opposed to intuition or
+personal preference, a quick analysis may come in handy. 
 
-Among the tools I use when researching for a better solution are `dis` 
-(for bytecode instruction flow analysis), `timeit` (for ad-hoc running 
-time measurement) and `profile` (for finding hot spots).
+Among the tools I use when researching for a better solution are 
+`dis <https://docs.python.org/3/library/dis.html>`_ 
+(for bytecode instruction flow analysis), 
+`timeit <https://docs.python.org/3/library/timeit.html>`_ (for ad-hoc 
+running  time measurement) and 
+`profile <https://docs.python.org/3/library/profile.html>`_
+(for finding hot spots).
 
 Happy reviewing!
