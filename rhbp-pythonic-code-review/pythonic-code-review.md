@@ -111,7 +111,7 @@ When I'm a reviewer
 -------------------
 
 To me, the most important qualities of code is to be clean
-and Pythonic.
+and as Pythonic as circumstances permit.
 
 Clean code tends to be well-structured where logically distinct parts
 are isolated from each other via clearly visible boundaries. Ideally,
@@ -135,10 +135,15 @@ When I'm a Pythonista
 ---------------------
 
 The definition of code being Pythonic tends to be somewhat vague and
-subjective. Speaking from my experience in the fields, let me offer 
-the reader a handful of code refactoring suggestions leveraging features
-that are native to Python so that people with different backgrounds
-may be unaware of them.
+subjective. It seems to be influenced by one's habits, taste, picked
+up idioms and language evolution. I keep that in mind and restrain
+myself from evangelizing my personal perception of what's Pythonic 
+towards fellow Pythonistas.
+
+Speaking from my experience in the fields, let me offer the reader a 
+handful of code observations I encountered along with the suggestions
+leveraging features that are native to Python so that people with
+different backgrounds may be unaware of them.
 
 Justified programming model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -737,10 +742,10 @@ personal preference, a quick analysis may come in handy.
 
 Among the tools I use when researching for a better solution are 
 `dis <https://docs.python.org/3/library/dis.html>`_ 
-(for bytecode instruction flow analysis), 
-`timeit <https://docs.python.org/3/library/timeit.html>`_ (for ad-hoc 
-running  time measurement) and 
+(for bytecode analysis), 
+`timeit <https://docs.python.org/3/library/timeit.html>`_ (for code snippets 
+running time measurement) and 
 `profile <https://docs.python.org/3/library/profile.html>`_
-(for finding hot spots).
+(for finding hot spots in a running Python program).
 
 Happy reviewing!
