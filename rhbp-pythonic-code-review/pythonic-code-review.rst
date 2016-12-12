@@ -379,16 +379,17 @@ features like returning a value for a missing key:
 
 .. code-block:: python
 
-    >>> {}.get('missing key', 'failover value')
+    >>> dict().get('missing key', 'failover value')
     'failover value'
 
 Conditionally setting a key if it's not present:
 
 .. code-block:: python
 
-    >>> {}.setdefault('key', 'new value')
+    >>> dict().setdefault('key', 'new value')
     'new value'
-    >>> {'key': 'old value'}.setdefault('key', 'new value')
+    >>> d = {'key': 'old value'}
+    >>> d.setdefault('key', 'new value')
     'old value'
 
 Or automatically generate an initial value for missing keys:
@@ -433,7 +434,7 @@ kicks right in. To start with, a `for` loop implicitly operates over
         print(line)
 
 Many built-in types are already iterable. User objects can become 
-iterable by supporting the iteration protocol:
+iterable by supporting the iterator protocol:
 
 .. code-block:: python
     
@@ -639,7 +640,7 @@ library:
 .. code-block:: python
 
     # Pythonic!
-    @functools.lru_cache
+    @functools.lru_cache()
     def compute(arg):
         return do_heavy_computation(arg)
 
