@@ -158,7 +158,7 @@ there is a clear abstraction for the task being solved. Statefulness
 and duck-typed objects are another strong reason for going the OOP way.
 
 If the author's priority is to keep related functions together, pushing
-them to a class is an option to consider. Such claseses may never
+them to a class is an option to consider. Such classes may never
 need instantiation, though.
 
 Free-standing functions are easy to grasp, concise and light. When a
@@ -582,7 +582,7 @@ a web server is closed once the execution runs out of `with` block:
     with contextlib.closing(urllib.urlopen('https://redhat.com')) as conn:
         conn.readlines()
 
-The `supress` context manager silently ignores the specified
+The `suppress` context manager silently ignores the specified
 exception if it occurs within the body of the `with` statement:
 
 .. code-block:: python
@@ -737,8 +737,8 @@ Pythonista's power tools
 
 It may occur to a reviewer, that a more efficient solution is possibly
 viable here and there. To establish solid technical grounds by backing
-his refactoring proposal with hard numbers rather than intuition or
-personal preference, so a quick analysis may come in handy. 
+their refactoring proposal with hard numbers rather than intuition or
+personal preference, a quick analysis may come in handy. 
 
 Among the tools I use when researching for a better solution are 
 `dis <https://docs.python.org/3/library/dis.html>`_ 
