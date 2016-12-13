@@ -687,8 +687,8 @@ Not only would we have to implement less magic methods, the ABC harness
 ensures that all mandatory protocol methods are in the place. This
 partly mitigates the inherent fragility of dynamic typing.
 
-Type checks
-^^^^^^^^^^^
+Goose typing
+^^^^^^^^^^^^
 
 Type checking based on types hierarchy is a popular pattern in Python
 programs. People with a background in statically-typed languages tend
@@ -709,18 +709,27 @@ general and reliable by testing against abstract base types:
     if not isinstance(x, collections.abc.MutableSequence):
         raise ApplicationError('A sequence type is expected')
 
-This immediately makes a type check compatible with both built-in and 
-user types that inherit from abstract base classes.
 
-Static typing tends to make programs more reliable by leveraging explicit
-type information, computing types compatibility based on hierarchy
-and failing gracefully when a type error is discovered.
+This is known as "Goose typing" in Python parlance. It immediately makes a
+type check compatible with both built-in and  user types that inherit from
+abstract base classes. Additionally, checking against an ABC empowers
+interface-based, as opposed to hierarchy-based, types comparison:
 
-Alternative to ad-hoc type checks is the 
+.. code-block:: python
+
+    class X:
+        def __len__(self):
+            return 0
+
+    >>> x = X()
+    >>> isinstance(x, collections.abc.Sized)
+    True
+
+Alternative to ad-hoc type checks planted into the code is the
 `gradual typing <https://www.python.org/dev/peps/pep-0484/>`_ technique 
-which is fully supported since Python 3.6. Static typing in Python
-is based on the idea of annotating important variables with type 
-information, then running a `static analyzer <http://mypy.readthedocs.io>`_
+which is fully supported since Python 3.6.  It is based on the idea of
+annotating important variables with type information, then running a
+`static analyzer <http://mypy.readthedocs.io>`_
 over the annotated code like this:
 
 .. code-block:: python
@@ -730,8 +739,10 @@ over the annotated code like this:
     
     d: dict = filter_by_key('x': 1, 'y': 2}, 'x')
 
-When type hint techniques are adopted by a project, type annotations can
-fully replace ad-hoc type checks throughout the code.
+Static typing tends to make programs more reliable by leveraging explicit
+type information, computing types compatibility and failing gracefully
+when a type error is discovered. When type hinting is adopted by a project,
+type annotations can fully replace ad-hoc type checks throughout the code.
 
 Pythonista's power tools
 ------------------------
