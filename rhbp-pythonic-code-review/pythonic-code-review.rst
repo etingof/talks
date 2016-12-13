@@ -532,13 +532,13 @@ by adding access controls into the setter:
     
         @members.setter
         def members(self, value):
-            raise RuntimeError('This team is too precious to touch!')
+            raise AttributeError('This team is too precious to touch!')
     
     >>> team = Team()
     >>> print(team.members)
     ['Jan', 'Viliam', 'Ilya']
     >>> team.members = []
-    RuntimeError('This team is too precious to touch!',)
+    AttributeError('This team is too precious to touch!',)
 
 Python properties are implemented on top of 
 `descriptors <https://docs.python.org/3/reference/datamodel.html#descriptors>`_ 
