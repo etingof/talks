@@ -9,8 +9,7 @@ Agenda
 ======
 
 * IoT today and tomorrow
-* Components, protocols, software
-* Supply chain
+* Components and supply chain
 * Security challenges and attack surfaces
 * Attacks analysis
 * Lessons learnt
@@ -418,70 +417,6 @@ IoT components
   * Offer data storage and analytics
   * **Facilitate data consumption (REST API, Web UI)**
 
-Protocols stack
-===============
-
-* **Physical**
-
-  * **IEEE 802.15.4**
-
-.. nextslide::
-
-* Physical
-* **Data**
-
-  * **ZigBee**
-  * **6LoWPAN**
-  * **ZWave**
-  * **Bluetooth Low Energy**
-
-.. nextslide::
-
-* Physical
-* Data
-* **Network**
-
-  * **IPv4**
-  * **IPv6**
-
-.. nextslide::
-
-* Physical
-* Data
-* Network
-* **Application**
-
-  * **CoAP**
-  * **MQTT**
-  * **AMQP**
-  * **XMPP**
-  * **DDS**
-
-Software stack
-==============
-
-* **On-board**
-
-  * **Firmware**
-  * **RTOS**
-
-.. nextslide::
-
-* On-board
-* **Gateway**
-
-  * **SDK**
-
-.. nextslide::
-
-* On-board
-* Gateway
-* **Platform**
-
-  * **Data feed, control API**
-  * **Web apps**
-  * **Mobile apps**
-
 IoT supply chain
 ================
 
@@ -592,63 +527,253 @@ IoT supply chain
   * Brand, marketing, sales
   * **Warranty, customer support**
 
-IoT is insecure
-===============
-
-* Low-barrier entry for ODM
-* Many industries suddenly enter software development
-* Originally off-line products become networked
-* The things may have direct impact on physical world
-
-.. nextslide::
-
-* Software touched by many teams
-* No experience in IT security
-* Widespread use of outdated software
-* Stackoverflow effect: cut & paste code
-
-.. nextslide::
-
-* MCU is weak for public key crypto
-* Physical access may be easy
-* Though reflashing may be cumbersome
-
-.. nextslide::
-
-* High demand for cool stuff
-* Competition presses ODM/OEM to release fast
-* Customers are unaware of security risks
-
-.. nextslide::
-
-* Hard to block import of insecure appliances
-* Hard to get infected devices off the network
-* Hard to get owners upgrading firmware
-
-.. nextslide::
-
-* Massive amount of private data (personal assistants)
-* Privacy concerns
-
-IoT attack surface
+Insecurity factors
 ==================
 
-Platform:
+* **IoT is hot**
 
-* Web UI and mobile apps
-* Insecure communication
-* Data submission and control APIs
-* Data at rest
+  * **Low-barrier entry for ODM**
 
 .. nextslide::
 
-Things:
+* **IoT is hot**
 
-* Hardcoded passwords / API keys
-* Forgotten services / backdoors
-* Code injection
-* RF communication
-* Attacks on hardware
+  * Low-barrier entry for ODM
+  * **Many industries suddenly enter software development**
+
+.. nextslide::
+
+* **IoT is hot**
+
+  * Low-barrier entry for ODM
+  * Many industries suddenly enter software development
+  * **Originally off-line products become networked**
+
+.. nextslide::
+
+* **IoT is hot**
+
+  * Low-barrier entry for ODM
+  * Many industries suddenly enter software development
+  * Originally off-line products become networked
+  * **Competition presses ODM/OEM to release fast**
+
+.. nextslide::
+
+* IoT is hot
+* **IoT is cool**
+
+  * **High demand for cool stuff**
+
+.. nextslide::
+
+* IoT is hot
+* **IoT is cool**
+
+  * High demand for cool stuff
+  * **Customers are unaware of security risks**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* **IoT is personal**
+
+  * **Massive amount of private data**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* **IoT is personal**
+
+  * Massive amount of private data
+  * **Direct impact on humans**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* **IoT is messy**
+
+  * **No experience in IT security**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* **IoT is messy**
+
+  * No experience in IT security
+  * **Software touched by many teams**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* **IoT is vulnerable**
+
+  * **MCU is weak for public key crypto**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* **IoT is vulnerable**
+
+  * MCU is weak for public key crypto
+  * **Physical access may be easy**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* **IoT is vulnerable**
+
+  * MCU is weak for public key crypto
+  * Physical access may be easy
+  * **Widespread use of outdated software**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* IoT is vulnerable
+* **Mitigation is hard**
+
+  * **Hard to regulate import of insecure appliances**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* IoT is vulnerable
+* **Mitigation is hard**
+
+  * Hard to regulate import of insecure appliances
+  * **Hard to get infected devices off the network**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* IoT is vulnerable
+* **Mitigation is hard**
+
+  * Hard to regulate import of insecure appliances
+  * Hard to get infected devices off the network
+  * **Hard to get owners upgrading firmware**
+
+.. nextslide::
+
+* IoT is hot
+* IoT is cool
+* IoT is personal
+* IoT is messy
+* IoT is vulnerable
+* **Mitigation is hard**
+
+  * Hard to regulate import of insecure appliances
+  * Hard to get infected devices off the network
+  * Hard to get owners upgrading firmware
+  * **Hard to recover from device takeover**
+
+Major attack vectors
+====================
+
+* **Device**
+
+  * **Hardcoded passwords / API keys**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * **Forgotten services / vendor backdoors**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * Forgotten services / vendor backdoors
+  * **Code injection vulnerabilities**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * Forgotten services / backdoors
+  * Code injection vulnerabilities
+  * **Wireless networks vulnerabilities**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * Forgotten services / backdoors
+  * Code injection vulnerabilities
+  * Wireless networks vulnerabilities
+  * **Unsecured hardware interfaces**
+
+.. nextslide::
+
+* Device
+* **Platform**
+
+  * **Web UI and mobile apps vulnerabilities**
+
+.. nextslide::
+
+* Device
+* **Platform**
+
+  * Web UI and mobile apps vulnerabilities
+  * **Insecure network communication**
+
+.. nextslide::
+
+* Device
+* **Platform**
+
+  * Web UI and mobile apps vulnerabilities
+  * Insecure network communication
+  * **Data submission and control API vulnerabilities**
+
+.. nextslide::
+
+* Device
+* **Platform**
+
+  * Web UI and mobile apps vulnerabilities
+  * Insecure network communication
+  * Data submission and control API vulnerabilities
+  * **Unsecured data at rest**
+
+Attacks analysis
+================
+
+* Smart plug
+* IoT botnet
+* Connected car
+* Smart lights
 
 Attack analysis: smart plug
 ===========================
