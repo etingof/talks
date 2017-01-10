@@ -88,6 +88,11 @@ Dreams come true
 Today's Things
 ==============
 
+* Compact, cheap electronics
+* Batteries
+
+.. nextslide::
+
 * **RFID**
 
 .. figure:: rfid.jpg
@@ -179,22 +184,22 @@ Today's Things
 
 * **Flying robots**
 
-  * Obstacle avoidance by sonars and cameras
   * Autonomous GPS navigation
+  * Obstacle avoidance by sonars and cameras
   * **Air traffic control**
 
 .. nextslide::
 
 * **Medical**
 
-  * **Insulin pump**
+  * **Insulin pumps**
 
 .. nextslide::
 
 * **Medical**
 
-  * Insulin pump
-  * **Pacemaker**
+  * Insulin pumps
+  * **Pacemakers**
 
 .. nextslide::
 
@@ -297,7 +302,7 @@ IoT components
 * Sensors / actuators
 * **Boards**
 
-  * **Low-power SoC on a PCB**
+  * **SoC on a PCB**
 
 .. nextslide::
 
@@ -362,14 +367,14 @@ IoT components
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
 .. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
   * **Cloud Service Providers**
 
@@ -378,18 +383,20 @@ IoT components
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
   * **Cloud Service Providers**
 
-    *Amazon, Azure and many others*
+    * **SaaS**
+
+      * *AWS IOT, Google Cloud IOT, Microsoft Azure IoT Suite...*
 
 .. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
   * Cloud Service Providers
   * **Support data feed and control protocols**
@@ -399,7 +406,7 @@ IoT components
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
   * Cloud Service Providers
   * Support data feed and control protocols
@@ -410,7 +417,7 @@ IoT components
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platforms**
+* **IoT data platforms**
 
   * Cloud Service Providers
   * Support data feed and control protocols

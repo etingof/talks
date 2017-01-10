@@ -85,7 +85,8 @@ If you are not in mood to talk to your personal assistant, just press an Amazon 
 and get stuff shipped to your home. Possibly by an Amazon PrimeAir delivery drone.
 
 The drone technology is hitting new heights. Modern consumer drones have on-board
-GPS navigation and follow a pre-programmed flight plan.
+GPS navigation so you can plan dron's mission on a map, then it will follow a
+pre-programmed flight plan.
 
 To avoid obstacles and crashing, modern drones start carrying sonars and cameras
 along with a high-performance on-board computer running image recognition and AI
@@ -99,26 +100,29 @@ for drones. Drone owners will file their flight plans to the system which will
 do the computation in real time, peer with each drone in flight and guide them
 all simultaneously to share the airspace efficiently and safe.
 
-Then there are more personal things. Automatic insulin pumps and pacemakers are
+Then there are medical applications. Automatic insulin pumps and pacemakers are
 already widely used.
 
-Computers are finding their ways into traditionally low-tech things like hygiene
-items and sleeping gear.
+And the personal stuff - computers are finding their ways into traditionally
+low-tech things like hygiene items and sleeping gear.
 
 It is no secret that relationships and sex are among the big technology drivers.
 Of course IoT businesses address that demand. Look at this remote kissing gadget!
+The telepresence technology is frightening and amazing! And it opens up Pandora's
+box of ethical questions.
+
 In this talk I won't go any further down this topic. If you are interested, I
 can refer you to this book and same-named international conference held in UK.
 
 IoT future
 ==========
 
-Speaking of further IoT development, major research trend is to make Things
-more autonomous and less deterministic. Major ingredients to this are:
+Speaking of further IoT development, the major research trend is about making
+Things more autonomous and less deterministic. Major ingredients to this are:
 
-* interoperability for the purpose of auto-organising, ad-hoc systems
 * context awareness through more sophisticated sensors
 * independent reasoning through massive data processing and analysis
+* interoperability for the purpose of auto-organising, ad-hoc systems
 
 IoT components
 ==============
@@ -147,18 +151,15 @@ gigabytes of RAM and writable flash storage.
 Either way, control unit reads measurements from one or many sensors and/or
 powers actuators.
 
-Now, control units, especially MCUs may not be powerful enough to run full
-TCP/IP stack to communicate with upper layers. For that reason there
-exist alternative, simplified wireless network stacks optimized for low power
-operations.
+Now, control units, especially MCUs may not be powerful enough to keep/pre-process
+moderate amount of data or run full TCP/IP stack to communicate with upper layers.
 
-Frequently, control units are joint into so-called sensors network and talk
-to each others.
+For the latter reason there exist alternative, simplified wireless network stacks
+optimized for low power operations. Frequently, control units are joint into
+so-called sensors network and talk to each others.
 
-To adapt WSNs to TCP/IP for further Internet connectivity, at the third layer
-of the stack we may encounter so-called IoT gateways. Besides protocols conversion,
-they may also do data aggregation, control units management and other housekeeping
-tasks.
+To cache/aggregate data and adapt WSNs to TCP/IP for further Internet connectivity,
+at the third layer of the stack we may encounter so-called IoT gateways.
 
 Finally, either IoT gateways or powerful control units (that can talk to Internet
 directly) talk to a server on the Internet, push data and receive commands. Those
@@ -167,15 +168,9 @@ servers are collectively called "cloud".
 Many cloud computing companies offer specialized IoT solutions geared towards
 IoT use cases.
 
-Most importantly, CSPs support the protocols that are native to IoT (CoAP, MQTT, REST API)
-and also offer large data storage and analytics engines. Some offer Web-UIs
-or REST APIs to ease data consumption.
-
-Protocols stack
-===============
-
-Software stack
-==============
+Most importantly, CSPs support the data feed and control protocols that are native
+to IoT (CoAP, MQTT, REST API) and also offer large data storage and analytics engines.
+Some offer Web-UIs or REST APIs to ease data consumption.
 
 IoT supply chain
 ================
