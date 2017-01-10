@@ -8,30 +8,12 @@ Horror stories of IoT security
 Agenda
 ======
 
-* What IoT is
-* Technologies behind Things
-* Things being attacked or attacking
+* IoT today and tomorrow
+* Components, protocols, software
+* Supply chain
+* Security challenges and attack surfaces
+* Attacks analysis
 * Lessons learnt
-
-Computers and us
-================
-
-* **Computers become smaller**
-
-.. figure:: evolution-of-computers.png
-   :scale: 90 %
-   :align: center
-
-.. nextslide::
-
-* Computers become smaller
-* **Greater in number**
-
-.. nextslide::
-
-* Computers become smaller
-* Greater in number
-* **Closer to humans**
 
 The Things
 ==========
@@ -49,220 +31,214 @@ The Things
 * With sensors/actuators
 * **Communicating over network**
 
-The danger
-==========
+The new dangers
+===============
 
+* **Not just data loss**
+
+.. nextslide::
+
+* Not just data loss
 * **Things are embedded into physical world**
 
 .. nextslide::
 
+* Not just data loss
 * Things are embedded into physical world
 * **We may not notice them**
 
 .. nextslide::
 
+* Not just data loss
 * Things are embedded into physical world
 * We may not notice them
 * **But they are designed to watch us**
 
 .. nextslide::
 
+* Not just data loss
 * Things are embedded into physical world
 * We may not notice them
 * But they are designed to watch us
 * **And they are massively insecure**
 
-IoT in human history
-====================
+Dreams come true
+================
 
 * **Envisioned by Sci-Fi authors**
 
 .. nextslide::
 
 * Envisioned by Sci-Fi authors
-* **Smart phones and Internet by Arthur C. Clarke in 1974**
+* **Smart phones by Arthur C. Clarke in 1974**
 
 .. nextslide::
 
 * Envisioned by Sci-Fi authors
-* Smart phones and Internet by Arthur C. Clarke in 1974
+* Smart phones by Arthur C. Clarke in 1974
 * **Smart homes by Ray Bradbury in 1950**
 
-IoT today
-=========
+.. nextslide::
 
-* **Electronic tags**
+* Envisioned by Sci-Fi authors
+* Smart phones by Arthur C. Clarke in 1974
+* **Smart homes by Ray Bradbury in 1950**
 
-RFID
-====
+  * *There Will Come Soft Rains*
+
+Today's Things
+==============
+
+* **RFID**
 
 .. figure:: rfid.jpg
    :scale: 90 %
    :align: center
 
-IoT today
-=========
+.. nextslide::
 
-* Electronic tags
 * **Wearable computers**
 
-Wearable computers
-==================
-
 .. figure:: nike-fuel-band.jpg
-   :scale: 60 %
+   :scale: 50 %
    :align: center
 
 .. nextslide::
 
+* **Wearable computers**
+
 .. figure:: google-glass.jpg
-   :scale: 60 %
+   :scale: 50 %
    :align: center
 
+.. nextslide::
 
-IoT today
-=========
-
-* Electronic tags
-* Wearable computers
-* **Smart homes**
-
-Smart home
-==========
-
-* Lighting
-* Heating & cooling
-* Locks & Monitoring
-* Irrigation
-* Voice recognition
-
-Smart bulb
-==========
+* Smart homes: **Smart bulb**
 
 .. figure:: smart-bulb.jpg
    :scale: 60 %
    :align: center
 
-Connected fridge
-================
+.. nextslide::
+
+* Smart homes: **Smart fridge**
 
 .. figure:: smart-refrigerator.jpg
+   :scale: 70 %
+   :align: center
+
+.. nextslide::
+
+* Smart homes: **Smart thermostat**
+
+.. figure:: nest-learning-thermostat.jpg
+   :scale: 50 %
+   :align: center
+
+.. nextslide::
+
+* Smart homes: **Personal assistant**
+
+.. figure:: amazon-echo.jpg
    :scale: 80 %
    :align: center
 
-Smart meter
-===========
+.. nextslide::
 
-.. figure:: smart-meter.jpg
-   :scale: 55 %
-   :align: center
+* Smart homes: **Dash button**
 
-Learning thermostat
-===================
-
-.. figure:: nest-learning-thermostat.jpg
-   :scale: 60 %
-   :align: center
-
-Amazon Smart Speaker
-====================
-
-.. figure:: amazon-echo.jpg
+.. figure:: amazon-button.png
    :scale: 90 %
    :align: center
 
-Amazon Dash Button
-==================
+.. nextslide::
 
-.. figure:: amazon-button.png
-   :scale: 100 %
-   :align: center
-
-Delivery drone
-==============
+* **Flying robots**
 
 .. figure:: amazon-delivery-drone.jpg
-   :scale: 20 %
+   :scale: 15 %
    :align: center
 
-IoT today
-=========
+.. nextslide::
 
-* Electronic tags
-* Wearable computers
-* Smart homes
-* **Unmanned vehicles**
+* **Flying robots**
 
-Drone tech advances
-===================
+  * **Autonomous GPS navigation**
 
-* Obstacle avoidance by sonars and cameras
-* Autonomous GPS navigation
-* Air traffic control
+.. nextslide::
 
-Consumer drone
-==============
+* **Flying robots**
+
+  * Autonomous GPS navigation
+  * **Obstacle avoidance by sonars and cameras**
 
 .. figure:: drone-flying.jpg
-   :scale: 80 %
+   :scale: 70 %
    :align: center
 
-IoT today
-=========
+.. nextslide::
 
-* Electronic tags
-* Wearable computers
-* Smart homes
-* Unmanned vehicles
-* **Medical & well-being**
+* **Flying robots**
 
-Smart brush
-===========
+  * Obstacle avoidance by sonars and cameras
+  * Autonomous GPS navigation
+  * **Air traffic control**
+
+.. nextslide::
+
+* **Medical**
+
+  * **Insulin pump**
+
+.. nextslide::
+
+* **Medical**
+
+  * Insulin pump
+  * **Pacemaker**
+
+.. nextslide::
+
+* **Personal**
+
+  * **Smart brush**
 
 .. figure:: smart-brush.jpg
    :scale: 100 %
    :align: center
 
-Smart mattress
-==============
+.. nextslide::
 
-.. figure:: smart-mattress.jpg
-   :scale: 80 %
+* **Personal**
+
+  * **Smart mattress**
+
+.. figure:: smart-mattress.png
+   :scale: 70 %
    :align: center
 
+.. nextslide::
 
-IoT today
-=========
-
-* Electronic tags
-* Wearable computers
-* Smart homes
-* Unmanned vehicles
-* Medical and well-being
 * **Relationships**
 
-Relationships
-=============
-
-* Drives the technology
-* Would you marry a robot?
-
 .. nextslide::
+
+* **Relationships**
+
+  * **Big technology driver**
 
 .. figure:: kissenger.jpg
-   :scale: 80 %
+   :scale: 70 %
    :align: center
 
 .. nextslide::
+
+* **Relationships**
+
+  * **Would you marry a robot?**
 
 .. figure:: love-and-sex-with-robots-book.jpg
-   :scale: 90 %
-   :align: center
-
-.. nextslide::
-
-.. figure:: love-and-sex-with-robots.png
-   :scale: 60 %
+   :scale: 80 %
    :align: center
 
 Future IoT
@@ -270,59 +246,46 @@ Future IoT
 
 * **Autonomous devices**
 
-Future IoT
-==========
+.. nextslide::
 
 * **Autonomous devices**
 
   * **Context awareness**
 
-Future IoT
-==========
+.. nextslide::
 
 * **Autonomous devices**
 
   * Context awareness
-  * **Interoperability**
-
-Future IoT
-==========
-
-* **Autonomous devices**
-
-  * Context awareness
-  * Interoperability
   * **Independent reasoning**
 
-IoT components
-==============
+.. nextslide::
 
-.. figure:: iot-stack.png
-   :scale: 70 %
-   :align: center
+* **Autonomous devices**
+
+  * Context awareness
+  * Independent reasoning
+  * **Interoperability**
 
 IoT components
 ==============
 
 * **Sensors / actuators**
 
-IoT components
-==============
+.. nextslide::
 
 * **Sensors / actuators**
 
   * **Motors, valves...**
 
-IoT components
-==============
+.. nextslide::
 
 * **Sensors / actuators**
 
   * Motors, valves...
   * **Temperature, light, magnetic...**
 
-IoT components
-==============
+.. nextslide::
 
 * **Sensors / actuators**
 
@@ -330,54 +293,55 @@ IoT components
    :scale: 90 %
    :align: center
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * **Boards**
 
   * **Low-power SoC on a PCB**
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * **Boards**
 
-  * Low-power SoC on a PCB
   * **MCU (Arduino, Pinoccio, CubieBoard)**
 
 .. figure:: arduino-uno-pcb.jpg
    :scale: 50 %
    :align: center
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * **Boards**
 
-  * Low-power SoC on a PCB
-  * **MCU (Arduino, Pinoccio, CubieBoard)**
-  * **Single-board computers (Raspberry Pi, Beagle Board, Electric Imp, Gumstix)**
+  * **Single-board computers**
+
+    * *Raspberry Pi, Beagle Board, Electric Imp, Gumstix*
+
+.. nextslide::
+
+* Sensors / actuators
+* **Boards**
+
+  * **Single-board computers**
 
 .. figure:: raspberry-pi-pcb.jpg
-   :scale: 60 %
+   :scale: 70 %
    :align: center
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
 * **IoT gateways**
 
 .. figure:: dell-edge-gateway-5000.png
-   :scale: 60 %
+   :scale: 50 %
    :align: center
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
@@ -385,262 +349,251 @@ IoT components
 
   * **Protocols adaptation**
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
-* Boardss
+* Boards
 * **IoT gateways**
 
   * Protocols adaptation
   * **Data aggregation**
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platform**
+* **IoT platforms**
 
-IoT components
-==============
-
-* Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT platform**
-
-  * **CSP (Amazon, Azure and many others)**
-
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platform**
+* **IoT platforms**
 
-  * CSP (Amazon, Azure and many others)
-  * **Support IoT protocols**
+  * **Cloud Service Providers**
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platform**
+* **IoT platforms**
 
-  * CSP (Amazon, Azure and many others)
-  * Support IoT protocols
+  * **Cloud Service Providers**
+
+    *Amazon, Azure and many others*
+
+.. nextslide::
+
+* Sensors / actuators
+* Boards
+* Protocol gateways / data aggregators
+* **IoT platforms**
+
+  * Cloud Service Providers
+  * **Support data feed and control protocols**
+
+.. nextslide::
+
+* Sensors / actuators
+* Boards
+* Protocol gateways / data aggregators
+* **IoT platforms**
+
+  * Cloud Service Providers
+  * Support data feed and control protocols
   * **Offer data storage and analytics**
 
-IoT components
-==============
+.. nextslide::
 
 * Sensors / actuators
 * Boards
 * Protocol gateways / data aggregators
-* **IoT platform**
+* **IoT platforms**
 
-  * CSP (Amazon, Azure and many others)
-  * Support IoT protocols
+  * Cloud Service Providers
+  * Support data feed and control protocols
   * Offer data storage and analytics
   * **Facilitate data consumption (REST API, Web UI)**
 
-IoT attack surface
-==================
+Protocols stack
+===============
 
-* **Hardware**
+* **Physical**
 
-IoT attack surface
-==================
+  * **IEEE 802.15.4**
 
-* **Hardware**
+.. nextslide::
 
-  * **On board UART, USB, JTAG, SPI, I2O**
+* Physical
+* **Data**
 
-IoT attack surface
-==================
+  * **ZigBee**
+  * **6LoWPAN**
+  * **ZWave**
+  * **Bluetooth Low Energy**
 
-* Hardware
-* **Network protocols**
+.. nextslide::
 
-IoT attack surface
-==================
+* Physical
+* Data
+* **Network**
 
-* Hardware
-* **Network protocols**
+  * **IPv4**
+  * **IPv6**
 
-  * **Phy: IEEE 802.15.4**
+.. nextslide::
 
+* Physical
+* Data
+* Network
+* **Application**
 
-IoT attack surface
-==================
+  * **CoAP**
+  * **MQTT**
+  * **AMQP**
+  * **XMPP**
+  * **DDS**
 
-* Hardware
-* **Network protocols**
+Software stack
+==============
 
-  * Phy: IEEE 802.15.4
-  * **Data: ZigBee, 6LoWPAN, ZWave, BlueTooth LE**
+* **On-board**
 
-IoT attack surface
-==================
+  * **Firmware**
+  * **RTOS**
 
-* Hardware
-* **Network protocols**
+.. nextslide::
 
-  * Phy: IEEE 802.15.4
-  * Data: ZigBee, 6LoWPAN, ZWave, BlueTooth LE
-  * **Network: IPv4/IPv6**
+* On-board
+* **Gateway**
 
-IoT attack surface
-==================
+  * **SDK**
 
-* Hardware
-* **Network protocols**
+.. nextslide::
 
-  * Phy: IEEE 802.15.4
-  * Data: ZigBee, 6LoWPAN, ZWave, BlueTooth LE
-  * Network: IPv4/IPv6
-  * **Application: HTTP, CoAP, MQTT, AMQP, XMPP, DDS**
+* On-board
+* Gateway
+* **Platform**
 
-IoT attack surface
-==================
+  * **Data feed, control API**
+  * **Web apps**
+  * **Mobile apps**
 
-* Hardware
-* Network protocols
-* **Software**
+IoT supply chain
+================
 
-IoT attack surface
-==================
+* **Chips manufacturers**
 
-* Hardware
-* Network protocols
-* **Software**
+.. nextslide::
 
-  * **On-board: firmware/OS SDK**
+* Chips manufacturers
+* **Boards manufacturers**
 
-IoT attack surface
-==================
+  * **PCB manufactured by 4-5 companies**
 
-* Hardware
-* Network protocols
-* **Software**
+.. nextslide::
 
-  * On-board: firmware/RTOS SDK
-  * **Gateway: SDK**
+* Chips manufacturers
+* **Boards manufacturers**
 
-IoT attack surface
-==================
+  * PCB manufactured by 4-5 companies
+  * **Shipped with Board Support Packages (SDK)**
 
-* Hardware
-* Network protocols
-* **Software**
-
-  * On-board: firmware/OS SDK
-  * Gateway: SDK
-  * **Platform:**
-
-    * **Data feed/control API**
-
-IoT attack surface
-==================
-
-* Hardware
-* Network protocols
-* **Software**
-
-  * On-board: firmware/OS SDK
-  * Gateway: SDK
-  * **Platform:**
-
-    * Data feed/control API
-    * **Web apps**
-
-IoT attack surface
-==================
-
-* Hardware
-* Network protocols
-* **Software**
-
-  * On-board: firmware/OS SDK
-  * Gateway: SDK
-  * **Platform:**
-
-    * Data feed/control API
-    * Web apps
-    * **Mobile apps**
-
-
-
-IoT ecosystem
-=============
+.. nextslide::
 
 * Chips manufacturers
 * Boards manufacturers
-* Original Design manufacturers 
-* Cloud service providers
-* Original equipment manufacturers
+* **Original Design manufacturers**
 
-Boards Manufacturers
-====================
-
-* Complicated tech
-* PCB manufactured by 4-5 companies
-* Shipped with Board Support Packages (SDK)
-* 1-st software layer
-
-Original Design Manufacturers
-=============================
-
-* Design and manufacture the product
-* Eventually rebranded
-* Many small companies
-* Startups, crowdsourced
-* Highly dynamic and competitive market
-* Low margins
+  * **Design and manufacture the product**
 
 .. nextslide::
 
-* Buy/own cloud infrastructure
-* Provide SDKs, Web UI, mobile apps
-* 2-nd software layer
+* Chips manufacturers
+* Boards manufacturers
+* **Original Design manufacturers**
 
-Cloud Service Providers
-=======================
-
-* Large, established providers (Amazon, Microsoft, Google, Thingsworx)
-* ODM's own cloud
-* Provide data analytics, automation, reporting, Web UI
-* 3-rd software layer
-
-Original Equipment Manufacturers
-================================
-
-* Brand, marketing, sales (Belkin, SmartThings, WeMo, Linksys)
-* Warranty, customer support
-* Security response
+  * Design and manufacture the product
+  * **Crowdsourced startups**
 
 .. nextslide::
 
-* May involve other teams
-* To implement additional functionality
-* 4-th software layer
+* Chips manufacturers
+* Boards manufacturers
+* **Original Design manufacturers**
 
-IoT security is important
-=========================
+  * Design and manufacture the product
+  * Crowdsourced startups
+  * **Buy/own cloud infrastructure**
 
-* Human is in the center
-* Large volume of highly private data (e.g. smartwatch knows sleep pattern,
-  location, car driving speed, what apps you use, what time
-  you go to bed)
-* No explicit data ownership -- data go to cloud and change hands (nobody knows where and what is the privacy policy behind that, what if data is sold?)
+.. nextslide::
 
-IoT security is hard
-====================
+* Chips manufacturers
+* Boards manufacturers
+* **Original Design manufacturers**
+
+  * Design and manufacture the product
+  * Crowdsourced startups
+  * Buy/own cloud infrastructure
+  * **Provide SDKs, Web UI, mobile apps**
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* **Cloud Service Providers**
+
+  * **Large, established businesses**
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* **Cloud Service Providers**
+
+  * Large, established businesses
+  * **Analytics, automation, reporting, Web UI**
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* Cloud Service Providers
+* **Original Equipment Manufacturers**
+
+  * **Brand, marketing, sales**
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* Cloud Service Providers
+* **Original Equipment Manufacturers**
+
+  * **Brand, marketing, sales**
+
+    * *Belkin, SmartThings, WeMo, Linksys*
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* Cloud Service Providers
+* **Original Equipment Manufacturers**
+
+  * Brand, marketing, sales
+  * **Warranty, customer support**
+
+IoT is insecure
+===============
 
 * Low-barrier entry for ODM
 * Many industries suddenly enter software development
@@ -677,8 +630,8 @@ IoT security is hard
 * Massive amount of private data (personal assistants)
 * Privacy concerns
 
-Major attack vectors
-====================
+IoT attack surface
+==================
 
 Platform:
 
