@@ -1,18 +1,8 @@
 
-
 Horror stories of IoT security
 ==============================
 
 *by Ilya Etingof, Red Hat Product Security*
-
-Agenda
-======
-
-* IoT today and tomorrow
-* Components and supply chain
-* Security challenges and attack surfaces
-* Attacks analysis
-* Lessons learnt
 
 The Things
 ==========
@@ -109,14 +99,6 @@ Today's Things
 
 .. nextslide::
 
-* **Wearable computers**
-
-.. figure:: google-glass.jpg
-   :scale: 50 %
-   :align: center
-
-.. nextslide::
-
 * Smart homes: **Smart bulb**
 
 .. figure:: smart-bulb.jpg
@@ -125,18 +107,18 @@ Today's Things
 
 .. nextslide::
 
-* Smart homes: **Smart fridge**
-
-.. figure:: smart-refrigerator.jpg
-   :scale: 70 %
-   :align: center
-
-.. nextslide::
-
 * Smart homes: **Smart thermostat**
 
 .. figure:: nest-learning-thermostat.jpg
    :scale: 50 %
+   :align: center
+
+.. nextslide::
+
+* Smart homes: **Smart pot**
+
+.. figure:: smart-pot.jpg
+   :scale: 70 %
    :align: center
 
 .. nextslide::
@@ -167,14 +149,7 @@ Today's Things
 
 * **Flying robots**
 
-  * **Autonomous GPS navigation**
-
-.. nextslide::
-
-* **Flying robots**
-
-  * Autonomous GPS navigation
-  * **Obstacle avoidance by sonars and cameras**
+  * **Autonomous navigation, obstacle avoidance**
 
 .. figure:: drone-flying.jpg
    :scale: 70 %
@@ -184,26 +159,25 @@ Today's Things
 
 * **Flying robots**
 
-  * Autonomous GPS navigation
-  * Obstacle avoidance by sonars and cameras
+  * Autonomous navigation, obstacle avoidance
   * **Air traffic control**
 
 .. nextslide::
 
-* **Medical**
+* **Medical things**
 
   * **Insulin pumps**
 
 .. nextslide::
 
-* **Medical**
+* **Medical things**
 
   * Insulin pumps
   * **Pacemakers**
 
 .. nextslide::
 
-* **Personal**
+* **Weird things**
 
   * **Smart brush**
 
@@ -213,7 +187,7 @@ Today's Things
 
 .. nextslide::
 
-* **Personal**
+* **Weird things**
 
   * **Smart mattress**
 
@@ -223,11 +197,21 @@ Today's Things
 
 .. nextslide::
 
-* **Relationships**
+* **Weird things**
+
+  * **Doggy phone**
+
+.. figure:: doggy-phone.jpg
+   :scale: 90 %
+   :align: center
 
 .. nextslide::
 
-* **Relationships**
+* **Creepy things**
+
+.. nextslide::
+
+* **Creepy things**
 
   * **Big technology driver**
 
@@ -237,7 +221,7 @@ Today's Things
 
 .. nextslide::
 
-* **Relationships**
+* **Creepy things**
 
   * **Would you marry a robot?**
 
@@ -248,64 +232,30 @@ Today's Things
 Future IoT
 ==========
 
-* **Autonomous devices**
+* **Things to become smarter**
+
+  * **Learn and behave intelligently**
 
 .. nextslide::
 
-* **Autonomous devices**
+* **Things to become smarter**
 
-  * **Context awareness**
+  * Learn and behave intelligently
+  * **Join brains**
 
-.. nextslide::
+Is it hackable?
+===============
 
-* **Autonomous devices**
+* **What's inside these little boxes?**
 
-  * Context awareness
-  * **Independent reasoning**
-
-.. nextslide::
-
-* **Autonomous devices**
-
-  * Context awareness
-  * Independent reasoning
-  * **Interoperability**
-
-IoT components
+What's inside?
 ==============
-
-* **Sensors / actuators**
-
-.. nextslide::
-
-* **Sensors / actuators**
-
-  * **Motors, valves...**
-
-.. nextslide::
-
-* **Sensors / actuators**
-
-  * Motors, valves...
-  * *Temperature*
-  * *Light*
-  * *Magnetic*
-  * ...
-
-.. nextslide::
 
 * **Sensors / actuators**
 
 .. figure:: iot-sensors.png
    :scale: 90 %
    :align: center
-
-.. nextslide::
-
-* Sensors / actuators
-* **Boards**
-
-  * **SoC on a PCB**
 
 .. nextslide::
 
@@ -354,7 +304,7 @@ IoT components
 
 * Sensors / actuators
 * Boards
-* **IoT gateways**
+* **Gateways**
 
 .. figure:: dell-edge-gateway-5000.png
    :scale: 50 %
@@ -364,32 +314,15 @@ IoT components
 
 * Sensors / actuators
 * Boards
-* **IoT gateways**
-
-  * **Protocols adaptation**
-
-.. nextslide::
-
-* Sensors / actuators
-* Boards
-* **IoT gateways**
-
-  * Protocols adaptation
-  * **Data aggregation**
+* Gateways
+* **Data platforms**
 
 .. nextslide::
 
 * Sensors / actuators
 * Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
-
-.. nextslide::
-
-* Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
+* Gateways
+* **Data platforms**
 
   * **Cloud Service Providers**
 
@@ -401,348 +334,209 @@ IoT components
 * **IoT data platforms**
 
   * **Cloud Service Providers**
-
-    * **SaaS**
 
       * *AWS IOT*
       * *Google Cloud IOT*
       * *Microsoft Azure IoT Suite*
       * *...*
 
-.. nextslide::
+Is it hackable?
+===============
 
-* Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
+* What's inside these little boxes?
+* Where they herd bugs?
 
-  * Cloud Service Providers
-  * **Support data feed and control protocols**
+Supply chain
+============
 
-.. nextslide::
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* Cloud Service Providers
+* Original Equipment Manufacturers
 
-* Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
-
-  * Cloud Service Providers
-  * Support data feed and control protocols
-  * **Offer data storage and analytics**
-
-.. nextslide::
-
-* Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
-
-  * Cloud Service Providers
-  * Support data feed and control protocols
-  * Offer data storage and analytics
-  * **Facilitate data consumption (REST API, Web UI)**
-
-IoT supply chain
+The weakest link
 ================
 
-* **Chips manufacturers**
-
-  * *Foundaries* (Taiwan, China companies...)*
-  * *Chip designers (Broadcom, Qualcomm, ...)*
-  * *Full cycle companies (Intel, Samsung, ...)*
-
-.. figure:: integrated-circuit.jpg
-   :scale: 70 %
-   :align: center
-
-.. nextslide::
-
-* Chips manufacturers
-* **Boards manufacturers**
-
-  * **PCB production is complicated**
-
-.. figure:: pcb-board.png
-   :scale: 70 %
-   :align: center
-
-.. nextslide::
-
-* Chips manufacturers
-* **Boards manufacturers**
-
-  * PCB production is complicated
-  * **Maintain Board Support Packages**
-
-.. nextslide::
-
-* Chips manufacturers
-* Boards manufacturers
 * **Original Design manufacturers**
 
-  * **Design the product**
+  * **Design and manufacture the product**
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* **Original Design manufacturers**
-
-  * Design the product
-  * **Small companies from China**
-
-.. nextslide::
-
-* Chips manufacturers
-* Boards manufacturers
 * **Original Design manufacturers**
 
   * Design and manufacture the product
-  * Small companies from China
-  * **Produce insecure software**
+  * **Many small companies from China**
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* **Cloud Service Providers**
+* **Original Design manufacturers**
 
-  * **Large, established businesses**
+  * Design and manufacture the product
+  * Many small companies from China
+  * **Produce insecure software fast**
 
-.. nextslide::
+Security response
+=================
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* **Cloud Service Providers**
+* **OEMs may [not] do security**
 
-  * **Large Internet business**
+  * **It's just a checkbox down there**
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* **Cloud Service Providers**
+* **OEMs may [not] do security**
 
-  * Large Internet business
-  * **Data privacy concerns**
+  * It's just a checkbox down there
+  * **Where is the code?**
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* Cloud Service Providers
-* **Original Equipment Manufacturers**
+* **OEMs may [not] do security**
 
-  * **Brand, marketing, sales**
+  * It's just a checkbox down there
+  * Where is the code?
+  * **Just forward those disclosures to vendor**
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* Cloud Service Providers
-* **Original Equipment Manufacturers**
+* **OEMs may [not] do security**
 
-  * **Brand, marketing, sales, support**
-
-.. nextslide::
-
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* Cloud Service Providers
-* **Original Equipment Manufacturers**
-
-  * Brand, marketing, sales, support
-  * **Should handle security incidents**
+  * It's just a checkbox down there
+  * Where is the code?
+  * Just forward those disclosures to vendor
+  * **Let's rather sue security researcher!**
 
 Factors of insecurity
 =====================
 
 * **IoT is hot**
 
-  * **Does this fork have a mobile app?**
+  * *Modern forks must have mobile apps!*
 
-.. figure:: smart-fork.png
-   :scale: 70 %
+.. figure:: smart-fork.jpg
+   :scale: 90 %
    :align: center
 
 .. nextslide::
 
-* IoT is hot
 * **IoT is cool**
 
-  * **I need to know when I'm out of eggs!**
+  * *What a gadget! I must have it NOW!*
 
-.. figure:: egg-counter.png
-   :scale: 70 %
+.. figure:: egg-counter.jpg
+   :scale: 80 %
    :align: center
 
 .. nextslide::
 
+* **IoT is easy**
 
-  * High demand for cool stuff
-  * **Customers are unaware of security risks**
-
-
-
-  * Low-barrier entry for ODM
-  * **Many industries suddenly enter software development**
+  * *Just add a $5 Arduino to a coffee pot*
 
 .. nextslide::
 
-* **IoT is hot**
+* **IoT is easy**
 
-  * Low-barrier entry for ODM
-  * Many industries suddenly enter software development
-  * **Originally off-line products become networked**
-
-.. nextslide::
-
-* **IoT is hot**
-
-  * Low-barrier entry for ODM
-  * Many industries suddenly enter software development
-  * Originally off-line products become networked
-  * **Competition presses ODM/OEM to release fast**
+  * Just add a $5 Arduino to a coffee pot
+  * *...and we are in IoT business!*
 
 .. nextslide::
 
-* IoT is hot
-* **IoT is cool**
+* **IoT is easy**
 
-  * **High demand for cool stuff**
-
-.. nextslide::
-
-* IoT is hot
-* **IoT is cool**
-
-  * High demand for cool stuff
-  * **Customers are unaware of security risks**
+  * Just add a $5 Arduino to a coffee pot
+  * ...and we are in IoT business!
+  * *Hmm, they say our coffee pot wants a ransom...*
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* **IoT is personal**
+* **IoT is easy**
 
-  * **Massive amount of private data**
-
-.. nextslide::
-
-* IoT is hot
-* IoT is cool
-* **IoT is personal**
-
-  * Massive amount of private data
-  * **Direct impact on humans**
+  * Just add a $5 Arduino to a coffee pot
+  * ...and we are in IoT business!
+  * Hmm, they say our coffee pot wants a ransom...
+  * *What do they mean by "security engineering"?*
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
 * **IoT is messy**
 
-  * **No experience in IT security**
+  * **Layers of software**
+
+.. figure:: spaghetti-monster.jpg
+   :scale: 90 %
+   :align: center
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
 * **IoT is messy**
 
-  * No experience in IT security
-  * **Software touched by many teams**
+  * Layers of software
+  * **From uncoordinated teams**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* **IoT is vulnerable**
+* **IoT is messy**
 
-  * **MCU is weak for public key crypto**
+  * Layers of software
+  * From uncoordinated teams
+  * **Went through a long supply chain**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* **IoT is vulnerable**
+* IoT is hackable
 
-  * MCU is weak for public key crypto
+  * **No CPU power for public key crypto**
+
+.. nextslide::
+
+* IoT is hackable
+
+  * No CPU power for public key crypto
   * **Physical access may be easy**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* **IoT is vulnerable**
+* **Mitigation is hard**
 
-  * MCU is weak for public key crypto
-  * Physical access may be easy
-  * **Widespread use of outdated software**
+  * **Owners may not not care**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* IoT is vulnerable
 * **Mitigation is hard**
 
-  * **Hard to regulate import of insecure appliances**
+  * Owners may not not care
+  * **No software updates from vendor**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* IoT is vulnerable
 * **Mitigation is hard**
 
-  * Hard to regulate import of insecure appliances
+  * Owners may not not care
+  * No software updates from vendor
+  * **No easy way to regain control over taken over device**
+
+.. nextslide::
+
+* **Mitigation is hard**
+
+  * Owners may not not care
+  * No software updates from vendor
+  * No easy way to regain control over taken over system
   * **Hard to get infected devices off the network**
 
 .. nextslide::
 
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* IoT is vulnerable
 * **Mitigation is hard**
 
-  * Hard to regulate import of insecure appliances
-  * Hard to get infected devices off the network
-  * **Hard to get owners upgrading firmware**
+  * Owners may not not care
+  * No software updates from vendor
+  * No easy way to regain control over taken over system
+  * **Hard to get infected devices off the network**
 
-.. nextslide::
-
-* IoT is hot
-* IoT is cool
-* IoT is personal
-* IoT is messy
-* IoT is vulnerable
-* **Mitigation is hard**
-
-  * Hard to regulate import of insecure appliances
-  * Hard to get infected devices off the network
-  * Hard to get owners upgrading firmware
-  * **Hard to recover from device takeover**
+    * *http://www.shodan.io*
 
 Major attack vectors
 ====================
@@ -790,82 +584,67 @@ Major attack vectors
 * Device
 * **Platform**
 
-  * **Web UI and mobile apps vulnerabilities**
+  **Good old Web vulns**
 
-.. nextslide::
+    * *CSRF, XSS, SQL injection*
+    * *SSL misconfiguration*
 
-* Device
-* **Platform**
-
-  * Web UI and mobile apps vulnerabilities
-  * **Insecure network communication**
-
-.. nextslide::
-
-* Device
-* **Platform**
-
-  * Web UI and mobile apps vulnerabilities
-  * Insecure network communication
-  * **Data submission and control API vulnerabilities**
-
-.. nextslide::
-
-* Device
-* **Platform**
-
-  * Web UI and mobile apps vulnerabilities
-  * Insecure network communication
-  * Data submission and control API vulnerabilities
-  * **Unsecured data at rest**
-
-Attacks analysis
-================
+Hacking time!
+=============
 
 * Smart plug
-* IoT botnet
-* Connected car
-* Smart lights
+* By ...
 
-Attack analysis: smart plug
-===========================
+Kankun SP3
+==========
 
 .. figure:: kankun-smart-plug.png
    :scale: 60 %
    :align: center
 
-Features
-========
+.. nextslide::
 
-* Wall socket
-* Connects to your Wi-Fi network
-* You can turn it on/off from a smartphone
+* **Just a wall socket**
 
-Smartphone app
-==============
+.. nextslide::
+
+* Just a wall socket
+* **Internet connected wall-socket**
+
+.. nextslide::
+
+* Just a wall socket
+* Internet connected wall-socket
+* **You can turn power on/off from a smartphone**
+
+.. nextslide::
+
+* Just a wall socket
+* Internet connected wall-socket
+* You can turn power on/off from a smartphone
+* **Or may be not only you...? ;-)**
+
+.. nextslide::
+
+* **Comes with mobile app**
 
 .. figure:: kankun-mobile-app.png
-   :scale: 60 %
+   :scale: 50 %
    :align: center
 
-First look
-==========
+What's on wire
+==============
 
-* `nmap` reports Linux
-* Open telnet and ssh ports
-* ESP8266 SoC inside
+* `nmap` fingerprinting reports Linux
+* Open telnet and ssh ports, sweet! ;-)
+* Uh, UDP broadcast traffic on WiFi..
+* Payload looks like AES blobs
 
-Traffic analysis
-================
+What's inside the app?
+======================
 
-* UDP broadcast traffic on WiFi
-* Payload structure looks like AES blobs
-
-Protocol analysis
-=================
-
-* Decompile Android app with `apktool`
-* Recover the protocol
+* Decompiled Android app with `apktool`
+* Recovered the protocol
 
 .. code-block:: bash
 
@@ -874,11 +653,12 @@ Protocol analysis
     lan_phone%MAC%PASSWORD%confirm#CHALLENGE%request
     lan_device%MAC%PASSWORD%open%rack
 
-Crypto key recovery
-===================
+Let's peek at crypto
+====================
 
 * App calls `libNDK_03.so`
-* Running `strings` over `libNDK_03.so` reveals encryption key
+* Let's run `strings` on `libNDK_03.so`
+* Could one of these strings be an encryption key?
 
 .. code-block:: bash
 
@@ -890,25 +670,30 @@ Crypto key recovery
     java/lang/String
     ...
 
-Hijacking the plug
-==================
+Which is the key?
+=================
 
 * Wait for broadcast `27431/udp`
-* AES decode payload with the key
+* AES decode payload with a candidate key
+* The clear text protocol! This is the key indeed!
+
+Hijacking local plugs
+=====================
+
 * Figure out `MAC` and `PASSWORD`
 * Communicate with the plug and own it!
 
-Server analysis
-===============
+How remote control works?
+=========================
 
 * `tcpdump` shows outgoing TCP connection
-* To some server in China
-* Protocol is the same
+* To some server in China, sweet!
+* We know the protocol from app reversal
 
 Hijacking more plugs
 ====================
 
-* `MAC` is easily guessable
+* `MAC` is easily brute-forcible
 * Majority of users leave default `PASSWORD`
 * Own plugs all over the globe!
 

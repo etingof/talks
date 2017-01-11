@@ -169,10 +169,148 @@ Many cloud computing companies offer specialized IoT solutions geared towards
 IoT use cases.
 
 Most importantly, CSPs support the data feed and control protocols that are native
-to IoT (CoAP, MQTT, REST API) and also offer large data storage and analytics engines.
-Some offer Web-UIs or REST APIs to ease data consumption.
+to IoT (CoAP, MQTT, REST API), offer large data storage and purpose-built
+analytics engines. They also offer Web-UIs or REST APIs to ease
+data consumption.
 
 IoT supply chain
 ================
 
+Industries keep mass-producing insecure IoT stuff. Part of the problem
+is that IoT is technically complicated and it's being built by many
+collaborating companies.
 
+Let's walk through a typical IoT manufacturing process to better understand
+the driving forces behind IoT business and how that can influence the
+security lifecycle of the end prodict.
+
+Chips
+-----
+
+Looking at the devices, it all bases on chips. Chip manufacturing
+is complicated and expensive affair. In today's world we have
+three kinds of manufacturers: just factories (which mostly reside
+in Asia), chip designing companies and full-cycle companies that do
+everything on their own.
+
+At any rate, either of these activities require substantial capital,
+experience and scale. That explains why most of the chips we can see in
+our computers come from may be a dozen of chip manufacturing brands.
+
+Boards
+------
+
+Next an electronic product (such as computer) is built out of chips.
+That is done by putting chips on a PCB and connecting them together
+electrically.
+
+PCB designing and manufacturing is also a complicated and expensive
+process. The designers have to solve many issues like proper components
+placement (to avoid interference and overheating), laying down electrical
+connections (they can't cross each other). The manufacturers have to
+invest into expensive and fully automated assembly lines.
+
+That also explains why we do not see too many players in PCB manufacturing
+business.
+
+If device is designed to run certain software stack (firmware or OS),
+the manufacturer usually accompanies his PCB with software like
+bootloader and device drivers. That software is maintained by board
+manufacturer and comprises the first layer of IoT software.
+
+Original design manufacturers
+-----------------------------
+
+Those guys come up with a gadget idea, then they build the actual product
+out of board and the software they add over. The technology they rely
+upon has become incredibly accessible. Practically a single-person
+enterprise can build an IoT device out of, for example, Raspberry Pi.
+No wonder that ODMs are really numerous. The majority if ODMs are coming
+from China. Some are startups, some are crowdfunded.
+
+ODMs is the main source of grief for security people. Their business
+model is - the fastest, cheapest and most feature-rich wins.
+No wonder that ODMs do not have proper resources and expertise for proper
+security.
+
+Technically, the software ODMs produce tops the vulns statistics. Not
+only they program the device application, sometimes they also take the
+CSP role by hosting their own servers, building their own web and mobile
+apps.
+
+So ODMs contribute one or more layers of software.
+
+Cloud Service Providers
+-----------------------
+
+IoT is frequently just a side business for large and established
+PaaS/SaaS companies.
+
+Leveraging their massive, distributed infrastructure, they add
+IoT-specific protocols support to let Things push data to the
+cloud and receive control commands.
+
+Data analytics and reporting is another valuable service they offer.
+
+CSPs add third software layer to the IoT system.
+
+Given CSPs are native to software business and constant on-line
+exposure, their services are not frequently compromised. However,
+it is not always quite clear what CSPs can do with the data they
+host.
+
+OEMs
+----
+
+All we typically know about is the big OEM names (Belkin, SmartThings,
+WeMo, Linksys).
+
+Their function is to market IoT product leveraging its brand, offering
+customer support and warranty.
+
+OEMs are frequently the first and the only contact for security
+incidents. They may not actually own or have influence on the code.
+Some may even prosecute security researches.
+
+Factors of insecurity
+=====================
+
+Let's see what makes present day's IoT massively insecure.
+
+IoT is hot
+----------
+
+IoT is the new hot thing. To stay competitive, businesses have to
+get into that bandwagon. And it is not that hard, given the
+crucial electronic components are readily available and businesses
+are masters of their products.
+
+That extends to traditionally offline businesses. The simplest
+thing for them is to just bring their offline product online.
+
+IoT is cool
+-----------
+
+People want cool stuff! That creates demand that businesses
+naturally want to meet.
+
+IoT is vulnerable
+-----------------
+
+The engineers who are used to work with their offline products
+may not realize that once they get their product online,
+millions of hackers might try getting a profit from its vulns.
+
+Coupled with their inexperience with IT security, that explains
+why in IoT we encounter naive, almost forgotten vulnerabilities
+like guessable passwords or code injections.
+
+Additionally, devices are easier for attacker to get a hold on
+compared to conventional computers locked down in office
+buildings.
+
+IoT is messy
+------------
+
+We have seen how complicated IoT software can get. It is touched
+by many teams
