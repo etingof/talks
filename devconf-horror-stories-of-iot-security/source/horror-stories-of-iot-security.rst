@@ -287,7 +287,10 @@ IoT components
 * **Sensors / actuators**
 
   * Motors, valves...
-  * **Temperature, light, magnetic...**
+  * *Temperature*
+  * *Light*
+  * *Magnetic*
+  * ...
 
 .. nextslide::
 
@@ -309,7 +312,16 @@ IoT components
 * Sensors / actuators
 * **Boards**
 
-  * **MCU (Arduino, Pinoccio, CubieBoard)**
+  * **Microcontrollers**
+   * *Arduino*
+   * *Pinoccio*
+   * *CubieBoard*
+   * ...
+
+.. nextslide::
+
+* Sensors / actuators
+* **Boards**
 
 .. figure:: arduino-uno-pcb.jpg
    :scale: 50 %
@@ -322,7 +334,10 @@ IoT components
 
   * **Single-board computers**
 
-    * *Raspberry Pi, Beagle Board, Electric Imp, Gumstix*
+    * *Raspberry Pi*
+    * *Beagle Board*
+    * *Electric Imp*
+    * *Gumstix*
 
 .. nextslide::
 
@@ -389,7 +404,10 @@ IoT components
 
     * **SaaS**
 
-      * *AWS IOT, Google Cloud IOT, Microsoft Azure IoT Suite...*
+      * *AWS IOT*
+      * *Google Cloud IOT*
+      * *Microsoft Azure IoT Suite*
+      * *...*
 
 .. nextslide::
 
@@ -429,20 +447,32 @@ IoT supply chain
 
 * **Chips manufacturers**
 
+  * *Foundaries* (Taiwan, China companies...)*
+  * *Chip designers (Broadcom, Qualcomm, ...)*
+  * *Full cycle companies (Intel, Samsung, ...)*
+
+.. figure:: integrated-circuit.jpg
+   :scale: 70 %
+   :align: center
+
 .. nextslide::
 
 * Chips manufacturers
 * **Boards manufacturers**
 
-  * **PCB manufactured by 4-5 companies**
+  * **PCB production is complicated**
+
+.. figure:: pcb-board.png
+   :scale: 70 %
+   :align: center
 
 .. nextslide::
 
 * Chips manufacturers
 * **Boards manufacturers**
 
-  * PCB manufactured by 4-5 companies
-  * **Shipped with Board Support Packages (SDK)**
+  * PCB production is complicated
+  * **Maintain Board Support Packages**
 
 .. nextslide::
 
@@ -450,7 +480,7 @@ IoT supply chain
 * Boards manufacturers
 * **Original Design manufacturers**
 
-  * **Design and manufacture the product**
+  * **Design the product**
 
 .. nextslide::
 
@@ -458,18 +488,8 @@ IoT supply chain
 * Boards manufacturers
 * **Original Design manufacturers**
 
-  * Design and manufacture the product
-  * **Crowdsourced startups**
-
-.. nextslide::
-
-* Chips manufacturers
-* Boards manufacturers
-* **Original Design manufacturers**
-
-  * Design and manufacture the product
-  * Crowdsourced startups
-  * **Buy/own cloud infrastructure**
+  * Design the product
+  * **Small companies from China**
 
 .. nextslide::
 
@@ -478,9 +498,8 @@ IoT supply chain
 * **Original Design manufacturers**
 
   * Design and manufacture the product
-  * Crowdsourced startups
-  * Buy/own cloud infrastructure
-  * **Provide SDKs, Web UI, mobile apps**
+  * Small companies from China
+  * **Produce insecure software**
 
 .. nextslide::
 
@@ -498,8 +517,17 @@ IoT supply chain
 * Original Design manufacturers
 * **Cloud Service Providers**
 
-  * Large, established businesses
-  * **Analytics, automation, reporting, Web UI**
+  * **Large Internet business**
+
+.. nextslide::
+
+* Chips manufacturers
+* Boards manufacturers
+* Original Design manufacturers
+* **Cloud Service Providers**
+
+  * Large Internet business
+  * **Data privacy concerns**
 
 .. nextslide::
 
@@ -519,9 +547,7 @@ IoT supply chain
 * Cloud Service Providers
 * **Original Equipment Manufacturers**
 
-  * **Brand, marketing, sales**
-
-    * *Belkin, SmartThings, WeMo, Linksys*
+  * **Brand, marketing, sales, support**
 
 .. nextslide::
 
@@ -531,19 +557,38 @@ IoT supply chain
 * Cloud Service Providers
 * **Original Equipment Manufacturers**
 
-  * Brand, marketing, sales
-  * **Warranty, customer support**
+  * Brand, marketing, sales, support
+  * **Should handle security incidents**
 
-Insecurity factors
-==================
+Factors of insecurity
+=====================
 
 * **IoT is hot**
 
-  * **Low-barrier entry for ODM**
+  * **Does this fork have a mobile app?**
+
+.. figure:: smart-fork.png
+   :scale: 70 %
+   :align: center
 
 .. nextslide::
 
-* **IoT is hot**
+* IoT is hot
+* **IoT is cool**
+
+  * **I need to know when I'm out of eggs!**
+
+.. figure:: egg-counter.png
+   :scale: 70 %
+   :align: center
+
+.. nextslide::
+
+
+  * High demand for cool stuff
+  * **Customers are unaware of security risks**
+
+
 
   * Low-barrier entry for ODM
   * **Many industries suddenly enter software development**
