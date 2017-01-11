@@ -4,6 +4,22 @@ Horror stories of IoT security
 
 *by Ilya Etingof, Red Hat Product Security*
 
+Agenda
+======
+
+* **Look at IoT**
+
+.. nextslide::
+
+* Look at IoT
+* **Through the eyes of a hacker**
+
+.. nextslide::
+
+* Look at IoT
+* Through the eyes of a hacker
+* **To mitigate before it's too late**
+
 The Things
 ==========
 
@@ -50,6 +66,16 @@ The new dangers
 * We may not notice them
 * But they are designed to watch us
 * **And they are massively insecure**
+
+.. nextslide::
+
+* Not just data loss
+* Things are embedded into physical world
+* We may not notice them
+* But they are designed to watch us
+* And they are massively insecure
+
+  * *Let's see why...*
 
 Dreams come true
 ================
@@ -166,14 +192,8 @@ Today's Things
 
 * **Medical things**
 
-  * **Insulin pumps**
-
-.. nextslide::
-
-* **Medical things**
-
   * Insulin pumps
-  * **Pacemakers**
+  * Pacemakers
 
 .. nextslide::
 
@@ -209,11 +229,7 @@ Today's Things
 
 * **Creepy things**
 
-.. nextslide::
-
-* **Creepy things**
-
-  * **Big technology driver**
+  * **Kissenger**
 
 .. figure:: kissenger.jpg
    :scale: 70 %
@@ -243,13 +259,12 @@ Future IoT
   * Learn and behave intelligently
   * **Join brains**
 
-Is it hackable?
-===============
+What's inside an IoT system?
+============================
 
-* **What's inside these little boxes?**
+* **No rigid architecture**
 
-What's inside?
-==============
+.. nextslide::
 
 * **Sensors / actuators**
 
@@ -260,27 +275,7 @@ What's inside?
 .. nextslide::
 
 * Sensors / actuators
-* **Boards**
-
-  * **Microcontrollers**
-   * *Arduino*
-   * *Pinoccio*
-   * *CubieBoard*
-   * ...
-
-.. nextslide::
-
-* Sensors / actuators
-* **Boards**
-
-.. figure:: arduino-uno-pcb.jpg
-   :scale: 50 %
-   :align: center
-
-.. nextslide::
-
-* Sensors / actuators
-* **Boards**
+* **Embedded system**
 
   * **Single-board computers**
 
@@ -292,7 +287,7 @@ What's inside?
 .. nextslide::
 
 * Sensors / actuators
-* **Boards**
+* **Embedded systems**
 
   * **Single-board computers**
 
@@ -303,7 +298,27 @@ What's inside?
 .. nextslide::
 
 * Sensors / actuators
-* Boards
+* **Embedded systems**
+
+  * **Microcontrollers**
+   * *Arduino*
+   * *Pinoccio*
+   * *CubieBoard*
+   * ...
+
+.. nextslide::
+
+* Sensors / actuators
+* **Embedded systems**
+
+.. figure:: arduino-uno-pcb.jpg
+   :scale: 50 %
+   :align: center
+
+.. nextslide::
+
+* Sensors / actuators
+* Embedded systems
 * **Gateways**
 
 .. figure:: dell-edge-gateway-5000.png
@@ -313,25 +328,25 @@ What's inside?
 .. nextslide::
 
 * Sensors / actuators
-* Boards
+* Embedded systems
 * Gateways
-* **Data platforms**
+* **Data platform**
 
 .. nextslide::
 
 * Sensors / actuators
-* Boards
+* Embedded systems
 * Gateways
-* **Data platforms**
+* **Data platform**
 
   * **Cloud Service Providers**
 
 .. nextslide::
 
 * Sensors / actuators
-* Boards
-* Protocol gateways / data aggregators
-* **IoT data platforms**
+* Embedded systems
+* Gateways
+* **Data platform**
 
   * **Cloud Service Providers**
 
@@ -340,14 +355,30 @@ What's inside?
       * *Microsoft Azure IoT Suite*
       * *...*
 
-Is it hackable?
-===============
+IoT supply chain
+================
 
-* What's inside these little boxes?
-* Where they herd bugs?
+* **IoT is a sophisticated high-tech**
 
-Supply chain
-============
+.. nextslide::
+
+* IoT is a sophisticated high-tech
+* **Duct-taped together**
+
+.. nextslide::
+
+* IoT is a sophisticated high-tech
+* Duct-taped together
+* **ASAP**
+
+.. nextslide::
+
+* IoT is a sophisticated high-tech
+* Duct-taped together
+* ASAP
+* **Must be vulnerable!**
+
+.. nextslide::
 
 * Chips manufacturers
 * Boards manufacturers
@@ -375,38 +406,38 @@ The weakest link
 
   * Design and manufacture the product
   * Many small companies from China
-  * **Produce insecure software fast**
+  * **Produce [insecure] software fast**
 
-Security response
-=================
+Who cares about security
+========================
 
 * **OEMs may [not] do security**
 
-  * **It's just a checkbox down there**
+  * **Just a checkbox**
 
 .. nextslide::
 
 * **OEMs may [not] do security**
 
-  * It's just a checkbox down there
-  * **Where is the code?**
+  * Just a checkbox
+  * **No code to work with**
 
 .. nextslide::
 
 * **OEMs may [not] do security**
 
-  * It's just a checkbox down there
-  * Where is the code?
-  * **Just forward those disclosures to vendor**
+  * Just a checkbox
+  * No code to work with
+  * **Forward disclosures to a vendor**
 
 .. nextslide::
 
 * **OEMs may [not] do security**
 
-  * It's just a checkbox down there
-  * Where is the code?
-  * Just forward those disclosures to vendor
-  * **Let's rather sue security researcher!**
+  * Just a checkbox
+  * No code to work with
+  * Forward disclosures to a vendor
+  * **Or sue security researcher**
 
 Factors of insecurity
 =====================
@@ -433,31 +464,31 @@ Factors of insecurity
 
 * **IoT is easy**
 
-  * *Just add a $5 Arduino to a coffee pot*
+  * *Just add a $5 Arduino to a coffee maker*
 
 .. nextslide::
 
 * **IoT is easy**
 
-  * Just add a $5 Arduino to a coffee pot
+  * Just add a $5 Arduino to a coffee maker
   * *...and we are in IoT business!*
 
 .. nextslide::
 
 * **IoT is easy**
 
-  * Just add a $5 Arduino to a coffee pot
+  * Just add a $5 Arduino to a coffee maker
   * ...and we are in IoT business!
-  * *Hmm, they say our coffee pot wants a ransom...*
+  * *Hmm, our coffee maker demands a ransom...*
 
 .. nextslide::
 
 * **IoT is easy**
 
-  * Just add a $5 Arduino to a coffee pot
+  * Just add a $5 Arduino to a coffee maker
   * ...and we are in IoT business!
-  * Hmm, they say our coffee pot wants a ransom...
-  * *What do they mean by "security engineering"?*
+  * Hmm, our coffee maker demands a ransom...
+  * *What does "security engineering" mean?*
 
 .. nextslide::
 
@@ -501,20 +532,20 @@ Factors of insecurity
 
 * **Mitigation is hard**
 
-  * **Owners may not not care**
+  * **Owners miscalculate risks and do not care**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners may not not care
+  * Owners miscalculate risks and do not care
   * **No software updates from vendor**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners may not not care
+  * Owners miscalculate risks and do not care
   * No software updates from vendor
   * **No easy way to regain control over taken over device**
 
@@ -522,7 +553,7 @@ Factors of insecurity
 
 * **Mitigation is hard**
 
-  * Owners may not not care
+  * Owners miscalculate risks and do not care
   * No software updates from vendor
   * No easy way to regain control over taken over system
   * **Hard to get infected devices off the network**
@@ -531,7 +562,7 @@ Factors of insecurity
 
 * **Mitigation is hard**
 
-  * Owners may not not care
+  * Owners miscalculate risks and do not care
   * No software updates from vendor
   * No easy way to regain control over taken over system
   * **Hard to get infected devices off the network**
@@ -558,6 +589,15 @@ Major attack vectors
 
   * Hardcoded passwords / API keys
   * Forgotten services / vendor backdoors
+  * **Unsecured hardware interfaces**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * Forgotten services / vendor backdoors
+  * Unsecured hardware interfaces
   * **Code injection vulnerabilities**
 
 .. nextslide::
@@ -566,18 +606,9 @@ Major attack vectors
 
   * Hardcoded passwords / API keys
   * Forgotten services / backdoors
+  * Unsecured hardware interfaces
   * Code injection vulnerabilities
   * **Wireless networks vulnerabilities**
-
-.. nextslide::
-
-* **Device**
-
-  * Hardcoded passwords / API keys
-  * Forgotten services / backdoors
-  * Code injection vulnerabilities
-  * Wireless networks vulnerabilities
-  * **Unsecured hardware interfaces**
 
 .. nextslide::
 
@@ -588,6 +619,10 @@ Major attack vectors
 
     * *CSRF, XSS, SQL injection*
     * *SSL misconfiguration*
+
+To be continued
+===============
+
 
 Hacking time!
 =============

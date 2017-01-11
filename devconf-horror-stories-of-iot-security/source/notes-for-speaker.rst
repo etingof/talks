@@ -2,8 +2,6 @@
 Things are coming and humanity is in danger! In this talk I will
 share the frightening vision of what awaits us in the coming years.
 
-The structure of this talk is as follows.
-
 The Things
 ==========
 
@@ -15,18 +13,6 @@ When we talk of IoT we typically refer to:
 
 The dangers
 ===========
-
-We are already highly dependent on the computers, but IoT brings
-this dependency to a new level. If we look at the history of computing
-we will notice that we:
-
-* more and more of critical infrastructure is handled by computers
-* computers becomes smaller
-* greater in numbers
-* closer to the humans
-
-We are literally getting surrounded by the computers! Being dependent
-is always risky.
 
 Before the IoT era, computer glitches and cyber crime tended
 to revolve around data - loss or leaks or modification. With the IoT
@@ -44,8 +30,8 @@ being compromised.
 Dreams come true
 ================
 
-The idea behind IoT is not new. Smart homes, for example, was envisioned by sci-fi many
-years ago.
+The idea behind IoT is not new. Smart, computerized environment was
+envisioned by sci-fi many years ago.
 
 For example, in "There Will Come Soft Rains" story written by Ray Bradbury in 1950,
 the reader is introduced to a computer-controlled house that cooks, cleans, and takes
@@ -314,3 +300,5 @@ IoT is messy
 
 We have seen how complicated IoT software can get. It is touched
 by many teams
+
+
