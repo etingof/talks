@@ -7,18 +7,18 @@ Horror stories of IoT security
 Agenda
 ======
 
-* **Look at IoT**
+* **Look at IoT phenomena**
 
 .. nextslide::
 
-* Look at IoT
-* **Through the eyes of a hacker**
+* Look at IoT phenomena
+* **Through the eyes of security researcher**
 
 .. nextslide::
 
-* Look at IoT
-* Through the eyes of a hacker
-* **To mitigate before it's too late**
+* Look at IoT phenomena
+* Through the eyes of security researcher
+* **To understand the risks and take action**
 
 The Things
 ==========
@@ -75,7 +75,7 @@ The new dangers
 * But they are designed to watch us
 * And they are massively insecure
 
-  * *Let's see why...*
+  * *Let's see how...*
 
 Dreams come true
 ================
@@ -101,29 +101,15 @@ Dreams come true
 
   * *There Will Come Soft Rains*
 
-Today's Things
-==============
-
-* Compact, cheap electronics
-* Batteries
-
 .. nextslide::
 
-* **RFID**
+* Envisioned by Sci-Fi authors
+* Smart phones by Arthur C. Clarke in 1974
+* Smart homes by Ray Bradbury in 1950
+* **Self-replicating robots by Karel Čapek in 1920**
 
-.. figure:: rfid.jpg
-   :scale: 90 %
-   :align: center
-
-.. nextslide::
-
-* **Wearable computers**
-
-.. figure:: nike-fuel-band.jpg
-   :scale: 50 %
-   :align: center
-
-.. nextslide::
+Things [we think] we buy
+========================
 
 * Smart homes: **Smart bulb**
 
@@ -170,23 +156,6 @@ Today's Things
 .. figure:: amazon-delivery-drone.jpg
    :scale: 15 %
    :align: center
-
-.. nextslide::
-
-* **Flying robots**
-
-  * **Autonomous navigation, obstacle avoidance**
-
-.. figure:: drone-flying.jpg
-   :scale: 70 %
-   :align: center
-
-.. nextslide::
-
-* **Flying robots**
-
-  * Autonomous navigation, obstacle avoidance
-  * **Air traffic control**
 
 .. nextslide::
 
@@ -245,19 +214,137 @@ Today's Things
    :scale: 80 %
    :align: center
 
-Future IoT
-==========
+Things we buy
+=============
 
-* **Things to become smarter**
+.. figure:: hacked-appliances.jpg
+   :scale: 80 %
+   :align: center
 
-  * **Learn and behave intelligently**
+The story of Hajime
+===================
+
+Hajime lives in here:
+
+.. figure:: dahua-ip-camera.png
+   :scale: 99 %
+   :align: center
 
 .. nextslide::
 
-* **Things to become smarter**
+* On 21.10.2016 Amazon, Twitter, PayPal went down...
+* Hajime: Mirai successor
+* Analysed by Sam Edwards and Ioannis Profetis
 
-  * Learn and behave intelligently
-  * **Join brains**
+Breeding a botnet
+=================
+
+* **Implant malicious software into many Things**
+
+.. nextslide::
+
+* Implant malicious software into many Things
+* **To carry out distributed attacks**
+
+Find victim and break in
+========================
+
+* Scan public Internet for port 23/tcp
+* Brute-force login/password
+
+Upload file-transfer tool
+=========================
+
+.. code-block:: bash
+
+   $ echo "\x7f\x45\x4c\x46\x0" >> /var/tmp/.loader
+   ...
+   $ exec /var/tmp/.loader
+
+Download malware
+================
+
+* **Connects back to attacking node**
+
+.. nextslide::
+
+* Connects back to attacking node
+* **Downloads P2P program**
+
+.. nextslide::
+
+* Connects back to attacking node
+* Downloads P2P program
+* **Joins P2P network**
+
+.. nextslide::
+
+* Connects back to attacking node
+* Downloads P2P program
+* Joins P2P network
+* **Keeps propagating**
+
+Live botnet
+===========
+
+.. figure:: botnet-architecture.gif
+   :scale: 90 %
+   :align: center
+
+Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
+
+Mounting an attack
+==================
+
+* **Receive code updates**
+
+.. nextslide::
+
+* Receive code updates
+* **Receive C&C directions**
+
+DDoS attack
+===========
+
+* **Flood of**
+
+  * *HTTP requests*
+  * *TCP SYN/ACK packets*
+  * *DNS, UDP packets*
+
+.. nextslide::
+
+.. figure:: mirai-botnet-attack.gif
+   :scale: 80 %
+   :align: center
+
+Image by `Joey Devilla <http://www.globalnerdy.com/2016/10/25/last-fridays-iot-botnet-attack-and-internet-outages-explained-for-non-techies/>`_
+
+Mirai DDoS scale
+================
+
+* Infected 380K+ devices
+* From 164 countries
+
+Fun fact
+========
+
+* The `Linux.Wifatch` malware is known to:
+
+  * *Infect home routers*
+  * *Shutdown telnet service*
+  * *Change default password*
+
+Attack post-mortem
+==================
+
+* Manufacturer's failure
+* Upcoming attacks against 80/tcp
+
+.. nextslide::
+
+* This was an attack against a Linux box
+* Let's take closer look at IoT
 
 What's inside an IoT system?
 ============================
@@ -355,6 +442,119 @@ What's inside an IoT system?
       * *Microsoft Azure IoT Suite*
       * *...*
 
+.. nextslide::
+
+* Let's look at another attack
+* That involves the cloud
+
+The story of a plug
+===================
+
+.. figure:: kankun-smart-plug.jpg
+   :scale: 30 %
+   :align: center
+
+*Security research by Matthew Garrett and others*
+
+.. nextslide::
+
+* **Just a wall socket**
+
+.. nextslide::
+
+* Just a wall socket
+* **You can turn power on/off from a smartphone**
+
+.. nextslide::
+
+* Just a wall socket
+* You can turn power on/off from a smartphone
+* **May be not only you...? ;-)**
+
+Peek at network traffic
+=======================
+
+* UDP broadcast traffic on Wi-Fi network
+* Payload looks like AES blobs
+
+What's inside the app?
+======================
+
+* Decompiled Android app with `apktool`
+* Recovered the protocol
+
+.. code-block:: bash
+
+    lan_phone%MAC%PASSWORD%open%request
+    lan_device%MAC%PASSWORD%confirm#CHALLENGE%rack
+    lan_phone%MAC%PASSWORD%confirm#CHALLENGE%request
+    lan_device%MAC%PASSWORD%open%rack
+
+Let's peek at crypto
+====================
+
+* App calls `libNDK_03.so`
+* Let's run `strings` on `libNDK_03.so`
+* Could one of these strings be an encryption key?
+
+.. code-block:: bash
+
+    $ strings libNDK_03.so
+    ...
+    UUPx((
+    Zw–
+    fdsl;mewrjope456fds4fbvfnjwaugfo
+    java/lang/String
+    ...
+
+Brute force key
+===============
+
+* Capture a broadcast packet to `27431/udp`
+* Try to AES decode with a candidate key
+* Clear text reveals? This is the key indeed!
+
+Remote control feature
+======================
+
+* `tcpdump` shows outgoing TCP connection
+* To some server in China
+
+Hijack plugs
+============
+
+* `MAC` is easily brute-forcible
+* Majority of users leave default `PASSWORD`
+* Own plugs all over the globe!
+
+Shell injection
+===============
+
+* Control agent runs as root
+* Invokes `system()`
+* Not sanitizing protocol payload
+* Run your code on plugs
+
+Exploit potential
+=================
+
+* DDoS targets on Internet
+* Attack targets on Wi-Fi network
+* Distributed spam
+* Disrupt/destroy appliances by flipping power on/off
+
+Attack post-mortem
+==================
+
+* Hardcoded key
+* Plugs enumeration flaw
+* Default password
+
+Who cares about security?
+=========================
+
+* Let's see...
+
 IoT supply chain
 ================
 
@@ -376,7 +576,7 @@ IoT supply chain
 * IoT is a sophisticated high-tech
 * Duct-taped together
 * ASAP
-* **Must be vulnerable!**
+* **Fertile soil for bug breeding...**
 
 .. nextslide::
 
@@ -408,8 +608,8 @@ The weakest link
   * Many small companies from China
   * **Produce [insecure] software fast**
 
-Who cares about security
-========================
+Who cares about security?
+=========================
 
 * **OEMs may [not] do security**
 
@@ -462,6 +662,19 @@ Factors of insecurity
 
 .. nextslide::
 
+* **IoT is paradoxical**
+
+  * **We poke fun at smart devices...**
+
+.. nextslide::
+
+* **IoT is paradoxical**
+
+  * We poke fun at smart devices...
+  * **...and happily buy them**
+
+.. nextslide::
+
 * **IoT is easy**
 
   * *Just add a $5 Arduino to a coffee maker*
@@ -497,7 +710,7 @@ Factors of insecurity
   * **Layers of software**
 
 .. figure:: spaghetti-monster.jpg
-   :scale: 90 %
+   :scale: 100 %
    :align: center
 
 .. nextslide::
@@ -517,57 +730,258 @@ Factors of insecurity
 
 .. nextslide::
 
-* IoT is hackable
+* **IoT is misunderstood**
 
-  * **No CPU power for public key crypto**
+  * **It is a general purpose computer**
 
 .. nextslide::
 
-* IoT is hackable
+* **IoT is misunderstood**
+
+  * It is a general purpose computer
+  * **Disguised as an appliance**
+
+.. nextslide::
+
+* **IoT is misunderstood**
+
+  * It is a general purpose computer
+  * Disguised as an appliance
+  * **Manufactured as an appliance, not software**
+
+.. nextslide::
+
+* **IoT is vulnerable**
+
+  * **No CPU power for public key crypto**
+  * Physical access may be easy
+
+.. nextslide::
+
+* **IoT is vulnerable**
 
   * No CPU power for public key crypto
   * **Physical access may be easy**
 
 .. nextslide::
 
-* **Mitigation is hard**
+* **IoT is vulnerable**
 
-  * **Owners miscalculate risks and do not care**
+  * No CPU power for public key crypto
+  * Physical access may be easy
+  * **Low-entropy system**
+
+.. nextslide::
+
+* **IoT is powerful**
+
+  * **Billions of devices**
+
+.. nextslide::
+
+* **IoT is powerful**
+
+  * Billions of devices
+  * **Teraflops of processing power if harnessed**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners miscalculate risks and do not care
-  * **No software updates from vendor**
+  * **Owners misunderstand risks and do not care**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners miscalculate risks and do not care
-  * No software updates from vendor
-  * **No easy way to regain control over taken over device**
+  * Owners misunderstand risks and do not care
+  * **Hard for vendors to ship patches**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners miscalculate risks and do not care
-  * No software updates from vendor
-  * No easy way to regain control over taken over system
+  * Owners misunderstand risks and do not care
+  * Hard for vendors to ship patches
+  * **Hard to regain control over taken over device**
+
+.. nextslide::
+
+* **Mitigation is hard**
+
+  * Owners misunderstand risks and do not care
+  * Hard for vendors to ship patches
+  * Hard to regain control over taken over system
   * **Hard to get infected devices off the network**
 
 .. nextslide::
 
 * **Mitigation is hard**
 
-  * Owners miscalculate risks and do not care
-  * No software updates from vendor
-  * No easy way to regain control over taken over system
+  * Owners misunderstand risks and do not care
+  * Hard for vendors to ship patches
+  * Hard to regain control over taken over system
   * **Hard to get infected devices off the network**
 
     * *http://www.shodan.io*
+
+Who cares about security?
+=========================
+
+Let's look at premium gadgets...
+
+The story of smart lights
+=========================
+
+* **Philips Hue LED bulbs**
+
+.. figure:: philips-hue-bulbs.png
+   :scale: 70 %
+   :align: center
+
+*Researched by Eyal Ronen, Colin O’Flynn, Adi Shamir and Achi-Or Weingarten (http://iotworm.eyalro.net/)*
+
+.. nextslide::
+
+* Philips Hue LED bulbs
+* **Most popular smart light**
+
+.. nextslide::
+
+* Philips Hue LED bulbs
+* Most popular smart light
+* **Millions sold**
+
+Features
+========
+
+* **Can turn on/off, change luminosity, color**
+
+.. nextslide::
+
+* Can turn on/off, change luminosity, color
+* **Through local switches, smartphone app over Internet**
+
+Inside the bulb
+===============
+
+* Armel SoC
+
+  * *Microprocessor, RAM, flash*
+  * *Hardware AES accelerator*
+  * *Zigbee network*
+
+The lighting system
+===================
+
+* **Bulbs, switches, gateway in ZigBee network**
+
+.. nextslide::
+
+* Bulbs, switches, gateway in ZigBee network
+* **Gateway**
+
+  * *Also in Wi-Fi network*
+  * *Supports REST API for each bulb*
+  * *Connects to cloud*
+
+ZigBee vulnerability
+====================
+
+* **Network traffic encrypted with PAN key**
+
+.. nextslide::
+
+* Network traffic encrypted with PAN key
+* **PAN key is send to new nodes encrypted with master key**
+
+.. nextslide::
+
+* Network traffic encrypted with PAN key
+* PAN key is send to new nodes encrypted with master key
+* **Master key is leaked in 2015**
+
+Light Link vulnerability
+========================
+
+* **Additional proximity check**
+
+  * *By measuring RSSI*
+
+.. nextslide::
+
+* Additional proximity check
+* **A bug makes bulb resetting**
+
+.. nextslide::
+
+* Additional proximity check
+* A bug makes bulb resetting
+* **And skipping proximity check**
+
+On-bulb code execution
+======================
+
+* **Only possible via firmware reflash**
+
+.. nextslide::
+
+* Only possible via firmware reflash
+* **But firmware images are signed**
+
+Side-channel attack
+===================
+
+* **Feed bootloader fake images**
+
+.. nextslide::
+
+* Feed bootloader fake images
+* **While watching power consumption spikes**
+
+.. nextslide::
+
+* Feed bootloader fake images
+* While watching power consumption spikes
+* **Reveals firmware signing key**
+
+Ultimate attack
+===============
+
+* **Built compromised firmware with a worm**
+
+.. nextslide::
+
+* Built compromised firmware with a worm
+* **Flew a drone with infected bulb near ZigBee networks**
+
+.. nextslide::
+
+* Built compromised firmware with a worm
+* Flew a drone with infected bulb near ZigBee networks
+* **Uploading malicious firmware**
+
+Exploit potential
+=================
+
+* **Taking over or bricking bulbs**
+
+.. nextslide::
+
+* Taking over or bricking bulbs
+* **2.4GHz network jamming**
+
+.. nextslide::
+
+* Taking over or bricking bulbs
+* 2.4GHz network jamming
+* **Worm propagation is hard to stop**
+
+Who cares about security?
+=========================
+
+* Hardcoded encryption key
+* Security through obscurity never works
 
 Major attack vectors
 ====================
@@ -590,6 +1004,16 @@ Major attack vectors
   * Hardcoded passwords / API keys
   * Forgotten services / vendor backdoors
   * **Unsecured hardware interfaces**
+
+.. nextslide::
+
+* **Device**
+
+  * Hardcoded passwords / API keys
+  * Forgotten services / vendor backdoors
+  * **Unsecured hardware interfaces**
+
+    * *UART, SPI, I2O, JTAG*
 
 .. nextslide::
 
@@ -620,368 +1044,43 @@ Major attack vectors
     * *CSRF, XSS, SQL injection*
     * *SSL misconfiguration*
 
-To be continued
-===============
-
-
-Hacking time!
-=============
-
-* Smart plug
-* By ...
-
-Kankun SP3
-==========
-
-.. figure:: kankun-smart-plug.png
-   :scale: 60 %
-   :align: center
-
-.. nextslide::
-
-* **Just a wall socket**
-
-.. nextslide::
-
-* Just a wall socket
-* **Internet connected wall-socket**
-
-.. nextslide::
-
-* Just a wall socket
-* Internet connected wall-socket
-* **You can turn power on/off from a smartphone**
-
-.. nextslide::
-
-* Just a wall socket
-* Internet connected wall-socket
-* You can turn power on/off from a smartphone
-* **Or may be not only you...? ;-)**
-
-.. nextslide::
-
-* **Comes with mobile app**
-
-.. figure:: kankun-mobile-app.png
-   :scale: 50 %
-   :align: center
-
-What's on wire
-==============
-
-* `nmap` fingerprinting reports Linux
-* Open telnet and ssh ports, sweet! ;-)
-* Uh, UDP broadcast traffic on WiFi..
-* Payload looks like AES blobs
-
-What's inside the app?
-======================
-
-* Decompiled Android app with `apktool`
-* Recovered the protocol
-
-.. code-block:: bash
-
-    lan_phone%MAC%PASSWORD%open%request
-    lan_device%MAC%PASSWORD%confirm#CHALLENGE%rack
-    lan_phone%MAC%PASSWORD%confirm#CHALLENGE%request
-    lan_device%MAC%PASSWORD%open%rack
-
-Let's peek at crypto
-====================
-
-* App calls `libNDK_03.so`
-* Let's run `strings` on `libNDK_03.so`
-* Could one of these strings be an encryption key?
-
-.. code-block:: bash
-
-    $ strings libNDK_03.so
-    ...
-    UUPx((
-    Zw–
-    fdsl;mewrjope456fds4fbvfnjwaugfo
-    java/lang/String
-    ...
-
-Which is the key?
-=================
-
-* Wait for broadcast `27431/udp`
-* AES decode payload with a candidate key
-* The clear text protocol! This is the key indeed!
-
-Hijacking local plugs
-=====================
-
-* Figure out `MAC` and `PASSWORD`
-* Communicate with the plug and own it!
-
-How remote control works?
-=========================
-
-* `tcpdump` shows outgoing TCP connection
-* To some server in China, sweet!
-* We know the protocol from app reversal
-
-Hijacking more plugs
-====================
-
-* `MAC` is easily brute-forcible
-* Majority of users leave default `PASSWORD`
-* Own plugs all over the globe!
-
-Shell injection
-===============
-
-* Control agent runs as root
-* Invokes `system()`
-* Not sanitizing protocol payload
-* Run your code on plugs
-
-Exploit potential
-=================
-
-* DDoS targets on Internet
-* Attack targets on Wi-Fi network
-* Distributed spam
-* Disrupt/destroy appliances by flipping power on/off
-
-Lessons learnt
-==============
-
-* Never hardcode crypto keys
-* Enforce setting password
-* Be paranoid about interpreting input
-
-Attack analysis: IoT worms
-==========================
-
-* Many known: BASHLITE, Linux.Darlloz, Remaiten
-* Hajime: Mirai successor
-* Analysed by Sam Edwards and Ioannis Profetis
-
-Botnet architecture
-===================
-
-.. figure:: botnet-architecture.gif
-   :scale: 90 %
-   :align: center
-
-Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
-
-Staged infection
+Advice for users
 ================
 
-0. Find victim and break in
-1. Download P2P program from attacker
-2. Join P2P network and wait for instructions
-
-Find victim and break in
-========================
-
-* Scan public Internet for port 23/tcp
-* Brute-force login/password
-
-Upload file-transfer tool
-=========================
-
-.. code-block:: bash
-
-   $ echo "\x7f\x45\x4c\x46\x0" >> /var/tmp/.~
-   ...
-   $ exec /var/tmp/.~
-
-Download malware
-================
-
-* Connect back to attacker
-* Download P2P program
-* Join P2P network
-
-Mounting an attack
-==================
-
-* Receive code updates
-* Receive C&C directions
-
-DDoS attack
-===========
-
-* HTTP requests
-* TCP SYN/ACK floods
-* DNS, UDP floods
-
-.. nextslide::
-
-.. figure:: mirai-botnet-attack.gif
-   :scale: 80 %
-   :align: center
-
-Image by `Joey Devilla <http://www.globalnerdy.com/2016/10/25/last-fridays-iot-botnet-attack-and-internet-outages-explained-for-non-techies/>`_
-
-Mirai DDoS scale
-================
-
-* Mirai infected 380K+ devices
-* From 164 countries
-* On 21.10.2016 took down Amazon, Twitter, PayPal and others
-
-Hosts
-======
-
-* Web cameras
-* Baby monitors
-* Home routers
-
-Lessons learnt
-==============
-
-* Enforce non-default password
-* Disallow Internet access
-* Disable insecure services
-
-Fun fact
-========
-
-The `Linux.Wifatch` malware is known to:
-
-* Infect home routers
-* Shutdown telnet service
-* Change default password
-
-Attack analysis: connected car
-==============================
-
-Car connections
-===============
-
-* Vehicle to vehicle (802.11p)
-* Vehicle to road (802.11p)
-* Vehicle to device (NFC, Wi-Fi, USB, BT)
-
-Car attack vectors
-==================
-
-* Infotainment systems
-* Mobile apps
-* OBDC2 port
-
-
-
-Attack analysis: smart lights
-=============================
-
-* Philips Hue LED bulbs
-* Most popular smart light
-* Millions sold
-
-.. figure:: philips-hue-bulbs.png
-   :scale: 60 %
-   :align: center
-
-* By  Eyal Ronen, Colin O’Flynn, Adi Shamir and Achi-Or Weingarten (http://iotworm.eyalro.net/)
-
-Features
-========
-
-* LED bulbs, switches and bridge join PAN
-* Can turn on/off, change luminocity, color
-* Also through a smartphone app over Internet
-
-Bulb's hardware
-===============
-
-* The Atmel ATmega2564RFR2 SoC
-* MCU, flash, RAM, AES accellerator, 802.15.4 tranciever
-* Anti debug fuses to disallow flash read
-
-ZigBee stack
-============
-
-* Components reside in ZigBee PAN
-
-.. figure:: zigbee-protocol-stack.png
-   :scale: 100 %
-   :align: center
-
-ZigBee Touchlink vuln
-=====================
-
-* ZigBee packets are encrypted with a unique PAN key
-* To share PAN key with new nodes, master key is used
-* Single master key is hardcoded into all ZigBee prodicts
-* Master key was leaked in 2015
-
-ZigBee Light Link vuln
-======================
-
-* Additional proximity check (< 1m)
-* By measuring RSSI
-
-.. nextslide::
-
-* Bug in Atmel's BitCloud library
-* Allows factory reset at any distance (50-150m)
-
-.. nextslide::
-
-* Bulb in factory configuration
-* Tries to join any ZLL or non-ZLL PAN
-* Non-ZLL profile does not require proximity test
-
-ZigBee OTA update
-=================
-
-* Bulb supports over-the-air firmware upgrade
-* Boot and upgrade images are encrypted with symmetric keys
-
-Bootloader side channel attack
-==============================
-
-* Brute forced bootloader over sample signatures
-* Collected power consumption patterns (DPA/CPA)
-* Recovered encryption keys, build compromised firmware
-
-Warflying
-=========
-
-* Mounted infecting hardware on a drone
-* Flyed by running bulbs, uploading malicious firmware
-* Infected bulb spreads the worm
-
-Exploit potential
-=================
-
-* Worm propagation is unstoppable
-* Bricking attack
-* 2.4GHz network jamming
-
-Lessons learnt
-==============
-
-* Never hardcode encryption keys
-* Security through obscurity does not work
-
-
-
-
-
-Attacks on hardware
-===================
-
-* UART/USB console
-* Read flash data
-* Differential Power analysis
-* Correlation Power analysis
-
-
-
+* Do not own IoT
+* Research before you buy
+* Prefer cloudless devices
+* Research cloud data privacy policy
+* Change passwords
+* Apply updates
+* Firewall, disable uPnP
+* Setup a dedicated network for your IoT
+* Disable unused features
+* Be cautious when selling used IoT
 
 Advice for developers
 =====================
 
-Advice for users
-================
+* Realize that you are not alone!
+* Restrain from taking private data
+* Force users to change password
+* Never hardcode keys/passwords
+* Encrypt data in motion and at rest
+* Clean up before you ship (backdoors, debugging hooks)
+* Follow secure IoT development practices (https://builditsecure.ly)
+* Employ hackers on demand (http://bugcrowd.com)
+
+Future IoT
+==========
+
+* **Things to become smarter**
+
+  * **Learn and behave intelligently**
+
+.. nextslide::
+
+* **Things to become smarter**
+
+  * Learn and behave intelligently
+  * **Join brains**
 
