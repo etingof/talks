@@ -99,12 +99,12 @@ The story of Hajime
 
 You may remember a day in October last year when many high-profile web sites
 like Twitter, Amazon, PayPal went down for some time. Apparently, a network
-of enslaved and harnessed Things, primarily DVRs and web cameras, stand behind
+of enslaved and harnessed Things, primarily DVRs and web cameras, stood behind
 that attack.
 
 The attacking software is dubbed Mirai, its code was open sourced and is
 available at github. This story is about a slightly improved version of
-Mirai caught in the wild and called Hajime.
+Mirai caught in the wild by security researchers and called Hajime.
 
 Here is how it works.
 
@@ -112,31 +112,49 @@ The ultimate goal of attacker is to implant their software into as many
 IoT devices as possible and be able to instruct them to carry out certain
 operations, mostly DoS attacks.
 
-The infection process starts from the attacking node scanned the Internet
+The infection process starts from the attacking node by scanning the Internet
 in search for an open telnet port. Once it hit one, the attacker tried
 to log in under dozens of factory default passwords.
 
-If login succeeded and attacking node dropped into shell, it searched for
-a writable filesystem (like /var) and echo'ed hex-escaped machine codes
-into a local file. That gave attacker a small executable which, once run,
-opened tcp connection back to attacking node and downloaded a large P2P
-client binary. Then it joint a P2P network and started listening for further
+If login succeeded and attacking node drops into shell, it searches for
+a writable filesystem (like /var) and echos hex-escaped machine codes
+into a local file. That gives attacker a small executable which, once run,
+opens up a tcp connection back to the attacking node and downloads a large P2P
+client binary. Then it joins a P2P network and starts listening for further
 instructions.
 
-At the same time, infected node started scanning the Internet for the
-purpose of further propagation.
+At the same time, infected node starts scanning the Internet for the
+purpose of further propagation in a likewise manner.
 
 Over time the described infection process helps building a huge,
-self-propagating and remote controlled network of bots.
+self-propagating and remotely controlled network of bots. Security
+researchers reported, that at the peak of the Mirai epidemy, a honeypot
+was hit once in a couple of minutes.
 
 Once its master decided to mount an attack of specific kind, they
-injected a "plugin" module along with a configuration into the P2P
-network. The bots picked that up from P2P and run whatever code
-their master wants to.
+send a "plugin" module along with a configuration into the P2P
+network. The bots pick that up from P2P and run whatever code
+their master wants them to.
 
-The attacks that Mirai was capable to carry out include HTTP, TCP, UDP and
+The attacks that Mirai was capable to carry out includes HTTP, TCP, UDP and
 DNS floods. Considering hundreds of thousands of nodes flooding a single target
-simultaneously, it is no wonder that even high-profile sides went down.
+simultaneously, it is no wonder that even high-profile sites went down.
+
+Attack post-mortem
+==================
+
+Clearly, that attack won't be that successful if [unnecessary] telnet
+service would not be running or credentials would not be that easy to brute force.
+So this is where the manufacturer failed to provide even minimal security
+to its product.
+
+What's worth noting is that, unlike 80/tcp, port 23/tcp is not usually
+port-forwarded on the firewalls, yet 380K+ devices were conscripted.
+We may expect upcoming attacks against built-in web servers have higher
+success rate.
+
+Fun facts
+=========
 
 Interestingly, researchers have observed many implementations of Linux
 worms like Hajime in the wild. The worms naturally compete for hosts,
@@ -148,21 +166,8 @@ relatively harmless to its hosts, the only thing it does is that it
 changes default root password and shuts down telnet daemon to prevent
 infection.
 
-Attack post-mortem
-==================
-
-Clearly, that attack won't be that successful if [unnecessary] telnet
-service won't be running or credentials won't be that easy to brute force.
-So this is where the manufacturer failed to provide even minimal security
-to its product.
-
-What's worth noting is that, unlike 80/tcp, port 23/tcp is not usually
-port-forwarded on the firewalls, yet 380K+ devices were conscripted.
-We may expect upcoming attacks against built-in web servers have higher
-success rate.
-
-This attack was more against a general purpose Linux computer. Let's
-take closer look at IoT technology.
+This attack was more against a general purpose Linux computer. Before we
+analyze a more IoT specific attack, let's take a closer look at IoT technology.
 
 What's inside an IoT system?
 ============================
@@ -222,25 +227,22 @@ Multiple security researchers run into this kind of IoT device. It's essentially
 a remotely controlled power outlet. You can turn it on/off from your mobile
 phone whilst in the room or anywhere on the Internet. Or may be not just you?
 
-Let's see...
-
-First thing first -- what is on the network? Apparently, when manipulating the plug
-at local network, mobile phone sends UDP broadcasts. With blobs resembling
-AES encrypted data. No luck here so far.
+Let's see how security analysts looked into this little gadget...
 
 Let's look at the app. Android apps are easier to decompose and analyze. From
 analyzing the app it turns out that phone and plug communicate over a simple text
 protocol. But messages are indeed AES encrypted. With a symmetric key.
 
 App is bundled with a Linux shared library. Running `strings` over the library
-reveals a few strings that look promising. Let's try them out!
+reveals a few strings that look promising.
 
-By capturing a packet from mobile phone and trying to AES decipher it with
-a candidate key. Once a clear text protocol message shows up -- we get
-the key! This key is common for all plugs!
+Researhers tried candidate keys by capturing a packet from mobile phone and
+trying to AES decipher it with a key. Once a clear text protocol message
+shows up -- we get the key! This key is common for all plugs!
 
 At the protocol level, each plug is addressed my its MAC address and
-is password protected.
+is password protected. There is a default password and users are not
+required to change it upon deployment.
 
 But how remote control works? Wireshark reveals a persistent TCP connection.
 To some server in China.
@@ -249,26 +251,30 @@ When turning smart plug through cell Internet, similar AES blobs come over TCP
 connection.
 
 Let's search for other plugs in the cloud! For that we need to connect to the cloud
-as mobile up does and send protocol messages. But we need two things: plug's MAC and
+as mobile app does and send protocol messages. But we need two things: plug's MAC and
 password. Turns out that MACs are generally adjustent to each other so brute forcing
 is easy. Secondly, many users leave default password.
 
 By this point security researcher can manipulate other people's plugs around the
 globe. By manipulate I mean not just turning them on and off at random times.
 Who knows what can happen to the appliance connected to this plug if it starts
-switching many times per second. Could it break down or even catch fire?
+switching many times per second. Could it break down an appliance or even
+catch fire?
 
 Other researchers reported that certain firmware versions has a code injection
 vulnerability which lets you embed UNIX shell commands to protocol commands.
 By this point you can completely own the plug, run your own apps on it to attack
 others on the Internet and locally, send spam.
 
+Attack post-mortem
+==================
+
 Here it's again the case of manufacturer's failure to provide reasonable
-security. Specifically, not hardcoding key, enforcing password change
-and possibly making it harder to identify other plugs on the network.
+security. Specifically,  hardcoding key, not enforcing password change
+and making it easy to identify other plugs on the network.
 
 Default password again! Is not this is a kind of security problem
-from the very early Internet?
+from the early Internet?
 
 Let's see who cares for IoT security manufacturing chain...
 
@@ -282,7 +288,7 @@ companies. That might be a fertile soil for bugs of all kinds.
 Quickly looking at the business taking part in IoT manufacturing,
 ODMs is the main source of grief for security researchers.
 
-The weakest link
+Who build Things
 ================
 
 Those guys come up with a gadget idea, then they build the actual product
@@ -303,8 +309,8 @@ apps.
 
 So ODMs contribute one or more layers of software.
 
-Who cares about security?
-=========================
+Who sells Things
+================
 
 
 Factors of insecurity
@@ -380,9 +386,9 @@ systems like Amazon Echo.
 
 From technical perspective, bulb is built on an Atmel SoC. The SoC
 contains an MCU, AES accelerator and a wireless networking module
-supporting Zigbee stack.
+supporting ZigBee stack.
 
-The bulbs, switches and IoT gateway form a PAN over Zigbee network.
+The bulbs, switches and IoT gateway form a PAN ZigBee network.
 The gateway also participates in Wi-Fi network, supports REST API
 (for each bulb) and can also be accessible from the Internet via
 a cloud proxy.
@@ -394,20 +400,20 @@ ZigBee is a proprietary network protocol designed for low power, short
 range wireless networks. Network traffic is encrypted with a key shared
 among all nodes in local network.
 
-When a new node enters network, a neighbour node sends it network key encrypted
+When a new node joins network, a neighbour node sends it network key encrypted
 with a single, static "master" key. That master key is supposed to be
 only available to vendors affiliated with the ZigBee alliance.
 
 Needless to say that master key was leaked in 2015 and is now publicly available.
-Hence node joining network leaks network key.
+Hence every time a node joins network, it leaks the network key.
 
-As a way to mitigate that, the ZigBee Light Link protocol adds proximity
+As a way to mitigate that, the ZigBee Light Link protocol has a proximity
 check so that network will only give out its shared key to new nodes
-emitting weak signal which is an indication of being close.
+emitting weak signal which is an indication of being in close proximity.
 
 Despite that measure, researchers were able to find a bug in open source
 Atmel's BitCloud library which lets them to reset the bulb to factory default
-and trick it to skip the proximity check.
+tricking it to try different key exchange protocol skipping the proximity check.
 
 By that point researchers were able to join any ZigBee network
 from a distance of hundred meters.
@@ -417,9 +423,13 @@ The only way is to reflash the bulb via software update. Trouble is
 that firmware images are signed and checked on bulb boot up.
 
 Researchers performed side channel attack on the bootloader which
-computes firmware signature with its AES module. Turned out that
-making bootloader computing many different (incorrect) signatures
-while watching bulb's power consumption patterns reveals the key.
+computes firmware signature with its AES module. They did that my
+running a analysis technique known as differential oe correlation
+power analysis.
+
+Turned out that making bootloader computing many different
+(incorrect) signatures while watching bulb's power consumption patterns
+reveals the key.
 
 By this point researchers were able to build compromised firmware
 and plant it into a single bulb by flying a drone carrying a compromised
@@ -448,7 +458,38 @@ Major attack vectors
 ====================
 
 
+Advice for users
+================
 
+
+* Do not own IoT!
+* Research before you buy (track record, data privacy policy)
+* Use dedicated network, firewall and disable uPnP
+* Be cautious when selling used IoT
+
+* Prefer cloudless devices
+* Research cloud data privacy policy
+* Change passwords
+* Apply updates
+* Firewall, disable uPnP
+* Disable unused features
+* Be cautious when selling used IoT
+
+Advice for developers
+=====================
+
+* Realize that you are not alone!
+* Avoid taking personal data
+* If you do, encrypt everything
+* Exercise secure development (https://builditsecure.ly)
+* Employ hackers on demand (http://bugcrowd.com)
+
+* Restrain from taking private data
+* Force users to change password
+* Never hardcode keys/passwords
+* Encrypt data in motion and at rest
+* Clean up before you ship (backdoors, debugging hooks)
+* Follow secure IoT development practices (https://builditsecure.ly)
 
 IoT future
 ==========

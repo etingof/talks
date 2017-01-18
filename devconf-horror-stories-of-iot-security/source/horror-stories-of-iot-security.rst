@@ -7,16 +7,16 @@ Horror stories of IoT security
 Agenda
 ======
 
-* **Look at IoT phenomena**
+* **Look at IoT technology**
 
 .. nextslide::
 
-* Look at IoT phenomena
+* Look at IoT technology
 * **Through the eyes of security researcher**
 
 .. nextslide::
 
-* Look at IoT phenomena
+* Look at IoT technology
 * Through the eyes of security researcher
 * **To understand the risks and take action**
 
@@ -35,6 +35,10 @@ The Things
 * Small, inexpensive computers
 * With sensors/actuators
 * **Communicating over network**
+
+.. nextslide::
+
+.. image:: board-and-sensors.svg
 
 The new dangers
 ===============
@@ -217,7 +221,7 @@ Things [we think] we buy
 Things we buy
 =============
 
-.. figure:: hacked-appliances.jpg
+.. figure:: internet-of-things.svg
    :scale: 80 %
    :align: center
 
@@ -236,7 +240,7 @@ Hajime lives in here:
 * Hajime: Mirai successor
 * Analysed by Sam Edwards and Ioannis Profetis
 
-Breeding a botnet
+IoT botnet attack
 =================
 
 * **Implant malicious software into many Things**
@@ -246,14 +250,24 @@ Breeding a botnet
 * Implant malicious software into many Things
 * **To carry out distributed attacks**
 
-Find victim and break in
-========================
+.. nextslide::
 
-* Scan public Internet for port 23/tcp
-* Brute-force login/password
+.. figure:: hajime-attack-diagram-1.svg
+   :align: center
 
-Upload file-transfer tool
-=========================
+.. nextslide::
+
+.. figure:: hajime-attack-diagram-2.svg
+   :align: center
+
+.. nextslide::
+
+.. figure:: hajime-attack-diagram-3.svg
+   :align: center
+
+.. nextslide::
+
+* Upload phase one loader
 
 .. code-block:: bash
 
@@ -261,31 +275,29 @@ Upload file-transfer tool
    ...
    $ exec /var/tmp/.loader
 
-Download malware
-================
+.. nextslide::
 
-* **Connects back to attacking node**
+.. figure:: hajime-attack-diagram-4.svg
+   :align: center
 
 .. nextslide::
 
-* Connects back to attacking node
-* **Downloads P2P program**
+.. figure:: hajime-attack-diagram-5.svg
+   :align: center
 
 .. nextslide::
 
-* Connects back to attacking node
-* Downloads P2P program
-* **Joins P2P network**
+.. figure:: hajime-attack-diagram-6.svg
+   :align: center
 
 .. nextslide::
 
-* Connects back to attacking node
-* Downloads P2P program
-* Joins P2P network
-* **Keeps propagating**
+.. figure:: hajime-attack-diagram-7.svg
+   :align: center
 
-Live botnet
-===========
+.. nextslide::
+
+* Live botnet
 
 .. figure:: botnet-architecture.gif
    :scale: 90 %
@@ -293,18 +305,7 @@ Live botnet
 
 Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
 
-Mounting an attack
-==================
-
-* **Receive code updates**
-
 .. nextslide::
-
-* Receive code updates
-* **Receive C&C directions**
-
-DDoS attack
-===========
 
 * **Flood of**
 
@@ -320,34 +321,31 @@ DDoS attack
 
 Image by `Joey Devilla <http://www.globalnerdy.com/2016/10/25/last-fridays-iot-botnet-attack-and-internet-outages-explained-for-non-techies/>`_
 
-Mirai DDoS scale
-================
-
-* Infected 380K+ devices
-* From 164 countries
-
-Fun fact
-========
-
-* The `Linux.Wifatch` malware is known to:
-
-  * *Infect home routers*
-  * *Shutdown telnet service*
-  * *Change default password*
-
 Attack post-mortem
 ==================
 
 * Manufacturer's failure
 * Upcoming attacks against 80/tcp
 
+Fun fact
+========
+
+* `Linux.Wifatch` malware
+
 .. nextslide::
+
+* `Linux.Wifatch`:
+
+  * *Shutdown telnet service*
+  * *Change default password*
+
+What's inside an IoT system?
+============================
 
 * This was an attack against a Linux box
 * Let's take closer look at IoT
 
-What's inside an IoT system?
-============================
+.. nextslide::
 
 * **No rigid architecture**
 
@@ -471,17 +469,16 @@ The story of a plug
 * You can turn power on/off from a smartphone
 * **May be not only you...? ;-)**
 
-Peek at network traffic
-=======================
+Plug under attack
+=================
 
-* UDP broadcast traffic on Wi-Fi network
-* Payload looks like AES blobs
+.. figure:: smart-plug-attack-diagram-2.svg
+   :scale: 150 %
+   :align: center
 
-What's inside the app?
-======================
+.. nextslide::
 
-* Decompiled Android app with `apktool`
-* Recovered the protocol
+* Command protocol:
 
 .. code-block:: bash
 
@@ -490,12 +487,15 @@ What's inside the app?
     lan_phone%MAC%PASSWORD%confirm#CHALLENGE%request
     lan_device%MAC%PASSWORD%open%rack
 
-Let's peek at crypto
-====================
+.. nextslide::
 
-* App calls `libNDK_03.so`
-* Let's run `strings` on `libNDK_03.so`
-* Could one of these strings be an encryption key?
+.. figure:: smart-plug-attack-diagram-3.svg
+   :scale: 120 %
+   :align: center
+
+.. nextslide::
+
+* Crypto key candidates
 
 .. code-block:: bash
 
@@ -507,33 +507,41 @@ Let's peek at crypto
     java/lang/String
     ...
 
-Brute force key
-===============
+.. nextslide::
 
-* Capture a broadcast packet to `27431/udp`
-* Try to AES decode with a candidate key
-* Clear text reveals? This is the key indeed!
+.. figure:: smart-plug-attack-diagram-4.svg
+   :scale: 120 %
+   :align: center
 
-Remote control feature
-======================
+.. nextslide::
 
-* `tcpdump` shows outgoing TCP connection
-* To some server in China
+.. figure:: smart-plug-attack-diagram-5.svg
+   :scale: 120 %
+   :align: center
 
-Hijack plugs
-============
+.. nextslide::
 
-* `MAC` is easily brute-forcible
-* Majority of users leave default `PASSWORD`
-* Own plugs all over the globe!
+.. figure:: smart-plug-attack-diagram-6.svg
+   :scale: 120 %
+   :align: center
 
-Shell injection
-===============
+.. nextslide::
 
-* Control agent runs as root
-* Invokes `system()`
-* Not sanitizing protocol payload
-* Run your code on plugs
+.. figure:: smart-plug-attack-diagram-7.svg
+   :scale: 120 %
+   :align: center
+
+.. nextslide::
+
+.. figure:: smart-plug-attack-diagram-8.svg
+   :scale: 120 %
+   :align: center
+
+.. nextslide::
+
+.. figure:: smart-plug-attack-diagram-9.svg
+   :scale: 120 %
+   :align: center
 
 Exploit potential
 =================
@@ -553,7 +561,7 @@ Attack post-mortem
 Who cares about security?
 =========================
 
-* Let's see...
+* Let's see who is building the Things and how...
 
 IoT supply chain
 ================
@@ -580,14 +588,11 @@ IoT supply chain
 
 .. nextslide::
 
-* Chips manufacturers
-* Boards manufacturers
-* Original Design manufacturers
-* Cloud Service Providers
-* Original Equipment Manufacturers
+.. figure:: iot-manufacturers.svg
+   :align: center
 
-The weakest link
-================
+Who builds Things
+=================
 
 * **Original Design manufacturers**
 
@@ -608,39 +613,43 @@ The weakest link
   * Many small companies from China
   * **Produce [insecure] software fast**
 
-Who cares about security?
-=========================
+Who sells Things
+================
 
-* **OEMs may [not] do security**
+* **Original Equipment Manufacturers**
 
-  * **Just a checkbox**
+  * **Security - just a checkbox**
 
 .. nextslide::
 
-* **OEMs may [not] do security**
+* **Original Equipment Manufacturers**
 
-  * Just a checkbox
+  * Security - just a checkbox
   * **No code to work with**
 
 .. nextslide::
 
-* **OEMs may [not] do security**
+* **Original Equipment Manufacturers**
 
-  * Just a checkbox
+  * Security - just a checkbox
   * No code to work with
   * **Forward disclosures to a vendor**
 
 .. nextslide::
 
-* **OEMs may [not] do security**
+* **Original Equipment Manufacturers**
 
-  * Just a checkbox
+  * Security - just a checkbox
   * No code to work with
   * Forward disclosures to a vendor
   * **Or sue security researcher**
 
 Factors of insecurity
 =====================
+
+Why many Things are insecure?
+
+.. nextslide::
 
 * **IoT is hot**
 
@@ -654,7 +663,7 @@ Factors of insecurity
 
 * **IoT is cool**
 
-  * *What a gadget! I must have it NOW!*
+  * *"What a gadget! I must have it NOW!"*
 
 .. figure:: egg-counter.jpg
    :scale: 80 %
@@ -677,31 +686,14 @@ Factors of insecurity
 
 * **IoT is easy**
 
-  * *Just add a $5 Arduino to a coffee maker*
+  * **Adding a computer to a product is cheap...**
 
 .. nextslide::
 
 * **IoT is easy**
 
-  * Just add a $5 Arduino to a coffee maker
-  * *...and we are in IoT business!*
-
-.. nextslide::
-
-* **IoT is easy**
-
-  * Just add a $5 Arduino to a coffee maker
-  * ...and we are in IoT business!
-  * *Hmm, our coffee maker demands a ransom...*
-
-.. nextslide::
-
-* **IoT is easy**
-
-  * Just add a $5 Arduino to a coffee maker
-  * ...and we are in IoT business!
-  * Hmm, our coffee maker demands a ransom...
-  * *What does "security engineering" mean?*
+  * Adding a computer to a product is cheap...
+  * **...up to the moment of attack**
 
 .. nextslide::
 
@@ -732,20 +724,20 @@ Factors of insecurity
 
 * **IoT is misunderstood**
 
-  * **It is a general purpose computer**
+  * **It is still a general purpose computer**
 
 .. nextslide::
 
 * **IoT is misunderstood**
 
-  * It is a general purpose computer
+  * It is still a general purpose computer
   * **Disguised as an appliance**
 
 .. nextslide::
 
 * **IoT is misunderstood**
 
-  * It is a general purpose computer
+  * It is still a general purpose computer
   * Disguised as an appliance
   * **Manufactured as an appliance, not software**
 
@@ -753,23 +745,22 @@ Factors of insecurity
 
 * **IoT is vulnerable**
 
-  * **No CPU power for public key crypto**
-  * Physical access may be easy
-
-.. nextslide::
-
-* **IoT is vulnerable**
-
-  * No CPU power for public key crypto
   * **Physical access may be easy**
 
 .. nextslide::
 
 * **IoT is vulnerable**
 
-  * No CPU power for public key crypto
   * Physical access may be easy
-  * **Low-entropy system**
+  * **No CPU power for strong crypto**
+
+.. nextslide::
+
+* **IoT is vulnerable**
+
+  * Physical access may be easy
+  * No CPU power for strong crypto
+  * **A low-entropy system**
 
 .. nextslide::
 
@@ -828,7 +819,7 @@ Factors of insecurity
 Who cares about security?
 =========================
 
-Let's look at premium gadgets...
+Let's look at a premium gadget...
 
 The story of smart lights
 =========================
@@ -865,7 +856,7 @@ Features
 Inside the bulb
 ===============
 
-* Armel SoC
+* Atmel SoC
 
   * *Microprocessor, RAM, flash*
   * *Hardware AES accelerator*
@@ -885,81 +876,48 @@ The lighting system
   * *Supports REST API for each bulb*
   * *Connects to cloud*
 
-ZigBee vulnerability
-====================
+ZigBee network attack
+=====================
 
-* **Network traffic encrypted with PAN key**
-
-.. nextslide::
-
-* Network traffic encrypted with PAN key
-* **PAN key is send to new nodes encrypted with master key**
+.. figure:: philips-hue-attack-diagram-1.svg
+   :align: center
 
 .. nextslide::
 
-* Network traffic encrypted with PAN key
-* PAN key is send to new nodes encrypted with master key
-* **Master key is leaked in 2015**
-
-Light Link vulnerability
-========================
-
-* **Additional proximity check**
-
-  * *By measuring RSSI*
+.. figure:: philips-hue-attack-diagram-2.svg
+   :align: center
 
 .. nextslide::
 
-* Additional proximity check
-* **A bug makes bulb resetting**
+.. figure:: philips-hue-attack-diagram-3.svg
+   :align: center
 
 .. nextslide::
 
-* Additional proximity check
-* A bug makes bulb resetting
-* **And skipping proximity check**
+.. figure:: philips-hue-attack-diagram-4.svg
+   :align: center
 
-On-bulb code execution
-======================
-
-* **Only possible via firmware reflash**
-
-.. nextslide::
-
-* Only possible via firmware reflash
-* **But firmware images are signed**
-
-Side-channel attack
+Firmware compromise
 ===================
 
-* **Feed bootloader fake images**
+.. figure:: philips-hue-attack-diagram-5.svg
+   :align: center
 
 .. nextslide::
 
-* Feed bootloader fake images
-* **While watching power consumption spikes**
+.. figure:: philips-hue-attack-diagram-6.svg
+   :align: center
 
 .. nextslide::
 
-* Feed bootloader fake images
-* While watching power consumption spikes
-* **Reveals firmware signing key**
+.. figure:: philips-hue-attack-diagram-7.svg
+   :align: center
 
-Ultimate attack
+Unleashing worm
 ===============
 
-* **Built compromised firmware with a worm**
-
-.. nextslide::
-
-* Built compromised firmware with a worm
-* **Flew a drone with infected bulb near ZigBee networks**
-
-.. nextslide::
-
-* Built compromised firmware with a worm
-* Flew a drone with infected bulb near ZigBee networks
-* **Uploading malicious firmware**
+.. figure:: philips-hue-attack-diagram-8.svg
+   :align: center
 
 Exploit potential
 =================
@@ -985,6 +943,10 @@ Who cares about security?
 
 Major attack vectors
 ====================
+
+How do they attack Things...
+
+.. nextslide::
 
 * **Device**
 
@@ -1026,16 +988,6 @@ Major attack vectors
 
 .. nextslide::
 
-* **Device**
-
-  * Hardcoded passwords / API keys
-  * Forgotten services / backdoors
-  * Unsecured hardware interfaces
-  * Code injection vulnerabilities
-  * **Wireless networks vulnerabilities**
-
-.. nextslide::
-
 * Device
 * **Platform**
 
@@ -1043,32 +995,6 @@ Major attack vectors
 
     * *CSRF, XSS, SQL injection*
     * *SSL misconfiguration*
-
-Advice for users
-================
-
-* Do not own IoT
-* Research before you buy
-* Prefer cloudless devices
-* Research cloud data privacy policy
-* Change passwords
-* Apply updates
-* Firewall, disable uPnP
-* Setup a dedicated network for your IoT
-* Disable unused features
-* Be cautious when selling used IoT
-
-Advice for developers
-=====================
-
-* Realize that you are not alone!
-* Restrain from taking private data
-* Force users to change password
-* Never hardcode keys/passwords
-* Encrypt data in motion and at rest
-* Clean up before you ship (backdoors, debugging hooks)
-* Follow secure IoT development practices (https://builditsecure.ly)
-* Employ hackers on demand (http://bugcrowd.com)
 
 Future IoT
 ==========
@@ -1084,3 +1010,20 @@ Future IoT
   * Learn and behave intelligently
   * **Join brains**
 
+
+Advice for users
+================
+
+* Do not own IoT!
+* Research before you buy (track record, data privacy policy)
+* Use dedicated network, firewall and disable uPnP
+* Be cautious when selling used IoT
+
+Advice for developers
+=====================
+
+* Realize that you are not alone!
+* Avoid taking personal data
+* If you do, encrypt everything
+* Exercise secure development (https://builditsecure.ly)
+* Employ hackers on demand (http://bugcrowd.com)
