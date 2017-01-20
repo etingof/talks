@@ -1,7 +1,7 @@
 
-Things are coming and humanity is in danger! In this talk I will
-share the frightening observations of the risks that massive
-adoption of IoT devices bring us.
+Hello and beware! Things are coming and humanity is in danger! I'd like to share
+with you the frightening observations of the risks that massive adoption of IoT
+devices bring us.
 
 We will look at the technology behind IoT and services it offers
 through the eyes of security researcher.
@@ -11,8 +11,10 @@ The Things
 
 The term IoT is used to refer to hugely different devices -- from children's
 toys to industrial automation. In the context of this talk, we will be mostly
-looking at consumer devices which are very common and risky. Those things are
-typically:
+looking at consumer devices which are very common and risky. And are in charge
+to use them wisely.
+
+Those things are typically:
 
 * small, inexpensive, low-power computers
 * equipped with sensors and/or actuators
@@ -30,10 +32,6 @@ emerging, we are getting exposed to fundamentally new risks:
 * The Things are designed to help us what also means they have to watch us (by collecting
   huge amount of data)
 * Things, as they stand now, are massively insecure
-
-By way of this talk we will examine how Things work and how the manufacturing
-process looks like what hopefully will give us more understanding why
-modern Things are so insecure.
 
 Dreams come true
 ================
@@ -57,33 +55,35 @@ then to science and technology. So CR is a land of robots!
 Things [we think] we buy
 ========================
 
-Home automation is a hot topic for a long time. We are already beyond the features that
-Bradbury was thinking about -- automatic lighting, heating, irrigation and monitoring is
-here. But human imagination and (desire for comfort) proves to have no limits!
+Home automation is a hot topic for quite some time. We are already beyond the
+features that Bradbury was thinking about -- we already have automatic lighting,
+heating and irrigation.
 
 Nowdays one can have a personal home assistant that understands human speech. You
 can instruct it to dim the lights and control the thermostat, maintain shopping list
 and set alarms. You can tell it to tune into specific radio station or play the
 music of your choice.
 
-If you are not in mood to talk to your personal assistant, just press an Amazon Dash Button
-and get stuff shipped to your home. Possibly by an Amazon PrimeAir delivery drone.
+If you are not in mood to talk to your personal assistant, just press an
+Amazon Dash Button and get stuff shipped to your doorstep. Possibly by a
+delivery drone.
 
-Then there are medical applications. Automatic insulin pumps and pacemakers are
-already widely used.
+Then there are medical applications. Automatic drug infusion pumps and
+pacemakers are already widely used by the patients.
 
-And the weird stuff - computers are finding their ways into traditionally
-low-tech things like hygiene items and sleeping gear.
+And then the arguably weird stuff - computers are finding their ways into
+traditionally low-tech things like this smart brush (which analyses the
+health of your hair) or smart mattress (which sends you SMS when something
+is hapening on your bad while you are away) or this doggy phone or a
+poor man's way of adding Internet connection to an old-style, off-line
+things.
 
-Now, it can get creepy. It is no secret that relationships and sex are among
-the big technology drivers. Of course IoT businesses address that demand.
-Look at this remote kissing gadget!
+Now, things can get creepy. Look at this kiss messenger! The telepresence
+technology is frightening and amazing! Security vulnerabilities in that
+area might be hilarious and tragic in equal measure.
 
-The telepresence technology is frightening and amazing! Security vulnerabilities
-in that area might be hilarious and tragic in equal measure.
-
-In this talk I won't go any further down this topic. If you are interested, I
-can refer you to this book and same-named international conference held in UK.
+I won't go any further down this topic. For whoever is interested, I can
+refer you to this awesome book.
 
 Things we buy
 =============
@@ -103,33 +103,33 @@ of enslaved and harnessed Things, primarily DVRs and web cameras, stood behind
 that attack.
 
 The attacking software is dubbed Mirai, its code was open sourced and is
-available at github. This story is about a slightly improved version of
+available at Github. This story is about a slightly improved version of
 Mirai caught in the wild by security researchers and called Hajime.
 
 Here is how it works.
 
-The ultimate goal of attacker is to implant their software into as many
-IoT devices as possible and be able to instruct them to carry out certain
-operations, mostly DoS attacks.
+The ultimate goal of a botnet breeder is to implant their software into as
+many computers as possible and then instruct them to carry out certain
+operations like DDoS attacks or spam.
 
-The infection process starts from the attacking node by scanning the Internet
-in search for an open telnet port. Once it hit one, the attacker tried
-to log in under dozens of factory default passwords.
+The infection process starts from a single attacking node scanning the Internet
+in search for an open telnet port. Once it hits one, the attacker tries to
+brute-force the login credentials using dozens of factory-default passwords.
 
 If login succeeded and attacking node drops into shell, it searches for
 a writable filesystem (like /var) and echos hex-escaped machine codes
 into a local file. That gives attacker a small executable which, once run,
-opens up a tcp connection back to the attacking node and downloads a large P2P
-client binary. Then it joins a P2P network and starts listening for further
+opens up a tcp connection back to the attacking node and downloads a large
+binary. That binary is an actual malware which does two things: first
+it starts its own propagation process (as just described) and secondly
+it joins a BitTorrent network and starts listening for further
 instructions.
 
-At the same time, infected node starts scanning the Internet for the
-purpose of further propagation in a likewise manner.
-
-Over time the described infection process helps building a huge,
-self-propagating and remotely controlled network of bots. Security
-researchers reported, that at the peak of the Mirai epidemy, a honeypot
-was hit once in a couple of minutes.
+Over time the infection process makes up a huge, self-propagating and
+remotely controlled network of bots. Security researchers reported,
+that at the peak of the Mirai epidemy, mean time to compromise of a
+vulnerable IoT device is 10 minutes or less. That explains why
+rebooting infected device does not really help.
 
 Once its master decided to mount an attack of specific kind, they
 send a "plugin" module along with a configuration into the P2P
@@ -137,21 +137,18 @@ network. The bots pick that up from P2P and run whatever code
 their master wants them to.
 
 The attacks that Mirai was capable to carry out includes HTTP, TCP, UDP and
-DNS floods. Considering hundreds of thousands of nodes flooding a single target
-simultaneously, it is no wonder that even high-profile sites went down.
+DNS floods. Considering hundreds of thousands of nodes flooding a single
+target simultaneously, it is no wonder that consequences were devastating.
+
+Mirai attack is thought to be the largest in history - at various
+points of the Internet, network engineers observed hundreds thousands
+of individual IPs and traffic rate spikes to terabits per second.
 
 Attack post-mortem
 ==================
 
-Clearly, that attack won't be that successful if [unnecessary] telnet
-service would not be running or credentials would not be that easy to brute force.
-So this is where the manufacturer failed to provide even minimal security
-to its product.
-
-What's worth noting is that, unlike 80/tcp, port 23/tcp is not usually
-port-forwarded on the firewalls, yet 380K+ devices were conscripted.
-We may expect upcoming attacks against built-in web servers have higher
-success rate.
+Clearly, Mirai attack wouldn't be successful if telnet service would not
+be running or credentials would not be that easy to brute force.
 
 Fun facts
 =========
@@ -166,94 +163,63 @@ relatively harmless to its hosts, the only thing it does is that it
 changes default root password and shuts down telnet daemon to prevent
 infection.
 
-This attack was more against a general purpose Linux computer. Before we
-analyze a more IoT specific attack, let's take a closer look at IoT technology.
+The Mirai attack was more against a general purpose Linux computer. Before
+we analyze a more IoT specific attack, let's take a closer look what's
+inside an IoT system.
 
 What's inside an IoT system?
 ============================
 
-There is currently no established standards or reference architecture in regards
-to IoT. Yet, many implementations are aligned to the following layered design.
+There is currently no established standards or architecture in regards
+to IoT. Yet, many implementations are aligned to the following layered
+design.
 
-At the very bottom of the stack reside actuators (such as motors, valves ...) and
-sensors.
+At the very bottom of the stack reside sensors and actuators. The sensors
+are typically hardwired into the next component of the stack which is an
+"embedded system".
 
-In terms of sensor types in the IoT, we can encounter light, sound, temperature,
-accelerometers, gas, emission, proximity, moisture, vibration and many other
-kinds of sensors.
+The embedded system could be more or less powerful (like RAspberry Pi or
+Arduino). They are joint into a network along with the next component
+which is a gateway.
 
-The sensors are frequently hardwired into the next component of the stack which
-is an "embedded system".
+IoT gateway, if present, provides data storage and Internet connectivity for
+the rest of the IoT network.
 
-Broadly speaking, there is a spectrum of embedded systems. At the higher end
-we have a fully fledged computers featuring multi-code CPUs, gigabytes of RAM
-and writable flash storage.
+Finally, the gateways maintain a connection with servers on the Internet
+which are collectively called "cloud". The cloud accumulates and processes
+the data coming from IoT and sends out commands.
 
-At the lower end we would find devices optimized for low power consumption
-at the expense of being slower and cheaper. Examples from consumer land
-include Arduino, Pinoccio, ESP8266 and others.
-
-Either way, embedded system reads measurements from one or many sensors and/or
-powers actuators.
-
-Now, embedded systems, especially MCUs may not be powerful enough to keep/pre-process
-moderate amount of data or run full TCP/IP stack to communicate with upper layers.
-
-For the latter reason there exist alternative, simplified wireless network stacks
-optimized for low power operations. Frequently, embedded systems are joint into
-so-called sensors network and talk to each others.
-
-To cache/aggregate data and adapt WSNs to TCP/IP for further Internet connectivity,
-at the third layer of the stack we may encounter so-called IoT gateways.
-
-Finally, either IoT gateways or powerful embedded systems (that can talk to Internet
-directly) talk to a server on the Internet, push data and receive commands. Those
-servers are collectively called "cloud".
-
-Many cloud computing companies offer specialized IoT solutions geared towards
-IoT use cases.
-
-Most importantly, CSPs support the data feed and control protocols that are native
-to IoT (CoAP, MQTT, REST API), offer large data storage and purpose-built
-analytics engines. They also offer Web-UIs or REST APIs to ease
-data consumption.
-
-Armed with a knowledge of a typical IoT architecture, let's look at the other attack...
+Armed with a knowledge of a typical IoT architecture, we are approaching
+the next attack story...
 
 The story of a plug
 ===================
 
-Multiple security researchers run into this kind of IoT device. It's essentially
-a remotely controlled power outlet. You can turn it on/off from your mobile
-phone whilst in the room or anywhere on the Internet. Or may be not just you?
+Multiple security researchers run into this kind of IoT device. It's
+essentially a remotely controlled power outlet. You can turn it on/off
+from your mobile phone whilst in the room or anywhere on the Internet.
 
-Let's see how security analysts looked into this little gadget...
+The researchers started their analysis from looking at the mobile
+application for Android. They decompiled it and studied the code. They
+figured that smartphone and plug communicate over a simple text
+protocol. Each message contains plug's MAC address and an optional
+password that owner may set (or leave it empty).
 
-Let's look at the app. Android apps are easier to decompose and analyze. From
-analyzing the app it turns out that phone and plug communicate over a simple text
-protocol. But messages are indeed AES encrypted. With a symmetric key.
+Protocol messages are AES encrypted. So the researched looked into
+the encryption subsystem. Turns out that the app is bundled with a
+Linux shared library. Running `strings` over the library reveals a few
+strings that look promising.
 
-App is bundled with a Linux shared library. Running `strings` over the library
-reveals a few strings that look promising.
+Then researchers tried candidate keys by capturing a packet produced
+by mobile phone and trying to AES decipher it with a key. Ultimately,
+they found the right one which is common for all plugs!
 
-Researhers tried candidate keys by capturing a packet from mobile phone and
-trying to AES decipher it with a key. Once a clear text protocol message
-shows up -- we get the key! This key is common for all plugs!
-
-At the protocol level, each plug is addressed my its MAC address and
-is password protected. There is a default password and users are not
-required to change it upon deployment.
-
-But how remote control works? Wireshark reveals a persistent TCP connection.
-To some server in China.
-
-When turning smart plug through cell Internet, similar AES blobs come over TCP
-connection.
-
-Let's search for other plugs in the cloud! For that we need to connect to the cloud
-as mobile app does and send protocol messages. But we need two things: plug's MAC and
-password. Turns out that MACs are generally adjustent to each other so brute forcing
-is easy. Secondly, many users leave default password.
+Now, the plug in advertised as remotely controlled. Researchers looked
+what's on the network and found that plug maintains a persistent TCP
+connection with a server in China. Wireshark reveals that plug uses the
+same protocol for server communication. So they connected to server
+and found many plugs connected to that server by trying adjacent
+MAC addresses.
 
 By this point security researcher can manipulate other people's plugs around the
 globe. By manipulate I mean not just turning them on and off at random times.
@@ -263,8 +229,9 @@ catch fire?
 
 Other researchers reported that certain firmware versions has a code injection
 vulnerability which lets you embed UNIX shell commands to protocol commands.
-By this point you can completely own the plug, run your own apps on it to attack
-others on the Internet and locally, send spam.
+By this point they could can completely own the plug my running their code
+on them. That would let them attack hosts on plug's network, attack others
+on the Internet, send spam.
 
 Attack post-mortem
 ==================
@@ -273,23 +240,25 @@ Here it's again the case of manufacturer's failure to provide reasonable
 security. Specifically,  hardcoding key, not enforcing password change
 and making it easy to identify other plugs on the network.
 
-Default password again! Is not this is a kind of security problem
-from the early Internet?
-
-Let's see who cares for IoT security manufacturing chain...
+Apparently, that is a very common vulnerability with today's devices.
+Now, I'm offering you a quick look on IoT supply chain to understand the
+reason why.
 
 IoT supply chain
 ================
 
 First thing to realize is that modern IoT is a pile of complicated
-pieces of technology quickly put together by many loosely coordinated
-companies. That might be a fertile soil for bugs of all kinds.
+pieces of technology duct-typed together by many loosely coordinated
+companies.
 
-Quickly looking at the business taking part in IoT manufacturing,
-ODMs is the main source of grief for security researchers.
+Here's a stack of businesses taking part in building a single IoT
+product.
 
-Who build Things
-================
+Who builds Things
+=================
+
+Among them, the ones that actually create the device (AKA Original
+Design Manufacturers) frequently cause grief to security people.
 
 Those guys come up with a gadget idea, then they build the actual product
 out of board and the software they add over. The technology they rely
@@ -302,64 +271,71 @@ Their business model is - the fastest, cheapest and most feature-rich wins.
 No wonder that ODMs do not have proper resources and expertise for proper
 security.
 
-Technically, the software ODMs produce tops the vulns statistics. Not
-only they program the device application, sometimes they also take the
-CSP role by hosting their own servers, building their own web and mobile
-apps.
-
-So ODMs contribute one or more layers of software.
-
 Who sells Things
 ================
 
+We, consumers, only deal with the companies at the very top layer. Those
+guys market the product, maintain a brand, offer warranty and customer
+support, handle legal affairs.
+
+They are also a point of contact for security researchers reporting
+discovered vulnerabilities. Trouble is that, oftentimes, they can't
+do much about security. They may not have the code to tackle or
+expertise to understand the problem at the very technical level.
+
+Sometimes, instead of fixing the vulnerablity, they use their PR powers
+to downplay the severity of a flaw. Sometimes they even turn hostile to
+security researchers threatening to sue them.
 
 Factors of insecurity
 =====================
 
-Let's see what makes present day's IoT massively insecure.
+IoT is huge! Many actors are interplaying there pursuing their interests
+and goals.
 
 IoT is hot
 ----------
 
-IoT is the new hot thing. To stay competitive, businesses have to
-get into that bandwagon. And it is not that hard, given the
-crucial electronic components are readily available and businesses
-are masters of their products.
-
-That extends to traditionally offline businesses. The simplest
-thing for them is to just bring their offline product online.
+From business perspective, IoT is a hot thing. To stay competitive, businesses
+are being pressed to make their originally offline products "connected".
 
 IoT is cool
 -----------
 
-People want cool stuff! That creates demand that businesses
-naturally want to meet.
+We love gadgets! They are designed to be desirable.
 
-IoT is paradoxical
-------------------
+We poke fun at smart devices...yet, happily buy them.
 
 IoT is easy
 -----------
 
-IoT is messy
-------------
-
-We have seen how complicated IoT software can get. It is touched
-by many teams
-
-IoT is misunderstood
---------------------
-
-IoT is vulnerable
------------------
+For vendors, adding a $5 computer to their existing product is seemingly
+very doable, though the consequences of a security breach is not apparent.
 
 The engineers who are used to work with their offline products
 may not realize that once they get their product online,
-millions of hackers might try getting a profit from its vulns.
+millions of hackers suddenly get interested in its weaknesses.
 
 Coupled with their inexperience with IT security, that explains
 why in IoT we encounter naive, almost forgotten vulnerabilities
 like guessable passwords or code injections.
+
+IoT is hard
+-----------
+
+Things are generally harder to engineer properly.
+
+They are harder to patch: owners may not know
+and/or care, updates for embedded platform often requires
+full reflashing which is risky.
+
+IoT is weak
+-----------
+
+Embedded computers might not have sufficient power to
+run a strong crypto. It takes extra efforts for system
+designers to provide a high-entropy source on the embeddedd
+platform.
 
 Additionally, devices are easier for attacker to get a hold on
 compared to conventional computers locked down in office
@@ -368,9 +344,28 @@ buildings.
 IoT is powerful
 ---------------
 
-IoT is hard to mitigate
------------------------
+Yet, combining billions of weak computers adds up to teraflops
+of computing power and terabits of network bandwidth.
 
+IoT is messy
+------------
+
+A deep stack of interplaying software layers make up an IoT device.
+That software goes through a long supply chain being touched by
+many uncoordinated teams.
+
+IoT is misunderstood
+--------------------
+
+It might not occur to you that you need to apply software
+update to this smart pillow. It's a pillow, right?
+
+Yet, it is a general purpose computer disguised as a pillow.
+That fools consumers and, surprisingly, manufacturers.
+
+What can possibly go wrong with a pillow? Yet, the risks are
+not that it miscalculate your sleep patterns, but that it may,
+for example, tell a burglar that you are not at home.
 
 The story of smart lights
 =========================
@@ -388,15 +383,15 @@ From technical perspective, bulb is built on an Atmel SoC. The SoC
 contains an MCU, AES accelerator and a wireless networking module
 supporting ZigBee stack.
 
-The bulbs, switches and IoT gateway form a PAN ZigBee network.
+The bulbs, switches and IoT gateway form a ZigBee mesh network.
 The gateway also participates in Wi-Fi network, supports REST API
 (for each bulb) and can also be accessible from the Internet via
 a cloud proxy.
 
-The attack
-----------
+ZigBee vulnerability
+====================
 
-ZigBee is a proprietary network protocol designed for low power, short
+ZigBee is a proprietary network stack designed for low power, short
 range wireless networks. Network traffic is encrypted with a key shared
 among all nodes in local network.
 
@@ -411,6 +406,9 @@ As a way to mitigate that, the ZigBee Light Link protocol has a proximity
 check so that network will only give out its shared key to new nodes
 emitting weak signal which is an indication of being in close proximity.
 
+Defeating proximity check
+=========================
+
 Despite that measure, researchers were able to find a bug in open source
 Atmel's BitCloud library which lets them to reset the bulb to factory default
 tricking it to try different key exchange protocol skipping the proximity check.
@@ -418,13 +416,16 @@ tricking it to try different key exchange protocol skipping the proximity check.
 By that point researchers were able to join any ZigBee network
 from a distance of hundred meters.
 
+Firmware compromise
+===================
+
 Next goal for researchers was to plant their code into the bulb.
 The only way is to reflash the bulb via software update. Trouble is
 that firmware images are signed and checked on bulb boot up.
 
 Researchers performed side channel attack on the bootloader which
 computes firmware signature with its AES module. They did that my
-running a analysis technique known as differential oe correlation
+running a analysis technique known as differential or correlation
 power analysis.
 
 Turned out that making bootloader computing many different
@@ -432,23 +433,27 @@ Turned out that making bootloader computing many different
 reveals the key.
 
 By this point researchers were able to build compromised firmware
-and plant it into a single bulb by flying a drone carrying a compromised
-bulb near a network of bulbs uploading malicious firmware.
+and plant it into their bulb.
+
+Unleashing worm
+===============
+
+Then they mounted their infected bulb on a drone and flew by
+a ZigBee network of bulbs uploading malicious firmware into them.
 
 Once a single bulb in a ZigBee network is compromised, work starts
 spreading quickly. It's virtually impossible to stop its propagation
 for as long as a single infected bulb is running on the network.
 
+Exploit potential
+=================
+
 This attack could be used to make bulbs misbehaving or brick them.
 Also, bulb's on-board radio could be used for jamming other 2.4GHz
 radios.
 
-Who cares about security
-========================
-
-In their report, security researchers mentioned Philips being extremely
-responsive and helpful. They quickly fixed the immediate cause of the vulnerability
-which is ability to reset bulb and make it skipping proximity check.
+Attack post-mortem
+==================
 
 Though the root cause is again hardcoded encryption keys which is a
 design flaw of the ZigBee protocol. Security through obscurity never
@@ -457,23 +462,29 @@ works!
 Major attack vectors
 ====================
 
+Looking at the hacks discovered in a couple of past years, the major
+cause seems to be attributed to leaked passwords, encryption and API keys.
 
-Advice for users
-================
+When vendors take a stock Linux distribution and use it unmodified
+in their products, that inevitable results in unnecessary services
+kept running and ultimately exploited.
 
+When remote attack is not feasible, attackers may approach the
+system through an unsecured hardware interface. Most commonly
+serial console and JTAG.
 
-* Do not own IoT!
-* Research before you buy (track record, data privacy policy)
-* Use dedicated network, firewall and disable uPnP
-* Be cautious when selling used IoT
+Then all sorts of code injection vulnerabilities ranging from UNIX
+shell injections up to good-old XSS.
 
-* Prefer cloudless devices
-* Research cloud data privacy policy
-* Change passwords
-* Apply updates
-* Firewall, disable uPnP
-* Disable unused features
-* Be cautious when selling used IoT
+IoT future
+==========
+
+Speaking of further IoT development, the major research trend is about making
+Things more autonomous and less deterministic. Major ingredients to this are:
+
+* context awareness through more sophisticated sensors
+* independent reasoning through massive data processing and analysis
+* interoperability for the purpose of auto-organising, ad-hoc systems
 
 Advice for developers
 =====================
@@ -491,12 +502,33 @@ Advice for developers
 * Clean up before you ship (backdoors, debugging hooks)
 * Follow secure IoT development practices (https://builditsecure.ly)
 
-IoT future
-==========
+Advice for users
+================
 
-Speaking of further IoT development, the major research trend is about making
-Things more autonomous and less deterministic. Major ingredients to this are:
+* Do not own IoT!
+* Research before you buy (track record, data privacy policy)
+* Use dedicated network, firewall and disable uPnP
+* Be cautious when selling used IoT
 
-* context awareness through more sophisticated sensors
-* independent reasoning through massive data processing and analysis
-* interoperability for the purpose of auto-organising, ad-hoc systems
+* Prefer cloudless devices
+* Research cloud data privacy policy
+* Change passwords
+* Apply updates
+* Firewall, disable uPnP
+* Disable unused features
+* Be cautious when selling used IoT
+
+Summary
+=======
+
+The technology is blooming fueling our amazement and tricking
+us into buying Things. My hope is that this talk makes you cautious and
+better prepared for the Things invasion.
+
+* Be conscious that Things nearby may be watching you.
+* Keep your expectations low when it comes to Things
+  security.
+* Be reluctant giving out any data, even if it does not look valuable at the moment.
+* Struggle not to let Things into your home!
+
+Be suspicious and keep safe!
