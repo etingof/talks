@@ -88,8 +88,10 @@ refer you to this awesome book.
 Things we buy
 =============
 
-These gadgets look sleek and appealing indeed. But the reality is frequently
-different. Many highly motivated people are working around the clock to
+These gadgets look sleek and appealing indeed. But in reality, the joys comes
+together with risks.
+
+Many highly motivated people are working around the clock to
 harness the power of billions of Things and leverage it in their interests.
 
 In many cases there is not much you can do about it.
@@ -265,7 +267,7 @@ out of board and the software they add over. The technology they rely
 on has become incredibly accessible. Practically a single-person
 enterprise can build an IoT device out of, for example, Raspberry Pi.
 No wonder that ODMs are really numerous. The majority if ODMs are coming
-from China. Some are startups, some are crowdfunded.
+from China. Some are startups, some are crowd funded.
 
 Their business model is - the fastest, cheapest and most feature-rich wins.
 No wonder that ODMs do not have proper resources and expertise for proper
@@ -287,8 +289,8 @@ Sometimes, instead of fixing the vulnerablity, they use their PR powers
 to downplay the severity of a flaw. Sometimes they even turn hostile to
 security researchers threatening to sue them.
 
-Factors of insecurity
-=====================
+Things are...
+=============
 
 IoT is huge! Many actors are interplaying there pursuing their interests
 and goals.
@@ -344,7 +346,7 @@ buildings.
 IoT is powerful
 ---------------
 
-Yet, combining billions of weak computers adds up to teraflops
+Yet, combining billions of weak computers sums up to teraflops
 of computing power and terabits of network bandwidth.
 
 IoT is messy
@@ -459,6 +461,10 @@ Though the root cause is again hardcoded encryption keys which is a
 design flaw of the ZigBee protocol. Security through obscurity never
 works!
 
+This attack also demonstrates how hard it is to design and produce
+a secure system even if it is major product of a large, established
+company.
+
 Major attack vectors
 ====================
 
@@ -489,34 +495,42 @@ Things more autonomous and less deterministic. Major ingredients to this are:
 Advice for developers
 =====================
 
-* Realize that you are not alone!
-* Avoid taking personal data
-* If you do, encrypt everything
-* Exercise secure development (https://builditsecure.ly)
-* Employ hackers on demand (http://bugcrowd.com)
+If you are getting involved in coding for an IoT project, realize that
+once your software or product is out, it will be looked at thoroughly
+without you knowing.
 
-* Restrain from taking private data
-* Force users to change password
-* Never hardcode keys/passwords
-* Encrypt data in motion and at rest
-* Clean up before you ship (backdoors, debugging hooks)
-* Follow secure IoT development practices (https://builditsecure.ly)
+There are black markets for personal data, so if your system keep anything
+of that kind, it will be probed sooner or later. Thus, it's better not
+to take and store personal data.
+
+If you have to, encrypt data in motion and at rest aggressively and in a way
+that can be reversed easily.
+
+In the nutshell, there is a great web-site maintained by field experts
+where they have a checklist to follow when it comes to building IoT
+devices and software.
+
+Finally, you could pentest your code by employing hackers.
 
 Advice for users
 ================
 
-* Do not own IoT!
-* Research before you buy (track record, data privacy policy)
-* Use dedicated network, firewall and disable uPnP
-* Be cautious when selling used IoT
+I know that it is easier to tell then do, yet, restrain from owning
+consumer IoT devices. The security situation might improve over time,
+but as we have them now, they are scary.
 
-* Prefer cloudless devices
-* Research cloud data privacy policy
-* Change passwords
-* Apply updates
-* Firewall, disable uPnP
-* Disable unused features
-* Be cautious when selling used IoT
+If you can't resist the desire to have a Thing, research the vendor to
+see what's their track record -- did they have security problems in the past,
+how they reacted, do they ship the updates, for how long.
+
+Once you are a happy owner of an IoT gadget, put it (along with other Things)
+on a dedicated Wi-Fi network, firewall and disable uPnP.
+
+If you realised that was a wrong decision and decided to sell it, be aware
+that the Thing still may hold you personal secrets. Resetting it may not help!
+
+Similar concern applies to second-hand gadgets -- they may be sold infected
+so they may do not quite the things you expect them to.
 
 Summary
 =======
@@ -524,6 +538,8 @@ Summary
 The technology is blooming fueling our amazement and tricking
 us into buying Things. My hope is that this talk makes you cautious and
 better prepared for the Things invasion.
+
+To summarize:
 
 * Be conscious that Things nearby may be watching you.
 * Keep your expectations low when it comes to Things

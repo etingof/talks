@@ -7,7 +7,7 @@ Horror stories of IoT security
 The Things
 ==========
 
-.. image:: board-and-sensors.svg
+.. image:: iot-cloud.svg
 
 The new dangers
 ===============
@@ -161,7 +161,7 @@ Hajime lives in here:
 IoT botnet attack
 =================
 
-.. figure:: botnet-architecture.gif
+.. figure:: botnet-network.svg
    :scale: 90 %
    :align: center
 
@@ -214,6 +214,17 @@ Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
 
 .. nextslide::
 
+
+.. nextslide::
+
+.. figure:: mirai-botnet-attack.gif
+   :scale: 80 %
+   :align: center
+
+Image by `Joey Devilla <http://www.globalnerdy.com/2016/10/25/last-fridays-iot-botnet-attack-and-internet-outages-explained-for-non-techies/>`_
+
+.. nextslide::
+
 * **Flood of**
 
   * *HTTP requests*
@@ -226,14 +237,6 @@ Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
 
   * 100,000..500,000 bots
   * Terabits of traffic
-
-.. nextslide::
-
-.. figure:: mirai-botnet-attack.gif
-   :scale: 80 %
-   :align: center
-
-Image by `Joey Devilla <http://www.globalnerdy.com/2016/10/25/last-fridays-iot-botnet-attack-and-internet-outages-explained-for-non-techies/>`_
 
 Attack post-mortem
 ==================
@@ -264,17 +267,6 @@ Inside IoT
 * Sensors / actuators
 * **Embedded systems**
 
-  * **Single-board computers**
-
-.. figure:: raspberry-pi-pcb.jpg
-   :scale: 70 %
-   :align: center
-
-.. nextslide::
-
-* Sensors / actuators
-* **Embedded systems**
-
   * **Microcontrollers**
 
 .. figure:: arduino-uno-pcb.jpg
@@ -285,7 +277,7 @@ Inside IoT
 
 * Sensors / actuators
 * Embedded systems
-* **Gateways**
+* **IoT Gateways**
 
 .. figure:: dell-edge-gateway-5000.png
    :scale: 50 %
@@ -295,15 +287,17 @@ Inside IoT
 
 * Sensors / actuators
 * Embedded systems
-* Gateways
-* **Data platform**
+* IoT Gateways
+* **IoT Data platform**
 
-  * **Cloud Service Providers**
+  * *AWS IOT*
+  * *Google Cloud IOT*
+  * *Microsoft Azure IoT Suite*
+  * *...*
 
-      * *AWS IOT*
-      * *Google Cloud IOT*
-      * *Microsoft Azure IoT Suite*
-      * *...*
+.. nextslide::
+
+.. figure:: iot-architecture.svg
 
 The story of a plug
 ===================
@@ -316,6 +310,12 @@ The story of a plug
 
 Plug under attack
 =================
+
+.. figure:: smart-plug-attack-diagram-1.svg
+   :scale: 150 %
+   :align: center
+
+.. nextslide::
 
 .. figure:: smart-plug-attack-diagram-2.svg
    :scale: 150 %
@@ -394,7 +394,7 @@ Exploit potential
 * DDoS targets on Internet
 * Attack targets on Wi-Fi network
 * Distributed spam
-* Disrupt/destroy appliances by flipping power on/off
+* Disrupt/destroy appliances
 
 Attack post-mortem
 ==================
@@ -412,60 +412,54 @@ IoT supply chain
 Things are...
 =============
 
-* **Hot**
-
-  * *Even forks are connected...*
+* **Like hot cakes**
 
 .. figure:: smart-fork.jpg
-   :scale: 100 %
+   :scale: 110 %
    :align: center
 
 .. nextslide::
 
 * Hot
-* **Cool**
-
-  * *"What a gadget! I want it!"*
+* **Cool gadgets**
 
 .. figure:: egg-counter.jpg
-   :scale: 80 %
+   :scale: 90 %
    :align: center
 
 .. nextslide::
 
 * Hot, cool
-* **Easy**
-
-  * *Adding a computer to a product is cheap...*
+* **Easy to do (as it looks)**
 
 .. nextslide::
 
 * Hot, cool, easy
-* **Hard**
+* **Hard to do right**
 
 .. nextslide::
 
 * Hot, cool, easy, hard
-* **Weak**
+* **Too weak to defend**
 
 .. nextslide::
 
 * Hot, cool, easy, hard, weak
-* **Powerful**
+* **Powerful together**
 
 .. nextslide::
 
 * Hot, cool, easy, hard, weak, powerful
-* **Messy**
+* **Messy inside**
 
 .. figure:: spaghetti-monster.jpg
-   :scale: 100 %
+   :scale: 120 %
    :align: center
 
 .. nextslide::
 
 * Hot, cool, easy, hard, weak, powerful, messy
-* **Misunderstood**
+* **Misunderstood by everyone**
 
 .. figure:: zeeq-smart-pillow.jpg
    :scale: 60 %
@@ -532,8 +526,8 @@ Firmware compromise
 .. figure:: philips-hue-attack-diagram-7.svg
    :align: center
 
-Unleashing worm
-===============
+Unleashing the worm
+===================
 
 .. figure:: philips-hue-attack-diagram-8.svg
    :align: center
@@ -543,6 +537,12 @@ Unleashing worm
 .. figure:: philips-hue-drone-attack.jpg
    :scale: 120 %
    :align: center
+
+.. nextslide::
+
+.. raw:: html
+
+   <video controls src="_static/zigbee-war-flying.mp4"></video>
 
 
 Attack post-mortem
@@ -599,7 +599,5 @@ Summary
 * Be reluctant giving them your data
 * Repel Things from your home
 
-Q&A
-===
-
 Thank you!
+==========
