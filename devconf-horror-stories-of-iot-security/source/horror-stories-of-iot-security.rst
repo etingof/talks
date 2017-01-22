@@ -214,9 +214,6 @@ Image by `JeroenT96 <https://commons.wikimedia.org/w/index.php?curid=47443899>`_
 
 .. nextslide::
 
-
-.. nextslide::
-
 .. figure:: mirai-botnet-attack.gif
    :scale: 80 %
    :align: center
@@ -406,7 +403,7 @@ Attack post-mortem
 IoT supply chain
 ================
 
-.. figure:: iot-manufacturers.svg
+.. figure:: iot-supply-chain.svg
    :align: center
 
 Things are...
@@ -479,7 +476,7 @@ The story of smart lights
 The lighting system
 ===================
 
-* **Bulbs, switches, gateway in ZigBee network**
+.. figure:: philips-hue-architecture.svg
 
 ZigBee vulnerability
 ====================
@@ -488,11 +485,30 @@ ZigBee vulnerability
    :scale: 120 %
    :align: center
 
-
-Defeating proximity check
-=========================
+Taking over bulbs
+=================
 
 .. figure:: philips-hue-attack-diagram-1.svg
+   :align: center
+
+.. nextslide::
+
+.. figure:: zigbee-takeover-attack-1.svg
+   :align: center
+
+.. nextslide::
+
+.. figure:: zigbee-takeover-attack-2.svg
+   :align: center
+
+.. nextslide::
+
+.. figure:: zigbee-takeover-attack-3.svg
+   :align: center
+
+.. nextslide::
+
+.. figure:: zigbee-takeover-attack-4.svg
    :align: center
 
 .. nextslide::
@@ -500,7 +516,8 @@ Defeating proximity check
 .. figure:: philips-hue-attack-diagram-2.svg
    :align: center
 
-.. nextslide::
+Firmware compromise
+===================
 
 .. figure:: philips-hue-attack-diagram-3.svg
    :align: center
@@ -510,26 +527,10 @@ Defeating proximity check
 .. figure:: philips-hue-attack-diagram-4.svg
    :align: center
 
-Firmware compromise
-===================
-
-.. figure:: philips-hue-attack-diagram-5.svg
-   :align: center
-
-.. nextslide::
-
-.. figure:: philips-hue-attack-diagram-6.svg
-   :align: center
-
-.. nextslide::
-
-.. figure:: philips-hue-attack-diagram-7.svg
-   :align: center
-
 Unleashing the worm
 ===================
 
-.. figure:: philips-hue-attack-diagram-8.svg
+.. figure:: philips-hue-attack-diagram-5.svg
    :align: center
 
 .. nextslide::
@@ -538,18 +539,10 @@ Unleashing the worm
    :scale: 120 %
    :align: center
 
-.. nextslide::
-
-.. raw:: html
-
-   <video controls src="_static/zigbee-war-flying.mp4"></video>
-
-
 Attack post-mortem
 ==================
 
-* Hardcoded encryption key
-* Security through obscurity never works
+* Questionable ZigBee security
 
 Major attack vectors
 ====================
@@ -557,22 +550,15 @@ Major attack vectors
   * Hardcoded passwords / keys
   * Forgotten services / vendor backdoors
   * Unsecured hardware interfaces
-  * Code injection
   * Web vulnerabilities
 
 Future IoT
 ==========
 
-* **Things to become smarter**
+* Things to become smarter
 
-  * **Learn and behave intelligently**
-
-.. nextslide::
-
-* **Things to become smarter**
-
-  * Learn and behave intelligently
-  * **Join brains**
+  * Learn and behave autonomously
+  * Join brains
 
 Advice for developers
 =====================
