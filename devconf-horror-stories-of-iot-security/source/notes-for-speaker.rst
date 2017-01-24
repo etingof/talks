@@ -308,6 +308,19 @@ We love gadgets! They are designed to be desirable.
 
 We poke fun at smart devices...yet, happily buy them.
 
+IoT can be nasty
+----------------
+
+Businesses and goverments may be interested in learning more about us.
+Consider the emergence of smart toys -- these cute plastic dolls are
+designed to listen to the children at play, store the conversations in
+the cloud and hand collected data over to certain parties, meaning
+parents, companies of vendor's choice and authorities.
+
+And they can speak to the children. Researchers found, that some smart
+toys are really excited about other products produced by the same
+company. So they keep referring to those.
+
 IoT is easy
 -----------
 
@@ -522,6 +535,11 @@ but as we have them now, they are scary.
 If you can't resist the desire to have a Thing, research the vendor to
 see what's their track record -- did they have security problems in the past,
 how they reacted, do they ship the updates, for how long.
+
+For example, a vulnerability in key exchange in one of the remote control
+protocols for drones was found that lets an attacker highjacking your drones.
+This vulnerability could partially be mutigated by a software update, but
+all vendors do that timely.
 
 Once you are a happy owner of an IoT gadget, put it (along with other Things)
 on a dedicated Wi-Fi network, firewall and disable uPnP.

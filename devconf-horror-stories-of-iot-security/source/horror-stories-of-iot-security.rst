@@ -249,7 +249,7 @@ Fun fact
 Inside IoT
 ==========
 
-* Mirai attacked a Linux box...
+* Mirai attacked just a Linux box...
 
 .. nextslide::
 
@@ -427,26 +427,35 @@ Things are...
 .. nextslide::
 
 * Hot, cool
+* **Curious**
+
+.. figure:: smart-toys.jpg
+   :scale: 70 %
+   :align: center
+
+.. nextslide::
+
+* Hot, cool, curious
 * **Easy to do (as it looks)**
 
 .. nextslide::
 
-* Hot, cool, easy
+* Hot, cool, curious, easy
 * **Hard to do right**
 
 .. nextslide::
 
-* Hot, cool, easy, hard
+* Hot, cool, curious, easy, hard
 * **Too weak to defend**
 
 .. nextslide::
 
-* Hot, cool, easy, hard, weak
+* Hot, cool, curious, easy, hard, weak
 * **Powerful together**
 
 .. nextslide::
 
-* Hot, cool, easy, hard, weak, powerful
+* Hot, cool, curious, easy, hard, weak, powerful
 * **Messy inside**
 
 .. figure:: spaghetti-monster.jpg
@@ -455,7 +464,7 @@ Things are...
 
 .. nextslide::
 
-* Hot, cool, easy, hard, weak, powerful, messy
+* Hot, cool, curious, easy, hard, weak, powerful, messy
 * **Misunderstood by everyone**
 
 .. figure:: zeeq-smart-pillow.jpg
