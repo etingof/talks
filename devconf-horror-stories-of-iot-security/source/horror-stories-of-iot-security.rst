@@ -128,16 +128,6 @@ Things [we think] we buy
    :scale: 70 %
    :align: center
 
-.. nextslide::
-
-* **Creepy things**
-
-  * **Would you marry a robot?**
-
-.. figure:: love-and-sex-with-robots-book.jpg
-   :scale: 80 %
-   :align: center
-
 Things we buy
 =============
 
