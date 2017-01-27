@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 1052.3622 744.09448"
+   id="svg143460"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="iot-architecture.svg">
+  <defs
+     id="defs143462">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient148556">
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:1;"
+         offset="0"
+         id="stop148558" />
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:0;"
+         offset="1"
+         id="stop148560" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient148548">
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:1;"
+         offset="0"
+         id="stop148550" />
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:0;"
+         offset="1"
+         id="stop148552" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient148530">
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:1;"
+         offset="0"
+         id="stop148532" />
+      <stop
+         style="stop-color:#ffccaa;stop-opacity:0;"
+         offset="1"
+         id="stop148534" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient148520">
+      <stop
+         style="stop-color:#ccffaa;stop-opacity:1;"
+         offset="0"
+         id="stop148522" />
+      <stop
+         style="stop-color:#ccffaa;stop-opacity:0;"
+         offset="1"
+         id="stop148524" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient148510">
+      <stop
+         style="stop-color:#ffeeaa;stop-opacity:1;"
+         offset="0"
+         id="stop148512" />
+      <stop
+         style="stop-color:#ffeeaa;stop-opacity:0;"
+         offset="1"
+         id="stop148514" />
+    </linearGradient>
+    <radialGradient
+       id="radialGradient2736"
+       gradientUnits="userSpaceOnUse"
+       cy="328.42001"
+       cx="325.26999"
+       gradientTransform="matrix(1,0,0,0.52148,0,157.16)"
+       r="181.09"
+       inkscape:collect="always">
+      <stop
+         id="stop6416"
+         style="stop-color:#ffffff"
+         offset="0" />
+      <stop
+         id="stop6418"
+         style="stop-color:#89b9ff;stop-opacity:0"
+         offset="1" />
+    </radialGradient>
+    <linearGradient
+       id="linearGradient2640"
+       y2="-492.41"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       x2="-93.992996"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       y1="-492.41"
+       x1="303.89999"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient1683">
+      <stop
+         id="stop1684"
+         style="stop-color:#68db0c"
+         offset="0" />
+      <stop
+         id="stop1685"
+         style="stop-color:#387606"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2642"
+       y2="-477.70001"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       x2="315.01001"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       y1="-477.70001"
+       x1="-92.987"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient2646"
+       y2="646.06"
+       gradientUnits="userSpaceOnUse"
+       x2="244.86"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       y1="827.01001"
+       x1="244.86"
+       inkscape:collect="always">
+      <stop
+         id="stop1695"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop1696"
+         style="stop-color:#ffffff"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient148150"
+       y2="-477.70001"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       x2="315.01001"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       y1="-477.70001"
+       x1="-92.987"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148155"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="303.89999"
+       y1="-492.41"
+       x2="-93.992996"
+       y2="-492.41" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148157"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="-92.987"
+       y1="-477.70001"
+       x2="315.01001"
+       y2="-477.70001" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148159"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <linearGradient
+       id="linearGradient148179"
+       y2="-477.70001"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       x2="315.01001"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       y1="-477.70001"
+       x1="-92.987"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148184"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="303.89999"
+       y1="-492.41"
+       x2="-93.992996"
+       y2="-492.41" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148186"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="-92.987"
+       y1="-477.70001"
+       x2="315.01001"
+       y2="-477.70001" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148188"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <linearGradient
+       id="linearGradient148208"
+       y2="-477.70001"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       x2="315.01001"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       y1="-477.70001"
+       x1="-92.987"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148213"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="303.89999"
+       y1="-492.41"
+       x2="-93.992996"
+       y2="-492.41" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148215"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="-92.987"
+       y1="-477.70001"
+       x2="315.01001"
+       y2="-477.70001" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148217"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148221"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148155-2"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="303.89999"
+       y1="-492.41"
+       x2="-93.992996"
+       y2="-492.41" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148157-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="-92.987"
+       y1="-477.70001"
+       x2="315.01001"
+       y2="-477.70001" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148159-7"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148155-9"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="303.89999"
+       y1="-492.41"
+       x2="-93.992996"
+       y2="-492.41" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1683"
+       id="linearGradient148157-4"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.9462,0.43463,0,-8.1131,57.559)"
+       x1="-92.987"
+       y1="-477.70001"
+       x2="315.01001"
+       y2="-477.70001" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2646"
+       id="linearGradient148159-5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.94876,0,0,0.43346,-8.1131,57.559)"
+       x1="244.86"
+       y1="827.01001"
+       x2="244.86"
+       y2="646.06" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148510"
+       id="radialGradient148518"
+       cx="634.90405"
+       cy="411.67114"
+       fx="634.90405"
+       fy="411.67114"
+       r="311.12778"
+       gradientTransform="matrix(1,0,0,0.19864543,0,329.89456)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148520"
+       id="linearGradient148528"
+       x1="186.74234"
+       y1="828.53375"
+       x2="584.39612"
+       y2="828.53375"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148530"
+       id="linearGradient148538"
+       x1="184.19125"
+       y1="983.47693"
+       x2="334.77982"
+       y2="983.47693"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148530"
+       id="linearGradient148546"
+       x1="384.6022"
+       y1="983.47693"
+       x2="535.19073"
+       y2="983.47693"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148548"
+       id="linearGradient148554"
+       x1="585.01314"
+       y1="983.47694"
+       x2="735.6017"
+       y2="983.47694"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient148556"
+       id="linearGradient148562"
+       x1="785.42409"
+       y1="983.47694"
+       x2="936.01265"
+       y2="983.47694"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="542.14286"
+     inkscape:cy="348.57143"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1391"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     units="in"
+     width="9.5in">
+    <inkscape:grid
+       type="xygrid"
+       id="grid147973" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata143465">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.26772)">
+    <rect
+       id="rect7240"
+       style="fill:url(#linearGradient148538);stroke:#bcbc20;stroke-width:0.58528757;fill-opacity:1"
+       rx="7.1144152"
+       ry="5.9454393"
+       height="86.372581"
+       width="150.00327"
+       y="940.29065"
+       x="184.4839" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="178.11958"
+       y="1083.2815"
+       id="text147975"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416034)"><tspan
+         sodipodi:role="line"
+         id="tspan147977"
+         x="178.11958"
+         y="1083.2815">IoT Device</tspan></text>
+    <rect
+       id="rect7240-9-2"
+       style="fill:url(#linearGradient148528);stroke:#bcbc20;stroke-width:1.04723799;fill-opacity:1"
+       rx="18.810411"
+       ry="7.1990786"
+       height="104.58489"
+       width="396.60651"
+       y="776.24133"
+       x="187.26596" />
+    <rect
+       id="rect7240-9-2-5"
+       style="fill:url(#radialGradient148518);stroke:#bcbc20;stroke-width:1.41625631;fill-opacity:1"
+       rx="29.445415"
+       ry="8.4110575"
+       height="122.19196"
+       width="620.83929"
+       y="350.57516"
+       x="324.48441" />
+    <g
+       id="g6444"
+       transform="matrix(1.6087313,0,0,0.96389668,109.22506,299.96243)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5530"
+         style="fill:url(#radialGradient2736);stroke:#000000;stroke-width:2.58699989"
+         d="m 337.41,235.28 c -37.52,0 -69.21,23.92 -79.07,56.6 -4.1,-2.33 -8.82,-3.66 -13.87,-3.66 -15.61,0 -28.28,12.67 -28.28,28.28 0,0.16 -0.01,0.31 0,0.47 -4.68,-0.96 -9.58,-1.5 -14.66,-1.5 -30.95,0 -56.06,19.02 -56.06,42.44 0,23.42 25.11,42.43 56.06,42.43 12.26,0 23.58,-3 32.81,-8.06 5.52,16.49 21.07,28.41 39.41,28.41 12.43,0 23.57,-5.47 31.19,-14.13 7.39,3.87 16.08,6.1 25.37,6.1 12.65,0 24.19,-4.12 32.85,-10.88 11.67,12.11 28.83,19.78 47.96,19.78 23.49,0 44.01,-11.55 55.04,-28.68 1.66,0.24 3.36,0.37 5.09,0.37 18.68,0 33.81,-14.69 33.81,-32.81 0,-18.12 -15.13,-32.85 -33.81,-32.85 -3.34,0 -6.57,0.5 -9.63,1.38 -10.06,-11.87 -25.11,-20.09 -42.31,-22.09 -3.52,-40.09 -38.85,-71.6 -81.9,-71.6 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6438"
+         style="fill:none;stroke:#a3ced5;stroke-width:2.58699989"
+         d="m 335.62,233.5 c -34.29,0.1 -67.82,23.01 -78.47,55.72 -15.51,-7.87 -36.34,1.23 -41.38,17.78 -0.82,2.51 -1.36,5.14 -1.5,7.78 -24.33,-4.28 -53.11,3.68 -66.15,25.88 -8.73,14.48 -4.49,34.12 7.93,45.06 20.15,19.16 53.13,21.18 77.29,9.81 7.83,20.93 33.26,32.77 54.4,25.06 6.74,-2.18 12.87,-6.49 17.75,-11.31 18.14,8.75 41.1,7.2 57.47,-4.66 26.26,26.38 74.15,25.3 98.84,-2.65 2.95,-2.02 3.8,-7.91 8.1,-6.56 19.94,1.38 38.72,-16.47 37.12,-36.63 -0.65,-20.76 -22.11,-36.66 -42.25,-32.41 -4.15,1.73 -5.74,-4.41 -9.15,-5.96 -9.66,-8.49 -22.48,-13.11 -34.5,-15.44 -3.67,-36.2 -34.98,-65.82 -70.59,-70.52 -4.92,-0.75 -9.92,-1.07 -14.91,-0.95 z" />
+    </g>
+    <g
+       id="g2649"
+       transform="matrix(-0.00372123,-0.13500582,0.16155029,-0.00310979,190.62561,881.60852)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603"
+         style="fill:url(#linearGradient2640);fill-rule:evenodd;stroke:url(#linearGradient2642);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605"
+         style="fill:url(#linearGradient148221);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <rect
+       id="rect7240-0"
+       style="fill:url(#linearGradient148546);stroke:#bcbc20;stroke-width:0.58528757;fill-opacity:1.0"
+       rx="7.1144152"
+       ry="5.9454393"
+       height="86.372581"
+       width="150.00327"
+       y="940.29065"
+       x="384.89484" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="361.3273"
+       y="1083.2815"
+       id="text147975-0"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416034)"><tspan
+         sodipodi:role="line"
+         id="tspan147977-0"
+         x="361.3273"
+         y="1083.2815">IoT Device</tspan></text>
+    <rect
+       id="rect7240-9"
+       style="fill:url(#linearGradient148554);stroke:#bcbc20;stroke-width:0.58528757;fill-opacity:1"
+       rx="7.1144152"
+       ry="5.9454393"
+       height="86.372581"
+       width="150.00327"
+       y="940.29065"
+       x="585.30579" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="544.53503"
+       y="1083.2815"
+       id="text147975-7"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416034)"><tspan
+         sodipodi:role="line"
+         id="tspan147977-6"
+         x="544.53503"
+         y="1083.2815">IoT Device</tspan></text>
+    <rect
+       id="rect7240-2"
+       style="fill:url(#linearGradient148562);stroke:#bcbc20;stroke-width:0.58528757;fill-opacity:1;fill-rule:nonzero"
+       rx="7.1144152"
+       ry="5.9454393"
+       height="86.372581"
+       width="150.00327"
+       y="940.29065"
+       x="785.71674" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="727.7428"
+       y="1083.2815"
+       id="text147975-8"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416034)"><tspan
+         sodipodi:role="line"
+         id="tspan147977-8"
+         x="727.7428"
+         y="1083.2815">IoT Device</tspan></text>
+    <g
+       id="g2649-5"
+       transform="matrix(-0.00372123,-0.13500582,0.16155029,-0.00310979,391.03653,881.60852)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603-6"
+         style="fill:url(#linearGradient148155);fill-rule:evenodd;stroke:url(#linearGradient148157);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605-6"
+         style="fill:url(#linearGradient148159);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <g
+       id="g2649-57"
+       transform="matrix(-0.00360154,-0.59350595,0.1563539,-0.01367111,593.66243,687.8573)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603-1"
+         style="fill:url(#linearGradient148184);fill-rule:evenodd;stroke:url(#linearGradient148186);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605-3"
+         style="fill:url(#linearGradient148188);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <g
+       id="g2649-1"
+       transform="matrix(-0.00359985,-0.60212922,0.15628058,-0.01386974,794.10465,683.49815)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603-11"
+         style="fill:url(#linearGradient148213);fill-rule:evenodd;stroke:url(#linearGradient148215);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605-0"
+         style="fill:url(#linearGradient148217);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <g
+       id="g2649-5-0"
+       transform="matrix(-0.00369351,-0.21132769,0.16034716,-0.00486782,392.37524,684.96254)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603-6-3"
+         style="fill:url(#linearGradient148155-2);fill-rule:evenodd;stroke:url(#linearGradient148157-1);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605-6-1"
+         style="fill:url(#linearGradient148159-7);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <g
+       id="g2649-5-1"
+       transform="matrix(-0.00372708,-0.12114286,0.16180408,-0.00279047,581.70416,472.01139)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2603-6-8"
+         style="fill:url(#linearGradient148155-9);fill-rule:evenodd;stroke:url(#linearGradient148157-4);stroke-width:5.61129999;stroke-linejoin:round"
+         d="m -320.84,329.94 -111.94,90.09 111.94,91.69 0,-45.44 12.9,0 4.94,0 153.72,0 0,45.44 111.94,-91.69 -111.94,-90.09 0,45.44 -153.72,0 -4.94,0 -12.9,0 0,-45.44 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2605-6-3"
+         style="fill:url(#linearGradient148159-5);fill-rule:evenodd"
+         d="m -327.75,345.19 -93.97,75.22 93.97,16.43 19.81,0 0,0.13 165.5,0 93.94,-16.47 -93.94,-75.19 0,37.94 -160.62,0 0,-0.13 -24.69,0 0,-37.93 z" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.27870941px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="210.34505"
+       y="918.24152"
+       id="text148299"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416034)"><tspan
+         sodipodi:role="line"
+         id="tspan148301"
+         x="210.34505"
+         y="918.24152">IoT Gateway</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:52.84838486px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="454.70215"
+       y="702.55676"
+       id="text148303"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416031)"><tspan
+         sodipodi:role="line"
+         id="tspan148305"
+         x="454.70215"
+         y="702.55676">Internet</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.27870941px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="369.17569"
+       y="466.08871"
+       id="text148307"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0939,0.91416031)"><tspan
+         sodipodi:role="line"
+         id="tspan148309"
+         x="369.17569"
+         y="466.08871">IoT Data Platform</tspan></text>
+  </g>
+</svg>
