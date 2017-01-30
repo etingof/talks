@@ -49,18 +49,20 @@ pyasn1 workflow
 Use case: SSH keys
 ==================
 
+* Grab ASN.1 schema for RSA key, compile it into pyasn1 classes
 * Read SSH keys from `~/.ssh/id_rsa`
 * Deserialize into Python data structures
 * Inspect the contents
 * Optionally, modify and store in file
 
-Step 1: grab ASN.1 from RFC
-===========================
+Step 1: grab ASN.1 from RFC2437
+===============================
 
-.. code-block:: asn1
+.. code-block:: python
 
-    PKCS-1 { iso(1) member-body(2) us(840) rsadsi(113549)
-             pkcs(1) pkcs-1(1) modules(0) pkcs-1(1) }
+    $ cat pkcs-1.asn
+
+    PKCS-1 {iso(1) member(2) us(840) rsadsi(113549) pkcs(1) pkcs-1(1) modules(0) pkcs-1(1)}
 
     DEFINITIONS EXPLICIT TAGS ::= BEGIN
         RSAPrivateKey ::= SEQUENCE {
@@ -74,7 +76,6 @@ Step 1: grab ASN.1 from RFC
              exponent2 INTEGER,
              coefficient INTEGER
         }
-
         Version ::= INTEGER
     END
 
@@ -85,13 +86,13 @@ Step 2: compile ASN.1 into Python
 
     $ pyasn1gen.py pkcs-1.asn > rsakey.py
 
-You can also import a pre-compiled module from `pyasn1-package`.
+You can also import a pre-compiled module from *pyasn1-modules*.
 
 .. code-block:: bash
 
     $ pip install pyasn1-modules
 
-Followed by `from rfc2437 import RSAPrivateKey`
+Followed by *from rfc2437 import RSAPrivateKey*
 
 .. nextslide::
 
@@ -195,18 +196,18 @@ Alternative: XML
     <xs:element name="beer" type="xs:string" />
     <xs:element name="bitterness" type="xs:int" />
 
-* Serialization: text
+* Serialization: text or binary
 
   * 49 bytes
-  * Strongly typed & named fields
+  * Optionally typed & named fields
 
 .. code-block:: xml
 
     <beer>Stone API</beer>
     <bitterness>77</bitterness>
 
-Alternatives: [uBJ]SON
-======================
+Alternative: [uBJ]SON
+=====================
 
 * JSON schema
 
@@ -221,18 +222,18 @@ Alternatives: [uBJ]SON
       }
     }
 
-* Serialization: text (JSON, BSON, uBJSON)
+* Serialization: text or binary
 
   * 38+ bytes
-  * Weakly typed & named fields
+  * Optionally typed & named fields
 
 .. code-block:: python
 
     {"beer": "Stone IPA",
      "bitterness": 77}
 
-Google Protobuffers
-===================
+Alternative: Google Protobuffers
+================================
 
 * Schema
 
@@ -250,8 +251,8 @@ Google Protobuffers
   * Strongly typed & unnamed fields
   * Compiler to generate stubs
 
-Cap'n'Proto
-===========
+Alternative: Cap'n'Proto
+========================
 
 * Schema
 
@@ -268,8 +269,8 @@ Cap'n'Proto
   * Memory efficient (no copying)
   * Low computation (no parsing)
 
-FlatBuffers
-===========
+Alternative: Google FlatBuffers
+===============================
 
 * Schema
 
@@ -348,8 +349,8 @@ When I may need ASN.1?
 * Interface with resource-constrained devices
 * Crypto apps and Internet protocols
 
-ASN.1 in history
-================
+Where ASN.1 came from?
+======================
 
 * Remnants of OSI model (part of e-mail suite)
 * OSI lost to Internet in 1990
