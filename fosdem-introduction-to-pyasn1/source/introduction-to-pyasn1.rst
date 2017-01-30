@@ -46,11 +46,13 @@ pyasn1 workflow
 
 .. figure:: pyasn1-workflow.svg
 
-Use case scenario
-=================
+Use case: SSH keys
+==================
 
-* You got a network protocol or file format to work with in your app
-* Protocols based on ASN.1 are numerous, let's take SSH keys as an example
+* Read SSH keys from `~/.ssh/id_rsa`
+* Deserialize into Python data structures
+* Inspect the contents
+* Optionally, modify and store in file
 
 Step 1: grab ASN.1 from RFC
 ===========================
@@ -98,7 +100,8 @@ Declarative syntax resembling original ASN.1 syntax.
 .. code-block:: python
 
     $ cat rsakey.py
-    class Version(Integer): pass
+    class Version(Integer):
+        pass
 
     class RSAPrivateKey(Sequence):
         componentType = NamedTypes(
@@ -126,9 +129,10 @@ Step 3: read your ~/.ssh/id_rsa
     with open open('.ssh/id_rsa') as key_file:
         b64_serialization = ''.join(key_file.readlines()[1:-1])
 
+    # Undo BASE64 serialization
     der_serialization = b64decode(b64_serialization)
 
-    # Reconstruct SSH key structure
+    # Undo DER serialization, reconstruct SSH key structure
     private_key, rest_of_input = der_decoder(der_serialization, asn1Spec=RSAPrivateKey())
 
 .. nextslide::
@@ -151,6 +155,7 @@ Play with the keys
 .. code-block:: python
 
     >>> pk = private_key
+    >>>
     >>> pk['prime1'] * pk['prime2'] == pk['modulus']
     True
     >>> pk['prime1'] == pk['modulus'] // pk['prime2']
@@ -169,12 +174,16 @@ Write it back
 
     from pyasn1.codec.der.encoder import encode as der_encoder
 
+    # Serialize SSH key data structure into DER stream
     der_serialization = der_encoder(private_key)
 
+    # Serialize DER stream into BASE64 stream
+    b64_serialization = '-----BEGIN RSA PRIVATE KEY-----\n'
+    b64_serialization += b64encode(der_serialization)
+    b64_serialization += '-----END RSA PRIVATE KEY-----\n'
+
     with open('.ssh/id_rsa.new', 'w') as key_file:
-        key_file.write(
-            b64encode(b64_serialization)
-        )
+        key_file.write(b64_serialization)
 
 Alternative: XML
 ================
@@ -307,55 +316,42 @@ How different is ASN.1
 ASN.1 gotchas
 =============
 
-* ASN.1 tools are numerous, but low quality
-* Ad-hoc codecs frequently insecure
+* ASN.1 is over-engineered and complicated
+* Lack of high-quality ASN.1 tools in FOSS
+* Ad-hoc codecs are numerous, but frequently insecure
+* CVE search by ASN.1 gives over thousand of hits
 
 Attacks on serializers
 ======================
 
-Where ASN.1 is came from?
-=========================
-
-* Part of first e-mail protocol (in 1984)
-* Split off into X.208 standard (in 1988)
-* Evolved into X.680 family of standards (1995..2015)
+* Memory exhaustion by
+* Causing loops by cycled references
+* Causing data corruption and/or code execution by buffer overflow
+* Code execution by injecting malicious commands into serialized data
 
 Is ASN.1 still relevant?
 ========================
 
-* Spaceflight, aviation and automotive
-* Industrial robotics and controllers
-* Finance (smart cards, ATM, POS etc)
-* Mobile and fixed telephony
-* Crypto applications and Internet protocols
-* RFID
+* Heavily used in:
 
-When should I consider ASN.1?
-=============================
+  * Spaceflight, aviation and automotive
+  * Industrial robotics and controllers
+  * Finance (smart cards, ATM, POS etc)
+  * Mobile and fixed telephony
+  * Crypto applications and Internet protocols
+  * RFID
 
-* Interface with ASN.1-based systems
-* Interface with embedded
+When I may need ASN.1?
+======================
 
-
-
-
-Where is ASN.1?
-===============
-
-* Ghost from the past
-* Still widely used
+* Interface with existing ASN.1-based systems
+* Interface with resource-constrained devices
+* Crypto apps and Internet protocols
 
 ASN.1 in history
 ================
 
-* An argument -- CCITT vs Internet
-* CCITT designed many OSI-compliant, over-engineered binary protocols
-* IETF -- simple, text-based protocols
-
-
-Security
-========
-
-* XX CVE-IDs for ASN.1
-* XX CVE-IDs for XML
-* In OpenSSL, ...
+* Remnants of OSI model (part of e-mail suite)
+* OSI lost to Internet in 1990
+* ASN.1 seems haunted by its OSI past
+* Though later protocols struggle with the same problems
