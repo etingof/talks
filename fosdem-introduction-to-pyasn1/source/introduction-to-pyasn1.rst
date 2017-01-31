@@ -55,8 +55,8 @@ Use case: SSH keys
 * Inspect the contents
 * Optionally, modify and store in file
 
-Step 1: grab ASN.1 from RFC2437
-===============================
+Step 1: grab ASN.1 (from RFC2437)
+=================================
 
 .. code-block:: python
 
@@ -232,7 +232,7 @@ Alternative: [uBJ]SON
     {"beer": "Stone IPA",
      "bitterness": 77}
 
-Alternative: Google Protobuffers
+Alternative: Google ProtoBuffers
 ================================
 
 * Schema
@@ -309,7 +309,7 @@ How different is ASN.1
 
 .. nextslide::
 
-* Supported by virtually any language
+* Supported by virtually any language / protocol analyzer
 * Including embedded applications
 * Can create SQL DB schema from ASN.1
 * Can generate test cases from ASN.1
@@ -325,7 +325,7 @@ ASN.1 gotchas
 Attacks on serializers
 ======================
 
-* Memory exhaustion by
+* Memory exhaustion by unbounded data or deep nesting
 * Causing loops by cycled references
 * Causing data corruption and/or code execution by buffer overflow
 * Code execution by injecting malicious commands into serialized data
@@ -346,13 +346,19 @@ When I may need ASN.1?
 ======================
 
 * Interface with existing ASN.1-based systems
-* Interface with resource-constrained devices
 * Crypto apps and Internet protocols
+* Build protocol to talk to resource-constrained devices
 
 Where ASN.1 came from?
 ======================
 
 * Remnants of OSI model (part of e-mail suite)
-* OSI lost to Internet in 1990
 * ASN.1 seems haunted by its OSI past
+* OSI lost to Internet in 1990
 * Though later protocols struggle with the same problems
+
+Summary
+=======
+
+* Do not be scared off by ASN.1
+* Reuse existing de/serializers
