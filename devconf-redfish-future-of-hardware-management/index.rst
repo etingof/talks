@@ -42,15 +42,16 @@ What is Redfish
 
 * The new standard to rule them all
 * Based on well-understood technologies
-* Extensible
+* Highly extensible
 
 Before the Redfish
 ==================
 
 * IPMI (Intelligent Platform Management Interface)
-* ILOM (Integrated Lights Out Manager)
+* iLO (Integrated Lights Out Manager)
 * iDRAC (Integrated Dell Remote Access Controller)
-* IAMT (Intel Active Management Technology)
+* AMT (Intel Active Management Technology)
+* iRMC, CIMC, UCSM, and many more
 
 Even earlier
 ============
@@ -69,7 +70,7 @@ Redfish design
 ==============
 
 * REST API service
-* Rigid JSON schema
+* Flexible JSON schema
 * A/synchronous operation
 * Extensibility
 
@@ -80,6 +81,7 @@ Redfish benefits
 * Tools readily available
 * Language independent
 * Easy automation
+* Standard way for OEM extensions
 
 Redfish design components
 =========================
@@ -110,6 +112,9 @@ Redfish services
 * AccountService (service for creating users)
 * EventService (service for pushing events to subscribers)
 
+Redfish OEM extensions
+======================
+
 Example: list servers
 =====================
 
@@ -120,10 +125,10 @@ Example: power-on server
 
 * Possibly live example
 
-Redfish OEM extensions
-======================
-
-
 Swordfish: storage extension
 ============================
 
+Redfish + YANG: networking
+==========================
+
+Summary from https://www.dmtf.org/sites/default/files/Managing_Network_Infrastructure_via_Redfish_v2.pdf
