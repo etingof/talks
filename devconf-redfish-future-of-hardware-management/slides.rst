@@ -15,8 +15,8 @@ Late night, you are in your bed:
 
 What do you do now?
 
-Immediate response
-==================
+Hardware management to rescue
+=============================
 
 * Reboot the machine
 * Change boot device
@@ -26,14 +26,14 @@ Management of scale
 ===================
 
 * Large fleet of servers
+* Automation
 * Mass deployment
 * Frequent re-purposing
-* Automation
 
 How it works
 ============
 
-* An independent satellite computer (BMC)
+* An independent satellite computer (BMC, Enclosure manager)
 * Out-of-band access to the main system
 * Many protocols, standard and proprietary
 
