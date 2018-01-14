@@ -94,8 +94,8 @@ Redfish resources
 =================
 
 * Systems (server, CPU, memory, devices, etc.)
-* Managers (BMC, Enclosure Manager, etc.)
 * Chassis (Racks, Enclosures, Blades, etc.)
+* Managers (BMC, Enclosure Manager, etc.)
 
 Redfish operations
 ==================
@@ -107,10 +107,10 @@ Redfish operations
 Redfish services
 ================
 
-* Tasks (jobs executed against resources)
-* Sessions (related operations executed against a resource)
-* AccountService (service for creating users)
-* EventService (service for pushing events to subscribers)
+* Tasks (asynchronous operations)
+* Sessions (web authentication)
+* AccountService (service for managing users)
+* EventService (alerting clients)
 
 Redfish OEM extensions
 ======================
