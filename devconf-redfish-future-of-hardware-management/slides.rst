@@ -18,17 +18,17 @@ What do you do now?
 Hardware management to rescue
 =============================
 
-* Reboot the machine
-* Change boot device
 * Get the console
+* Boot from network
+* Fix the problem
 
 Management of scale
 ===================
 
 * Large fleet of servers
-* Automation
 * Mass deployment
 * Frequent re-purposing
+* Automation
 
 How it works
 ============
@@ -83,11 +83,11 @@ Redfish benefits
 * Easy automation
 * Standard way for OEM extensions
 
-Redfish design components
-=========================
+Redfish core components
+=======================
 
 * Resources
-* Operations (HTTP CRUD & Actions)
+* Operations
 * Services
 
 Redfish resources
@@ -102,7 +102,7 @@ Redfish operations
 
 * Operate on resources
 * HTTP CRUD
-* Redfish Actions (e.g. power cycle)
+* Redfish Actions (non-idempotent)
 
 Redfish services
 ================
@@ -111,9 +111,6 @@ Redfish services
 * Sessions (web authentication)
 * AccountService (service for managing users)
 * EventService (alerting clients)
-
-Redfish OEM extensions
-======================
 
 Example: list servers
 =====================
@@ -124,6 +121,9 @@ Example: power-on server
 ========================
 
 * Possibly live example
+
+Redfish OEM extensions
+======================
 
 Swordfish: storage extension
 ============================

@@ -8,17 +8,17 @@ Why hardware management?
 ========================
 
 Late night, you, as a sysadmin, are in your deep sleep. Suddenly,
-you woke up from a monitoring system call notifying you that the company's
+you wake up from a monitoring system call notifying you that the company's
 core application has become unresponsive.
 
-You dressed up, reached out for your computer, hopped on the
-company's network, tried to ssh into the main production servers
-but ssh connection hung.
+You jump out of your bed, reach out for your computer, hop on the
+company's network, try to ssh into the main production server but ssh
+connection hung.
 
-Desperate, you were trying to understand the problem by pinging
+Desperate, you are trying to understand the problem by pinging
 the servers - ping works.
 
-Uh, your cell phone rung, that's your boss. They were very concerned,
+Uh, your cell phone rings, that's your boss. They are very concerned,
 almost freaking out. So you got 15 more minutes to figure it out or...
 
 What do you do next?
@@ -26,8 +26,9 @@ What do you do next?
 Hardware management to rescue
 =============================
 
-As this story goes, the lucky sysadmin had some form of hardware management
-system installed. So you used it to get on remote console of the server.
+Luckily, you are a wise sysadmin! You have prepared for disaster recovery.
+You have some form of hardware management at your disposal. So you used it
+to get on remote console of the server.
 You observed a severe filesystem corruption, so you went ahead booting
 server from network, repairing the filesystem and booting back to normal.
 
@@ -65,6 +66,9 @@ The BMC is running a software agent which acts as a frontend to all the
 features of the management platform. This software agent implements a
 protocol over which the clients can talk to the BMC.
 
+What is Redfish
+===============
+
 This talk is about the Redfish protocol, however many others exist now
 days or existed in the past.
 
@@ -74,6 +78,10 @@ your fleet.
 
 It is anticipated, that the legacy protocols will be eventually phased
 out in favour of the Redfish.
+
+Before the Redfish
+==================
+
 
 Even earlier
 ============
@@ -123,8 +131,8 @@ understood technologies Redfish is based on. That makes it easy for
 the the operators to integrate Redfish into their existing workflow
 and tooling.
 
-Redfish design components
-=========================
+Redfish core components
+=======================
 
 Redfish models all manageable physical components of the computer. The models
 are exposed through the REST API as resources. So models and resources are
@@ -133,19 +141,10 @@ roughly the same thing.
 Clients request operations to carry out on resources. The operations that
 can be done in CRUD manner are mapped to HTTP methods.
 
-However, for operation like machine state change request, CRUD is not a
-good fit. Therefore Redfish has the notion of Actions.
-
-Actions are frequently applied to a collection of resources.
-
-Most Redfish operations take little time so they are therefore
-synchronous. But some operations take longer than the client is willing
-to wait. For those cases Redfish server would run such operation
-asynchronously.
-
 Besides simple resource state changes, Redfish implements higher
-level services that ultimately also operate on resources, but in a more
-complicated way. We will talk about services in greater details shortly.
+level features, called Services, that ultimately also operate on resources,
+but in a more complicated way. We will talk about services in greater
+details shortly.
 
 Redfish resources
 =================
@@ -187,8 +186,8 @@ system power or rebooting the system.
 Redfish services
 ================
 
-The Redfish services is a collection of tools providing additional features
-or handling the edge cases.
+The Redfish services is a collection of tools providing the features that
+are not always directly relevant to hardware management.
 
 When an otherwise normal operation is going to take more than a few seconds
 to complete, Redfish agent may decide to run that operation asynchronously.
