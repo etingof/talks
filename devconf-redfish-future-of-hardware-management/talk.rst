@@ -7,46 +7,50 @@ Redfish - future of hardware management
 Why hardware management?
 ========================
 
-Late night, you, as a sysadmin, are in your deep sleep. Suddenly,
-you wake up from a monitoring system call notifying you that the company's
+Imagine you are sysadmin. It's late night, you are in your deep sleep.
+Suddenly, you wake up - a shift engineer calls you notifying that company's
 core application has become unresponsive.
 
 You jump out of your bed, reach out for your computer, hop on the
-company's network, try to ssh into the main production server but ssh
-connection hung.
+company's network to realize that the system is down.
 
-Desperate, you are trying to understand the problem by pinging
-the servers - ping works.
-
-Uh, your cell phone rings, that's your boss. They are very concerned,
-almost freaking out. So you got 15 more minutes to figure it out or...
+Desperate, you are trying to understand the problem when the phone
+rings again. Uh, that's your boss. They are very concerned,
+almost freaking out. So you got 10 more minutes to figure it out or...
 
 What do you do next?
 
 Hardware management to rescue
 =============================
 
-Luckily, you are a wise sysadmin! You have prepared for disaster recovery.
-You have some form of hardware management at your disposal. So you used it
-to get on remote console of the server.
-You observed a severe filesystem corruption, so you went ahead booting
-server from network, repairing the filesystem and booting back to normal.
+Luckily, you are a wise sysadmin! You have done your disaster recovery
+homework. You got some form of hardware management at your disposal.
 
-Imagine what would happen if there was no hardware management in place...
+So you used it to get on remote console of the server to figure out that
+it's a data corruption problem. So you went ahead booting server from
+network, restoring the data and booting back to normal.
+
+End of story.
+
+The purpose of this is to show one of the cases when hardware management
+makes sense.
 
 Management of scale
 ===================
 
-The other use case when hardware management can be a game changer is a
-large-scape deployment e.g. the situation when you got to run a large farm
+The other use case when hardware management can become a game changer is a
+large-scale deployment e.g. the situation when you got to run a large farm
 of servers perhaps at a DC.
 
-With some form of hardware management system capable of booting the servers,
-hooking on console, updating firmware, monitoring physical parameters etc.
-can significantly improve data centre automation.
+A hardware management system capable to boot the servers, hook on the
+console, update the firmware, monitor physical parameters etc. can
+significantly improve data centre automation.
 
-You will appreciate the difference whenever you need to enroll or update
-thousands servers at a time.
+Keep in mind that a single company as large as Microsoft can have about
+a million hardware servers in operation. When you have so many units,
+they tend to come and go almost all the time.
+
+This is where server automation may bring huge savings of all sorts.
 
 How it works
 ============
@@ -82,13 +86,21 @@ out in favour of the Redfish.
 Before the Redfish
 ==================
 
+The IPMI (Intelligent Platform Management Interface) is the direct
+predecessor of the Redfish. It was designed 20 years ago to run on
+the weak computers of the time. Now days IPMI turned out to be difficult
+to deal with and not quite secure.
+
+Many advanced Redfish features first appeared in various proprietary
+protocols designed by hardware vendors like HP, Dell, Intel and others
+for their own products.
 
 Even earlier
 ============
 
 But it used to be worse in the past!
 
-Before the BMC era, sysadmins used bulky remotely controlled
+Before the BMC era, sysadmins used bulky, remotely controlled
 keyboard-video-mouse switches, console servers (which aggregate the
 consoles of the servers to a single, networked server).
 
@@ -106,7 +118,7 @@ But it used to be even worse in the past!
 
 In the early years of my career in computing, I carried out night
 shifts at the DC. That involved sleeping on a folding bed between the
-roaring racks hugging a pager tight...
+roaring racks hugging pager tightly...
 
 Redfish design
 ==============
@@ -136,15 +148,14 @@ Redfish core components
 
 Redfish models all manageable physical components of the computer. The models
 are exposed through the REST API as resources. So models and resources are
-roughly the same thing.
+roughly the same things.
 
 Clients request operations to carry out on resources. The operations that
 can be done in CRUD manner are mapped to HTTP methods.
 
 Besides simple resource state changes, Redfish implements higher
-level features, called Services, that ultimately also operate on resources,
-but in a more complicated way. We will talk about services in greater
-details shortly.
+level features, called Services, that also operate on resources,
+but indirectly.
 
 Redfish resources
 =================
@@ -162,7 +173,7 @@ referencing them in the Systems branch.
 Finally, there is the Managers branch that exposes capabilities, state,
 configuration and actions related to the BMC, enclosure manager,
 rack e.g. the out-of-band management system being controlled by this
-Redfsh agent. As you might expect, the Managers branch references
+Redfish agent. As you might expect, the Managers branch references
 the Systems and Chassis this Manager controls.
 
 Redfish operations

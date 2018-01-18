@@ -9,9 +9,9 @@ Why hardware management?
 
 Late night, you are in your bed:
 
-* 4:00am - SMS alert: core app is down
-* 4:05am - ping works but ssh does not work
-* 4:10am - your boss gives you 15 more minutes...
+* 4:00am - night shift calls - app is down
+* 4:05am - reasons are still not clear
+* 4:10am - your boss gives you 10 more minutes...
 
 What do you do now?
 
@@ -40,9 +40,8 @@ How it works
 What is Redfish
 ===============
 
-* The new standard to rule them all
-* Based on well-understood technologies
-* Highly extensible
+* Just a new hardware management protocol
+* ...to eventually obsolete all others
 
 Before the Redfish
 ==================
@@ -77,10 +76,9 @@ Redfish design
 Redfish benefits
 ================
 
+* Universal adoption
 * Human readable and self documented
 * Tools readily available
-* Language independent
-* Easy automation
 * Standard way for OEM extensions
 
 Redfish core components
