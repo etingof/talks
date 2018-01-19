@@ -4,6 +4,11 @@ Redfish - future of hardware management
 
 *by Dmitry Tantsur and Ilya Etingof, Red Hat*
 
+.
+
+.. image:: redfish.png
+   :align: center
+
 Why hardware management?
 ========================
 
@@ -74,7 +79,7 @@ Redfish design
 ==============
 
 * REST API service
-* Flexible JSON schema
+* The oData schema
 * A/synchronous operation
 * Extensibility
 
