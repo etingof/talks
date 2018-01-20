@@ -18,7 +18,7 @@ Late night, you are in your bed:
 * 4:05am - reasons are still not clear
 * 4:10am - your boss gives you 10 more minutes...
 
-What do you do now?
+What's now? Scratch your head? Rub your eyes?
 
 Hardware management to the rescue
 =================================
@@ -38,14 +38,17 @@ Management of scale
 How it works
 ============
 
-* An independent satellite computer (BMC, Enclosure manager)
-* Out-of-band access to the main system
-* Many protocols, standard and proprietary
+* An independent satellite computer
+
+.. image:: bmc.svg
+   :align: center
 
 How it works
 ============
 
-.. image:: bmc.svg
+* An independent satellite computer (BMC, Enclosure manager)
+* Out-of-band access to the main system
+* Many protocols, standard and proprietary
 
 What is Redfish
 ===============
@@ -66,8 +69,8 @@ Even earlier
 ============
 
 * Remote KVM switches
-* Console servers
-* Circuit breakers
+* Serial console servers
+* Remote circuit breakers
 * In-band remote access: VNC, RDS
 
 When it all started
@@ -81,12 +84,11 @@ Redfish design
 * REST API service
 * The oData schema
 * A/synchronous operation
-* Extensibility
 
 Redfish benefits
 ================
 
-* Universal adoption
+* Targeting universal adoption
 * Human readable and self documented
 * Tools readily available
 * Standard way for OEM extensions
@@ -104,11 +106,6 @@ Redfish resources
 * Managers (BMC, Enclosure Manager, etc.)
 
 .. image:: redfish-resources.svg
-
-Redfish operations
-==================
-
-.. image:: redfish-components-2.svg
 
 List systems
 ============
@@ -132,7 +129,7 @@ By HTTP GET'ing the resource:
 Read system resource
 ====================
 
-Inventory branch:
+Inventory data:
 
 .. code-block:: bash
 
@@ -152,7 +149,7 @@ Inventory branch:
 Read system resource
 ====================
 
-Hardware branch:
+Hardware properties:
 
 .. code-block:: bash
 
@@ -176,7 +173,7 @@ Hardware branch:
 Read system resource
 ====================
 
-System boot branch:
+System configuration:
 
 .. code-block:: bash
 
@@ -193,6 +190,11 @@ System boot branch:
        ],
        "BootSourceOverrideMode": "UEFI",
    },
+
+Redfish operations
+==================
+
+.. image:: redfish-components-2.svg
 
 Change boot sequence
 ====================
@@ -232,6 +234,12 @@ Redfish services
 * Sessions (web authentication)
 * AccountService (service for managing users)
 * EventService (alerting clients)
+
+Redfish challenges
+==================
+
+* Wide adoption
+* Feature bloat
 
 Redfish OEM extensions
 ======================

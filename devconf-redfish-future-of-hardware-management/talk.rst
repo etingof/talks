@@ -88,8 +88,13 @@ Before the Redfish
 
 The IPMI (Intelligent Platform Management Interface) is the direct
 predecessor of the Redfish. It was designed 20 years ago to run on
-the weak computers of the time. Now days IPMI turned out to be difficult
-to deal with and not quite secure.
+the weak computers of the time.
+
+Now days IPMI turned out to be difficult to deal with because of:
+
+* it's hard to script with it
+* does not scale up due to UDP transport
+* not quite secure
 
 Many advanced Redfish features first appeared in various proprietary
 protocols designed by hardware vendors like HP, Dell, Intel and others
@@ -101,7 +106,7 @@ Even earlier
 But it used to be worse in the past!
 
 Before the BMC era, sysadmins used bulky, remotely controlled
-keyboard-video-mouse switches, console servers (which aggregate the
+keyboard-video-mouse switches, serial console servers (which aggregate the
 consoles of the servers to a single, networked server).
 
 For hard power-cycling people used remotely controlled circuit breakers.
@@ -138,7 +143,7 @@ Redfish benefits
 
 From functionality standpoint, Redfish is not a groundbreaking development.
 
-Its usability lie in its wide adoption in the future and the very well
+Its usability lies in its wide adoption in the future and the very well
 understood technologies Redfish is based on. That makes it easy for
 the the operators to integrate Redfish into their existing workflow
 and tooling.
