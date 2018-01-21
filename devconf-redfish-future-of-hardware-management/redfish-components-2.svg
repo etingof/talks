@@ -16,7 +16,7 @@
    viewBox="0 0 297 210"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="redfish-components-2.svg">
   <defs
      id="defs2">
@@ -134,13 +134,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="153.94741"
+     inkscape:cx="-264.25574"
      inkscape:cy="366.45941"
      inkscape:document-units="mm"
      inkscape:current-layer="g153692"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1051"
+     inkscape:window-width="2560"
+     inkscape:window-height="1392"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
@@ -152,7 +152,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -377,7 +377,7 @@
              height="127.14286"
              x="382.85715"
              y="50.843662" /></flowRegion><flowPara
-           id="flowPara7010"></flowPara></flowRoot>      <g
+           id="flowPara7010" /></flowRoot>      <g
          id="g76916-9-2-4-5"
          transform="matrix(0.22972694,0.12207167,0.1968301,-0.317983,684.67703,441.06626)">
         <g
@@ -420,24 +420,26 @@
          x="656.91772"
          y="416.07324"
          id="text7076"
-         transform="scale(1.0158819,0.98436637)"><tspan
+         transform="scale(1.0158819,0.98436637)"
+         sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan7074"
            x="656.91772"
            y="416.07324"
-           style="stroke-width:0.78759867px">CRUD</tspan></text>
+           style="stroke-width:0.78759867px">CRUD / Actions</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:31.5039463px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.78759867px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="661.69135"
          y="659.52521"
          id="text7080"
-         transform="scale(1.0158819,0.98436637)"><tspan
+         transform="scale(1.0158819,0.98436637)"
+         sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan7078"
            x="661.69135"
            y="659.52521"
-           style="stroke-width:0.78759867px">Actions</tspan></text>
+           style="stroke-width:0.78759867px">CRUD</tspan></text>
     </g>
   </g>
 </svg>
