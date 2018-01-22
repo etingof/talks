@@ -4,8 +4,6 @@ Redfish - future of hardware management
 
 *by Dmitry Tantsur and Ilya Etingof, Red Hat*
 
-.
-
 .. image:: redfish.png
    :align: center
 
@@ -27,7 +25,7 @@ Hardware management to the rescue
 * Boot from network
 * Fix the problem
 
-Management of scale
+Management on scale
 ===================
 
 * Large fleet of servers
@@ -47,7 +45,7 @@ How it works
 ============
 
 * An independent satellite computer (BMC, Enclosure manager)
-* Out-of-band access to the main system
+* Out-of-band access to the main system (or several systems)
 * Many protocols, standard and proprietary
 
 What is Redfish
@@ -81,17 +79,29 @@ When it all started
 Redfish design
 ==============
 
-* REST API service
+* RESTful(ish) API
 * The oData schema
 * A/synchronous operation
+* One BMC manages several systems
 
 Redfish benefits
 ================
 
 * Targeting universal adoption
-* Human readable and self documented
+* Human readable and self-documenting
 * Tools readily available
 * Standard way for OEM extensions
+
+Redfish API
+===========
+
+Redfish offers a JSON-based RESTful (to an extent) API.
+
+Everything is discoverable: the complete API tree can be
+walked from the root resources.
+
+Supported actions and OEM extensions listed explicitly
+in an object that provides them (e.g. a System).
 
 Redfish core components
 =======================
@@ -101,11 +111,23 @@ Redfish core components
 Redfish resources
 =================
 
-* Systems (server, CPU, memory, devices, etc.)
+* Systems (Servers)
 * Chassis (Racks, Enclosures, Blades, etc.)
 * Managers (BMC, Enclosure Manager, etc.)
 
 .. image:: redfish-resources.svg
+
+Redfish System
+==============
+
+A System object represents a server.
+
+Subresources:
+
+* processors
+* memory banks
+* network adapters
+* ... and many more
 
 List systems
 ============
