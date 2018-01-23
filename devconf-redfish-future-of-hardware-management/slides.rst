@@ -58,10 +58,15 @@ Before the Redfish
 ==================
 
 * IPMI (Intelligent Platform Management Interface)
-* iLO (Integrated Lights Out Manager)
+* iLO (Oracle Integrated Lights Out Manager)
 * iDRAC (Integrated Dell Remote Access Controller)
 * AMT (Intel Active Management Technology)
 * iRMC, CIMC, UCSM, and many more
+
+Contest time!
+=============
+
+* Why "Lights Out Manager"?
 
 Even earlier
 ============
@@ -76,13 +81,17 @@ When it all started
 
 * Night shifts at the DC
 
+.. image:: data_center_problem.jpg
+   :align: center
+   :scale: 75%
+
 Redfish design
 ==============
 
 * RESTful(ish) API
 * The oData schema
-* A/synchronous operation
-* One BMC manages several systems
+* Discoverability
+* Multiple nodes capabilities
 
 Redfish benefits
 ================
@@ -91,17 +100,6 @@ Redfish benefits
 * Human readable and self-documenting
 * Tools readily available
 * Standard way for OEM extensions
-
-Redfish API
-===========
-
-Redfish offers a JSON-based RESTful (to an extent) API.
-
-Everything is discoverable: the complete API tree can be
-walked from the root resources.
-
-Supported actions and OEM extensions listed explicitly
-in an object that provides them (e.g. a System).
 
 Redfish core components
 =======================
@@ -256,6 +254,13 @@ Redfish services
 * Sessions (web authentication)
 * AccountService (service for managing users)
 * EventService (alerting clients)
+
+Future of Redfish
+=================
+
+* Storage modelling
+* Systems composability
+* Software Defined Data Center
 
 Redfish challenges
 ==================

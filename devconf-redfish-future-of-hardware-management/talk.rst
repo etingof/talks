@@ -16,7 +16,10 @@ company's network to realize that the system is down.
 
 Desperate, you are trying to understand the problem when the phone
 rings again. Uh, that's your boss. They are very concerned,
-almost freaking out. So you got 10 more minutes to figure it out or...
+almost freaking out. They explain the enormous pressure they experience
+from all the angry customers...
+
+In the end you got 10 more minutes to figure it out or...
 
 What do you do next?
 
@@ -99,6 +102,11 @@ Now days IPMI turned out to be difficult to deal with because of:
 Many advanced Redfish features first appeared in various proprietary
 protocols designed by hardware vendors like HP, Dell, Intel and others
 for their own products.
+
+Contest time!
+=============
+
+Why do they call it 'lights out manager'?
 
 Even earlier
 ============
