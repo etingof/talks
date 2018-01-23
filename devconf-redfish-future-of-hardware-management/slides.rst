@@ -216,6 +216,11 @@ Redfish operations
 
 .. image:: redfish-components-2.svg
 
+Redfish actions
+===============
+
+.. TODO for etingof: show how available actions look (similar to OEM below)
+
 Change boot sequence
 ====================
 
@@ -255,24 +260,74 @@ Redfish services
 * AccountService (service for managing users)
 * EventService (alerting clients)
 
-Future of Redfish
+Extending Redfish
 =================
 
-* Storage modelling
-* Systems composability
-* Software Defined Data Center
+* No standard can cover everything
+* Idea: cover basics, allow extending
+* Possibilities:
+  * new top-level resources
+  * extending existing resources
+
+Redfish OEM extensions
+======================
+
+* Can add new fields, new actions, etc
+* Contained in a "Oem" JSON field
+  * ... in a vendor-specific namespace
+
+Redfish OEM: fields
+===================
+
+.. code-block:: json
+
+   "Oem": {
+     "Contoso": {
+       "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
+       "slogan": "Contoso anvils never fail",
+       "disclaimer": "* Most of the time"
+     },
+     "Contoso_biz": {
+       "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
+       "speed" : "ludicrous"
+     }
+   }
+   
+Here "Contoso" and "Contoso_biz" are vendors.
+
+Redfish OEM: actions
+====================
+
+.. code-block:: json
+
+   "Actions": {
+     "OEM": {
+       "Contoso.vx_x_x#Contoso.Ping": {
+         "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
+       }
+     }
+   }
+
+Swordfish: storage extension
+============================
+
+.. TODO
+
+Redfish + YANG: networking
+==========================
+
+.. TODO
 
 Redfish challenges
 ==================
 
 * Wide adoption
 * Feature bloat
+* Incompatible extensions
 
-Redfish OEM extensions
-======================
+Future of Redfish
+=================
 
-Swordfish: storage extension
-============================
-
-Redfish + YANG: networking
-==========================
+* Storage modelling
+* Systems composability
+* Software Defined Data Center
