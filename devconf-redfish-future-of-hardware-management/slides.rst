@@ -335,23 +335,28 @@ Future of Redfish
 =================
 
 * Storage modelling
+* Network modelling
 * Systems composability
-* Software Defined Data Center
 
 Redfish storage modelling
 =========================
 
-* Volumes (size, properies, configuration)
+* Volumes (size, properties, configuration)
 * Drives (inventory and hardware information)
 * Storage controllers (configuration)
 
 .. image:: redfish-storage.svg
    :align: center
 
-Redfish + YANG: networking
-==========================
+Redfish network modelling
+=========================
 
-.. TODO
+* Systems (switches, properties, configuration)
+* Chassis (inventory and hardware information)
+* NetworkDevices (network layout, YANG)
+
+.. image:: redfish-networking.svg
+   :align: center
 
 Redfish composability
 =====================
@@ -372,3 +377,5 @@ Redfish challenges
 
 Q/A
 ===
+
+Thank you! ;-)
