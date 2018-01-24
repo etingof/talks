@@ -7,6 +7,13 @@ Redfish - future of hardware management
 .. image:: redfish.png
    :align: center
 
+Agenda
+======
+
+* Why hardware management?
+* Why Redfish?
+* Where it is all going?
+
 Why hardware management?
 ========================
 
@@ -66,7 +73,7 @@ Before the Redfish
 Contest time!
 =============
 
-* Why "Lights Out Manager"?
+* What does it mean "Lights Out" in iLO?
 
 Even earlier
 ============
@@ -216,11 +223,6 @@ Redfish operations
 
 .. image:: redfish-components-2.svg
 
-Redfish actions
-===============
-
-.. TODO for etingof: show how available actions look (similar to OEM below)
-
 Change boot sequence
 ====================
 
@@ -238,10 +240,31 @@ By HTTP PATCH'ing the resource:
        -X PATCH
        http://enclosure-A/redfish/v1/Systems/blade-0
 
+Redfish actions
+===============
+
+Actions are discoverable:
+
+.. code-block:: python
+
+   "Actions": {
+      "#ComputerSystem.Reset": {
+         "target": "/redfish/v1/Systems/nuc0/Actions/ComputerSystem.Reset",
+         "ResetType@Redfish.AllowableValues": [
+            "On",
+            "ForceOff",
+            "GracefulShutdown",
+            "GracefulRestart",
+            "ForceRestart",
+            "Nmi",
+            "ForceOn"
+         ]
+      }
+
 Power-on the machine
 ====================
 
-By calling Action on the machine:
+By calling Action on the resource:
 
 .. code-block:: bash
 
@@ -279,7 +302,7 @@ Redfish OEM extensions
 Redfish OEM: fields
 ===================
 
-.. code-block:: json
+.. code-block:: python
 
    "Oem": {
      "Contoso": {
@@ -298,7 +321,7 @@ Here "Contoso" and "Contoso_biz" are vendors.
 Redfish OEM: actions
 ====================
 
-.. code-block:: json
+.. code-block:: python
 
    "Actions": {
      "OEM": {
@@ -308,15 +331,37 @@ Redfish OEM: actions
      }
    }
 
-Swordfish: storage extension
-============================
+Future of Redfish
+=================
 
-.. TODO
+* Storage modelling
+* Systems composability
+* Software Defined Data Center
+
+Redfish storage modelling
+=========================
+
+* Volumes (size, properies, configuration)
+* Drives (inventory and hardware information)
+* Storage controllers (configuration)
+
+.. image:: redfish-storage.svg
+   :align: center
 
 Redfish + YANG: networking
 ==========================
 
 .. TODO
+
+Redfish composability
+=====================
+
+* Assorted hardware components
+* Assembled into computers
+* Through REST API call
+
+.. image:: redfish-composability.svg
+   :align: center
 
 Redfish challenges
 ==================
@@ -325,9 +370,5 @@ Redfish challenges
 * Feature bloat
 * Incompatible extensions
 
-Future of Redfish
-=================
-
-* Storage modelling
-* Systems composability
-* Software Defined Data Center
+Q/A
+===
