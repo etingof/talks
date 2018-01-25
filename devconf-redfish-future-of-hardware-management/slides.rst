@@ -363,7 +363,7 @@ Network modelling
 .. image:: redfish-networking.svg
    :align: center
 
-Redfish composability
+Systems composability
 =====================
 
 * Assorted hardware components

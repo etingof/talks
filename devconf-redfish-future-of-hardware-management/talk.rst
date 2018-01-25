@@ -323,6 +323,44 @@ There is no direct association between the storage service and its clients
 at the Redfish level. That's because storage consumption happens at the
 OS level, that is well above hardware management protocol.
 
+Network modelling
+=================
 
+Redfish re-uses the YANG language and modules that describe network elements
+and their relationships for modelling the network. Basically, Redfish
+represents YANG modules describing particular network as JSON documents
+under the NetworkDevices endpoint.
 
+Since some network elements have similarities with computer systems,
+Redfish exposes devices like routers or switches under the Systems
+and Chassis endpoints.
 
+Systems composability
+=====================
+
+There is the emerging concept among the hardware vendors that hardware
+resources can be pooled and then picked up and assembled into a functional
+computer fully programmatically by the end user.
+
+The motivation behind that is to improve resource utilization by provisioning
+the hardware which is exactly suitable for the job. In some sense this idea
+resembles cloud instances where you can allocate and spin up a virtual machine
+having that among of RAM or CPUs as you want.
+
+There is a Redfish extension that exposes pools of hardware resources and
+allows the clients to compose computer systems from pieces via REST
+API.
+
+Redfish challenges
+==================
+
+To truly succeed Redfish needs to take over all those proprietary,
+vendor-specific hardware management protocols. That would require
+significant efforts on vendors side as well as the customers would
+need to adjust their tooling.
+
+The other concern is that having many features stuffed inside Redfish
+may grow it beyond comprehension. That may also affect the performance
+and stability of the Redfish agent implementation.
+
+But we will see!
