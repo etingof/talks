@@ -70,7 +70,7 @@ Before the Redfish
 * AMT (Intel Active Management Technology)
 * iRMC, CIMC, UCSM, and many more
 
-Contest time!
+By the way...
 =============
 
 * What does it mean "Lights Out" in iLO?
@@ -121,18 +121,6 @@ Redfish resources
 * Managers (BMC, Enclosure Manager, etc.)
 
 .. image:: redfish-resources.svg
-
-Redfish System
-==============
-
-A System object represents a server.
-
-Subresources:
-
-* processors
-* memory banks
-* network adapters
-* ... and many more
 
 List systems
 ============
@@ -289,37 +277,44 @@ Extending Redfish
 * No standard can cover everything
 * Idea: cover basics, allow extending
 * Possibilities:
-  * new top-level resources
-  * extending existing resources
+
+  - new top-level resources
+  - extending existing resources
 
 Redfish OEM extensions
 ======================
 
 * Can add new fields, new actions, etc
 * Contained in a "Oem" JSON field
-  * ... in a vendor-specific namespace
+
+  - ... in a vendor-specific namespace
 
 Redfish OEM: fields
 ===================
+
+* OEM fields are "named spaced"
+* "Contoso" and "Contoso_biz" are vendors
 
 .. code-block:: python
 
    "Oem": {
      "Contoso": {
-       "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
+       "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1\
+           #contoso.AnvilTypes1",
        "slogan": "Contoso anvils never fail",
        "disclaimer": "* Most of the time"
      },
      "Contoso_biz": {
-       "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
+       "@odata.type": "http://contoso.biz/schemas/extension1_1\
+           #RelatedSpeed",
        "speed" : "ludicrous"
      }
    }
-   
-Here "Contoso" and "Contoso_biz" are vendors.
 
 Redfish OEM: actions
 ====================
+
+* OEM Actions are "named spaced" as well
 
 .. code-block:: python
 
@@ -334,22 +329,32 @@ Redfish OEM: actions
 Future of Redfish
 =================
 
-* Storage modelling
+* Directly attached and networked storage
 * Network modelling
 * Systems composability
 
-Redfish storage modelling
+Directly attached storage
 =========================
 
-* Volumes (size, properties, configuration)
-* Drives (inventory and hardware information)
-* Storage controllers (configuration)
+* Volumes (logical storage)
+* Drives (physical media)
+* Storage (Volumes, Drives, Controllers)
 
-.. image:: redfish-storage.svg
+.. image:: redfish-storage-directly-attached.svg
    :align: center
 
-Redfish network modelling
-=========================
+Networked storage
+=================
+
+* Systems (all computers)
+* StorageSystems (computers providing storage)
+* StorageServices (Volumes, Drives, Controllers)
+
+.. image:: redfish-storage-networked.svg
+   :align: center
+
+Network modelling
+=================
 
 * Systems (switches, properties, configuration)
 * Chassis (inventory and hardware information)
@@ -375,7 +380,5 @@ Redfish challenges
 * Feature bloat
 * Incompatible extensions
 
-Q/A
-===
-
-Thank you! ;-)
+Questions?
+==========

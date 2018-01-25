@@ -98,15 +98,18 @@ Now days IPMI turned out to be difficult to deal with because of:
 * it's hard to script with it
 * does not scale up due to UDP transport
 * not quite secure
+* lagging behind functionally
 
-Many advanced Redfish features first appeared in various proprietary
-protocols designed by hardware vendors like HP, Dell, Intel and others
-for their own products.
+The latter probably explains why almost all hardware vendors eventually
+came up with their own proprietary hardware management protocols.
 
-Contest time!
+By the way...
 =============
 
-Why do they call it 'lights out manager'?
+Why do they call it 'lights out' manager? What does it mean 'lights out'
+in this context?
+
+Any ideas?
 
 Even earlier
 ============
@@ -129,15 +132,23 @@ When it all started
 
 But it used to be even worse in the past!
 
+Before all these hardware hacks were invented, the businesses have to
+keep a living soul at the DC at all times.
+
 In the early years of my career in computing, I carried out night
 shifts at the DC. That involved sleeping on a folding bed between the
 roaring racks hugging pager tightly...
 
+So much for the history!
+
 Redfish design
 ==============
 
+Now, what's Redfish?!
+
 The Redfish protocol is quite new. It has been released as an official
 standard of the Distributed Management Task Force organization in 2015.
+And it keeps developing!
 
 To put it simple, Redfish is a web service exposing REST API communicating
 JSON-serialized data.
@@ -166,9 +177,9 @@ roughly the same things.
 Clients request operations to carry out on resources. The operations that
 can be done in CRUD manner are mapped to HTTP methods.
 
-Besides simple resource state changes, Redfish implements higher
-level features, called Services, that also operate on resources,
-but indirectly.
+Besides resource state changes, Redfish implements a handful of high-level
+applications that may not be directly relevant to the hardware management.
+We will touch services later in this talk.
 
 Redfish resources
 =================
@@ -186,8 +197,12 @@ referencing them in the Systems branch.
 Finally, there is the Managers branch that exposes capabilities, state,
 configuration and actions related to the BMC, enclosure manager,
 rack e.g. the out-of-band management system being controlled by this
-Redfish agent. As you might expect, the Managers branch references
-the Systems and Chassis this Manager controls.
+Redfish agent.
+
+What's important to note here is that all these JSON documents that
+the Redfish agent serves, they hyperlink each other. That makes it possible
+for the clients to reconstruct the physical layout of the DC by simply
+crawling the web service.
 
 Redfish operations
 ==================
@@ -232,12 +247,81 @@ clients at random times. To accommodate that need the EventService can
 be used by clients to register the URL they will implement and listen at
 for each Resource they are interested in.
 
+Extending Redfish
+=================
 
+It is not realistic to come up with a standard that would fit all use-cases.
+It is especially hard with hardware - it keeps developing, new features
+pop up all the time.
 
+The Redfish's approach to this is to define a minimalistic framework which
+could be easily expanded whenever needed. On top of that, Redfish defines
+the core functionality which is common across typical hardware (we touched
+that earlier).
 
+Vendors can define new resources and actions as well as extend the existing
+ones.
 
+As for the extensions, Redfish mandates vendor-specific stuff to be
+named spaced by vendor name. That should reduce the chance of collision.
 
+Future of Redfish
+=================
 
+Being a framework, it's no wonder that Redfish keeps building up some
+more meat on top of its skeleton. The most recent and important development
+efforts focus on modelling:
+
+* directly attached and networked storage
+* systems composability
+
+Besides these core features, vendors work on moving away from their
+proprietary protocols towards Redfish.
+
+Directly attached storage
+=========================
+
+Now days we have two fundamentally different approaches to computer storage.
+We can have some sort of permanent storage directly attached to a computer
+system via a hardware bus. Or we can have a stand-alone storage service
+that can be consumed over network by many computer systems.
+
+Redfish has models for both directly attached and networked storage
+designs.
+
+For directly attached storage Redfish introduces the Drives, Volumes and
+Storage resources. Drives represent physical media which is used to
+construct Volumes. The Storage resource combines Drives, Volumes and
+Storage Controllers together.
+
+To model the physical relationship between the ComputerSystem and a
+directly attached storage, a hyperlink is present from a System object
+to a Storage object.
+
+The above model is capable to represent many physical arrangements one
+can encounter. Ranging from a single SATA controller + drive up to a set
+of redundant storage controllers backing arrays of hard drives arranged
+into RAID volumes.
+
+Networked storage
+=================
+
+Redfish treats networked storage as a computer system offering storage
+services. As such Redfish exposes such computer systems under Systems
+resources. It also maintains a shortcut to those computer systems
+from the StorageSystems endpoint.
+
+The logical view of the storage being provided is available through the
+StorageServices branch. Each StorageService entry reveals all the
+properties and configuration of the storage.
+
+Each such ComputerSystem references the StorageService object which
+models all the details about storage structure, properties,
+configuration, health, access details etc.
+
+There is no direct association between the storage service and its clients
+at the Redfish level. That's because storage consumption happens at the
+OS level, that is well above hardware management protocol.
 
 
 

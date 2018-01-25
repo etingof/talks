@@ -17,7 +17,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="redfish-storage.svg">
+   sodipodi:docname="redfish-storage-networked.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -48,7 +48,7 @@
          offset="1" />
     </linearGradient>
     <linearGradient
-       gradientTransform="matrix(0.38134255,0,0,0.27888334,608.98892,189.59618)"
+       gradientTransform="matrix(0.52108694,0,0,0.27888334,680.55621,189.59618)"
        id="linearGradient6633-7"
        y2="1341.3"
        xlink:href="#linearGradient6613"
@@ -58,7 +58,7 @@
        x1="-691.07001"
        inkscape:collect="always" />
     <linearGradient
-       gradientTransform="matrix(0.3855743,0,0,0.27881387,610.38667,380.88959)"
+       gradientTransform="matrix(0.52223731,0,0,0.27881387,680.37586,380.88959)"
        id="linearGradient6633-70"
        y2="1341.3"
        xlink:href="#linearGradient6613"
@@ -148,7 +148,7 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5003"
-       id="linearGradient7330"
+       id="linearGradient349"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-148.57,3.5714)"
        x1="376.51999"
@@ -184,7 +184,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -209,29 +209,29 @@
            y="567.44739"
            style="font-size:7.98851824px;line-height:1.25;stroke-width:0.38349694px"> </tspan></text>
       <rect
-         x="276.60315"
+         x="226.36644"
          y="562.71423"
-         width="137.08882"
+         width="187.32553"
          height="35.599461"
-         rx="22.298622"
-         style="fill:url(#linearGradient6633-7);stroke:#000000;stroke-width:1.63056803"
+         rx="30.470034"
+         style="fill:url(#linearGradient6633-7);stroke:#000000;stroke-width:1.90605915"
          ry="17.132639"
          id="rect4849-2" />
       <text
          id="text82113-9"
-         y="572.03979"
-         x="313.46796"
+         y="572.58112"
+         x="247.98546"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.25736237px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.45648676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"
          transform="scale(0.9774914,1.0230269)"><tspan
-           y="572.03979"
-           x="313.46796"
+           y="572.58112"
+           x="247.98546"
            id="tspan82115-1"
            sodipodi:role="line"
-           style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px">Volumes</tspan><tspan
+           style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px">StorageSystems</tspan><tspan
            id="tspan153648-2"
-           y="582.82562"
-           x="313.46796"
+           y="583.36694"
+           x="247.98546"
            sodipodi:role="line"
            style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px" /></text>
       <text
@@ -247,29 +247,29 @@
            y="754.33997"
            style="font-size:7.98851824px;line-height:1.25;stroke-width:0.38349694px"> </tspan></text>
       <rect
-         x="274.31244"
+         x="225.18344"
          y="753.91473"
-         width="138.61011"
+         width="187.73911"
          height="35.590595"
-         rx="22.546072"
-         style="fill:url(#linearGradient6633-70);stroke:#000000;stroke-width:1.63938606"
+         rx="30.537306"
+         style="fill:url(#linearGradient6633-70);stroke:#000000;stroke-width:1.90792441"
          ry="17.128374"
          id="rect4849-6" />
       <text
          id="text82113-2"
-         y="759.0694"
-         x="299.7944"
+         y="759.61072"
+         x="248.34389"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.25736237px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.45648676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"
          transform="scale(0.9774914,1.0230269)"><tspan
-           y="759.0694"
-           x="299.7944"
+           y="759.61072"
+           x="248.34389"
            id="tspan82115-6"
            sodipodi:role="line"
-           style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px">Controllers</tspan><tspan
+           style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px">StorageServices</tspan><tspan
            id="tspan153648-1"
-           y="769.85522"
-           x="299.7944"
+           y="770.39655"
+           x="248.34389"
            sodipodi:role="line"
            style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px" /></text>
       <g
@@ -299,19 +299,19 @@
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.25736237px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.45648676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="580.24481"
-           y="576.65106"
+           x="574.98285"
+           y="575.56842"
            id="text82113-7"
            transform="scale(0.9774914,1.0230269)"><tspan
              style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px"
              sodipodi:role="line"
              id="tspan82115-5"
-             x="580.24481"
-             y="576.65106">Drives</tspan><tspan
+             x="574.98285"
+             y="575.56842">Systems</tspan><tspan
              style="font-size:17.25736237px;line-height:1.25;stroke-width:0.45648676px"
              sodipodi:role="line"
-             x="580.24481"
-             y="587.43689"
+             x="574.98285"
+             y="586.35425"
              id="tspan153648-9" /></text>
       </g>
       <g
@@ -353,7 +353,7 @@
       </g>
       <g
          id="g76916-9-2-4-7"
-         transform="matrix(-0.10250689,-0.05700725,-0.08782793,0.1484975,405.9471,661.84884)">
+         transform="matrix(-0.10250689,-0.05700725,-0.08782793,0.1484975,383.6584,660.18751)">
         <g
            id="g6518-2">
           <g
@@ -368,7 +368,7 @@
         </g>
       </g>
       <g
-         transform="matrix(-0.00420308,0.12847256,0.28720123,0.00353768,186.4363,575.4224)"
+         transform="matrix(-0.00420308,0.12847256,0.28720123,0.00353768,163.90615,574.16457)"
          id="g5005-48-9-4-1"
          inkscape:transform-center-x="-1.9677705"
          inkscape:transform-center-y="25.150095">
@@ -455,7 +455,7 @@
          inkscape:transform-center-x="-1.6117203"
          inkscape:transform-center-y="54.013215" />
       <g
-         transform="matrix(-0.00420308,-0.12847256,0.28720123,-0.00353768,186.00877,778.55688)"
+         transform="matrix(-0.00420308,-0.12847256,0.28720123,-0.00353768,163.72007,776.89555)"
          id="g5005-48-9-4-1-9"
          inkscape:transform-center-x="-1.9677714"
          inkscape:transform-center-y="-25.150093">
@@ -499,25 +499,27 @@
            id="path5011-15-2-0-8" />
       </g>
       <g
-         transform="matrix(-0.08865375,-0.09187179,-0.20101453,0.20805417,615.83768,561.96955)"
-         id="g5005-48-9-4-6-1">
+         transform="matrix(-0.08623005,-0.09395438,-0.20638292,0.20319793,618.84205,566.0762)"
+         id="g5005-48-9-4-6-7"
+         inkscape:transform-center-x="-4.0090402"
+         inkscape:transform-center-y="-5.0781235">
         <path
            d="m 252.18,544.7 -42.44,17.75 42.44,17.72 v -13.5 c 2.06,-0.47 3.59,-2.18 3.59,-4.22 0,-2.05 -1.53,-3.79 -3.59,-4.25 z"
            inkscape:connector-curvature="0"
            style="opacity:0.98999999;fill:#292a28;stroke:#0c0e0e;stroke-width:1.89240003;stroke-linejoin:round"
-           id="path5007-98-6-4-7-1" />
+           id="path5007-98-6-4-7-5" />
         <path
            d="m 213.84,562.44 c 26.42,-10.89 37.19,16.44 37.19,16.44 z"
-           style="fill:url(#linearGradient7330);fill-rule:evenodd"
+           style="fill:url(#linearGradient349);fill-rule:evenodd"
            sodipodi:nodetypes="ccc"
            inkscape:connector-curvature="0"
-           id="path5009-0-8-3-3-5" />
+           id="path5009-0-8-3-3-3" />
         <path
            d="m 214.3,562.44 36.01,-15.02 0.72,31.46 z"
            style="opacity:0.98999999;fill:none;stroke:#292a28;stroke-width:1.77559996"
            sodipodi:nodetypes="cccc"
            inkscape:connector-curvature="0"
-           id="path5011-15-2-0-6-9" />
+           id="path5011-15-2-0-6-5" />
       </g>
     </g>
   </g>
