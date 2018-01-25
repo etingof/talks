@@ -171,7 +171,7 @@ Hardware properties:
       ...
       "ProcessorSummary": {
          "Count": 2,
-         "ProcessorFamily": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+         "ProcessorFamily": "Multi-Core Intel(R) Xeon(R) processor",
          "Status": {
             "State": "Enabled",
             "Health": "OK"
@@ -237,7 +237,8 @@ Actions are discoverable:
 
    "Actions": {
       "#ComputerSystem.Reset": {
-         "target": "/redfish/v1/Systems/nuc0/Actions/ComputerSystem.Reset",
+         "target": "/redfish/v1/Systems/nuc0/Actions/\
+             ComputerSystem.Reset",
          "ResetType@Redfish.AllowableValues": [
             "On",
             "ForceOff",
@@ -261,7 +262,8 @@ By calling Action on the resource:
         }'
        -H "Content-Type: application/json"
        -X POST
-        http://enclosure-A/redfish/v1/Systems/blade-0/Actions/ComputerSystem.Reset
+        http://enclosure-A/redfish/v1/Systems/blade-0/Actions/\
+            ComputerSystem.Reset
 
 Redfish services
 ================
@@ -292,7 +294,7 @@ Redfish OEM extensions
 Redfish OEM: fields
 ===================
 
-* OEM fields are "named spaced"
+* OEM fields are "name spaced"
 * "Contoso" and "Contoso_biz" are vendors
 
 .. code-block:: python
@@ -314,7 +316,7 @@ Redfish OEM: fields
 Redfish OEM: actions
 ====================
 
-* OEM Actions are "named spaced" as well
+* OEM Actions are "name spaced" as well
 
 .. code-block:: python
 
