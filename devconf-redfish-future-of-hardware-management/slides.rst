@@ -391,7 +391,10 @@ Redfish challenges
 More info
 =========
 
-* https://www.dmtf.org/standards/redfish
+* Come to the OpenStack booth! ;-)
+* Or follow the link:
+
+  - https://www.dmtf.org/standards/redfish
 
 Questions?
 ==========
