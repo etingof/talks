@@ -277,15 +277,7 @@ Extending Redfish
 =================
 
 * No standard can cover everything
-* Idea: cover basics, allow extending
-* Possibilities:
-
-  - new top-level resources
-  - extending existing resources
-
-Redfish OEM extensions
-======================
-
+* Cover basics, allow extending any resource
 * Can add new fields, new actions, etc
 * Contained in a "Oem" JSON field
 
@@ -338,6 +330,12 @@ Future of Redfish
 Directly attached storage
 =========================
 
+* SimpleStorage: list of disks of a System
+* Storage: complex storage (like RAID)
+
+Directly attached storage
+=========================
+
 * Volumes (logical storage)
 * Drives (physical media)
 * Storage (Volumes, Drives, Controllers)
@@ -345,11 +343,11 @@ Directly attached storage
 .. image:: redfish-storage-directly-attached.svg
    :align: center
 
-Networked storage
-=================
+Swordfish: remote storage
+=========================
 
 * Systems (all computers)
-* StorageSystems (computers providing storage)
+* StorageSystems (Systems providing storage)
 * StorageServices (Volumes, Drives, Controllers)
 
 .. image:: redfish-storage-networked.svg
@@ -369,11 +367,19 @@ Systems composability
 =====================
 
 * Assorted hardware components
-* Assembled into computers
+* Assembled into systems
 * Through REST API call
 
 .. image:: redfish-composability.svg
    :align: center
+   
+Systems composability
+=====================
+
+* CompositionService
+* ResourceBlock (inventory of components)
+* ResourceZone (relationship between blocks)
+* Results in a creation of a System
 
 Redfish challenges
 ==================
