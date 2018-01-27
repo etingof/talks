@@ -35,7 +35,7 @@ Hardware management to the rescue
 Management on scale
 ===================
 
-* Large fleet of servers
+* Large fleet of servers in cloud
 * Mass deployment
 * Frequent re-purposing
 * Automation
@@ -65,7 +65,7 @@ Before the Redfish
 ==================
 
 * IPMI (Intelligent Platform Management Interface)
-* iLO (Oracle Integrated Lights Out Manager)
+* iLO (HP Integrated Lights Out Manager)
 * iDRAC (Integrated Dell Remote Access Controller)
 * AMT (Intel Active Management Technology)
 * iRMC, CIMC, UCSM, and many more
@@ -387,6 +387,11 @@ Redfish challenges
 * Wide adoption
 * Feature bloat
 * Incompatible extensions
+
+More info
+=========
+
+* https://www.dmtf.org/standards/redfish
 
 Questions?
 ==========
