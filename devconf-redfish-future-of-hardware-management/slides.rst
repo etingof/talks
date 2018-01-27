@@ -237,7 +237,7 @@ Actions are discoverable:
 
    "Actions": {
       "#ComputerSystem.Reset": {
-         "target": "/redfish/v1/Systems/nuc0/Actions/\
+         "target": "/redfish/v1/Systems/blade-0/Actions/\
              ComputerSystem.Reset",
          "ResetType@Redfish.AllowableValues": [
             "On",
