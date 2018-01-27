@@ -65,7 +65,7 @@ Before the Redfish
 ==================
 
 * IPMI (Intelligent Platform Management Interface)
-* iLO (HP Integrated Lights Out Manager)
+* iLO (HPE Integrated Lights Out Manager)
 * iDRAC (Integrated Dell Remote Access Controller)
 * AMT (Intel Active Management Technology)
 * iRMC, CIMC, UCSM, and many more
