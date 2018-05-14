@@ -3,7 +3,7 @@
 Partner dependency and attachment styles
 ========================================
 
-*Based on `Attached <https://www.amazon.com/Attached-Science-Adult-Attachment-YouFind/dp/1585429139> book`_
+*Based on `Attached <https://www.amazon.com/Attached-Science-Adult-Attachment-YouFind/dp/1585429139> book`_*
 
 .. _opening:
 
