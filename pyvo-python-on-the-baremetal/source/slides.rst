@@ -277,7 +277,7 @@ Asyncio
 Online demo
 ===========
 
-VM running Micro Python:
+Micro Python in the browser:
 
 * http://micropython.org/unicorn
 
