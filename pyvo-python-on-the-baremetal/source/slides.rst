@@ -18,52 +18,6 @@ Agenda
 * Development workflow
 * Live demo \\o/
 
-Small computer
-==============
-
-.. figure:: pdp7.jpg
-   :scale: 50%
-   :align: center
-
-   DEC PDP-7 minicomputer
-
-Small computer
-==============
-
-.. figure:: ibm-pc.jpg
-   :scale: 100%
-   :align: center
-
-   IBM PC personal computer
-
-Small computer
-==============
-
-.. figure:: pyboard.jpg
-   :scale: 100%
-   :align: center
-
-   PyBoard
-
-IoT is a big driver
-===================
-
-* Smart homes
-* Smart cities
-* Computerized cars
-* Wearables
-* Medical devices
-* Smart toys
-* ...sky is the limit
-
-IoT is dangerous
-================
-
-* Influence the real world
-* Too cheap to design securely
-* Too numerous to keep an eye on each
-* Users do not understand the risks
-
 The microcontrollers
 ====================
 

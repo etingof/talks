@@ -16,19 +16,6 @@ capabilities, performance and price.
 Then we will focus on the Micro Python development work flow and that way move
 to the live demo.
 
-Small computer
-==============
-
-Historically, the term "small" is quite fluid. The first Unix system was designed
-in 1970 with a small computer system in mind (DEC VAX/VMS) which was not exactly
-small my modern standards.
-
-When in 1980 IBM PC came out, it was considerably smaller indeed so it was also dubbed
-as a small computer system.
-
-Now days small (or embedded) computer system typically means a single-board computer
-build on a SoC and about the size of a bank card or smaller.
-
 Why small computer?
 ===================
 
@@ -102,22 +89,3 @@ for low memory footprint.
 
 Micro Python can run right on the bare metal hardware as opposed to running
 as an application on top of the OS.
-
-
-
-
-
-
-
-The optimizations
-=================
-
-* RAM (mostly) and flash
-
-  * Integer takes 16 bytes abd pre-allocates some
-  * MCU may have 64KB of RAM
-
-* Modules in flash
-* No refcounts but there is gc
-
-
