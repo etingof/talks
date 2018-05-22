@@ -26,14 +26,50 @@ The microcontrollers
 * Hardware ports (I2O, GPIO etc.)
 * Power efficient
 
-The microcontrollers
-====================
+The MCU
+=======
 
-.. figure:: arduino.gif
+.. figure:: esp32.png
+   :scale: 100%
+   :align: center
+
+   Espressif Systems ESP32
+
+The SoC
+=======
+
+.. figure:: stm32-chip.png
+   :scale: 100%
+   :align: center
+
+   STMicroelectronics STM32 SoC
+
+Inside the SoC
+==============
+
+.. figure:: stm32-crack-open-1.jpg
+   :scale: 50%
+   :align: center
+
+   STMicroelectronics STM32 SoC
+
+Inside the SoC
+==============
+
+.. figure:: stm32-crack-open-2.jpg
    :scale: 70%
    :align: center
 
-   Arduino
+   STMicroelectronics STM32 SoC
+
+Inside the SoC
+==============
+
+.. figure:: stm32-crack-open-3.jpg
+   :scale: 80%
+   :align: center
+
+   STMicroelectronics STM32 SoC
 
 Programming for MCUs
 ====================
@@ -232,7 +268,7 @@ NodeMCU ESP8266
    :scale: 90%
    :align: center
 
-   NodeMCU ESP8266
+   Espressif Systems ESP8266
 
 Connect to WLAN
 ===============
