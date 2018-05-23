@@ -5,10 +5,10 @@ red_led = pyb.LED(1)
 green_led = pyb.LED(2)
 
 while True:
-        print(water.value())
-	if water.value():
-		red_led.on()
-		green_led.off()
-	else:
-		red_led.off()
-		green_led.on()
+    print(water.value())
+    if water.value():
+        red_led.on()
+        green_led.off()
+    else:
+        red_led.off()
+        green_led.on()
