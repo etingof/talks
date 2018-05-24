@@ -161,11 +161,12 @@ How it works
 ============
 
 * REPL prompt via serial console
-* The pyboard tool
 * Files on flash
 
   * boot.py
   * main.py
+
+* The pyboard tool
 
 The stdlib
 ==========
