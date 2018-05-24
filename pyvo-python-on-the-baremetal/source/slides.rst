@@ -81,15 +81,14 @@ Programming for MCUs
 The Micro Python way
 ====================
 
-* Code in Python 3
+* Code in Python
 * Upload Python script
 
 What is MicroPython?
 ====================
 
-* Complete new implementation of Python 3.4
-* Efficient on resources (8K of RAM)
-* Can runs on bare metal
+* From-the-scratch implementation of Python 3.4
+* Efficient on resources (runs in 8K of RAM)
 
 Similarities with CPython?
 ==========================
@@ -112,9 +111,9 @@ Differences from CPython?
 The MicroPython composition
 ===========================
 
-* Core: Compiler + runtime/VM
+* Core: Python VM + Python compiler
 
-  * Compiler emits either bytecode or machine code (ASM inliners)
+  * Compiler emits either bytecode or machine code
 
 * Core runs on OS or BM
 * Installable modules (starting with u)
@@ -266,7 +265,7 @@ NodeMCU ESP8266
 Originally Wi-Fi extension module for Arduino
 
 .. figure:: esp-12.jpg
-   :scale: 90%
+   :scale: 80%
    :align: center
 
    Espressif Systems ESP8266
@@ -295,7 +294,7 @@ Enable Web-sockets on the device:
 
     webrepl.start()
 
-Setup web-sockets client on your PC:
+Setup web-sockets client (CLI or browser) on your PC:
 
 .. code-block:: bash
 
