@@ -104,22 +104,20 @@ Similarities with CPython?
 Differences from CPython?
 =========================
 
-* Subset of stdlib
-* Not all stdlib APIs available
+* Slight variations in syntax and stdlib API
 * Add-on modules to access BM
 * Inline assembler
-* Memory efficient
+* Can run on the bare metal
 
-The internals of MicroPython
-============================
+The MicroPython composition
+===========================
 
 * Core: Compiler + runtime/VM
 
   * Compiler emits either bytecode or machine code (ASM inliners)
 
 * Core runs on OS or BM
-* Modules (starting with u)
-* Modules to control hardware
+* Installable modules (starting with u)
 
 The hardware
 ============
