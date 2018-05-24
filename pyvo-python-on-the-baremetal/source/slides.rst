@@ -123,7 +123,7 @@ The hardware
 ============
 
 * PyBoard
-* ESP8266 (originally, Wi-Fi module for Arduino)
+* ESP8266
 * ESP32
 * Micro:Bit
 * WiPy
@@ -261,6 +261,8 @@ NodeMCU ESP8266
 
 NodeMCU ESP8266
 ===============
+
+Originally Wi-Fi extension module for Arduino
 
 .. figure:: esp-12.jpg
    :scale: 90%
