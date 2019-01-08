@@ -43,10 +43,21 @@ Aija's Internship @OpenStack
 ----------------------------
 
 * How it all begun
+
+  - finding a project
+
+     - something new, but in familiar programming language
+     - mentors in similar time zone
+
 * The initial application:
 
   - Challenges
+
+    - transparancy of other applying
+
   - Successes
+
+    - dedicated tickets for application
 
 Outreachy application period
 ----------------------------
@@ -76,7 +87,24 @@ OpenStack: everybody struggles
 Aija's survival hints
 ---------------------
 
-...
+* Code reviews
+
+  - Don't take it personally (really don't)
+  - But take responsibility for the code you write
+  - Oppurtunity to learn
+  - "nit:"picks
+  - Followup patches
+
+* Working from home/remotely
+
+  - Self-starter
+  - Motivation
+  - Video calls
+  - Dedicated place to work
+
+* Writing a blog
+* Asking questions
+* Using IRC
 
 Case study: reaching out for the industry
 -----------------------------------------
