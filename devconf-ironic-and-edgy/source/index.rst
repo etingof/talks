@@ -11,6 +11,18 @@ In this talk...
 * Bare Metal provisioning at the Edge
 * Ironic at the Edge: now and in the future
 
+.. Things to talk about ^
+
+  In this talk we are going to explain what this Edge effort means,
+  why it is important and generally desired by OpenStack operators.
+
+  We will go on explaining the bare metal management, challenges and
+  possibly solutions in the Edge context.
+
+  At ironic, we seem to have multiple areas to address and improve for
+  the Edge cloud purposes. We are planning to explain the anticipated and
+  ongoing work in that regard.
+
 Why Edge Cloud
 ==============
 
@@ -65,7 +77,7 @@ Challenges at the Edge
   These desires and constraints fuel further development of the remote management
   technology.
 
-Bare metal at the Edge
+Bare metal on the rise
 ======================
 
 Why?
@@ -153,36 +165,34 @@ Ironic in action
 
    Perhaps we should explain the workflow e.g. inspect, deploy, clean.
 
-Ironic at the Edge
-==================
+Reshaping Ironic for the Edge
+=============================
 
 Challenges:
 
-* PXE for boot management is unreliable
-* DHCP over WAN unreliable and insecure
-* Low bandwidth
-
-.. Things to talk about ^
-
-Ironic at the Edge
-==================
+  * PXE for boot management is unreliable
+  * DHCP over WAN unreliable and insecure
+  * Low bandwidth
 
 Solutions:
 
-* DHCP over virtual media
-* Booting via virtual media or UEFI HTTP boot
-* Direct deploy with image streaming
+  * DHCP over virtual media
+  * Booting via virtual media or UEFI HTTP boot
+  * Direct deploy with image streaming
   * Potential: bit-torrent deploy
-* Federated Ironic
+  * Federated Ironic
 
 .. Things to talk about ^
+
+   Reiterate on the Edge challenges e.g. long network leg, reduced deployment
+   infrastructure (virtual media).
 
 Federated architecture
 ======================
 
 .. Things to talk about ^
 
-   The system is quite centralized, for Edge we need changes...
+   Present day ironic is quite centralized, for Edge we need changes...
 
 Redfish for better management
 =============================
@@ -190,10 +200,8 @@ Redfish for better management
 Features:
 
 * Converged, aggregated management
-* Remote access over TCP
-* Ubiquitous TLS
+* Remote access over TCP with TLS
 * Virtual Media boot
-* Composable hardware
 
 .. Things to talk about ^
 
@@ -231,7 +239,7 @@ Redfish: reliable communication
 ===============================
 
 * IPMI is lightweight, but unreliable
-* Redfish runs HTTP over TCP
+* Redfish runs HTTP over TCP and employs TLS
 
 .. Things to talk about ^
 
@@ -245,23 +253,14 @@ Redfish: reliable communication
   network protocol (TCP) what makes it better suited for operations over
   a congested network.
 
-Redfish: TLS is common
-======================
-
-* REST API through TLS
-* Well-understood, strong crypto
-* Many authentication and encryption options
-
-.. Things to talk about ^
-
   Following a handful of sensitive CVEs on IPMI, hardware
   security has been improved. With Redfish the well-understood
   TLS is being used for authentication and encryption needs.
 
-System boot management
-======================
+Booting is fragile
+==================
 
-Involves many fragile pieces:
+Boot strapping can be complicated and unreliable
 
 * Network discovery and autoconfiguration
 * Boot image transfer
@@ -354,6 +353,12 @@ Virtual media Layer-3 deployment
   There has been a fairly new ironic specification proposed to use
   virtual media floppy to pass static network configuration information
   for the deploy image to consume.
+
+IPMI-to-Redfish proxy
+=====================
+
+.. Things to talk about ^
+
 
 Summary: Ironic has an Edge
 ===========================
