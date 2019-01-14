@@ -34,10 +34,10 @@ Why Edge Cloud
   to reduce potential attack surface.
 
   Ultimately, these reasons lead to stretching the cloud infrastructure
-  up to the edges of the company network.
+  up to the edges of the company's network.
 
-Relevant trends
-===============
+Sibling trends
+==============
 
 * AI-managed data centres
 * Autonomous or self-driving data centres
@@ -67,19 +67,19 @@ Cloud at the Edge
 Challenges:
 
 * No living soul to "turn it off and on again"
-* Remote management over lossy public networks
+* Remote management over lossy and insecure network
 
 .. Things to talk about ^
 
   The distant pieces of the infrastructure could be hard to attend physically
-  to power cycle or replacement. That makes versatile remote management even
+  for power cycle or replacement. That makes versatile remote management even
   more relevant.
 
   However, network access to the outskirts of the network could be problematic
   because the access network could be lossy, unstable, slow and insecure.
 
   These desires and constraints fuel further development of the remote management
-  harness.
+  technology.
 
 Bare metal at the Edge
 ======================
@@ -93,12 +93,12 @@ Trends:
 .. Things to talk about ^
 
   Not specifically driven by the edge effort, rather for simplification
-  and cutting costs, hardware management tech tends to converge into
-  using common protocols and models. Now days Redfish (incorporting
+  and cutting costs, hardware management tech tends to converge onto
+  common protocols and data models. Now days Redfish (incorporting
   NETCONF) serves as such a common ground for everything hardware
   e.g. computers, switches and storage devices.
 
-  The BMCs, those small satellite computers that are always up and
+  The BMCs - those small satellite computers that are always up and
   running providing out-of-band access to the system being managed,
   have evolved from a mere tiny controller to a powerful computer
   capable to run heavy software.
@@ -108,11 +108,11 @@ Trends:
   hardware configuration in great details.
 
   The introduction of the Redfish hardware management protocol
-  greately improved the reliability and security of remote access
+  greatly improved the reliability and security of remote access
   to the BMC and therefore to the hardware fleet.
 
-OpenStack Ironic
-================
+The Ironic project
+==================
 
 * Official OpenStack bare metal hypervisor since the *Kilo* cycle
 * Lively upstream community
@@ -120,26 +120,55 @@ OpenStack Ironic
 
 .. Things to talk about ^
 
-  Ironic is the OpenStack project that implements a nova-managable
+  Ironic is the OpenStack project that implements a nova-manageable
   hypervisor targeting bare metal servers. The goal here is to
   to treat bare metal machines as VMs from the user perspective.
 
-  Ironic has been concieved as a fork of nova baremetal driver since
+  Ironic has been conceived as a fork of nova baremetal driver since
   OpenStack *Icehouse* cycle, by the *Kilo* cycle ironic has become
   the officially integrated OpenStack project.
 
   Ironic is already a relatively large project with quite active and
-  divierse community of users and contributors.
+  diverse community of users and contributors.
 
   Targeting hardware management, ironic has managed to attract a
   handful of high-profile hardware vendors thus creating and maintaining
   vendor-specific *drivers* (AKA *hardware types*) interfacing ironic
   with specific family of computers.
 
-Ironic at the Edge
-==================
+Ironic in OpenStack
+===================
 
-...
+.. image:: conceptual_architecture.png
+   :align: center
+   :scale: 70%
+
+.. Things to talk about ^
+
+   Perhaps we can tell that Ironic acts on BM boxen in the same way as
+   Nova manages VMs.
+
+Current ironic architecture
+===========================
+
+.. image:: deployment_architecture_2.png
+   :align: center
+
+.. Things to talk about ^
+
+   Ironic is a service driven by REST API. Hardware access is mediated
+   through drivers.
+
+Ironic in action
+================
+
+.. image:: ironic-sequence-pxe-deploy.png
+   :align: center
+   :scale: 70%
+
+.. Things to talk about ^
+
+   Perhaps we should explain the workflow e.g. inspect, deploy, clean.
 
 Bare metal at the Edge
 ======================
@@ -152,11 +181,18 @@ Challenges:
 
 .. Things to talk about ^
 
-Just to re-iterate similar slide from the beginning to set up the context
-for the next series of slides.
+   Just to re-iterate similar slide from the beginning to set up the context
+   for the next series of slides.
 
-Redfish to the rescue
-=====================
+Federated architecture
+======================
+
+.. Things to talk about ^
+
+   The system is quite centralized, for Edge we need changes...
+
+Redfish for better management
+=============================
 
 Features:
 
@@ -169,7 +205,7 @@ Features:
 .. Things to talk about ^
 
   Redfish is trying to solve many shortcomings that exist in the hardware
-  managenemt sphere. Luckily, many Redfish features play well in the
+  management sphere. Luckily, many Redfish features play well in the
   edge context.
 
   In the following slides we are going to look into the relevant
@@ -326,48 +362,17 @@ Virtual media Layer-3 deployment
   virtual media floppy to pass static network configuration information
   for the deploy image to consume.
 
-Redfish: composable hardware
-============================
-
-* Virtual bare metal machine (e.g. Intel RSD)
-
-  - Isolated hardware components (CPU, RAM, disks)
-  - Networked with PCIe switch
-  - API-composable into a server/switch/storage
-
-* Remotely de/compose hardware through Redfish
-
-  - Allows for fencing broken components
-  - Has some OpenStack integration
-
-.. Things to talk about ^
-
-  One of the interesting ongoing trends in the computing hardware
-  manufacturing industry is that they set up pools of basic computer
-  components in a chassis, and network them through something like
-  a PCI Express switch.
-
-  This PCIe switch is managable so the user can build computers at
-  the comfort of the REST API.
-
-  The technology is known as *hardware composition* and is being offered
-  by many large manufacturers e.g. Intel RsD. One of the benefits
-  applicable in the edge use-case is probably failed components fencing.
-
-  The hardware composition feature is modeled by Redfish and (to some extent)
-  is already supported in Ironic (specifically, Intel RsD).
-
-Ironic at the Edge
-==================
+Summary: Ironic has an Edge
+===========================
 
 The upcoming features:
 
-* Redfish virtual media boot
-* Redfish BIOS management
+* Federated architecture
+* Redfish virtual media boot, OOB, BIOS management etc.
 
 .. Things to talk about ^
 
-  Ironic is being shaped for edge deployments.
+  Ironic is being shaped up for edge deployments.
 
   Specifically, the new federated architecture and self-provisioning
   ironic ....
