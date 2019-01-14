@@ -31,6 +31,7 @@ Why Edge Cloud
   * IoT and smart homes
   * 8k video delivery
 
+* Economically viable locations
 * AI-managed data centres
 * Autonomous or self-driving data centres
 
@@ -38,6 +39,9 @@ Why Edge Cloud
 
   The IoT boom evokes the need to gather, aggregate and process the
   data not far from the IoT swarm.
+
+  Broadband media streaming pushes the distribution centers closer to
+  the end users.
 
   Cheaper (hydro) power sources in Scandinavia (near the Arctic Circle)
   combined with good Internet connectivity and cooler climate makes it
@@ -67,18 +71,18 @@ Challenges at the Edge
 .. Things to talk about ^
 
   The distant pieces of the infrastructure could be hard to attend physically
-  for power cycle or replacement. And the may not be free space or power
-  to allocate separate management units. That makes versatile remote management
-  even more relevant.
+  for power cycle or replacement.
 
-  However, network access to the outskirts of the network could be problematic
+  Network access to the outskirts of the network could be problematic
   because the access network could be lossy, unstable, slow and insecure.
 
-  These desires and constraints fuel further development of the remote management
-  technology.
+  Smaller points of presence may not allow much of the management overhead
+  in terms of power, cooling and rack space.
 
-Bare metal on the rise
-======================
+  That makes versatile remote management even more relevant.
+
+Bare metal on the raise
+=======================
 
 Why?
 
@@ -91,16 +95,14 @@ Trends:
 
 .. Things to talk about ^
 
-  Ultimately, every workload is handled by the bare metal hardware - servers,
+  Ultimately, every workload is carried out by the bare metal hardware - servers,
   switches and storage systems. Setting up the infrastructure is not a one-time
   affair, rather the operators may need to respin their cloud to repurpose the
   hardware, phase out the broken one, lend the hardware to some other user.
 
   Not specifically driven by the edge effort, rather for simplification
   and cutting costs, hardware management tech tends to converge onto
-  common protocols and data models. Now days Redfish (incorporting
-  NETCONF) serves as such a common ground for everything hardware
-  e.g. computers, switches and storage devices.
+  common protocols and data models.
 
   The introduction of the Redfish hardware management protocol
   greatly improved the reliability and security of remote access
@@ -176,11 +178,11 @@ Challenges:
 
 Solutions:
 
-  * DHCP over virtual media
-  * Booting via virtual media or UEFI HTTP boot
-  * Direct deploy with image streaming
-  * Potential: bit-torrent deploy
   * Federated Ironic
+  * Booting via virtual media or UEFI HTTP boot
+  * DHCP-less boot over virtual media
+  * Deploy image streaming
+  * Deploy image over BitTorrent
 
 .. Things to talk about ^
 
@@ -193,25 +195,6 @@ Federated architecture
 .. Things to talk about ^
 
    Present day ironic is quite centralized, for Edge we need changes...
-
-Redfish for better management
-=============================
-
-Features:
-
-* Converged, aggregated management
-* Remote access over TCP with TLS
-* Virtual Media boot
-
-.. Things to talk about ^
-
-  Redfish is trying to solve many shortcomings that exist in the hardware
-  management sphere. Luckily, many Redfish features play well in the
-  edge context.
-
-  In the following slides we are going to look into the relevant
-  Redfish feature and how they are being leveraged to solve the
-  edge use-case.
 
 Redfish: aggregated management
 ==============================
@@ -293,7 +276,7 @@ The history of network booting
   The problem of network booting has been approached long ago.
 
   The first well-defined and established procedure to perform the booting
-  is known as *PXE*. It relies on a suite of Internet procotols of the time.
+  is known as *PXE*. It relies on a suite of Internet protocols of the time.
   PXE has been designed for LANs, resource-constrained NICs and smaller-scale
   installations. These were probably the reasons to use UDP for all the involved
   protocols.
@@ -335,8 +318,8 @@ Features:
   Redfish fully supports virtual media operations so it fits well with
   the edge use-case.
 
-Virtual media Layer-3 deployment
-================================
+DHCP-less boot over virtual media
+=================================
 
 * Ironic deploy image still requires DHCP
 * Virtual Media offers virtual floppy \o/
@@ -354,11 +337,22 @@ Virtual media Layer-3 deployment
   virtual media floppy to pass static network configuration information
   for the deploy image to consume.
 
-IPMI-to-Redfish proxy
-=====================
+
+Deploy image streaming
+======================
 
 .. Things to talk about ^
 
+Deploy image over BitTorrent
+============================
+
+.. Things to talk about ^
+
+
+IPMI-to-Redfish proxy
+=====================
+
+Shall we?
 
 Summary: Ironic has an Edge
 ===========================
@@ -366,18 +360,17 @@ Summary: Ironic has an Edge
 The upcoming features:
 
 * Federated architecture
-* Redfish virtual media boot, OOB, BIOS management etc.
+* Reliable deploy image propagation
 
 .. Things to talk about ^
 
   Ironic is being shaped up for edge deployments.
 
-  Specifically, the new federated architecture and self-provisioning
-  ironic ....
+  The new federated architecture and self-provisioning ironic ....
 
-  The upcoming virtual media boot support will leverage the virtual media
-  feature of the newer BMCs.
+  The upcoming virtual media boot support combined with DHCP-less
+  boot will improve boot reliability and simplify the infrastructure
+  for Edge installations.
 
-  Redfish-based out-of-band inspection and BIOS management features
-  positions Ironic as a capable bare metal provisioning tool for
-  edge clouds.
+  The new ways, more reliable ways to deliver boot image to the node
+  will improve deploy times.

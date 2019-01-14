@@ -127,7 +127,7 @@ html_theme = 'alabaster'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = 'Ironic and Edgy v2019.01.07'
+html_title = 'Ironic and Edgy'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
