@@ -8,16 +8,19 @@ In this talk...
 ===============
 
 * Why Edge Cloud?
-* Ironic architecture updates
-* Redfish adoption
-* The upcoming edgy features
+* Bare Metal provisioning at the Edge
+* Ironic at the Edge: now and in the future
 
 Why Edge Cloud
 ==============
 
-* Low-latency, data-hungry applications e.g. IoT
-* The economy of DC: power/cooling
-* Security concerns: untrusted locations
+* Low-latency, data-hungry applications:
+
+  * IoT and smart homes
+  * 8k video delivery
+
+* AI-managed data centres
+* Autonomous or self-driving data centres
 
 .. Things to talk about ^
 
@@ -33,47 +36,28 @@ Why Edge Cloud
   make sense to isolate it from the other control parts of the cloud
   to reduce potential attack surface.
 
-  Ultimately, these reasons lead to stretching the cloud infrastructure
-  up to the edges of the company's network.
-
-Sibling trends
-==============
-
-* AI-managed data centres
-* Autonomous or self-driving data centres
-
-.. Things to talk about ^
-
   This need of decentralizing the infrastructure implies making
   data centres more autonomous and automated (e.g. lights-out).
   These traits align well with the other, otherwise unrelated,
   trends - using machine learning and AI for DC management.
 
-Why bare metal management
-=========================
+  Ultimately, these reasons lead to stretching the cloud infrastructure
+  up to the edges of the company's network.
 
-* Build, repair and re-purpose the cloud remotely
-
-.. Things to talk about ^
-
-  Ultimately, every workload is handled by the bare metal hardware - servers,
-  switches and storage systems. Setting up the infrastructure is not a one-time
-  affair, rather the operators may need to respin their cloud to repurpose the
-  hardware, phase out the broken one, lend the hardware to some other user.
-
-Cloud at the Edge
-=================
-
-Challenges:
+Challenges at the Edge
+======================
 
 * No living soul to "turn it off and on again"
 * Remote management over lossy and insecure network
+* Low footprint: no space for redundant hardware
+* Security concerns: untrusted locations
 
 .. Things to talk about ^
 
   The distant pieces of the infrastructure could be hard to attend physically
-  for power cycle or replacement. That makes versatile remote management even
-  more relevant.
+  for power cycle or replacement. And the may not be free space or power
+  to allocate separate management units. That makes versatile remote management
+  even more relevant.
 
   However, network access to the outskirts of the network could be problematic
   because the access network could be lossy, unstable, slow and insecure.
@@ -84,28 +68,27 @@ Challenges:
 Bare metal at the Edge
 ======================
 
+Why?
+
+* Build, repair and re-purpose the cloud remotely
+
 Trends:
 
 * Converged infrastructure management e.g. servers, switches, storage, power
-* Highly capable BMCs e.g. BIOS, OOB monitoring
 * Reliable and secure management protocols
 
 .. Things to talk about ^
+
+  Ultimately, every workload is handled by the bare metal hardware - servers,
+  switches and storage systems. Setting up the infrastructure is not a one-time
+  affair, rather the operators may need to respin their cloud to repurpose the
+  hardware, phase out the broken one, lend the hardware to some other user.
 
   Not specifically driven by the edge effort, rather for simplification
   and cutting costs, hardware management tech tends to converge onto
   common protocols and data models. Now days Redfish (incorporting
   NETCONF) serves as such a common ground for everything hardware
   e.g. computers, switches and storage devices.
-
-  The BMCs - those small satellite computers that are always up and
-  running providing out-of-band access to the system being managed,
-  have evolved from a mere tiny controller to a powerful computer
-  capable to run heavy software.
-
-  The exposure of the inner system details has also grown a lot. The
-  modern BMCs can manage system BIOS, report system health and in
-  hardware configuration in great details.
 
   The introduction of the Redfish hardware management protocol
   greatly improved the reliability and security of remote access
@@ -170,19 +153,29 @@ Ironic in action
 
    Perhaps we should explain the workflow e.g. inspect, deploy, clean.
 
-Bare metal at the Edge
-======================
+Ironic at the Edge
+==================
 
 Challenges:
 
-* Unreliable connection
-* Insecure networks
+* PXE for boot management is unreliable
+* DHCP over WAN unreliable and insecure
 * Low bandwidth
 
 .. Things to talk about ^
 
-   Just to re-iterate similar slide from the beginning to set up the context
-   for the next series of slides.
+Ironic at the Edge
+==================
+
+Solutions:
+
+* DHCP over virtual media
+* Booting via virtual media or UEFI HTTP boot
+* Direct deploy with image streaming
+  * Potential: bit-torrent deploy
+* Federated Ironic
+
+.. Things to talk about ^
 
 Federated architecture
 ======================
