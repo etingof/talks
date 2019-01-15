@@ -31,7 +31,7 @@ Why Edge Cloud
   * IoT and smart homes
   * 8k video delivery
 
-* Economically viable locations
+* Economically viable or untrusted locations
 * AI-managed data centres
 * Autonomous or self-driving data centres
 
@@ -47,10 +47,6 @@ Why Edge Cloud
   combined with good Internet connectivity and cooler climate makes it
   economically viable to build DCs in such distant and not densely populated
   areas.
-
-  When setting up a computing facility in the alienated locations, it may
-  make sense to isolate it from the other control parts of the cloud
-  to reduce potential attack surface.
 
   This need of decentralizing the infrastructure implies making
   data centres more autonomous and automated (e.g. lights-out).
@@ -70,8 +66,8 @@ Challenges at the Edge
 
 .. Things to talk about ^
 
-  The distant pieces of the infrastructure could be hard to attend physically
-  for power cycle or replacement.
+  Once you place your computing facility far away from your networking HQ,
+  immediately make physical attendance for power cycling or repair challenging.
 
   Network access to the outskirts of the network could be problematic
   because the access network could be lossy, unstable, slow and insecure.
@@ -79,7 +75,10 @@ Challenges at the Edge
   Smaller points of presence may not allow much of the management overhead
   in terms of power, cooling and rack space.
 
-  That makes versatile remote management even more relevant.
+  Having to do everything over untrusted network impose stronger security
+  requirements on the management protocols.
+
+  These considerations make versatile remote management even more relevant.
 
 Bare metal on the raise
 =======================
@@ -194,7 +193,19 @@ Federated architecture
 
 .. Things to talk about ^
 
-   Present day ironic is quite centralized, for Edge we need changes...
+   Present day ironic is quite centralized meaning that we run central ironic
+   managing all nodes.
+
+   For the Edge we are looking into making ironic distributed e.g. having
+   many ironic instances distributed around the globe each managing its own
+   (local) set of nodes, but offering a single view on all nodes.
+
+   ...
+
+IPMI-to-Redfish proxy
+=====================
+
+Shall we?
 
 Redfish: aggregated management
 ==============================
@@ -204,9 +215,9 @@ Redfish: aggregated management
 
 .. Things to talk about ^
 
-  Redfish is a REST service implemented inside the BMC. The service is
-  designed to be able to model various hardware devices such as
-  computers, switches, storage systems.
+  Redfish is a REST service running inside the BMC. The service is
+  designed to model various hardware devices such as computers, switches,
+  storage systems.
 
   The ability to utilize common hardware management technology for
   all manageable components reduces the complexity and resource footprint.
@@ -257,7 +268,7 @@ Boot strapping can be complicated and unreliable
 
   Typically, upon circuits initialization, computer system performs network
   discovery and its network stack configuration. Then the boot image gets
-  transfered from the network server up to system memory where it receives
+  transferred from the network server up to system memory where it receives
   control.
 
   Any malfunction along the way leads to boot failure which is hard to
@@ -331,28 +342,42 @@ DHCP-less boot over virtual media
   so-called deploy image (the one which pulls the installation image
   and writes it down to the local system drive) needs DHCP thus
   requiring either DHCP server in the broadcast domain or some form of
-  tunelling or proxying.
+  tunneling or proxying.
 
   There has been a fairly new ironic specification proposed to use
   virtual media floppy to pass static network configuration information
   for the deploy image to consume.
 
-
 Deploy image streaming
 ======================
 
+* Ironic implements on-the-fly image provisioning
+* Images pulled over HTTP can be be cached
+
 .. Things to talk about ^
+
+One of the existing methods of ironic image deployment involves pulling
+OS image over HTTP and writing it down on the fly e.g. avoiding
+intermediate caching (what's probably the most resource-efficient and
+suites well baremetal nodes with lesser RAM).
+
+On top of that, HTTP-based images could be efficiently cached at the
+Edge for repeated deployments.
 
 Deploy image over BitTorrent
 ============================
 
+* Offloads image provisioning to local nodes
+* Efficient for large images and simultaneous deployment
+
 .. Things to talk about ^
 
+Another, still experimental, provisioning method in ironic utilizes the
+BitTorrent protocol. It's serves torrent files from Glance, seeds images from
+Swift and most efficient in situations of mass concurrent nodes deployment.
 
-IPMI-to-Redfish proxy
-=====================
-
-Shall we?
+In the Edge situation, image provisioning through neighbouring nodes can
+save bandwidth and improve reliability.
 
 Summary: Ironic has an Edge
 ===========================
