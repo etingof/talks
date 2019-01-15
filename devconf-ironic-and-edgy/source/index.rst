@@ -218,50 +218,6 @@ To decentralize and distribute ironic, yet maintaining joint view on nodes:
    * Still having a single, centralized ironic instance managing Edge nodes
      over Redfish via a Redfish-to-IPMI proxy running at the Edge.
 
-Redfish: aggregated management
-==============================
-
-* Redfish models servers, switches, storage, everything
-* One BMC can manage the whole rack (or the whole DC)
-
-.. Things to talk about ^
-
-  Redfish is a REST service running inside the BMC. The service is
-  designed to model various hardware devices such as computers, switches,
-  storage systems.
-
-  The ability to utilize common hardware management technology for
-  all manageable components reduces the complexity and resource footprint.
-
-  On top of that, Redfish promotes the arrangement when one BMC manages
-  multiple pieces of hardware (possibly of different types). For instance
-  one BMC can manage the whole rack housing servers, switches, power
-  supplies etc.
-
-  That potentially slims down the entire installation on the edge.
-
-Redfish: reliable communication
-===============================
-
-* IPMI is lightweight, but unreliable
-* Redfish runs HTTP over TCP and employs TLS
-
-.. Things to talk about ^
-
-  If we extend the link to the control plane over the unreliable and
-  lossy network, we can't use unreliable protocols for hardware
-  management.
-
-  In the past, the protocol of choice for hardware management used to
-  be IPMI which has been desined 20 years ago with a small and
-  resource-constrained controller in mind. Redfish uses reliable
-  network protocol (TCP) what makes it better suited for operations over
-  a congested network.
-
-  Following a handful of sensitive CVEs on IPMI, hardware
-  security has been improved. With Redfish the well-understood
-  TLS is being used for authentication and encryption needs.
-
 Booting is fragile
 ==================
 
@@ -269,7 +225,6 @@ Boot strapping can be complicated and unreliable
 
 * Network discovery and autoconfiguration
 * Boot image transfer
-* System console access
 
 .. Things to talk about ^
 
@@ -282,7 +237,7 @@ Boot strapping can be complicated and unreliable
   transferred from the network server up to system memory where it receives
   control.
 
-  Any malfunction along the way leads to boot failure which is hard to
+  A packet loss along the way leads to boot failure which is hard to
   analyze unless one has console access to the system.
 
 The history of network booting
@@ -340,8 +295,8 @@ Features:
   Redfish fully supports virtual media operations so it fits well with
   the edge use-case.
 
-DHCP-less boot over virtual media
-=================================
+Non-network boot over virtual media
+===================================
 
 * Ironic deploy image still requires DHCP
 * Virtual Media offers virtual floppy \o/
@@ -396,17 +351,16 @@ Summary: Ironic has an Edge
 The upcoming features:
 
 * Federated architecture
-* Reliable deploy image propagation
+* Non-network boot
+* Efficient image delivery
 
 .. Things to talk about ^
 
-  Ironic is being shaped up for edge deployments.
+  Ironic is being shaped up for the edge deployments.
 
-  The new federated architecture and self-provisioning ironic ....
+  The main challenge ironic team is currently focusing on is to make
+  bare metal node boot and image delivery quick and reliable at the edge
+  situation.
 
-  The upcoming virtual media boot support combined with DHCP-less
-  boot will improve boot reliability and simplify the infrastructure
-  for Edge installations.
-
-  The new ways, more reliable ways to deliver boot image to the node
-  will improve deploy times.
+  That will hopefully make ironic one of the best tools for bare metal
+  provisioning in the edge cloud.
