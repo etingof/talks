@@ -191,21 +191,27 @@ Solutions:
 Federated architecture
 ======================
 
+To decentralize and distribute ironic, yet maintaining joint view on nodes:
+
+* API proxy
+* IPMI-to-Redfish proxy
+
 .. Things to talk about ^
 
    Present day ironic is quite centralized meaning that we run central ironic
    managing all nodes.
 
    For the Edge we are looking into making ironic distributed e.g. having
-   many ironic instances distributed around the globe each managing its own
+   many ironic instances distributed around the globe, each managing its own
    (local) set of nodes, but offering a single view on all nodes.
 
-   ...
+   As of this moment the ironic developers are poking at two ideas:
 
-IPMI-to-Redfish proxy
-=====================
+   * Standing up an API proxy service talking to satellite ironic instances
+     and that way joining them into a single view
 
-Shall we?
+   * Still having a single, certralized ironic instance managing Edge nodes
+     over Redfish via a Redfish-to-IPMI proxy running at the Edge.
 
 Redfish: aggregated management
 ==============================
