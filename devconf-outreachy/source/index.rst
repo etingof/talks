@@ -53,11 +53,35 @@ Aija's Internship @OpenStack
 
   - Challenges
 
-    - transparancy of other applying
+    - initial ticket
+    - transparency of other applying
 
   - Successes
 
     - dedicated tickets for application
+
+.. Things to talk about ^
+
+  my background: a full-stack web developer in enterprise information systems
+  using Java and C#. Used FOSS for personal needs.
+
+  Criteria to filter initial list. Try something new that haven't done before.
+  Best chances with projects in Python that have used in personal projects.
+
+  Similar time zone to avoid waiting for hours if get stuck with something.
+  If wouldn't be able to find the project using all criteria, this would be dropped.
+
+  OpenStack project matching all criteria.
+
+  Choice of the ticket was not successful - in the end it did not result in any code,
+  but only documentation updates.
+  Seemed that best tickets were already taken.
+
+  Visibility of other people applying and how they are going. New applicant appearing
+  after application deadline extended.
+
+  Despite the challenges of initial ticket,
+  dedicated tickets still a good starting point.
 
 Outreachy application period
 ----------------------------
@@ -91,20 +115,39 @@ Aija's survival hints
 
   - Don't take it personally (really don't)
   - But take responsibility for the code you write
-  - Oppurtunity to learn
-  - "nit:"picks
-  - Followup patches
+  - Essential part of programming
+  - Opportunity to learn
+
+* Asking questions
 
 * Working from home/remotely
 
   - Self-starter
   - Motivation
-  - Video calls
   - Dedicated place to work
+  - Video calls
 
-* Writing a blog
-* Asking questions
-* Using IRC
+.. Things to talk about ^
+
+  Code reviews very demanding and questioning every single bit.
+
+  "You are not your code" - aware not to take this personally.
+
+  Avoiding opposite extreme - not taking responsibility for the code
+
+  Important part of software development, still productive time if
+  not writing new code actively.
+
+  Learned and researched new things
+  even if they did not make to submitted version.
+
+  Finding a balance when to ask for help - is it too soon or should
+  try to figure out yourself.
+
+  Working outside the regular office might be challenging. Need to have
+  right motivation and environment. Separate work form leisure and
+  leisure from work.
+  Regular calls for synchronous/instant communication.
 
 Case study: reaching out for the industry
 -----------------------------------------
