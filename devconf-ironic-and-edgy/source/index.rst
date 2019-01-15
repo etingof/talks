@@ -31,7 +31,7 @@ Why Edge Cloud
   * IoT and smart homes
   * 8k video delivery
 
-* Economically viable or untrusted locations
+* Economically viable
 * AI-managed data centres
 * Autonomous or self-driving data centres
 
@@ -185,8 +185,13 @@ Solutions:
 
 .. Things to talk about ^
 
-   Reiterate on the Edge challenges e.g. long network leg, reduced deployment
-   infrastructure (virtual media).
+   In general, provisioning a server has a couple of weak points that get
+   amplified if we extend the provisioning network.
+
+   Therefore the focus of ironic team is to adapt system architecture to
+   mitigate those weak points.
+
+   In the following slides we are going to check out the major ideas.
 
 Federated architecture
 ======================
@@ -205,12 +210,12 @@ To decentralize and distribute ironic, yet maintaining joint view on nodes:
    many ironic instances distributed around the globe, each managing its own
    (local) set of nodes, but offering a single view on all nodes.
 
-   As of this moment the ironic developers are poking at two ideas:
+   As of the time being, ironic developers are poking at two ideas:
 
    * Standing up an API proxy service talking to satellite ironic instances
      and that way joining them into a single view
 
-   * Still having a single, certralized ironic instance managing Edge nodes
+   * Still having a single, centralized ironic instance managing Edge nodes
      over Redfish via a Redfish-to-IPMI proxy running at the Edge.
 
 Redfish: aggregated management
