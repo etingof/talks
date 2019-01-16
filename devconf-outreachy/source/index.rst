@@ -1,43 +1,76 @@
 
-.. Becoming OpenStack Developer via Outreachy slides file, created by
-   hieroglyph-quickstart on Wed Jan  2 14:19:51 2019.
-
-
 Becoming OpenStack Developer via Outreachy
 ==========================================
 
 Presented by: Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof
 
+Why we do this
+--------------
+
+* To help breeding software engineers
+* Sustain the open source culture
+
+.. Things to talk about ^
+
+  Much like in medieval European trade guilds (or even now days science), software
+  engineering seems to require some kind of apprenticeship before one can get a
+  hold of the profession.
+
+  As breeding and sustaining open source software is part of the Red Hat business
+  strategy, attracting and growing open source engineers lines-up well with
+  company's goals.
+
+  Beyond that, we are the open source engineers ourselves. It is in our immediate
+  interest to sustain and promote the culture we enjoy and being part of.
+
 What is OpenStack
 -----------------
 
 * Decade-old open source community project
-* Has involves XXX developers from YYY companies
-* Made of XXX repos totalling YYY commits
+* Has involves 1025 developers from 126 companies
+* Made of 728 repos
+
+Reference: https://www.stackalytics.com, Stein cycle
+
+.. Things to talk about ^
+
+  OpenStack is a large and well-established, highly collaborative open source software
+  engineering project. At OpenStack, we crave quality engineering practices, mutual respect
+  and continuous learning.
+
+  The goal of the OpenStack project is to create and maintain free and open source cloud
+  management software.
+
+  If we look at Stacklytics for the current (Stein) cycle, the basic stats can be seen on the
+  slide.
 
 What is Outreachy
 -----------------
 
-* Outreachy breeds new open source engineers
 * Outreachy fights the discrimination
 * Interns get on-board open source projects
 * Each intern gets a mentor (or two)
 * 3 month remote paid internship
+
+.. Things to talk about ^
 
 Why enrolling into the internship
 ---------------------------------
 
 * To find your aspirations
 * To learn the software engineering craft
-* To get along with the open source trade guild
+* To get along with the software engineering profession
 * To get a job (hopefully, the dream one)
+
+.. Things to talk about ^
 
 Why mentoring with @Outreachy
 -----------------------------
 
-* Sustain the open source culture
-* OpenStack helps breeding open source engineers
+* Outreachy lines-up well with our goals
 * Diversity is healthy, discrimination is unfair
+
+.. Things to talk about ^
 
 Aija's Internship @OpenStack
 ----------------------------
@@ -92,6 +125,8 @@ In the eyes of a mentor:
 * On-board a handful of candidates to let them proceed
 * Pondering code reviews aiming to merge their work
 
+.. Things to talk about ^
+
 OpenStack: everybody struggles
 ------------------------------
 
@@ -107,6 +142,8 @@ OpenStack: everybody struggles
   - Sometimes feedback can look harsh
   - Newcomers are prone to taking the feedback personally
   - It takes time become a good community citizen
+
+.. Things to talk about ^
 
 Aija's survival hints
 ---------------------
@@ -166,6 +203,8 @@ and the open source community though the internship.
   - Taught Aija to negotiate intricate and complicated technical matters with fellow engineers
   - Proved that this internship has been successful
 
+.. Things to talk about ^
+
 How to be a better mentor
 -------------------------
 
@@ -186,6 +225,8 @@ Psychologically:
 * Consider being a co-researcher with your intern, rather than a master-apprentice
 * Promote friendliness, awesomeness and curiosity
 
+.. Things to talk about ^
+
 Signs of a successful intern
 ----------------------------
 
@@ -195,3 +236,6 @@ Taking Outreachy internship takes time and effort. Does it make sense for you? I
 * Understand and tolerate the quirks of the open source community
 * Have done your research and the project you are applying looks awesome to you
 * Are hoping to stay involved with the project/community after the internship is over
+
+.. Things to talk about ^
+
