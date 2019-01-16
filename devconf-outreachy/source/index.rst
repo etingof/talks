@@ -44,33 +44,71 @@ Reference: https://www.stackalytics.com, Stein cycle
   If we look at Stacklytics for the current (Stein) cycle, the basic stats can be seen on the
   slide.
 
-What is Outreachy
------------------
+About Outreachy
+---------------
 
-* Outreachy fights the discrimination
-* Interns get on-board open source projects
-* Each intern gets a mentor (or two)
-* 3 month remote paid internship
+What is Outreachy:
+
+  * Volunteer organization under Software Freedom Conservancy.
+  * Brings together the interns, the mentors and the code
+  * Promotes diversity and free software
+
+How it works:
+
+  * Interns get on-board open source projects
+  * Each intern gets a mentor (or two)
+  * 3 month paid internship
 
 .. Things to talk about ^
 
-Why enrolling into the internship
----------------------------------
+  Outreachy is a volunteer organization operating under the Software Freedom
+  Conservancy umbrella.
+
+  Outreachy helps ends meeting: interns, mentors and the open source projects
+  that seek contributors and mentors.
+
+  The main focus of Outreachy is to promote and ensure diversity, getting
+  different people from all over the world to join the open source bandwagon.
+
+Why being an intern
+-------------------
 
 * To find your aspirations
 * To learn the software engineering craft
-* To get along with the software engineering profession
 * To get a job (hopefully, the dream one)
 
 .. Things to talk about ^
 
+  There might be many reasons for young people to consider Outureachy internship.
+
+  Taking part in large-scale software development could help a person to understand
+  if software engineering career would be a good fit for them.
+
+  For the greenhorn engineers, being on the team with the masters of craft, works like
+  an medieval apprenticeship and helps interns to grow.
+
+  Finally, having worked on a highly-visible open source project helps building a
+  digital trace to prove their worthiness to the prospective employers.
+
 Why mentoring with @Outreachy
 -----------------------------
 
-* Outreachy lines-up well with our goals
-* Diversity is healthy, discrimination is unfair
+* To contribute back to the culture we are part of
+* Helps improve professionally and personally
+* Get more hands on our stuff
 
 .. Things to talk about ^
+
+  One reason for being a mentor is to contribute back to the community which shaped
+  us - the grown up programmers.
+
+  We are the products of this culture, we need to sustain it to stay happy.
+
+  Meeting new and diverse people help us to improve personally.
+
+  Teaching can be quite rewarding - we learn new things, we explain them.
+
+  Finally, Outreachy brings motivated and productive contributors to our projects.
 
 Aija's Internship @OpenStack
 ----------------------------
