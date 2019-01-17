@@ -8,113 +8,231 @@ Presented by Ilya Etingof <etingof@gmail.com>
 Why SNMP
 --------
 
-* SNMP is old and complicated
-* On the other hand, SNMP is still ubiquitous in network management
-* SNMP offers structured and widely understood management information (MIB)
-* We have accumulated tens of thousands of MIBs over these years
+* SNMP is old, complicated and has quite a few competitors
+* Still, SNMP is ubiquitous in data collection tasks
+* SNMP structures management information (MIB)
+* We have accumulated tens of thousands of MIBs
+
+.. Things to talk about ^
+
+  SNMP dates back to eighties. It has been designed with small computing
+  systems in mind, to have smaller footprint on the resources.
+
+  Despite its failure to become the single network management protocol of
+  choice, SNMP still seems dominant for management data collection purposes.
+
+  Perhaps one of the pillars of its popularity is the availability and
+  great numerosity of MIBs - structured, machine and human readable description
+  of what's being managed.
+
+  To date we have accumulated tens of thousands of MIBs.
 
 Consider the use-case
 ---------------------
 
-* Your network is universally SNMP-managed (e.g. NMS, CMDB etc)
-* You got a new gadget (e.g. coffee pot) on the network to keep an eye on
-* The coffee pot provides some health indicators through REST API. Now, how'd your NMS reach it?
+* Your network is universally SNMP-managed
+* You've got some new hardware on your network to keep an eye on
+* Quite likely, the new device offers REST API. How'd your NMS reach it?
 
-Standing up an SNMP agent
--------------------------
+.. Things to talk about ^
 
-1. Pick a standard MIB (e.g. `COFFEE-POT-MIB` from RFC2325) or come up with your own
-2. Turn the `COFFEE-POT-MIB` into Python code with hooks
-3. Add some code to interface MIB hooks with your RESTful coffee pot
-4. Run the SNMP agent from pysnmp examples or adapt it to your needs
+  Consider this situation (quite typical, it seems). You have a network being
+  monitored by SNMP.
 
-Demo: COFFEE-POT-MIB
---------------------
+  But you also got some newer equipment that does not support SNMP (or any
+  network management protocol at all).
+
+  Let's say it's a bare metal server having Redfish-manageable BMC. But it
+  can be just anything. How would NMS reach it?
+
+Standing up a mediation proxy
+-----------------------------
+
+1. Pick a MIB (e.g. `SNMPv2-MIB`) or come up with your own
+2. Turn the `SNMPv2-MIB` into Python code with hooks
+3. Interface MIB hooks with your RESTful server
+4. Fire up the SNMP agent
+
+.. Things to talk about ^
+
+   The solution being offered look like this. You pick a MIB (or come up with
+   your own), turn the MIB into a Python snippet containing necessary hooks,
+   add some custom code to obtain the information from the ultimate data source.
+   Finally, let the `snmpresponderd` tool to load and execute your Pythonized MIB.
+
+Demo: system name
+-----------------
 
 .. code-block:: bash
 
-   $ ls -l COFFEE-POT-MIB.txt
-   -rw-r--r--   1 ietingof  staff     1169 Jul 24 07:54 COFFEE-POT-MIB.txt
-   $ cat COFFEE-POT-MIB.txt
+   $ ls -l SNMPv2-MIB.txt
+   -rw-r--r--   1 ietingof  staff     29305 Jul 24 07:54 SNMPv2-MIB.txt
+   $ cat SNMPv2-MIB.txt
+   ...
+   sysName OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..255))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+                "An administratively-assigned name for this managed
+                node.  By convention, this is the node's fully-qualified
+                domain name.  If the name is unknown, the value is
+                the zero-length string."
+        ::= { system 5 }
    ...
 
-    potTemperature OBJECT-TYPE
-       SYNTAX     Integer32
-       UNITS      "degrees Centigrade"
-       MAX-ACCESS read-only
-       STATUS     current
-       DESCRIPTION
-               "The ambient temperature of the coffee within the pot"
+.. Things to talk about ^
 
-      ::= { potMonitor 6 }
-   ...
+  The `SNMPv2-MIB`, I am going to use for the example purposes, captures some
+  basic information on the system. Let's pick the `sysName` object for the sake
+  of simplicity. This object just reports system name, as assigned by the
+  administrator.
 
-Demo: Pythonize COFFEE-POT-MIB
+Demo: Redfish as a data source
 ------------------------------
 
 .. code-block:: bash
 
-   $ mibdump --destination-format pysnmp --destination-template \
-       pysnmp/mib-instrumentation/managed-objects-hooks COFFEE-POT-MIB
-   $ ls -l COFFEE-POT-MIB.py
-   -rw-r--r--   1 ietingof  staff     2264 Jul 24 07:54 COFFEE-POT-MIB.py
-
-Looking inside the `COFFEE-POT-MIB.py`:
-
-.. code-block:: python
-
+   $ curl http://demo.snmplabs.com/redfish/v1/Systems/437XR1138R2
    ...
-   class _PottemperatureObject(MibScalar):
-       def readTest(self, varBind, **context):
-           # Put your code here
-           MibScalar.readTest(self, varBind, **context)
+   {
+    "Id": "437XR1138R2",
+    "Name": "WebFrontEnd483",
+    "SystemType": "Physical",
+    "AssetTag": "Chicago-45Z-2381",
+    "Manufacturer": "Contoso",
+    "Model": "3500",
+    "SubModel": "RX",
+    "SKU": "8675309",
+    "SerialNumber": "437XR1138R2",
+    "PartNumber": "224071-J23",
+    "Description": "Web Front End node",
+    "UUID": "38947555-7742-3448-3784-823347823834",
+    "HostName": "web483",
+    ...
 
-       def readGet(self, varBind, **context):
-           # Put your code here
-           MibScalar.readGet(self, varBind, **context)
-   ...
+.. Things to talk about ^
 
-Demo: simple synchronous call
------------------------------
+  For this presentation I picked the bare metal management protocol known as Redfish.
+  It serves many details on the hardware over REST API.
 
-.. code-block:: python
+  The item of interest here is the `HostName` element...
 
-   class _PottemperatureObject(MibScalar):
-
-       def readGet(self, varBind, **context):
-           oid, value = varBind
-           value = requests.get('http://coffee-pot.local/api/v1/temperature/')
-
-           cbFun = context['cbFun']
-           cbFun((name, value), **context)
-
-Demo: run generic SNMP agent
-----------------------------
+Demo: Pythonize SNMPv2-MIB
+--------------------------
 
 .. code-block:: bash
 
-   $ python snmp-agent.py --load-mib COFFEE-POT-MIB
-   $ snmpget -v3 -u nms localhost COFFEE-POT-MIB::potTemperature.0
-   COFFEE-POT-MIB::potTemperature.0 = 85 degrees Centigrade
+   $ mibdump --destination-format pysnmp --destination-template \
+       pysnmp/mib-instrumentation/managed-objects-instances.j2 SNMPv2-MIB
+   $ ls -l SNMPv2-MIB.py
+   -rw-r--r--   1 ietingof  staff     16839 Jul 24 07:54 SNMPv2-MIB.py
 
-Why asynchronous
-----------------
+Looking inside the `SNMPv2-MIB.py`:
 
-* Highly concurrent, do not block on computationally slow coffee pots
-* Scales well - can manage a large fleet of coffee pots
+.. code-block:: python
 
-Demo: asynchronous call
+   ...
+   class SysnameObjectInstance(MibScalarInstance):
+       def readTest(self, varBind, **context):
+           # Put your code here
+           MibScalarInstance.readTest(self, varBind, **context)
+
+       def readGet(self, varBind, **context):
+           # Put your code here
+           MibScalarInstance.readGet(self, varBind, **context)
+   ...
+
+.. Things to talk about ^
+
+  So the task is to serve Redfish `HostName` ad SNMP `sysName`. The first step
+  toward this is to compile SNMP MIB into Python boilerplate code.
+
+  Compiled MIB has all the managed objects each exposing a bunch of hooks
+  reflecting MIB instrumentation workflow.
+
+  For the task we are currently at, we are only interested in the *read* hooks.
+
+Demo: add REST API call
 -----------------------
 
 .. code-block:: python
 
-   class _PottemperatureObject(MibScalar):
+    REST_API_URL = 'http://demo.snmplabs.com/redfish/v1/Systems/437XR1138R2'
 
-       def readGet(self, varBind, **context):
-           oid, value = varBind
+    executor = concurrent.futures.ThreadPoolExecutor()
 
-           def _cbFun(value):
-              cbFun = context['cbFun']
-              cbFun((name, value), **context)
+    def readGet(self, (name, value), **context):
+        cbFun = context['cbFun']
 
-           value = requests.get('http://coffee-pot.local/api/v1/temperature/', cbFun=_cbFun)
+        def done_callback(future):
+            rsp = future.result()
+            value = self.syntax.clone(rsp['HostName'])
+            cbFun((name, value), **context)
+
+        future = executor.submit(load_url, REST_API_URL)
+
+        future.add_done_callback(done_callback)
+
+.. Things to talk about ^
+
+  To obtain Redfish `HostName` we can just call `requests` or any other HTTP client
+  from a thread pool to ensure non-blocking operation.
+
+  Once the read value comes from the REST API call, we pass it to the SNMP agent's
+  callback function.
+
+  This allows for highly concurrent operation, what can be crucial considering
+  potentially heavy and slow REST API calls and typically short SNMP manager
+  timeout.
+
+Demo: stand up SNMP agent
+-------------------------
+
+Configure SNMP Command Responder:
+
+.. code-block:: bash
+
+   $ pip install snmpresponder
+   $ cp SNMPv2-MIB::sysName.py /etc/snmpresponder/managed-objects/
+   $ snmpresponderd
+
+And query it:
+
+.. code-block:: bash
+
+   $ snmpget -v2c -c public localhost SNMPv2-MIB::sysName.0
+   SNMPv2-MIB::sysName.0 = STRING: web483
+
+.. Things to talk about ^
+
+  The SNMP Command Responder tool can consume such Pythonized MIBs and readily
+  serve the data they produce over SNMPv1/v2c and SNMPv3 including all encryption
+  features.
+
+  The MIB deployment is simple: just place your MIB implementation into
+  a directory where SNMP Command Responder could reach it.
+
+Why it all matters
+------------------
+
+* SNMP is still in wide use
+* This tool set helps mediating SNMP NMS with any data source
+* Asynchronous design ensures scalability
+
+.. Things to talk about ^
+
+  Despite many shortcomings and many attempt to displace SNMP, it's still in
+  wide use.
+
+  The tool set I am presenting here aims at quick and easy mediation between
+  practically any data source and existing SNMP management software.
+
+  Running asynchronously, the SNMP Command Responder tool should be able to
+  scale reasonably well especially on slow data sources and/or highly concurrent
+  SNMP queries.
+
+Thank you
+---------
+
+;-)
