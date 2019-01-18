@@ -9,8 +9,8 @@ In this talk
 ------------
 
 * Why allocating bare metal machines
-* Ironic introduction, architecture and workflows
-* Future features
+* Ironic introduction and work flows
+* Present and upcoming features
 
 Why bare metal allocation
 -------------------------
@@ -26,23 +26,38 @@ What's ironic
 * + OpenStack Nova driver
 * + Deployment Agent
 
-What's inside ironic
---------------------
-
-* Conductor Service - work flow engine
-* API Service
-* Drivers
-
-.. image:: conceptual_architecture.png
-   :align: center
-   :scale: 70%
-
 Machine deployment workflow
 ---------------------------
 
-* Power ON
-* PXE boot deploy image
-* Write user image
+* Set up the stage
+* Configure the hardware
+* Install user image
+
+Deployment: Set up the stage
+----------------------------
+
+* Network configuration
+
+  - Move bare metal on the provisioning network
+
+* Hardware Introspection
+
+  - Out-of-band and/or
+  - In-band
+
+Deployment: Prepare bare metal
+------------------------------
+
+* Configure BIOS settings
+* Set up RAID
+* Clean up
+
+Deployment: Install user image
+------------------------------
+
+* Set boot device, boot mode, power ON
+* Boot deploy agent
+* Pull, install and customize user image
 * Reboot
 
 .. image:: ironic-sequence-pxe-deploy.png
