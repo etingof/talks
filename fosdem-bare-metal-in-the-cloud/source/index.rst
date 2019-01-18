@@ -58,11 +58,23 @@ Deployment: Install user image
 * Set boot device, boot mode, power ON
 * Boot deploy agent
 * Pull, install and customize user image
-* Reboot
 
 .. image:: ironic-sequence-pxe-deploy.png
    :align: center
    :scale: 70%
+
+Deployment: the final touch
+---------------------------
+
+* Network configuration
+
+  - Move bare metal on the provider network
+
+* Provision the work load
+
+  - Containers
+  - OpenStack services (e.g. Triple O)
+  - User applications
 
 Latest developments
 -------------------
