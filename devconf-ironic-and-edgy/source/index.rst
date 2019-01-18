@@ -11,7 +11,7 @@ In this talk...
 * Bare Metal provisioning at the Edge
 * Ironic at the Edge: now and in the future
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   In this talk we are going to explain what this Edge effort means,
   why it is important and generally desired by OpenStack operators.
@@ -35,7 +35,7 @@ Why Edge Cloud
 * AI-managed data centres
 * Autonomous or self-driving data centres
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   The IoT boom evokes the need to gather, aggregate and process the
   data not far from the IoT swarm.
@@ -64,7 +64,7 @@ Challenges at the Edge
 * Low footprint: no space for redundant hardware
 * Security concerns: untrusted locations
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   Once you place your computing facility far away from your networking HQ,
   immediately make physical attendance for power cycling or repair challenging.
@@ -92,7 +92,7 @@ Trends:
 * Converged infrastructure management e.g. servers, switches, storage, power
 * Reliable and secure management protocols
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   Ultimately, every workload is carried out by the bare metal hardware - servers,
   switches and storage systems. Setting up the infrastructure is not a one-time
@@ -114,7 +114,7 @@ The Ironic project
 * Lively upstream community
 * Established relationships with hardware vendors
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
   Ironic is the OpenStack project that implements a nova-manageable
   hypervisor targeting bare metal servers. The goal here is to
@@ -139,7 +139,7 @@ Ironic in OpenStack
    :align: center
    :scale: 70%
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
    Perhaps we can tell that Ironic acts on BM boxen in the same way as
    Nova manages VMs.
@@ -150,7 +150,7 @@ Current ironic architecture
 .. image:: deployment_architecture_2.png
    :align: center
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
    Ironic is a service driven by REST API. Hardware access is mediated
    through drivers.
@@ -162,7 +162,7 @@ Ironic in action
    :align: center
    :scale: 70%
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
    Perhaps we should explain the workflow e.g. inspect, deploy, clean.
 
@@ -183,13 +183,13 @@ Solutions:
   * Deploy image streaming
   * Deploy image over BitTorrent
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
    In general, provisioning a server has a couple of weak points that get
    amplified if we extend the provisioning network.
 
-   Therefore the focus of ironic team is to adapt system architecture to
-   mitigate those weak points.
+   Therefore the focus of the ironic team is to adapt system architecture
+   to mitigate those weak points.
 
    In the following slides we are going to check out the major ideas.
 
@@ -201,7 +201,7 @@ To decentralize and distribute ironic, yet maintaining joint view on nodes:
 * API proxy
 * IPMI-to-Redfish proxy
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
    Present day ironic is quite centralized meaning that we run central ironic
    managing all nodes.
@@ -226,7 +226,7 @@ Boot strapping can be complicated and unreliable
 * Network discovery and autoconfiguration
 * Boot image transfer
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   The most common thing one may want to do with a server is to boot it up.
   Apparently, booting a computer can be a multi-stage, complicated and
@@ -248,7 +248,7 @@ The history of network booting
 * UEFI: BOOTP/DHCP -> HTTP/iSCSI
 * Virtual Media: HTTP
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   The problem of network booting has been approached long ago.
 
@@ -277,7 +277,7 @@ Features:
 * Ensures authentic boot image
 * Ability to cache boot images
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   With virtual media, the boot image is pulled by the BMC rather than
   the booting system itself. Then BMC emulates a local CD drive using
@@ -301,7 +301,7 @@ Non-network boot over virtual media
 * Ironic deploy image still requires DHCP
 * Virtual Media offers virtual floppy \o/
 
-.. Things to talk about ^
+.. Things to talk about ^ (ietingof)
 
   There is still one step in the ironic bare metal instance deployment
   process which requires network configuration step over DHCP. The
@@ -320,7 +320,7 @@ Deploy image streaming
 * Ironic implements on-the-fly image provisioning
 * Images pulled over HTTP can be be cached
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
 One of the existing methods of ironic image deployment involves pulling
 OS image over HTTP and writing it down on the fly e.g. avoiding
@@ -336,7 +336,7 @@ Deploy image over BitTorrent
 * Offloads image provisioning to local nodes
 * Efficient for large images and simultaneous deployment
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
 Another, still experimental, provisioning method in ironic utilizes the
 BitTorrent protocol. It's serves torrent files from Glance, seeds images from
@@ -354,7 +354,7 @@ The upcoming features:
 * Non-network boot
 * Efficient image delivery
 
-.. Things to talk about ^
+.. Things to talk about ^ (dtantsur)
 
   Ironic is being shaped up for the edge deployments.
 
