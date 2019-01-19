@@ -83,6 +83,7 @@ Why being an intern
 
 * To find your aspirations
 * To learn the software engineering craft
+* Start contributing to free and open source software
 * To get a job (hopefully, the dream one)
 
 .. Things to talk about ^ (Aija)
@@ -95,6 +96,10 @@ Why being an intern
 
   For the greenhorn engineers, being on the team with the masters of craft,
   works like an medieval apprenticeship and helps interns to grow.
+
+  For people with some background in software engineering, this can help
+  to get started contributing to free and opensource software which they
+  have not tried already for different reasons.
 
   Finally, having worked on a highly-visible open source project helps
   building a digital trace to prove their worthiness to the prospective
