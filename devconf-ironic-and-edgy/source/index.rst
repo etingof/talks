@@ -48,10 +48,11 @@ Why Edge Cloud
   economically viable to build DCs in such distant and not densely populated
   areas.
 
-  This need of decentralizing the infrastructure implies making
+  The for decentralizing the infrastructure implies making
   data centres more autonomous and automated (e.g. lights-out).
+
   These traits align well with the other, otherwise unrelated,
-  trends - using machine learning and AI for DC management.
+  trends e.g. using machine learning and AI for DC management.
 
   Ultimately, these reasons lead to stretching the cloud infrastructure
   up to the edges of the company's network.
@@ -70,12 +71,12 @@ Challenges at the Edge
   immediately make physical attendance for power cycling or repair challenging.
 
   Network access to the outskirts of the network could be problematic
-  because the access network could be lossy, unstable, slow and insecure.
+  because access network could be lossy, unstable, slow and insecure.
 
   Smaller points of presence may not allow much of the management overhead
   in terms of power, cooling and rack space.
 
-  Having to do everything over untrusted network impose stronger security
+  Having to do everything over untrusted network imposes stronger security
   requirements on the management protocols.
 
   These considerations make versatile remote management even more relevant.
@@ -99,7 +100,7 @@ Trends:
   affair, rather the operators may need to respin their cloud to repurpose the
   hardware, phase out the broken one, lend the hardware to some other user.
 
-  Not specifically driven by the edge effort, rather for simplification
+  Perhaps not driven only by the edge effort, rather for simplification
   and cutting costs, hardware management tech tends to converge onto
   common protocols and data models.
 
@@ -270,6 +271,8 @@ The history of network booting
 
 Redfish: virtual media
 ======================
+
+BMC pulls image and serves it to the system
 
 Features:
 
