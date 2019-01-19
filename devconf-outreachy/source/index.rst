@@ -302,16 +302,43 @@ Community:
 Psychologically:
 
 * Understand the psychological setting, be aware of the biases
-* Consider being a co-researcher with your intern, rather than a master-apprentice
+* Consider being a co-researcher with your intern, rather than a
+  master-apprentice
 * Promote friendliness, awesomeness and curiosity
 
 .. Things to talk about ^ (dtantsur)
 
+  Mentorship can be difficult, but rewarding.
+
+  You are likely to stay engaged with the intern on a daily basis,
+  making sure they are not stuck and keep challenged. This requires
+  time and dedication.
+
+  Considering the many moving parts in OpenStack, it is easy to get
+  distracted from one project to the other. This is also prompted
+  by long-pending reviews. Keep the intern focused on their goals
+  is one of the things to keep an eye on.
+
+  Good mentors should help intern to network with community
+  through IRC chat, code reviews. Building community is the goal
+  here.
+
+  Being remote, it may be hard to read intern's mind. We, humans, are
+  good at building the substitute for the insufficient perception
+  with our biases. That's a thing to stay away from.
+
+  No matter how experienced one could be, there will always be areas
+  in the contemporary technology where the mentors may not know much.
+  Therefore sometimes we think of the mentorship as of a research
+  collaboration, not so much as a benevolent master / submissive
+  apprentice kind of interaction.
+
+  After all, the internship should be a positive and fun experience.
 
 Signs of a successful intern
 ----------------------------
 
-* Has a track record playing with computers
+* Has a track record of playing with computers
 * Researched the project they apply
 * Reasonable expectations e.g. open source quirks
 
@@ -319,7 +346,7 @@ Signs of a successful intern
 
   It seems that if a person is genuinely interested in the technology, that
   is not only as a prospective profession, but just for the sake of it - that
-  is a very promising sign.
+  is a promising sign.
 
   When they come well-prepared understanding what this project is all
   about and why it might be a good match for them - that's another good
@@ -331,14 +358,25 @@ Signs of a successful intern
   abandoned or reshaped in a way you do not like. So it's best to see the
   applicant understanding the potential for such development.
 
-.. Things to talk about ^ (ietingof)
-
 Come join us!
 -------------
 
 * If you are a student...
 * If you are an open source practitioner...
-* If you are working in the industry...
+* If you work in the industry...
 
 .. Things to talk about ^ (rpioso)
 
+  We went through Outreachy internship and we think has been mutually
+  beneficial and useful.
+
+  If you are new to the field and you are willing to get on-board a
+  respectful open source project...
+
+  If you are part of the community and would like to expand it, attract
+  new people and helping hands to code...
+
+  If you coming from the industry and seeking some reality check for
+  your products or specifications...
+
+  Apply for the next Outreachy round as an intern or as a mentor!
