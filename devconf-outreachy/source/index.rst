@@ -11,6 +11,16 @@ In this talk
 * How it worked out for us & lessons learned
 * Should you try it too?
 
+.. Things to talk about ^ (ietingof)
+
+In our talk we will explain what the Outreachy program is all about,
+why we decided to participate in it.
+
+We will tell about our experience and lessons learned.
+
+Finally, we will think aloud why this program may or may not be
+for you.
+
 Why we do this
 --------------
 
