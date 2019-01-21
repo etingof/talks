@@ -2,7 +2,7 @@
 Becoming OpenStack Developer via Outreachy
 ==========================================
 
-Presented by: Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof
+Presented by: *Aija Jauntēva (intern), Dmitry Tantsur (mentor), Richard Pioso (industry expert), Ilya Etingof (mentor)*
 
 In this talk
 ------------
@@ -25,7 +25,7 @@ Why we do this
 --------------
 
 * To help breeding software engineers
-* Sustain the open source culture
+* To sustain the open source culture
 
 .. Things to talk about ^ (ietingof)
 
@@ -89,7 +89,7 @@ How it works:
   different people from all over the world to join the open source bandwagon.
 
 Why become an intern
--------------------
+--------------------
 
 * To find your aspirations
 * To learn the software engineering craft
@@ -143,7 +143,7 @@ Aija's Internship @OpenStack
   - finding a project
 
      - something new, but in familiar programming language
-     - mentors in similar time zone
+     - mentors in a similar time zone
 
 * The initial application:
 
@@ -205,6 +205,7 @@ In the eyes of a mentor:
 * Come up with isolated, yet non-trivial and useful tasks
 * On-board a handful of candidates to let them proceed
 * Pondering code reviews aiming to merge their work
+* Ensure the community is on-board with your effort
 
 .. Things to talk about ^ (ietingof)
 
@@ -219,8 +220,11 @@ In the eyes of a mentor:
   Seasonal coding is not easy with OpenStack because... it's
   OpenStack (see previous slide).
 
-  But we managed to come up with a bunch of isolated coding tasks
-  and let the candidates chose and assign them to themselves.
+  On top of that, we need to reach consensus with the upstream team
+  on the proposed work.
+
+  In the end we managed to come up with a bunch of isolated coding
+  tasks and let the candidates chose and assign them to themselves.
 
 Aija's survival hints
 ---------------------
