@@ -20,8 +20,8 @@ In this talk...
   possibly solutions in the Edge context.
 
   At ironic, we seem to have multiple areas to address and improve for
-  the Edge cloud purposes. We are planning to explain the anticipated and
-  ongoing work in that regard.
+  the Edge cloud purposes. We will share with you the news on the
+  anticipated and ongoing work in that regard.
 
 Why Edge Cloud
 ==============
@@ -37,47 +37,48 @@ Why Edge Cloud
 
 .. Things to talk about ^ (ietingof)
 
-  The IoT boom evokes the need to gather, aggregate and process the
-  data not far from the IoT swarm.
+  There seems to be many factors that fuel the edge effort. Just to
+  name a few:
 
-  Broadband media streaming pushes the distribution centers closer to
-  the end users.
+  Growth of IoT devices deployments pushes data collection and processing
+  facilities closer to the data sources, i.e. IoT swarms.
 
-  Cheaper (hydro) power sources in Scandinavia (near the Arctic Circle)
-  combined with good Internet connectivity and cooler climate makes it
-  economically viable to build DCs in such distant and not densely populated
-  areas.
+  The emergence of broadband content delivery services (such as 8k video)
+  pushes data storage facilities closer to the households.
 
-  The for decentralizing the infrastructure implies making
-  data centres more autonomous and automated (e.g. lights-out).
+  Probably trying to cut costs and make the business more profitable,
+  DC operators move parts of their DC infrastructure to the areas
+  with cheaper electricity and cooler climate (to save on cooling).
 
-  These traits align well with the other, otherwise unrelated,
-  trends e.g. using machine learning and AI for DC management.
+  Such decentralized infrastructure calls for making the data centres
+  more autonomous and automated.
 
-  Ultimately, these reasons lead to stretching the cloud infrastructure
-  up to the edges of the company's network.
+  BTW, the desire for better automation aligns well with the other, otherwise
+  unrelated, trends in data processing business e.g. applying machine learning
+  technologies and AI on DC management tasks.
 
 Challenges at the Edge
 ======================
 
 * No living soul to "turn it off and on again"
-* Remote management over lossy and insecure network
-* Low footprint: no space for redundant hardware
-* Security concerns: untrusted locations
+* Remote management over slow, lossy and unreliable network
+* Low footprint: limited space for management hardware
+* Security concerns: larger control plane, unguarded locations
 
 .. Things to talk about ^ (ietingof)
 
-  Once you place your computing facility far away from your networking HQ,
-  immediately make physical attendance for power cycling or repair challenging.
+  Stretching originally centralized infrastructure makes physical
+  attendance challenging if at all possible.
 
-  Network access to the outskirts of the network could be problematic
-  because access network could be lossy, unstable, slow and insecure.
+  Network becomes the only practical way of dealing with the
+  infrastructure. However, being distant, network access becomes
+  slow, lossy and unreliable.
 
-  Smaller points of presence may not allow much of the management overhead
-  in terms of power, cooling and rack space.
+  Smaller points of presence impose space and power constraints on the
+  remote management equipment.
 
-  Having to do everything over untrusted network imposes stronger security
-  requirements on the management protocols.
+  Stretching the control plane network increases attach surface what
+  raises security concerns.
 
   These considerations make versatile remote management even more relevant.
 
@@ -96,7 +97,9 @@ Trends:
 .. Things to talk about ^ (ietingof)
 
   Ultimately, every workload is carried out by the bare metal hardware - servers,
-  switches and storage systems. Setting up the infrastructure is not a one-time
+  switches and storage systems.
+
+  For cloud operators, setting up the infrastructure is not a one-time
   affair, rather the operators may need to respin their cloud to repurpose the
   hardware, phase out the broken one, lend the hardware to some other user.
 
@@ -222,16 +225,14 @@ To decentralize and distribute ironic, yet maintaining joint view on nodes:
 Booting is fragile
 ==================
 
-Boot strapping can be complicated and unreliable
+Network boot is complicated and unreliable
 
-* Network discovery and autoconfiguration
+* Network stack initialization
 * Boot image transfer
 
 .. Things to talk about ^ (ietingof)
 
   The most common thing one may want to do with a server is to boot it up.
-  Apparently, booting a computer can be a multi-stage, complicated and
-  fragile undertaking.
 
   Typically, upon circuits initialization, computer system performs network
   discovery and its network stack configuration. Then the boot image gets
@@ -239,7 +240,9 @@ Boot strapping can be complicated and unreliable
   control.
 
   A packet loss along the way leads to boot failure which is hard to
-  analyze unless one has console access to the system.
+  analyze remotely unless one has console access to the system.
+
+  Why is it so fragile?
 
 The history of network booting
 ==============================
