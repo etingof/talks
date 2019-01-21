@@ -88,12 +88,12 @@ How it works:
   The main focus of Outreachy is to promote and ensure diversity, getting
   different people from all over the world to join the open source bandwagon.
 
-Why being an intern
+Why become an intern
 -------------------
 
 * To find your aspirations
 * To learn the software engineering craft
-* Start contributing to free and open source software
+* To start contributing to free and open source software
 * To get a job (hopefully, the dream one)
 
 .. Things to talk about ^ (Aija)
