@@ -295,7 +295,7 @@ Case study: Becoming better together
 
 Reference: https://www.dmtf.org
 Reference: https://www.dmtf.org/standards/redfish
-Reference: https://wiki.openstack.org/wiki/Ironic
+Reference: https://docs.openstack.org/ironic/latest/
 
 .. Things to talk about ^ (rpioso)
 
