@@ -7,73 +7,85 @@ Presented by: *Aija Jauntēva (intern), Dmitry Tantsur (mentor), Richard Pioso (
 In this talk
 ------------
 
-* What is Outreachy internship
+* What is Outreachy internship?
 * How it worked out for us & lessons learned
-* Should you try it too?
+* Should you try it, too?
 
 .. Things to talk about ^ (ietingof)
 
-In our talk we will explain what the Outreachy program is all about,
-why we decided to participate in it.
+In our talk, we will explain what the Outreachy program is all about,
+and why we decided to participate in it.
 
-We will tell about our experience and lessons learned.
+We will share our experiences and lessons learned.
 
 Finally, we will think aloud why this program may or may not be
 for you.
 
-Why we do this
---------------
+Why we do this?
+---------------
 
-* To help breeding software engineers
+* To help breed software engineers
 * To sustain the open source culture
+* Promote diversity in the profession
 
 .. Things to talk about ^ (ietingof)
 
-  Much like in medieval European trade guilds (or even now days science),
+  Much like in medieval European trade guilds (or even nowadays science),
   software engineering seems to require some kind of apprenticeship before
-  one can get hold of the profession.
+  one can attain professional proficiency.
 
-  As breeding and sustaining open source software is part of the Red Hat
+  As creating and sustaining open source software is part of the Red Hat
   business strategy, attracting and growing open source engineers lines-up
-  well with company's goals.
+  well with the company's goals.
+  
+.. Things to talk about ^ (rpioso)
 
-  Beyond that, we are the open source engineers ourselves. It is in our
-  immediate interest to sustain and promote the culture we enjoy and being
-  part of.
+  Promoting diversity is a core part of OpenStack, Dell EMC, and Red Hats'
+  cultures. Not only is that the right thing to do, diverse teams produce
+  superior software and business results.
 
-What is OpenStack
------------------
+.. Things to talk about ^ (ietingof)
 
+  Beyond that, we are open source engineers ourselves. It is in our direct
+  interest to sustain and promote the culture we enjoy being a part of.
+
+What is OpenStack?
+------------------
+
+* Cloud management software stack and infrastruture software
 * Decade-old open source community project
 * Has involved 1025 developers from 126 companies
 * Made out of 728 repos
 
+Reference: https://docs.openstack.org/project-team-guide/introduction.html
 Reference: https://www.stackalytics.com, Stein cycle
 
 .. Things to talk about ^ (rpioso)
 
-  OpenStack is a large and well-established, highly collaborative open source
+  OpenStack is a large, well-established, and highly collaborative open source
   software engineering project. At OpenStack, we crave quality engineering
-  practices, mutual respect and continuous learning.
+  practices, mutual respect, and continuous learning.
 
   The goal of the OpenStack project is to create and maintain free and open
-  source cloud management software.
+  source cloud management and infrastructure software.
+  
+  The first reference offers a bit of OpenStack history.
 
-  If we look at Stacklytics for the current (Stein) cycle, the basic stats can
-  be seen on the slide.
+  If we look at Stacklytics for the current release cycle (Stein), the basic
+  stats can be seen on the slide.
 
 About Outreachy
 ---------------
 
-What is Outreachy:
+What is Outreachy?
 
-  * Volunteer organization under Software Freedom Conservancy.
-  * Brings together the interns, the mentors and the code
+  * Volunteer organization under Software Freedom Conservancy
+  * Brings together interns, mentors, and code
   * Promotes diversity and free software
 
-How it works:
+How does it work?
 
-  * Interns get on-board open source projects
+  * Interns get on board open source projects
   * Each intern gets a mentor (or two)
   * 3 month paid internship
 
@@ -82,14 +94,14 @@ How it works:
   Outreachy is a volunteer organization operating under the Software Freedom
   Conservancy umbrella.
 
-  Outreachy helps ends meeting: interns, mentors and the open source projects
+  Outreachy helps bring together interns, mentors, and open source projects
   that seek contributors and mentors.
 
   The main focus of Outreachy is to promote and ensure diversity, getting
-  different people from all over the world to join the open source bandwagon.
+  different people from all over the world to join the open source movement.
 
-Why become an intern
---------------------
+Why become an intern?
+---------------------
 
 * To find your aspirations
 * To learn the software engineering craft
@@ -102,24 +114,23 @@ Why become an intern
   internship.
 
   Taking part in large-scale software development could help a person to
-  understand if software engineering career would be a good fit for them.
+  understand if a software engineering career would be a good fit for them.
 
-  For the greenhorn engineers, being on the team with the masters of craft,
-  works like an medieval apprenticeship and helps interns to grow.
+  For greenhorn engineers, being on a team with masters of craft works like a
+  medieval apprenticeship and helps interns to grow.
 
   For people with some background in software engineering, this can help
-  to get started contributing to free and opensource software which they
-  have not tried already for different reasons.
+  to get started contributing to free and open source software which they
+  have not yet tried for a variety of reasons.
 
-  Finally, having worked on a highly-visible open source project helps
-  building a digital trace to prove their worthiness to the prospective
-  employers.
+  Finally, working on a highly visible open source project helps build a
+  digital trace to prove one's worthiness to the prospective employers.
 
-Why mentoring with @Outreachy
------------------------------
+Why mentor with @Outreachy?
+---------------------------
 
 * To contribute back to the culture we are part of
-* Helps improve professionally and personally
+* Grow professionally and personally
 * Get more hands on our stuff
 
 .. Things to talk about ^ (dtantsur)
@@ -127,23 +138,23 @@ Why mentoring with @Outreachy
   One reason for being a mentor is to contribute back to the community which shaped
   us - the grown up programmers.
 
-  We are the products of this culture, we need to sustain it to stay happy.
+  We are the products of this culture, and need to sustain it to stay happy.
 
   Meeting new and diverse people help us to improve personally.
 
-  Teaching can be quite rewarding - we learn new things, we explain them.
+  Teaching can be quite rewarding - we learn new things when we explain them.
 
   Finally, Outreachy brings motivated and productive contributors to our projects.
 
-Aija's Internship @OpenStack
+Aija's internship @OpenStack
 ----------------------------
 
-* How it all begun
+* How it all began
 
-  - finding a project
+  - Finding a project
 
      - something new, but in familiar programming language
-     - mentors in a similar time zone
+     - mentors in the same or nearby time zone
 
 * The initial application:
 
@@ -158,28 +169,28 @@ Aija's Internship @OpenStack
 
 .. Things to talk about ^ (Aija)
 
-  my background: a full-stack web developer in enterprise information systems
+  My background: a full-stack web developer in enterprise information systems,
   using Java and C#. Used FOSS for personal needs.
 
-  Criteria to filter initial list. Try something new that haven't done before.
-  Best chances with projects in Python that have used in personal projects.
+  Criteria to filter initial list. Try something new that I hadn't done before.
+  Best chances with projects in Python, which I had used in personal projects.
 
   Similar time zone to avoid waiting for hours if get stuck with something.
-  If wouldn't be able to find the project using all criteria, this would be dropped.
+  If unable to find a project meeting all of the criteria, this would be dropped.
 
-  OpenStack project matching all criteria.
+  OpenStack project matched all of my criteria.
 
   Choice of the ticket was not successful - in the end it did not result in any code,
   but only documentation updates.
-  Seemed that best tickets were already taken.
+  It seemed the best tickets were already taken.
 
-  Visibility of other people applying and how they are going. New applicant appearing
-  after application deadline extended.
+  Visibility of other people applying and how they are doing. New applicant appeared
+  after application deadline was extended.
 
-  Despite the challenges of initial ticket,
-  dedicated tickets still a good starting point.
+  Despite the challenges of initial ticket, dedicated tickets are still a good
+  starting point.
 
-OpenStack: everybody struggles
+OpenStack: Everybody struggles
 ------------------------------
 
 * Technology
@@ -193,7 +204,7 @@ OpenStack: everybody struggles
   - Code reviews tend to be slow
   - Sometimes feedback can look harsh
   - Newcomers are prone to taking the feedback personally
-  - It takes time become a good community citizen
+  - It takes time to become egoless and a good community citizen
 
 .. Things to talk about ^ (dtantsur)
 
@@ -204,26 +215,26 @@ In the eyes of a mentor:
 
 * Come up with isolated, yet non-trivial and useful tasks
 * On-board a handful of candidates to let them proceed
-* Pondering code reviews aiming to merge their work
-* Ensure the community is on-board with your effort
+* Ponder code reviews, aiming to merge their work
+* Ensure the community is on board with your effort
 
 .. Things to talk about ^ (ietingof)
 
-  According to the program policies, during the application period
+  According to the program policies, during the application period,
   prospective interns should prove their worthiness by doing some
   accountable work.
 
   Once the application period is over, the mentors are to rank
-  all successful applicants and Outreachy organizers will work
-  on figuring out the budget.
+  all successful applicants and Outreachy organizers work on
+  figuring out the budget.
 
-  Seasonal coding is not easy with OpenStack because... it's
+  Seasonal coding is not easy with OpenStack because ... it's
   OpenStack (see previous slide).
 
   On top of that, we need to reach consensus with the upstream team
   on the proposed work.
 
-  In the end we managed to come up with a bunch of isolated coding
+  In the end, we managed to come up with a bunch of isolated coding
   tasks and let the candidates chose and assign them to themselves.
 
 Aija's survival hints
@@ -247,70 +258,73 @@ Aija's survival hints
 
 .. Things to talk about ^ (Aija)
 
-  Code reviews very demanding and questioning every single bit.
+  Code reviews are very demanding and question every single bit.
 
-  "You are not your code" - aware not to take this personally.
+  "You are not your code" - beware not to take it personally.
 
-  Avoiding opposite extreme - not taking responsibility for the code
+  Avoid the opposite extreme, not taking responsibility for the code.
 
-  Important part of software development, still productive time if
-  not writing new code actively.
+  Important part of software development. Still productive time, even
+  if not actively writing new code.
 
-  Learned and researched new things
-  even if they did not make to submitted version.
+  Learned and researched new things, some of which did not make it
+  into the submitted contribution.
 
-  Finding a balance when to ask for help - is it too soon or should
-  try to figure out yourself.
+  Finding a balance when to ask for help -- Is it too soon? Should I
+  try to figure it out myself?
 
-  Working outside the regular office might be challenging. Need to have
-  right motivation and environment. Separate work form leisure and
+  Working outside the regular office may be challenging. Need to have
+  right motivation and environment. Separate work from leisure and
   leisure from work.
   Regular calls for synchronous/instant communication.
 
-Case study: reaching out for the industry
------------------------------------------
+Case study: Becoming better together
+------------------------------------
 
 * Industry is influential
 * Silos exist
-* How we figured out our stuff
+* How we came together to everyone's benefit
 
 .. Things to talk about ^ (rpioso)
 
-  Industry is heavily involved in OpenStack and is highly influential when
-  it comes to standardization.
+  Industry is heavily involved in OpenStack and highly influential when it
+  comes to standardization.
 
-  At the same time, feedback loop may not always be ideal e.g. standards may
-  be confusing or lacking features.
+  The standards and related documentation are not always ideal, e.g.,
+  standards may be confusing or lacking features. Go figure!
 
-  Finally, the young engineers may be hesitant to reach out for the
-  technical "officials".
+  Finally, young engineers may be hesitant to reach out to the technical
+  "officials".
 
-  So we helped bringing down the silos between the manufacturers, standards
-  body and the open source community though the internship. Here is how our
-  story unfolded:
+  So, through the internship, we came together by bringing down the silos
+  between the manufacturers, standards body, and open source community. Here
+  is how our story unfolded:
 
-  * Aija worked on a new protocol implementation for OpenStack/ironic which
-    has not been fully standardized
-  * A couple of confusion points arose
-  * Aija has reached out for Dell - the hardware manufacturer implementing
-    the same protocol on the hardweare side
-  * Dell engineers set up Aija with DMTF to clarify the technical matters
-  * Aija's experience has been fed back to the standards organization what:
+  * Aija was working on implementing a new and evolving standardized protocol
+    for OpenStack's Ironic project
+  * A couple points of confusion arose
+  * Aija reached out to Dell EMC, the hardware manufacturer implementing the
+    same protocol on the hardware side
+  * Dell engineers connected Aija with the standards body, the Distributed
+    Management Task Force (DMTF) Redfish Forum, to clarify technical matters
+  * Aija's experience has been fed back to the standards organization about
+    what:
 
-    - Helped to clarify and improve the technicalities of the standard
-    - Set up the ties between the computer manufacturer's engineers,
-      OpenStack engineers and the standards organization
-    - Taught Aija to negotiate intricate and complicated technical matters
+    - helped to clarify and improve the technicalities of the standard,
+    - set up the ties between the computer manufacturer's engineers,
+      OpenStack engineers, and standards organization, and
+    - taught Aija to negotiate intricate and complicated technical matters
       with fellow engineers
-    - Proved that this internship has been successful
+
+  The result proves her internship was successful.
 
 How to be a better mentor
 -------------------------
 
 Work-wise:
 
-* Keep your intern busy, challenged and growing
-* Help keeping them focused to get things done
+* Keep your intern busy, challenged, and growing
+* Help keep them focused to get things done
 * Build on small successes, plan and promote small steps
 
 Community:
@@ -323,32 +337,32 @@ Psychologically:
 * Understand the psychological setting, be aware of the biases
 * Consider being a co-researcher with your intern, rather than a
   master-apprentice
-* Promote friendliness, awesomeness and curiosity
+* Promote friendliness, awesomeness, and curiosity
 
 .. Things to talk about ^ (dtantsur)
 
   Mentorship can be difficult, but rewarding.
 
   You are likely to stay engaged with the intern on a daily basis,
-  making sure they are not stuck and keep challenged. This requires
+  making sure they are not stuck and remain challenged. This requires
   time and dedication.
 
   Considering the many moving parts in OpenStack, it is easy to get
   distracted from one project to the other. This is also prompted
-  by long-pending reviews. Keep the intern focused on their goals
-  is one of the things to keep an eye on.
+  by long running reviews. Keeping the intern focused on their goals
+  is one of the things to focus on.
 
-  Good mentors should help intern to network with community
-  through IRC chat, code reviews. Building community is the goal
+  Good mentors should help interns to network with the community
+  through IRC chat and code reviews. Building community is the goal
   here.
 
-  Being remote, it may be hard to read intern's mind. We, humans, are
-  good at building the substitute for the insufficient perception
-  with our biases. That's a thing to stay away from.
+  Being remote, it may be hard to read the intern's mind. We humans
+  are good at using our biases to build a substitute for
+  insufficient perception. That's a thing to stay away from.
 
-  No matter how experienced one could be, there will always be areas
-  in the contemporary technology where the mentors may not know much.
-  Therefore sometimes we think of the mentorship as of a research
+  No matter how experienced one may be, there will always be areas
+  in contemporary technology in which the mentors may not know much.
+  Therefore, sometimes we think of the mentorship as a research
   collaboration, not so much as a benevolent master / submissive
   apprentice kind of interaction.
 
@@ -358,24 +372,24 @@ Signs of a successful intern
 ----------------------------
 
 * Has a track record of playing with computers
-* Researched the project they apply
-* Reasonable expectations e.g. open source quirks
+* Researched the project they applied to
+* Reasonable expectations, e.g., open source quirks
 
 .. Things to talk about ^ (ietingof)
 
-  It seems that if a person is genuinely interested in the technology, that
-  is not only as a prospective profession, but just for the sake of it - that
-  is a promising sign.
+  It seems it's a promising sign when a person is genuinely interested in
+  the technology, not only as a prospective profession, but just for the
+  sake of it,
 
-  When they come well-prepared understanding what this project is all
-  about and why it might be a good match for them - that's another good
-  sign. At best, they are hoping to stay with the project after the
-  internship is over.
+  When they come well prepared understanding what the project is all
+  about and why it might be a good match for them, that's another good
+  sign. At best, they hope to stay with the project after the internship
+  is over.
 
-  Finally, one can't be too sensitive when it comes to the way open source
-  community works. For instance: feedback can hurt, your work could be
-  abandoned or reshaped in a way you do not like. So it's best to see the
-  applicant understanding the potential for such development.
+  Finally, one can't be too sensitive when it comes to the way the open
+  source community works. For instance, feedback can hurt and your work
+  could be abandoned or reshaped in a way you do not like. So, it's best
+  to see the applicant understanding the potential for such development.
 
 Come join us!
 -------------
@@ -386,16 +400,16 @@ Come join us!
 
 .. Things to talk about ^ (rpioso)
 
-  We went through Outreachy internship and we think has been mutually
+  We went through Outreachy internship and believe it has been mutually
   beneficial and useful.
 
-  If you are new to the field and you are willing to get on-board a
+  If you are new to the field and intrigued by getting on board a
   respectful open source project...
 
-  If you are part of the community and would like to expand it, attract
-  new people and helping hands to code...
+  If you are part of the community and would like to expand it by
+  attracting new people and helping hands to code...
 
-  If you coming from the industry and seeking some reality check for
+  If you are coming from the industry and seeking a reality check for
   your products or specifications...
 
   Apply for the next Outreachy round as an intern or as a mentor!
