@@ -6,7 +6,7 @@ Presented by:
 
 * Aija Jauntēva (intern)
 * Dmitry Tantsur (mentor)
-* Richard Pioso (industry expert)
+* Richard Pioso (industry engineer)
 * Ilya Etingof (mentor)
 
 In this talk
@@ -18,19 +18,19 @@ In this talk
 
 .. Things to talk about ^ (ietingof)
 
-  In our talk we will explain what the Outreachy program is all about,
-  why we decided to participate in it.
+  In our talk, we will explain what the Outreachy program is all about,
+  and why we decided to participate in it.
 
-  We will tell about our experience and lessons learned.
+  We will share our experience and lessons learned.
 
   Finally, we will think aloud why this program may or may not be
   for you.
 
-Why we do this?
----------------
+Why do we do this?
+------------------
 
-* To help breed software engineers
-* To sustain the open source culture
+* Help breed software engineers
+* Sustain the open source culture
 * Promote diversity in the profession
 
 .. Things to talk about ^ (ietingof)
@@ -40,7 +40,7 @@ Why we do this?
   one can attain professional proficiency.
 
   As creating and sustaining open source software is part of the Red Hat
-  business strategy, attracting and growing open source engineers lines-up
+  business strategy, attracting and growing open source engineers lines up
   well with the company's goals.
   
 .. Things to talk about ^ (rpioso)
@@ -74,7 +74,9 @@ Reference: https://www.stackalytics.com, Stein cycle
   The goal of the OpenStack project is to create and maintain free and open
   source cloud management and infrastructure software.
   
-  The first reference offers a bit of OpenStack history.
+  The first reference offers a bit of OpenStack history and the second briefly
+  defines "The OpenStack Way", which are its four opens -- Open Source, Open
+  Design, Open Development, and Open Community.
 
   If we look at Stacklytics for the current release cycle (Stein), the basic
   stats can be seen on the slide.
@@ -86,7 +88,8 @@ What is Outreachy?
 
   * Non-profit organization under Software Freedom Conservancy
   * Brings together interns, mentors, and code
-  * Promotes diversity and free software
+  * Promotes the participation of under represented persons in technology
+    fields
 
 How does it work?
 
@@ -108,33 +111,33 @@ How does it work?
 Why become an intern?
 ---------------------
 
-* To find your aspirations
-* To learn the software engineering craft
-* To start contributing to free and open source software
-* To get a job (hopefully, the dream one)
+* Find your aspirations
+* Learn the software engineering craft
+* Start contributing to free and open source software
+* Get a job (hopefully, the dream one)
 
 .. Things to talk about ^ (Aija)
 
-  There might be many reasons for young people to consider Outreachy
-  internship.
+  There are many reasons for young people to consider Outreachy internship.
+
+  It can help people with some background in information technology fields,
+  including programming, user experience, documentation, graphical design,
+  marketing, etc., get started contributing to free and open source software, which
+  they may not have previously tried for a variety of reasons.
 
   Taking part in large-scale software development could help a person to
   understand if a software engineering career would be a good fit for them.
 
-  For greenhorn engineers, being on a team with masters of craft works like a
-  medieval apprenticeship and helps interns to grow.
-
-  For people with some background in software engineering, this can help
-  to get started contributing to free and open source software which they
-  have not yet tried for a variety of reasons.
+  For greenhorn engineers, being on a team with masters of the craft works
+  like a medieval apprenticeship and helps interns to grow.
 
   Finally, working on a highly visible open source project helps build a
-  digital trace to prove one's worthiness to the prospective employers.
+  digital portfolio to demonstrate one's worthiness to prospective employers.
 
 Why mentor with @Outreachy?
 ---------------------------
 
-* To contribute back to the culture we are part of
+* Contribute back to the culture we are part of
 * Grow professionally and personally
 * Get more hands on our stuff
 
@@ -145,7 +148,7 @@ Why mentor with @Outreachy?
 
   We are the products of this culture, and need to sustain it to stay happy.
 
-  Meeting new and diverse people help us to improve personally.
+  Meeting new and diverse people helps us to improve personally.
 
   Teaching can be quite rewarding - we learn new things when we explain them.
 
@@ -166,7 +169,7 @@ Aija's internship @OpenStack
   - Challenges
 
     - initial ticket
-    - transparency of other applying
+    - transparency of others applying
 
   - Successes
 
@@ -201,13 +204,13 @@ OpenStack: Everybody struggles
 * Technology
 
   - Code complexity and its sheer size is overwhelming
-  - The developer's workbench takes time to learn
+  - Developer's workbench takes time to learn
   - Not always possible to run OpenStack at home
 
 * Social
 
   - Code reviews tend to be slow
-  - Sometimes feedback can look harsh
+  - Sometimes feedback can seem harsh
   - Newcomers are prone to taking the feedback personally
   - It takes time to become egoless and a good community citizen
 
@@ -273,7 +276,7 @@ Aija's survival hints
   if not actively writing new code.
 
   Learned and researched new things, some of which did not make it
-  into the submitted contribution.
+  into submitted contributions.
 
   Finding a balance when to ask for help -- Is it too soon? Should I
   try to figure it out myself?
@@ -286,42 +289,52 @@ Aija's survival hints
 Case study: Becoming better together
 ------------------------------------
 
-* Industry is influential
-* Silos exist
+* Industry is influential in OpenStack and standards bodies
+* Silos existed between OpenStack, a standards body, and industry
 * How we came together to everyone's benefit
+
+Reference: https://www.dmtf.org
+Reference: https://www.dmtf.org/standards/redfish
+Reference: https://wiki.openstack.org/wiki/Ironic
 
 .. Things to talk about ^ (rpioso)
 
-  Industry is heavily involved in OpenStack and highly influential when it
-  comes to standardization.
+  Industry is heavily involved in OpenStack and highly influential in
+  standardization efforts.
 
-  The standards and related documentation are not always ideal, e.g.,
-  standards may be confusing or lacking features. Go figure!
+  The standards body in this story is the Distributed Management Task Force
+  (DMTF), which creates open standards for managing IT infrastructure. One of
+  its newer and evolving standards is Redfish, a RESTful API for simply and
+  securely managing converged, hybrid IT and the software-defined data
+  center. The DMTF Redfish Forum, which performs the standard's technical
+  work, was interested in promoting its use in open source.
+  
+  Separately, OpenStack's Ironic project was implementing support for Redfish
+  to provision bare metal servers. Its developers, including Aija, were
+  facing challenges, and found the standard's specifications and related
+  documentation not always ideal, e.g., confusing or lacking detail. Go
+  figure!
 
-  Finally, young engineers may be hesitant to reach out to the technical
-  "officials".
+  And the industry vendors, including Dell EMC, are contributing to both
+  Redfish and Ironic. They introduced the DMTF Redfish Forum and Ironic
+  leaders to one another and helped establish a collaboration among all three
+  communities.
+  
+  In the trenches writing the code was Aija. Like many young engineers, she
+  may have felt hesitant to reach out to the technical "officials". Now they
+  were working alongside her on a shared goal.
 
-  So, through the internship, we came together by bringing down the silos
-  between the manufacturers, standards body, and open source community. Here
-  is how our story unfolded:
+  Aija's experience has been fed back to the Redfish Forum about what:
 
-  * Aija was working on implementing a new and evolving standardized protocol
-    for OpenStack's Ironic project
-  * A couple points of confusion arose
-  * Aija reached out to Dell EMC, the hardware manufacturer implementing the
-    same protocol on the hardware side
-  * Dell engineers connected Aija with the standards body, the Distributed
-    Management Task Force (DMTF) Redfish Forum, to clarify technical matters
-  * Aija's experience has been fed back to the standards organization about
-    what:
+  * helped to clarify and improve the technicalities of the standard,
+  * set up the ties between the computer manufacturer's engineers, OpenStack
+    engineers, and standards organization, and
+  * taught Aija to negotiate intricate and complicated technical matters with
+    fellow engineers
 
-    - helped to clarify and improve the technicalities of the standard,
-    - set up the ties between the computer manufacturer's engineers,
-      OpenStack engineers, and standards organization, and
-    - taught Aija to negotiate intricate and complicated technical matters
-      with fellow engineers
-
-  The result proves her internship was successful.
+  Through Aija's successful Outreachy internship, three communities --
+  industry, a standards body, and an open source community -- tore down silos
+  to come together and jointly further one another's goals.
 
 How to be a better mentor
 -------------------------
@@ -368,7 +381,7 @@ Psychologically:
   No matter how experienced one may be, there will always be areas
   in contemporary technology in which the mentors may not know much.
   Therefore, sometimes we think of the mentorship as a research
-  collaboration, not so much as a benevolent master / submissive
+  collaboration, not so much as a benevolent master / dutiful
   apprentice kind of interaction.
 
   After all, the internship should be a positive and fun experience.
@@ -403,10 +416,13 @@ Come join us!
 * If you are an open source practitioner...
 * If you work in the industry...
 
+Reference: https://www.outreachy.org
+Reference: https://www.outreachy.org/communities/cfp/openstack/
+
 .. Things to talk about ^ (rpioso)
 
-  We went through Outreachy internship and believe it has been mutually
-  beneficial and useful.
+  We have been innvolved with Outreachy internships and believe they
+  have been mutually beneficial and useful. Come join us..,
 
   If you are new to the field and intrigued by getting on board a
   respectful open source project...
