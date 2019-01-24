@@ -127,7 +127,7 @@ html_theme = 'alabaster'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = 'Becoming OpenStack Developer via Outreachy v2019.01.02'
+html_title = 'Becoming OpenStack Developer via Outreachy'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None

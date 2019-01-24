@@ -2,7 +2,12 @@
 Becoming OpenStack Developer via Outreachy
 ==========================================
 
-Presented by: *Aija Jauntēva (intern), Dmitry Tantsur (mentor), Richard Pioso (industry expert), Ilya Etingof (mentor)*
+Presented by:
+
+* Aija Jauntēva (intern)
+* Dmitry Tantsur (mentor)
+* Richard Pioso (industry expert)
+* Ilya Etingof (mentor)
 
 In this talk
 ------------
