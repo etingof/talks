@@ -53,8 +53,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Becoming OpenStack Developer via Outreachy'
-copyright = '2019, Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof'
-author = 'Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof'
+copyright = u'2019, Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof'
+author = u'Aija Jauntēva, Dmitry Tantsur, Richard Pioso, Ilya Etingof'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
