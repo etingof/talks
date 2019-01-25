@@ -159,10 +159,10 @@ Ironic in OpenStack
    Perhaps we can tell that Ironic acts on BM boxen in the same way as
    Nova manages VMs.
 
-Current ironic architecture
+Classic ironic architecture
 ===========================
 
-.. image:: deployment_architecture_2.png
+.. image:: classic-architecture.png
    :align: center
 
 .. Things to talk about ^ (dtantsur)
@@ -240,11 +240,12 @@ Federated architecture
 To decentralize and distribute ironic, yet maintaining joint view on nodes:
 
 * Conductors groups
-* Lightweight RPC
-* Federating API proxy
 
-  * prototype: `github.com/dtantsur/ironic-proxy
-    <https://github.com/dtantsur/ironic-proxy>`_
+  * Grouping conductors and nodes together
+
+* Lightweight RPC
+
+  * A prototype exists to replace AMQP-based RPC with JSON-RPC
 
 .. Things to talk about ^ (dtantsur)
 
@@ -252,16 +253,44 @@ To decentralize and distribute ironic, yet maintaining joint view on nodes:
    many ironic instances distributed around the globe, each managing its own
    (local) set of nodes, but offering a single view on all nodes.
 
-   As of the time being, two approaches are being researched:
+   Split conductors in conductor groups co-located with the nodes they
+   manage, while still keeping the central API.
 
-   * Split conductors in conductor groups co-located with the nodes they
-     manage, while still keeping the central API.
+   Use a direct RPC approach (JSON-RPC or gRPC) instead of RPC via a
+   messaging queue.
 
-   * Use a direct RPC approach (JSON-RPC or gRPC) instead of RPC via a
-     messaging queue.
+Architecture with conductor groups
+==================================
 
-   * Standing up an API proxy service talking to satellite ironic instances
-     and that way joining them into a single view.
+.. image:: conductor-groups.png
+   :align: center
+
+.. Things to talk about ^ (dtantsur)
+
+Federated architecture
+======================
+
+If distributed/replicated database is also not an option, the following ideas
+are being considered (but not yet implemented):
+
+* Per-conductor database
+
+  * Requires substantion rework of the API implementation.
+
+* Federating API proxy
+
+  * prototype: `github.com/dtantsur/ironic-proxy
+    <https://github.com/dtantsur/ironic-proxy>`_
+
+.. Things to talk about ^ (dtantsur)
+
+   We could make sure that each conductor owns its instance of the database
+   with all the node information. This, however, will require a substantial
+   rework of the API implementation to avoid direct accesses to the database.
+
+   An an extreme of this idea, we can create an API proxy service talking
+   to satellite ironic instances and that way joining them into a single view.
+   I have created a prototype of such proxy, it is available on github.
 
 Booting is fragile
 ==================
