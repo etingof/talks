@@ -87,13 +87,13 @@ About Outreachy
 What is Outreachy?
 
   * Non-profit project under Software Freedom Conservancy
-  * Brings together interns, mentors, and free software projects
+  * Brings together interns, mentors, community and free software projects
   * Promotes the participation of under represented persons in technology
     fields
 
 How does it work?
 
-  * Interns get on board open source projects
+  * Interns gets into an open source project
   * Each intern gets a mentor (or two)
   * 3 month paid internship
 
@@ -104,6 +104,8 @@ How does it work?
 
   Outreachy helps bring together interns, mentors, and open source projects
   that seek contributors and mentors.
+  
+  Helps promote not only open source but also 4 open principles of OpenStack
 
   The main focus of Outreachy is to promote and ensure diversity, getting
   different people from all over the world to join the open source movement.
@@ -151,6 +153,8 @@ Why mentor with @Outreachy?
   Meeting new and diverse people helps us to improve personally.
 
   Teaching can be quite rewarding - we learn new things when we explain them.
+  
+  Teaching open culture not just open code
 
   Finally, Outreachy brings motivated and productive contributors to our projects.
 
@@ -310,7 +314,7 @@ Reference: https://docs.openstack.org/ironic/latest/
   work, was interested in promoting its use in open source.
   
   Separately, OpenStack's Ironic project was implementing support for Redfish
-  to provision bare metal servers. Its developers, including Aija, were
+  to provision and life-cycle manage bare metal servers. Its developers, including Aija, were
   facing challenges, and found the standard's specifications and related
   documentation not always ideal, e.g., confusing or lacking detail. Go
   figure!
