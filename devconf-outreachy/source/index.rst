@@ -29,7 +29,7 @@ In this talk
 Why do we do this?
 ------------------
 
-* Help breed software engineers
+* Help develop software engineers
 * Sustain the open source culture
 * Promote diversity in the profession
 
@@ -86,8 +86,8 @@ About Outreachy
 
 What is Outreachy?
 
-  * Non-profit organization under Software Freedom Conservancy
-  * Brings together interns, mentors, community and code
+  * Non-profit project under Software Freedom Conservancy
+  * Brings together interns, mentors, community and free software projects
   * Promotes the participation of under represented persons in technology
     fields
 
@@ -99,7 +99,7 @@ How does it work?
 
 .. Things to talk about ^ (ietingof)
 
-  Outreachy is a volunteer organization operating under the Software Freedom
+  Outreachy is a non-profit project operating under the Software Freedom
   Conservancy umbrella.
 
   Outreachy helps bring together interns, mentors, and open source projects
@@ -114,7 +114,7 @@ Why become an intern?
 ---------------------
 
 * Find your aspirations
-* Learn the software engineering craft
+* Learn the software engineering, documentation, design, or other craft
 * Start contributing to free and open source software
 * Get a job (hopefully, the dream one)
 
@@ -173,7 +173,7 @@ Aija's internship @OpenStack
   - Challenges
 
     - initial ticket
-    - transparency of others applying
+    - transparency in seeing others applying
 
   - Successes
 
@@ -299,7 +299,7 @@ Case study: Becoming better together
 
 Reference: https://www.dmtf.org
 Reference: https://www.dmtf.org/standards/redfish
-Reference: https://wiki.openstack.org/wiki/Ironic
+Reference: https://docs.openstack.org/ironic/latest/
 
 .. Things to talk about ^ (rpioso)
 
@@ -416,11 +416,11 @@ Signs of a successful intern
 Come join us!
 -------------
 
-* If you are a student...
+* If you are a prospective intern...
 * If you are an open source practitioner...
 * If you work in the industry...
 
-Reference: https://www.outreachy.org
+Reference: https://www.outreachy.org/communities/cfp/
 Reference: https://www.outreachy.org/communities/cfp/openstack/
 
 .. Things to talk about ^ (rpioso)
@@ -437,4 +437,15 @@ Reference: https://www.outreachy.org/communities/cfp/openstack/
   If you are coming from the industry and seeking a reality check for
   your products or specifications...
 
+  People can sign up as mentors with communities that participated in
+  the past or as coordinators for new communities at
+  https://www.outreachy.org/communities/cfp/
+  and https://www.outreachy.org/communities/cfp/openstack/; review
+  information on outreachy.org if want to apply as an intern.
+  
   Apply for the next Outreachy round as an intern or as a mentor!
+
+Q&A
+---
+
+Thank you!

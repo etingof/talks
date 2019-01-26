@@ -4,6 +4,10 @@ Ironic and Edgy
 
 *by Dmitry Tantsur and Ilya Etingof, Red Hat*
 
+.. image:: ironic-bears.jpeg
+   :align: center
+   :scale: 15%
+
 In this talk...
 ===============
 
@@ -114,27 +118,38 @@ Trends:
 The Ironic project
 ==================
 
-* Official OpenStack bare metal hypervisor since the *Kilo* cycle
-* Lively upstream community
-* Established relationships with hardware vendors
+* Official OpenStack bare metal project since the *Kilo* cycle
+
+  * Plugs into the Compute service (Nova)
+
+* Lively upstream community:
+
+  * *Rocky*: 359 commits, 81 contributors, 24 companies.
+
+* Established relationships with hardware vendors (Dell, HPE, Fujitsu, Lenovo,
+  Cisco).
+
+* Support for old and new industry standards (IPMI, PXE, iPXE, Redfish, SNMP,
+  UEFI).
 
 .. Things to talk about ^ (dtantsur)
 
-  Ironic is the OpenStack project that implements a nova-manageable
-  hypervisor targeting bare metal servers. The goal here is to
-  to treat bare metal machines as VMs from the user perspective.
-
-  Ironic has been conceived as a fork of nova baremetal driver since
-  OpenStack *Icehouse* cycle, by the *Kilo* cycle ironic has become
-  the officially integrated OpenStack project.
+  Ironic is the OpenStack project that implements provisioning and life cycle
+  API for bare metal machines. It can be used in the Compute service as a
+  hypervisor targeting bare metal servers with the goal of treaing
+  bare metal machines as VMs from the user perspective.
 
   Ironic is already a relatively large project with quite active and
-  diverse community of users and contributors.
+  diverse community of users and contributors. The last release codenamed Rocky
+  has 359 commits from 81 contributors from 24 companies.
 
   Targeting hardware management, ironic has managed to attract a
   handful of high-profile hardware vendors thus creating and maintaining
   vendor-specific *drivers* (AKA *hardware types*) interfacing ironic
   with specific family of computers.
+
+  Ironic has good support for both established and modern industry standards,
+  protocols and technologies, such as IPMI, PXE, iPXE, Redfish, SNMP, UEFI.
 
 Ironic in OpenStack
 ===================
@@ -148,10 +163,10 @@ Ironic in OpenStack
    Perhaps we can tell that Ironic acts on BM boxen in the same way as
    Nova manages VMs.
 
-Current ironic architecture
+Classic ironic architecture
 ===========================
 
-.. image:: deployment_architecture_2.png
+.. image:: classic-architecture.png
    :align: center
 
 .. Things to talk about ^ (dtantsur)
@@ -170,57 +185,116 @@ Ironic in action
 
    Perhaps we should explain the workflow e.g. inspect, deploy, clean.
 
-Reshaping Ironic for the Edge
-=============================
+Challenges at the Edge
+======================
 
 Challenges:
 
   * PXE for boot management is unreliable
   * DHCP over WAN unreliable and insecure
+  * IPMI is unreliable and insecure
+
+    * Quiz: do you know about Cipher 0?
+
+  * AMQP for RPC
   * Low bandwidth
+
+.. Things to talk about ^ (dtantsur)
+
+   In general, provisioning a server has a couple of weak points that get
+   amplified if we extend the provisioning network across WAN. Technologies
+   like PXE, DHCP and IPMI are not reliable, and sometimes insecure, when used
+   over WAN. Using VPN solves the security aspect, but not reliability.
+
+   Quiz: do you know what IPMI Cipher zero is? It's essentially an
+   authentication mode without authentication. You heard me right.
+
+   Our use of AMQP for RPC, which is standard for OpenStack, poses a challenge
+   of scaling a reliable AMQP implementation across locations.
+
+   Finally, low bandwidth requires careful approach when distributing images to
+   nodes.
+
+Reshaping Ironic for the Edge
+=============================
 
 Solutions:
 
   * Federated Ironic
   * Booting via virtual media or UEFI HTTP boot
   * DHCP-less boot over virtual media
-  * Deploy image streaming
-  * Deploy image over BitTorrent
+  * Direct image streaming
+  * HTTP-based protocols instead of IPMI
 
 .. Things to talk about ^ (dtantsur)
 
-   In general, provisioning a server has a couple of weak points that get
-   amplified if we extend the provisioning network.
-
    Therefore the focus of the ironic team is to adapt system architecture
-   to mitigate those weak points.
+   to mitigate those weak points. In the following slides we are going
+   to discuss the major ideas:
 
-   In the following slides we are going to check out the major ideas.
+   * Federation for Ironic API
+   * Booting with virtual media or UEFI HTTP boot instead of PXE
+   * Booting with virtual media without a DHCP server
+   * Streaming images directly to the disk, potentiall with Bit-Torrent
+   * HTTP-based protocols (e.g. Redfish) instead of IPMI
 
 Federated architecture
 ======================
 
 To decentralize and distribute ironic, yet maintaining joint view on nodes:
 
-* API proxy
-* IPMI-to-Redfish proxy
+* Conductors groups
+
+  * Grouping conductors and nodes together
+
+* Lightweight RPC
+
+  * A prototype exists to replace AMQP-based RPC with JSON-RPC
 
 .. Things to talk about ^ (dtantsur)
-
-   Present day ironic is quite centralized meaning that we run central ironic
-   managing all nodes.
 
    For the Edge we are looking into making ironic distributed e.g. having
    many ironic instances distributed around the globe, each managing its own
    (local) set of nodes, but offering a single view on all nodes.
 
-   As of the time being, ironic developers are poking at two ideas:
+   Split conductors in conductor groups co-located with the nodes they
+   manage, while still keeping the central API.
 
-   * Standing up an API proxy service talking to satellite ironic instances
-     and that way joining them into a single view
+   Use a direct RPC approach (JSON-RPC or gRPC) instead of RPC via a
+   messaging queue.
 
-   * Still having a single, centralized ironic instance managing Edge nodes
-     over Redfish via a Redfish-to-IPMI proxy running at the Edge.
+Architecture with conductor groups
+==================================
+
+.. image:: conductor-groups.png
+   :align: center
+
+.. Things to talk about ^ (dtantsur)
+
+Federated architecture
+======================
+
+If distributed/replicated database is also not an option, the following ideas
+are being considered (but not yet implemented):
+
+* Per-conductor database
+
+  * Requires substantion rework of the API implementation.
+
+* Federating API proxy
+
+  * prototype: `github.com/dtantsur/ironic-proxy
+    <https://github.com/dtantsur/ironic-proxy>`_
+
+.. Things to talk about ^ (dtantsur)
+
+   We could make sure that each conductor owns its instance of the database
+   with all the node information. This, however, will require a substantial
+   rework of the API implementation to avoid direct accesses to the database.
+
+   An an extreme of this idea, we can create an API proxy service talking
+   to satellite ironic instances and that way joining them into a single view.
+   I have created a prototype of such proxy, it is available on github.
 
 Booting is fragile
 ==================
@@ -250,7 +324,7 @@ The history of network booting
 * PXE: BOOTP/DHCP -> TFTP
 * iPXE: BOOTP/DHCP -> HTTP/iSCSI
 * UEFI: BOOTP/DHCP -> HTTP/iSCSI
-* Virtual Media: HTTP
+* Virtual Media: HTTP, SMB, NFS
 
 .. Things to talk about ^ (ietingof)
 
@@ -320,36 +394,21 @@ Non-network boot over virtual media
   virtual media floppy to pass static network configuration information
   for the deploy image to consume.
 
-Deploy image streaming
-======================
+Image streaming
+===============
 
-* Ironic implements on-the-fly image provisioning
-* Images pulled over HTTP can be be cached
-
-.. Things to talk about ^ (dtantsur)
-
-One of the existing methods of ironic image deployment involves pulling
-OS image over HTTP and writing it down on the fly e.g. avoiding
-intermediate caching (what's probably the most resource-efficient and
-suites well baremetal nodes with lesser RAM).
-
-On top of that, HTTP-based images could be efficiently cached at the
-Edge for repeated deployments.
-
-Deploy image over BitTorrent
-============================
-
-* Offloads image provisioning to local nodes
-* Efficient for large images and simultaneous deployment
+* Streaming images directly to the block device
+* Idea: distributing images via Bit-Torrent
 
 .. Things to talk about ^ (dtantsur)
 
-Another, still experimental, provisioning method in ironic utilizes the
-BitTorrent protocol. It's serves torrent files from Glance, seeds images from
-Swift and most efficient in situations of mass concurrent nodes deployment.
+   One of the existing methods of ironic image deployment involves pulling
+   OS image over HTTP and writing it down on the fly avoiding
+   intermediate caching (what's probably the most resource-efficient and
+   suites well baremetal nodes with lesser RAM).
 
-In the Edge situation, image provisioning through neighbouring nodes can
-save bandwidth and improve reliability.
+   Another proposed approach to tackle this problem in ironic utilizes the
+   BitTorrent protocol.
 
 Summary: Ironic has an Edge
 ===========================
@@ -357,7 +416,7 @@ Summary: Ironic has an Edge
 The upcoming features:
 
 * Federated architecture
-* Non-network boot
+* Reliable boot methods
 * Efficient image delivery
 
 .. Things to talk about ^ (dtantsur)
