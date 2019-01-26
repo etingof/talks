@@ -4,6 +4,10 @@ Ironic and Edgy
 
 *by Dmitry Tantsur and Ilya Etingof, Red Hat*
 
+.. image:: ironic-bears.jpeg
+   :align: center
+   :scale: 15%
+
 In this talk...
 ===============
 
