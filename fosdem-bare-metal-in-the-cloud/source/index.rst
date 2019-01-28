@@ -119,9 +119,9 @@ Machine deployment workflow
 ---------------------------
 
 * Hardware introspection
-* Node cleaning
-* Boot, BIOS, RAID configuration
-* Switch configuration
+* Node cleaning (BIOS, RAID etc)
+* Network configuration
+* Boot configuration
 * Image deployment
 * Custom OS configuration
 
@@ -159,58 +159,63 @@ Discover:
 Deployment: Cleaning
 --------------------
 
-* Reset BIOS, disassemble RAID
+* Apply BIOS settings, reassemble RAID
 * Configure boot from network
 * Boot IPA ramdisk
-* Wipe out local drives
+* Wipe out local drives, reassemble RAID
 
 .. Things to talk about ^ (ietingof)
 
+  Automated cleaning is performed to ensure consistent and clean
+  system.
 
+  During cleaning multiple steps could be performed on the node
+  in the form of in-band and out-of-band cleaning.
 
+  Out-of-band cleaning steps use BMC to set BIOS settings, assemble
+  RAID, etc.
 
-Deployment: Set up the stage
+  In-band cleaning involve booting IPA ramdisk to wipe out local
+  drives, assemble RAID and possibly many other things that can be done
+  from within the system itself.
+
+Deployment: Networking
+----------------------
+
+Various network management models:
+
+* Node stays on the same network
+* Ironic configures switch to move node across networks
+
+.. Things to talk about ^ (dtantsur)
+
+Deployment: Boot configuration
+------------------------------
+
+* Boot from network (PXE, iPXE, Virtual Media)
+* Boot IPA for deploy
+
+.. Things to talk about ^ (dtantsur)
+
+Deployment: Deploy user image
+-----------------------------
+
+Many ways to write user image
+
+* Over iSCSI
+* Over HTTP
+* BitTorrent
+
+.. Things to talk about ^ (dtantsur)
+
+Deployment: sequence diagram
 ----------------------------
-
-* Network configuration
-
-  - Move bare metal on the provisioning network
-
-* Hardware Introspection
-
-  - Out-of-band and/or
-  - In-band
-
-Deployment: Prepare bare metal
-------------------------------
-
-* Configure BIOS settings
-* Set up RAID
-* Clean up
-
-Deployment: Install user image
-------------------------------
-
-* Set boot device, boot mode, power ON
-* Boot deploy agent
-* Pull, install and customize user image
 
 .. image:: ironic-sequence-pxe-deploy.png
    :align: center
    :scale: 70%
 
-Deployment: the final touch
----------------------------
-
-* Network configuration
-
-  - Move bare metal on the provider network
-
-* Provision the work load
-
-  - Containers
-  - OpenStack services (e.g. Triple O)
-  - User applications
+.. Things to talk about ^ (dtantsur)
 
 Latest developments
 -------------------
@@ -219,6 +224,8 @@ Latest developments
 * Redfish out-of-band introspection
 * Redfish BIOS configuration management
 
+.. Things to talk about ^ (dtantsur)
+
 Upcoming features
 -----------------
 
@@ -226,3 +233,14 @@ Upcoming features
 * Federation Capabilities
 * SmartNIC Support
 * Graphical Console Support
+
+.. Things to talk about ^ (dtantsur)
+
+Future use-cases
+----------------
+
+* Hyper-converged, containers
+* Edge cloud
+
+.. Things to talk about ^ (dtantsur)
+
