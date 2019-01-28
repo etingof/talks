@@ -243,4 +243,3 @@ Future use-cases
 * Edge cloud
 
 .. Things to talk about ^ (dtantsur)
-
