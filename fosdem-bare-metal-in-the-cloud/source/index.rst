@@ -5,6 +5,10 @@ Bare Metal In The Cloud: Isn’t it Ironic?
 
 *by Dmitry Tantsur and Ilya Etingof, Red Hat*
 
+.. image:: Ironic_mascot_color.png
+   :align: center
+   :scale: 25%
+
 In this talk
 ------------
 
