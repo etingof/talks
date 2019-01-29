@@ -12,19 +12,19 @@ Bare Metal In The Cloud: Isn’t it Ironic?
 In this talk
 ------------
 
-* Why allocating bare metal machines
+* What's bare metal provisioning
 * Ironic introduction and work flows
-* Present and upcoming features
+* The future of ironic
 
 .. Things to talk about ^ (ietingof)
 
-  In this talk we are going to explain bare metal management is and
+  In this talk we are going to explain bare metal management and
   why it is becoming increasingly important.
 
-  We will go on introducing the ironic project, it's role in the cloud
-  software and typical bare metal management work flow.
+  We will go on introducing the ironic project, it's place on the cloud
+  landscape and typical bare metal management work flow.
 
-  In the end we will talk about the latest and upcoming ironic features.
+  In the end we will give you an idea what's coming next in ironic.
 
 Why bare metal allocation
 -------------------------
@@ -36,16 +36,20 @@ Why bare metal allocation
 
 .. Things to talk about ^ (ietingof)
 
-  For cloud users it may make sense to allocate a bare metal machine
-  instead of a VM instance because:
+  The original idea behind bare metal provisioning is to allow
+  bare metal node allocation in the very similar was as a VM is
+  allocated in the cloud.
+
+  The reasons for bare metal allocation are many:
 
   * the workload may require the full power of bare metal
   * the workload may rely on special, non-virtualized hardware e.g. GPU
   * the workload operates on a sensitive data requiring perfect
     tenant isolation
 
-  But there are other use-cases. For example, automated cloud software
-  deployment such as OpenStack or Kubernetes nodes.
+  Over time another use-case has become quite dominant - the cloud
+  infrastructure itself, especially in large clouds, needs to be managed
+  including container orchestration systems.
 
 What's ironic
 -------------
