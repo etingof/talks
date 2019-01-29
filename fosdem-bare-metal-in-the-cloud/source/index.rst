@@ -189,6 +189,18 @@ Various network management models:
 
 .. Things to talk about ^ (dtantsur)
 
+  Deployment security and bandwidth utilization could be the reasons
+  why operators may want to move the node onto a dedicated network
+  for deployment or cleaning.
+
+  Ironic is integrated with OpenStack Neutron which has integration with
+  certain hardware switches through Ansible and ML2 driver to move switch
+  port from one network to the other during node transitioning through its
+  life-cycle.
+
+  If dedicated provisioning or cleaning network is used, ironic will
+  move the node to it prior to booting.
+
 Deployment: Boot configuration
 ------------------------------
 
@@ -196,6 +208,19 @@ Deployment: Boot configuration
 * Boot IPA for deploy
 
 .. Things to talk about ^ (dtantsur)
+
+  Depending on the hardware capabilities, ironic can set up node
+  and the surrounding infrastructure to boot the system over PXE.
+  iPXE or Virtual Media.
+
+  While PXE-boot being the most common approach, it's also least
+  reliable and scalable. With virtual media boot getting traction,
+  system boot becomes faster and more reliable.
+
+  More often than not, the node has a local drive to boot from. To
+  image local drive, ironic first boots the IPA ramdisk which stands
+  up ironic agent inside the systems being deployed. Ironic conductor
+  guides ironic agent through image flashing process.
 
 Deployment: Deploy user image
 -----------------------------
@@ -208,6 +233,17 @@ Many ways to write user image
 
 .. Things to talk about ^ (dtantsur)
 
+  Most common image writing technique in the past has been over iSCSI
+  where IPA exposes node's local drive as iSCSI target and ironic conductor
+  writes desired image onto it.
+
+  Faster and more reliable approach is to stream image from ironic conductor
+  to IPA which immediately writes image on local drive.
+
+  Finally, in the situation when many nodes being installed simultaneously,
+  the image can be seeded by ironic conductor initially, them the nodes
+  can help distribute it across the emerging fleet of bare metal nodes.
+
 Deployment: sequence diagram
 ----------------------------
 
@@ -217,21 +253,13 @@ Deployment: sequence diagram
 
 .. Things to talk about ^ (dtantsur)
 
-Latest developments
--------------------
-
-* Ansible-based deployment
-* Redfish out-of-band introspection
-* Redfish BIOS configuration management
-
-.. Things to talk about ^ (dtantsur)
+  Reiteration of the above slides using PXE-boot as example.
 
 Upcoming features
 -----------------
 
 * Deploy Templates
 * Federation Capabilities
-* SmartNIC Support
 * Graphical Console Support
 
 .. Things to talk about ^ (dtantsur)
