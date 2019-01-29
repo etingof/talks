@@ -24,7 +24,7 @@ In this talk
   We will go on introducing the ironic project, it's place on the cloud
   landscape and typical bare metal management work flow.
 
-  In the end we will give you an idea what's coming next in ironic.
+  In the end we will give you an idea what future holds for ironic.
 
 Why bare metal allocation
 -------------------------
@@ -51,8 +51,8 @@ Why bare metal allocation
   infrastructure itself, especially in large clouds, needs to be managed
   including container orchestration systems.
 
-What's ironic
--------------
+Two faces of ironic
+-------------------
 
 * OpenStack bare metal provisioning service
 
@@ -65,18 +65,19 @@ What's ironic
 .. Things to talk about ^ (ietingof)
 
   Ironic project has been started as a fork of OpenStack Nova bare metal
-  driver. It has become the main stream bare metal provisioning service
-  for OpenStack and grown in functionality a great deal since then.
+  driver. It has become the mainstream bare metal provisioning service
+  for OpenStack and has grown in functionality a great deal since then.
 
-  Now days OpenStack ironic service consists of three parts:
+  Now days ironic has two faces: one is OpenStack ironic service consisting
+  of three parts:
 
   * The ironic service which orchestrates bare metal machines
   * The IPA which sometimes runs inside the bare metal machine
     being deployed to handle local tasks
   * Nova driver to schedule bare metal machines alongside VMs
 
-  At the same time ironic could be used as a stand-alone bare
-  metal machines orchestration tool for whatever purpose.
+  The other face of ironic is a general-purpose bare metal provisioning
+  tool that can be used stand-alone for whatever purpose.
 
 Hardware management harness
 ---------------------------
@@ -89,38 +90,38 @@ Hardware management harness
   More often than not, now days' computers, switches and storage devices
   that are designed for data centre use carry a small satellite computer
   which is always ON, connected to the network and, most importantly, has
-  direct and quite deep access to the main system. This computer is known
-  as BMC and it's primarily relied upon by ironic.
+  direct and quite intricate access to the main system's internals. This
+  computer is known as BMC and it's heavily relied upon by ironic.
 
   The BMCs talk a specially designed protocol known as hardware management
-  protocol. The mainstream protocol of this kind as known as Redfish, and
-  it is rapidly replacing the IPMI protocol as well as many different
-  vendor-specific protocols.
+  protocol. The contemporary mainstream protocol of this kind as known as
+  Redfish, and it is rapidly replacing the IPMI protocol as well as many
+  different vendor-specific protocols.
 
   Ironic supports many hardware management protocols via the abstraction
   layer called 'hardware type'.
 
-Management operations
----------------------
+What BMC can do
+---------------
 
 * System power management
 * Boot device configuration
 * System BIOS management
-* RAID configuration
+* Hardware RAID configuration
 * Virtual media boot
 * ... and many others
 
 .. Things to talk about ^ (ietingof)
 
   Probably the most important operation on a bare metal machine is
-  its power control meaning the ability to flip system power on/off
-  and read current power state. All though BMC, of course.
+  its power control. Meaning the ability to flip system power on/off
+  and read current power state. All via BMC calls.
 
   Besides power, it is no less important to be able to change boot
   device and boot mode.
 
   More sophisticated and sort of optional features include the ability
-  to manage BIOS settings, build local on-board RAID, perform system
+  to manage BIOS settings, assemble hardware RAIDs, perform system
   boot from virtual local CD drive and many others
 
 Machine deployment workflow
@@ -167,10 +168,15 @@ Discover:
 Deployment: Cleaning
 --------------------
 
-* Apply BIOS settings, reassemble RAID
-* Configure boot from network
-* Boot IPA ramdisk
-* Wipe out local drives, reassemble RAID
+* Out-of-band cleaning:
+
+  - Apply BIOS settings, reassemble hardware RAID, ...
+
+* In-band cleaning:
+
+  - Configure boot from network
+  - Boot IPA ramdisk
+  - Wipe out local drives, reassemble RAID, ...
 
 .. Things to talk about ^ (ietingof)
 
