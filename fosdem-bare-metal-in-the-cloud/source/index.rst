@@ -30,7 +30,7 @@ Why bare metal allocation
 -------------------------
 
 * Raw computing power
-* Hard-to-virtualize hardware e.g. GPU
+* Hard-to-virtualize hardware e.g. GPU, FPGA
 * Perfect isolation e.g. tenant security
 * Cloud software deployment
 
@@ -51,16 +51,32 @@ Why bare metal allocation
   infrastructure itself, especially in large clouds, needs to be managed
   including container orchestration systems.
 
+Why ironic
+----------
+
+* Fully API driven, CLI and GUI available
+* Mature and battle-tested
+* Good vendor support
+
+  * HPE, Dell EMC, Fujitsu, Cisco, Lenovo, Huawei
+  * 3rdparty CI mandatory
+
+* Support for UEFI
+
+.. Things to talk about ^ (ietingof)
+
 Two faces of ironic
 -------------------
 
-* OpenStack bare metal provisioning service
+* Stand-alone bare metal provisioning service
 
+  + RESTful API
   + Ironic Conductor
   + Deployment Agent
-  + OpenStack Nova driver
 
-* Stand-alone bare metal provisioning tool
+* OpenStack bare metal provisioning service
+
+  + OpenStack Nova driver
 
 .. Things to talk about ^ (ietingof)
 
@@ -68,16 +84,17 @@ Two faces of ironic
   driver. It has become the mainstream bare metal provisioning service
   for OpenStack and has grown in functionality a great deal since then.
 
-  Now days ironic has two faces: one is OpenStack ironic service consisting
-  of three parts:
+  Now days ironic has two faces: one is a general-purpose bare metal
+  provisioning service that can be used stand-alone for whatever purpose
+  and that consists of three parts:
 
+  * The RESTful API service
   * The ironic service which orchestrates bare metal machines
   * The IPA which sometimes runs inside the bare metal machine
     being deployed to handle local tasks
-  * Nova driver to schedule bare metal machines alongside VMs
 
-  The other face of ironic is a general-purpose bare metal provisioning
-  tool that can be used stand-alone for whatever purpose.
+ The other is the OpenStack Bare Metal service that also requires an OpenStack
+ Compute (Nova) driver to schedule bare metal machines alongside VMs.
 
 Hardware management harness
 ---------------------------
@@ -154,7 +171,8 @@ Out-of-band:
 
 In-band:
 
-* NICs MACs
+* All the above
+* Benchmarks
 * Allocated ports at the switch
 * ...
 
@@ -188,6 +206,7 @@ Out-of-band:
 
 * Apply BIOS settings
 * Reassemble hardware RAID
+* Update firmware
 * ...
 
 In-band:
@@ -214,10 +233,16 @@ In-band:
 Deployment: Networking
 ----------------------
 
-Various network management models:
+Two kinds of networks:
 
-* Node stays on the same network
-* Ironic configures switch to move node across networks
+* Service (cleaning, provisioning, rescue)
+* Tenant (for end users)
+
+Three network management models:
+
+* Using existing network infrastructure
+* Using OpenStack Networking with shared network
+* Using OpenStack Networking with switch management
 
 .. Things to talk about ^ (dtantsur)
 
@@ -261,7 +286,7 @@ Many ways to write user image
 
 * Over iSCSI
 * Over HTTP
-* BitTorrent
+* Potential: BitTorrent
 
 .. Things to talk about ^ (dtantsur)
 
