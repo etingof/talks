@@ -8,31 +8,33 @@ Presented by Ilya Etingof <etingof@gmail.com>
 Why SNMP
 --------
 
-* SNMP is old, complicated and has quite a few competitors
-* Still, SNMP is ubiquitous in data collection tasks
-* SNMP structures management information (MIB)
-* We have accumulated tens of thousands of MIBs
+* SNMP is old, complicated and has many competitors
+* SNMP is still ubiquitous in monitoring
+* SNMP is well-understood by many
+* We have accumulated over 10,000 MIBs [1]
+
+1. http://mibs.snmplabs.com/asn1/
 
 .. Things to talk about ^
 
-  SNMP dates back to eighties. It has been designed with small computing
-  systems in mind, to have smaller footprint on the resources.
+  SNMP is dead... except, that it is alive!
 
   Despite its failure to become the single network management protocol of
-  choice, SNMP still seems dominant for management data collection purposes.
+  choice, SNMP still seems dominant in monitoring applications.
 
-  Perhaps one of the pillars of its popularity is the availability and
-  great numerosity of MIBs - structured, machine and human readable description
-  of what's being managed.
-
-  To date we have accumulated tens of thousands of MIBs.
+  Besides being well-understood by many network engineers, another
+  pillars of its popularity is the availability and great numerosity
+  of MIBs - structured, machine and human readable description of what's
+  being managed.
 
 Consider the use-case
 ---------------------
 
-* Your network is universally SNMP-managed
-* You've got some new hardware on your network to keep an eye on
-* Quite likely, the new device offers REST API. How'd your NMS reach it?
+* Your network is SNMP-monitored
+* New hardware arrives
+* Being new, it offers just REST API...
+
+How'd your NMS reach it?
 
 .. Things to talk about ^
 
@@ -59,34 +61,6 @@ Standing up a mediation proxy
    your own), turn the MIB into a Python snippet containing necessary hooks,
    add some custom code to obtain the information from the ultimate data source.
    Finally, let the `snmpresponderd` tool to load and execute your Pythonized MIB.
-
-Demo: system name
------------------
-
-.. code-block:: bash
-
-   $ ls -l SNMPv2-MIB.txt
-   -rw-r--r--   1 ietingof  staff     29305 Jul 24 07:54 SNMPv2-MIB.txt
-   $ cat SNMPv2-MIB.txt
-   ...
-   sysName OBJECT-TYPE
-        SYNTAX      DisplayString (SIZE (0..255))
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-                "An administratively-assigned name for this managed
-                node.  By convention, this is the node's fully-qualified
-                domain name.  If the name is unknown, the value is
-                the zero-length string."
-        ::= { system 5 }
-   ...
-
-.. Things to talk about ^
-
-  The `SNMPv2-MIB`, I am going to use for the example purposes, captures some
-  basic information on the system. Let's pick the `sysName` object for the sake
-  of simplicity. This object just reports system name, as assigned by the
-  administrator.
 
 Demo: Redfish as a data source
 ------------------------------
@@ -118,6 +92,34 @@ Demo: Redfish as a data source
 
   The item of interest here is the `HostName` element...
 
+Demo: system name
+-----------------
+
+.. code-block:: bash
+
+   $ ls -l SNMPv2-MIB.txt
+   -rw-r--r--   1 ietingof  staff     29305 Jul 24 07:54 SNMPv2-MIB.txt
+   $ cat SNMPv2-MIB.txt
+   ...
+   sysName OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..255))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+                "An administratively-assigned name for this managed
+                node.  By convention, this is the node's fully-qualified
+                domain name.  If the name is unknown, the value is
+                the zero-length string."
+        ::= { system 5 }
+   ...
+
+.. Things to talk about ^
+
+  The `SNMPv2-MIB`, I am going to use for the example purposes, captures some
+  basic information on the system. Let's pick the `sysName` object for the sake
+  of simplicity. This object just reports system name, as assigned by the
+  administrator.
+
 Demo: Pythonize SNMPv2-MIB
 --------------------------
 
@@ -145,7 +147,7 @@ Looking inside the `SNMPv2-MIB.py`:
 
 .. Things to talk about ^
 
-  So the task is to serve Redfish `HostName` ad SNMP `sysName`. The first step
+  So the task is to serve Redfish `HostName` as SNMP `sysName`. The first step
   toward this is to compile SNMP MIB into Python boilerplate code.
 
   Compiled MIB has all the managed objects each exposing a bunch of hooks
@@ -177,7 +179,7 @@ Demo: add REST API call
 .. Things to talk about ^
 
   To obtain Redfish `HostName` we can just call `requests` or any other HTTP client
-  from a thread pool to ensure non-blocking operation.
+  from a thread pool to ensure non-blocking behaviour.
 
   Once the read value comes from the REST API call, we pass it to the SNMP agent's
   callback function.
@@ -210,15 +212,20 @@ And query it:
   serve the data they produce over SNMPv1/v2c and SNMPv3 including all encryption
   features.
 
-  The MIB deployment is simple: just place your MIB implementation into
+  MIB deployment is simple: just place your MIB implementation into
   a directory where SNMP Command Responder could reach it.
+
+  Or you could pack your MIB implementation into a pip-installable
+  package for easier distribution.
 
 Why it all matters
 ------------------
 
-* SNMP is still in wide use
-* This tool set helps mediating SNMP NMS with any data source
-* Asynchronous design ensures scalability
+* SNMP is still widely used in monitoring
+* But data sources may vary
+* The `snmpresponder` [1] tool offers universal mediation layer
+
+1. https://github.com/etingof/snmpresponder
 
 .. Things to talk about ^
 
