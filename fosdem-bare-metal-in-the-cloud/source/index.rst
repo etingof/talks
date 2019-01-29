@@ -146,21 +146,34 @@ Machine deployment workflow
 Deployment: Inspection
 ----------------------
 
-Discover:
+Out-of-band:
 
 * Hardware capabilities
+* Inventory information
+
+In-band:
+
 * NICs MACs
 * Allocated ports at the switch
 
 .. Things to talk about ^ (ietingof)
 
   Once ironic becomes aware of a node (meaning BMC network address,
-  credentials) hardware inspection could be performed. During inspection
-  ironic learns the details of the node such as:
+  credentials) hardware inspection could be performed.
+
+  During inspection multiple steps could be performed on the node
+  in the form of in-band and out-of-band inspection.
+
+  Out-of-band inspection helps gathering:
 
   * node hardware capabilities (can be used for scheduling)
-  * node NICs MACs
-  * port of the switch into which the node is plugged
+  * inventory information
+
+  In-band inspection runs ironic agent inside the system being inspected
+  where it learns about on-board NICs, its MACs.
+
+  On top of that, IPA can snoop on the network leaning to which port
+  on the switch the NIC is attached to.
 
   This information can be used at the subsequent steps of the deployment
   work flow.
