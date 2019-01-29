@@ -150,11 +150,13 @@ Out-of-band:
 
 * Hardware capabilities
 * Inventory information
+* ...
 
 In-band:
 
 * NICs MACs
 * Allocated ports at the switch
+* ...
 
 .. Things to talk about ^ (ietingof)
 
@@ -182,15 +184,17 @@ In-band:
 Deployment: Cleaning
 --------------------
 
-* Out-of-band cleaning:
+Out-of-band:
 
-  - Apply BIOS settings, reassemble hardware RAID, ...
+* Apply BIOS settings
+* Reassemble hardware RAID
+* ...
 
-* In-band cleaning:
+In-band:
 
-  - Configure boot from network
-  - Boot IPA ramdisk
-  - Wipe out local drives, reassemble RAID, ...
+* Wipe out local drives
+* Reassemble RAID
+* ...
 
 .. Things to talk about ^ (ietingof)
 
