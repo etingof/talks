@@ -170,7 +170,8 @@ In-band:
   * inventory information
 
   In-band inspection runs ironic agent inside the system being inspected
-  where it learns about on-board NICs, its MACs.
+  where it learns about on-board NICs, its MACs and pretty much anything
+  the user want to run on the system.
 
   On top of that, IPA can snoop on the network leaning to which port
   on the switch the NIC is attached to.
@@ -196,13 +197,13 @@ Deployment: Cleaning
   Automated cleaning is performed to ensure consistent and clean
   system.
 
-  During cleaning multiple steps could be performed on the node
-  in the form of in-band and out-of-band cleaning.
+  Much like inspection, during cleaning multiple steps could be performed
+  on the node in the form of in-band and out-of-band cleaning.
 
   Out-of-band cleaning steps use BMC to set BIOS settings, assemble
   RAID, etc.
 
-  In-band cleaning involve booting IPA ramdisk to wipe out local
+  In-band cleaning involves booting IPA ramdisk to wipe out local
   drives, assemble RAID and possibly many other things that can be done
   from within the system itself.
 
