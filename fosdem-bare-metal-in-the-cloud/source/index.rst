@@ -56,14 +56,22 @@ Why ironic
 
 * Fully API driven, CLI and GUI available
 * Mature and battle-tested
+* Active and diverse upstream
 * Good vendor support
 
   * HPE, Dell EMC, Fujitsu, Cisco, Lenovo, Huawei
-  * 3rdparty CI mandatory
-
-* Support for UEFI
+  * 3-rd party CI is mandatory
 
 .. Things to talk about ^ (ietingof)
+
+  Ironic is a web service: it's driven by REST API and is shipped
+  with a CLI and GUI tools.
+
+  Ironic is being used in production by many large and well-known
+  OpenStack operators for five years now.
+
+  That probably explains quite active upstream community and significant
+  hardware vendor support.
 
 Two faces of ironic
 -------------------
