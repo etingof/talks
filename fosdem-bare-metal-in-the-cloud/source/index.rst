@@ -141,15 +141,25 @@ What BMC can do
   to manage BIOS settings, assemble hardware RAIDs, perform system
   boot from virtual local CD drive and many others
 
-Machine deployment workflow
----------------------------
+Machine lifecycle
+-----------------
+
+Preparation:
 
 * Hardware introspection
 * Node cleaning (BIOS, RAID etc)
+
+Deployment:
+
 * Network configuration
 * Boot configuration
 * Image deployment
 * Custom OS configuration
+
+Tear down:
+
+* Network unconfiguration
+* Node cleaning (wipe disks, reset BIOS, etc)
 
 .. Things to talk about ^ (ietingof)
 
@@ -160,8 +170,8 @@ Machine deployment workflow
   With this workflow we start with blank or previously used bare metal
   machine and end up with fully configured user OS running on the machine.
 
-Deployment: Inspection
-----------------------
+Preparation: Inspection
+-----------------------
 
 Out-of-band:
 
@@ -199,8 +209,8 @@ In-band:
   This information can be used at the subsequent steps of the deployment
   work flow.
 
-Deployment: Cleaning
---------------------
+Preparation: Cleaning
+---------------------
 
 Out-of-band:
 
@@ -229,6 +239,22 @@ In-band:
   In-band cleaning involves booting IPA ramdisk to wipe out local
   drives, assemble RAID and possibly many other things that can be done
   from within the system itself.
+
+Deployment: Workflow
+--------------------
+
+* Choose a bare metal machine to deploy
+* Connect to the deployment network
+* Configure boot of the deployment ramdisk
+* Partition the device and flash the image
+* Disconnect the deployment network, connect the instance networks
+* Configure the final instance booting
+* Reboot into the final instance
+
+.. Things to talk about ^ (dtantsur)
+
+   Quick recap of the workflow from 3 slides ago to separate ready-state
+   preparation from deployment itself.
 
 Deployment: Networking
 ----------------------
@@ -261,8 +287,9 @@ Three network management models:
 Deployment: Boot configuration
 ------------------------------
 
-* Boot from network (PXE, iPXE, Virtual Media)
-* Boot IPA for deploy
+* Boot from network: PXE, iPXE
+* Virtual Media: HTTP, CIFS, NFS
+* Legacy boot vs UEFI
 
 .. Things to talk about ^ (dtantsur)
 
@@ -284,8 +311,12 @@ Deployment: Deploy user image
 
 Many ways to write user image
 
-* Over iSCSI
-* Over HTTP
+* From conductor over iSCSI
+* From the agent over HTTP
+
+  * In-memory conversion
+  * Streaming raw images
+
 * Potential: BitTorrent
 
 .. Things to talk about ^ (dtantsur)
@@ -301,30 +332,43 @@ Many ways to write user image
   the image can be seeded by ironic conductor initially, them the nodes
   can help distribute it across the emerging fleet of bare metal nodes.
 
-Deployment: sequence diagram
-----------------------------
-
-.. image:: ironic-sequence-pxe-deploy.png
-   :align: center
-   :scale: 70%
-
-.. Things to talk about ^ (dtantsur)
-
-  Reiteration of the above slides using PXE-boot as example.
-
-Upcoming features
+Other features
 -----------------
 
+Current:
+
+* Firmware Updates
+* Serial Console
+* Rescue Mode
+* Port Groups
+
+Future:
+
 * Deploy Templates
-* Federation Capabilities
-* Graphical Console Support
+* Graphical Console
 
 .. Things to talk about ^ (dtantsur)
+
+   Just list the features that were not covered.
 
 Future use-cases
 ----------------
 
 * Hyper-converged, containers
-* Edge cloud
+* Edge cloud, federation
+
+.. Things to talk about ^ (dtantsur)
+
+Thank you!
+----------
+
+Learn more
+
+* https://docs.openstack.org/ironic/latest/
+
+Talk to us:
+
+* openstack-discuss@lists.openstack.org
+* #openstack-ironic @freenode
 
 .. Things to talk about ^ (dtantsur)
