@@ -133,7 +133,7 @@ Workflow: Pick SNMP MIB
 .. Things to talk about ^
 
   The `SNMPv2-MIB`, I am going to use for the example purposes, captures some
-  basic information on the system. Let's pick the `sysName` object for the sake
+  basic information of the system. Let's pick the `sysName` object for the sake
   of simplicity. This object just reports system name, as assigned by the
   administrator.
 
@@ -239,10 +239,8 @@ Why it all matters
 ------------------
 
 * SNMP is still widely used in monitoring
-* But data sources may vary
-* The `snmpresponder` [1] tool offers universal mediation layer
-
-1. https://github.com/etingof/snmpresponder
+* The "snmpresponder" tool as a universal mediation
+* Highly concurrent due to asynchronous design
 
 .. Things to talk about ^
 
