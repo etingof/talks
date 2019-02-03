@@ -5,6 +5,20 @@ Building Asynchronous SNMP Agents
 
 Presented by Ilya Etingof <etingof@gmail.com>
 
+In this lightening talk
+-----------------------
+
+* Why SNMP
+* The new tool: *snmpresponder*
+* Demo workflow
+
+.. Things to talk about ^
+
+   In this talk I am going to argue why SNMP is still relevant today.
+
+   I will present a new tool - snmpresponder - to serve user data
+   over SNMP followed by an example workflow.
+
 Why SNMP
 --------
 
@@ -17,14 +31,12 @@ Why SNMP
 
 .. Things to talk about ^
 
-  SNMP is dead... except, that it is alive!
-
   Despite its failure to become the single network management protocol of
-  choice, SNMP still seems dominant in monitoring applications.
+  choice, SNMP still heavily used in monitoring applications.
 
   Besides being well-understood by many network engineers, another
-  pillars of its popularity is the availability and great numerosity
-  of MIBs - structured, machine and human readable description of what's
+  pillar of its popularity is the availability and great numerosity
+  of MIBs - structured, machine and human readable descriptions of what's
   being managed.
 
 Consider the use-case
@@ -50,20 +62,25 @@ How'd your NMS reach it?
 Standing up a mediation proxy
 -----------------------------
 
-1. Pick a MIB (e.g. `SNMPv2-MIB`) or come up with your own
-2. Turn the `SNMPv2-MIB` into Python code with hooks
-3. Interface MIB hooks with your RESTful server
-4. Fire up the SNMP agent
+1. Pick a MIB or come up with your own
+2. Turn MIB into Python code
+3. Add glue code
+4. Fire up the SNMP agent - *snmpresponder*
 
 .. Things to talk about ^
 
-   The solution being offered look like this. You pick a MIB (or come up with
-   your own), turn the MIB into a Python snippet containing necessary hooks,
-   add some custom code to obtain the information from the ultimate data source.
-   Finally, let the `snmpresponderd` tool to load and execute your Pythonized MIB.
+   The solution being offered looks like this. You pick a MIB (or come up
+   with your own), turn the MIB into a Python snippet containing necessary
+   hooks, add some custom code to obtain the information from the ultimate
+   data source.
 
-Demo: Redfish as a data source
-------------------------------
+   Finally, let the `snmpresponderd` tool to load and execute your
+   Pythonized MIB.
+
+Workflow: REST API as a data source
+-----------------------------------
+
+  * Let's serve the "HostName" field
 
 .. code-block:: bash
 
@@ -72,7 +89,6 @@ Demo: Redfish as a data source
    {
     "Id": "437XR1138R2",
     "Name": "WebFrontEnd483",
-    "SystemType": "Physical",
     "AssetTag": "Chicago-45Z-2381",
     "Manufacturer": "Contoso",
     "Model": "3500",
@@ -81,19 +97,20 @@ Demo: Redfish as a data source
     "SerialNumber": "437XR1138R2",
     "PartNumber": "224071-J23",
     "Description": "Web Front End node",
-    "UUID": "38947555-7742-3448-3784-823347823834",
     "HostName": "web483",
     ...
 
 .. Things to talk about ^
 
-  For this presentation I picked the bare metal management protocol known as Redfish.
-  It serves many details on the hardware over REST API.
+  For this presentation I picked the bare metal management protocol known as
+  Redfish. It serves many details on the hardware over REST API.
 
   The item of interest here is the `HostName` element...
 
-Demo: system name
------------------
+Workflow: Pick SNMP MIB
+-----------------------
+
+  * Expose as "SNMPv2-MIB::sysName"
 
 .. code-block:: bash
 
@@ -120,8 +137,8 @@ Demo: system name
   of simplicity. This object just reports system name, as assigned by the
   administrator.
 
-Demo: Pythonize SNMPv2-MIB
---------------------------
+Workflow: compile MIB into Python
+---------------------------------
 
 .. code-block:: bash
 
@@ -155,7 +172,7 @@ Looking inside the `SNMPv2-MIB.py`:
 
   For the task we are currently at, we are only interested in the *read* hooks.
 
-Demo: add REST API call
+Workflow: add glue code
 -----------------------
 
 .. code-block:: python
@@ -188,8 +205,8 @@ Demo: add REST API call
   potentially heavy and slow REST API calls and typically short SNMP manager
   timeout.
 
-Demo: stand up SNMP agent
--------------------------
+Workflow: stand up SNMP agent
+-----------------------------
 
 Configure SNMP Command Responder:
 
@@ -242,4 +259,6 @@ Why it all matters
 Thank you
 ---------
 
-;-)
+* http://snmplabs.com/snmpresponder
+* https://github.com/etingof/snmpresponder
+
