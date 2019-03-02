@@ -64,8 +64,8 @@ Why ironic
 
 .. Things to talk about ^ (ietingof)
 
-  Ironic is a web service: it's driven by REST API and is shipped
-  with a CLI and GUI tools.
+  Ironic is a web service orchestrating bare metal provisioning.
+  It's driven by REST API and is shipped with a CLI and GUI tools.
 
   Ironic is being used in production by many large and well-known
   OpenStack operators for five years now.
