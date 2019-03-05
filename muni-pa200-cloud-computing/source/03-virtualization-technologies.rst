@@ -114,7 +114,7 @@ Cloud deployment models?
 In this lecture
 ---------------
 
-* History of virtualization
+* History of concurrency and virtualization
 * Virtualization technologies
 * Hypervisors
 * Cloud software
@@ -129,14 +129,16 @@ History of virtualization
 
 .. Things to talk about ^
 
-   The idea of virtualization dates back in time. Let's explore its development and
-   evolution starting from IBM mainframes through early desktop computers up to the
-   contemporary hardware.
+   Virtualization can be seen as a form of concurrency.
 
-Early sixties: S/360
---------------------
+   The idea of concurrent execution dates back in time. Let's explore its
+   development and evolution starting from IBM mainframes through early
+   desktop computers up to the contemporary hardware.
 
-IBM S/360: non-interactive, single-user, batched jobs
+Mid sixties: S/360
+------------------
+
+IBM S/360: single-program, batched jobs
 
 - Expensive idling on I/O
 
@@ -151,8 +153,8 @@ IBM S/360: non-interactive, single-user, batched jobs
     mainstream computing model of the time has been about non-interactive,
     batched jobs.
 
-Mid-sixties: S/370
-------------------
+Early seventies: S/370
+----------------------
 
 IBM S/370 introduced virtual memory, privilege separation
 
@@ -165,7 +167,7 @@ IBM S/370 introduced virtual memory, privilege separation
 
 .. Things to talk about ^
 
-    The concepts of virtualization have not been researched and tried until
+    The concepts of concurrency have not been researched extensively until
     late sixties within the CP-40 project that eventually resulted in the
     first real and full virtualization support which appeared in IBM S/370-67
     in 1966.
@@ -208,6 +210,8 @@ Dark ages of virtualization
 
 What exactly is virtualization?
 -------------------------------
+
+Many forms of concurrency and isolation:
 
 - Multi-programming
 - Multi-tasking
