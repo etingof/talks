@@ -253,7 +253,7 @@ Concurrency: multi-programming
 
 Sequential processes
 
-.. image:: multi-programming.svg
+.. image:: multi-programming.png
    :align: center
 
 Concurrency: multi-tasking
@@ -261,7 +261,7 @@ Concurrency: multi-tasking
 
 Concurrent processes
 
-.. image:: multi-tasking.svg
+.. image:: multi-tasking.png
    :align: center
 
 Concurrency: Multiple systems
@@ -269,7 +269,7 @@ Concurrency: Multiple systems
 
 Multiple systems, concurrent processes
 
-.. image:: multiple-systems.svg
+.. image:: multiple-systems.png
    :align: center
 
 Concurrency: Multiple threads
@@ -277,7 +277,7 @@ Concurrency: Multiple threads
 
 Multiple systems, concurrent processes, concurrent threads
 
-.. image:: multi-threading.svg
+.. image:: multi-threading.png
    :align: center
 
 Full virtualization: VMs
@@ -309,7 +309,7 @@ Concurrency: Virtual machines
 
 Multiple systems, VMs, processes, threads
 
-.. image:: virtual-machines.svg
+.. image:: virtual-machines.png
    :align: center
 
 OS-level virtualization: containers
@@ -340,7 +340,7 @@ Concurrency: Containers
 
 Multiple systems, VMs, containers, processes, threads
 
-.. image:: containers.svg
+.. image:: containers.png
    :align: center
 
 What makes up a cloud
@@ -615,7 +615,7 @@ Nested virtualization
 
 Multiple systems, VMs, nested VMs, processes, threads
 
-.. image:: nested-virtual-machines.svg
+.. image:: nested-virtual-machines.png
    :align: center
 
 .. Things to talk about ^
