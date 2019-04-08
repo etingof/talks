@@ -567,7 +567,7 @@ Example: OpenStack
 OpenStack components
 --------------------
 
-.. image:: openstack.jpg
+.. image:: openstack-arch-brief.jpg
    :align: center
    :scale: 80%
 
