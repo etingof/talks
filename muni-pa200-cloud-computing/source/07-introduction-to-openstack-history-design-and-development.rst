@@ -296,6 +296,13 @@ Demo: Delete stack
     $ openstack server list
     $
 
+OpenStack building blocks
+-------------------------
+
+- Projects provide resources
+- Resources are organized into stacks
+- Stacks: HEAT temlates + environment
+
 OpenStack design
 ----------------
 
@@ -507,6 +514,7 @@ Open development
 - Git and Gerrit - https://review.openstack.org/
 - Blueprints - https://specs.openstack.org/
 - Zuul as CI - https://zuul-ci.org/
+- DevStack
 - Project Team Lead
 - Core Reviewers
 
