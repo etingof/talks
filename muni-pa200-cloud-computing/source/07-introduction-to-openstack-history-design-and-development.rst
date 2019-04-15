@@ -301,7 +301,7 @@ OpenStack building blocks
 
 - Projects provide resources
 - Resources are organized into stacks
-- Stacks: HEAT temlates + environment
+- Stacks: HEAT templates + environment
 
 OpenStack design
 ----------------
