@@ -89,13 +89,10 @@ Project results submission deadline is **15.5.2018**.
 MUNI OpenStack access
 ---------------------
 
-You should use `MUNI OpenStack instance <https://ostack.ics.muni.cz/>`_ with
-following credentials:
+You should request a personal OpenStack project at
+`MetaCentrum <https://cloud.gitlab-pages.ics.muni.cz/documentation/register/>`_
+by `applying <https://www.metacentrum.cz/en/VO/metavo/>`_ for the MetaCloud
+service. After registration and approval, you will get OpenStack access.
 
-* Domain: UCN
-* User Name: <UČO@ucn.muni.cz>
-* Password: <secondary password>
-
-There is some technical information on MUNI OpenStack in the `wiki <https://wiki.ics.muni.cz/openstack>`_.
-You should mostly rely on the `official OpenStack documentation <https://docs.openstack.org/>`_
-for this project.
+Please refer to the `official OpenStack documentation <https://docs.openstack.org/>`_
+when working on this project.
