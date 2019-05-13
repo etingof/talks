@@ -2,7 +2,7 @@
 PA200 - Cloud Computing
 =======================
 
-Lecture 9: Cloud software architecture and containers
+Lecture 10: Cloud software architecture and containers
 
 *by Ilya Etingof, Red Hat*
 
