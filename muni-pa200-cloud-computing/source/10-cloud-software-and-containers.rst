@@ -146,7 +146,7 @@ Containers: agenda
 ------------------
 
 * Concurrency and isolation
-* Container automation
+* OS-level virtualization
 * Container orchestration
 
 Concurrency and isolation
@@ -160,11 +160,13 @@ Multiple systems, VMs, containers, processes, threads
 Linux containers
 ----------------
 
-LXC concepts
+Based on kernel features:
 
 * Namespaces present resources to process
 * Cgroups govern resource isolation and usage
 * Container is temporary and transient, much like a process
+
+Examples: LXC, Docker, OpenVZ
 
 Docker to manage containers
 ---------------------------
@@ -188,7 +190,7 @@ Docker features
 
   - Clustering, redundancy, load-balancing etc.
 
-Container orchestration: Kubernetes (1/2)
+Container orchestration: Kubernetes (1/3)
 -----------------------------------------
 
 * Cluster
@@ -209,10 +211,17 @@ Container orchestration: Kubernetes (1/2)
 
   - Represent application to the world
 
-Container orchestration: Kubernetes (2/2)
+Container orchestration: Kubernetes (2/3)
 -----------------------------------------
 
 .. image:: kubernetes-key-concepts.png
+   :align: center
+   :scale: 80%
+
+Container orchestration: Kubernetes (3/3)
+-----------------------------------------
+
+.. image:: kubernetes-arch.png
    :align: center
    :scale: 80%
 
@@ -232,6 +241,24 @@ Kubernetes pros&cons
   - Soft & hard limits per-app
 
 - Learning curve is high
+
+Kubernetes vs Docker
+--------------------
+
+* Docker builds and run containers locally
+* Kubernetes orchestrates multiple nodes
+* Docker and Kubernetes may or may not be used together
+
+The alternatives
+----------------
+
+* Alternatives to Docker
+
+  - rkt, LXC etc.
+
+* Alternatives to Kubernetes
+
+  - Docker Swarm, Apache Mesos etc.
 
 Containers are on the rise
 --------------------------
