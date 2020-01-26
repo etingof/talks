@@ -31,7 +31,6 @@ Edge cloud
 
 .. image:: edge-cloud.png
    :align: center
-   :scale: 90%
 
 .. Things to talk about ^
 
@@ -56,7 +55,6 @@ BMC access over unreliable network
 
 .. image:: bmc-access.png
    :align: center
-   :scale: 90%
 
 .. Things to talk about ^
 
@@ -73,7 +71,6 @@ Boot protocols are fragile
 
 .. image:: edge-booting.png
    :align: center
-   :scale: 90%
 
 .. Things to talk about ^
 
@@ -88,7 +85,6 @@ PXE-boot work flow
 
 .. image:: pxe-workflow.png
    :align: center
-   :scale: 90%
 
 .. Things to talk about ^
 
@@ -141,7 +137,6 @@ A new way of booting
 
 * Redfish to replace IPMI and vendor-specific protocols
 * Virtual media can replace PXE/TFTP and DHCP
-* Machine config can be embedded into boot image
 
 .. Things to talk about ^
 
@@ -154,25 +149,11 @@ A new way of booting
     Implemented within Redfish framework, virtual media boot is to replace
     PXE/TFTP phases.
 
-    Leveraging the secure OOB channel of boot information delivery, node
-    network configuration and security materials can be passed to the
-    node being booted solving DHCP dependency problem.
-
-Redfish architecture
---------------------
+What's Redfish?
+---------------
 
 .. image:: redfish-arch.png
    :align: center
-   :scale: 90%
-
-.. Things to talk about ^
-
-How Redfish is better than IPMI
--------------------------------
-
-* IPMI is old and less understood
-* Redfish is as versatile and secure as today’s Web is
-* Redfish operates over REST API endpoints
 
 .. Things to talk about ^
 
@@ -195,19 +176,11 @@ How Redfish is better than IPMI
     Technically, Redfish is a client-server system where the parties talk
     HTTP/S, exchange schema-guarded JSON documents over REST API.
 
-What's virtual media
---------------------
+What's virtual media?
+---------------------
 
-On BMC side:
-
-* Emulates removable media devices
-* Pulls user-specified boot image off the network
-* “Inserts” boot image into virtual media device
-* Configures BIOS to boot from virtual media device
-
-On machine side:
-
-* Boot from a local removable media device
+.. image:: vmedia-arch.png
+   :align: center
 
 .. Things to talk about ^
 
@@ -228,41 +201,51 @@ On machine side:
     HTTP/S connections. That includes controlling BMC and obtaining
     images.
 
-Redfish virtual media boot
---------------------------
+Virtual media boot work flow
+----------------------------
 
-The virtual media way:
-
-* Prepares boot image with static network config
-* Inserts boot image into virtual media and powers on the node (Redfish)
-* Orchestrates agent to prepare/deploy the node
-* Reboots the node (Redfish) into deployed image
+.. image:: redfish-vmedia-workflow.png
+   :align: center
 
 .. Things to talk about ^
 
     With virtual media, deployment workflow differs. Most importantly, it has
     no dependency on unreliable old-school protocols.
 
-    Ironic prepares a boot image with its agent inside. Besides the software,
-    full network configuration for the ramdisk OS is burnt into the boot
-    image.
+    The BMC operator inserts boot image into a virtual media device and
+    powers on the node - all over Redfish.
 
-    Ironic inserts boot image into a virtual media device and powers on
-    the node - all over Redfish.
+    BMC operator power ons the node (over Redfish again) to boot deployed
+    image from local CD.
 
-    Running IPA registers itself with ironic, ironic orchestrates IPA to
-    perform node cleaning and user image flashing.
+OOB node configuration
+----------------------
 
-    Finally, ironic power cycles the node (over Redfish again) to boot deployed
-    image from local disk (which one of many options).
+* With PXE, nodes are hardly distinguishable
+* Virtual media as an OOB configuration method
+
+  * Static network configuration
+  * Secrets
+
+.. Things to talk about ^
+
+  Unfortunately, it's quite hard to distinguish one PXE-booting node from
+  the other. One of the side-effects of virtual media service adoption is
+  that we now know precisely which node we are booting. Based on that,
+  we can confidently burn some node-specific information into boot ISO
+  (or other virtual media).
+
+  Most obvious examples include: user image static network configuration
+  which would eliminate the need for user-facing DHCP service and some
+  security materials such as tokens, private keys etc.
+
+  We will see that shortly in the demo.
 
 In the demo
 -----------
 
-* Machine fully managed over Redfish
-* Booted from virtual media DVD
-* Ironic ramdisk image configures itself from ISO-based config drive
-* Deployed image runs cloud-init against ISO-based config drive
+.. image:: demo-deployment.png
+   :align: center
 
 .. Things to talk about ^
 
@@ -282,36 +265,28 @@ In the demo
 
     This way no IPMI/PXE is ever involved.
 
-What's ironic
--------------
+Demo deployment workflow
+------------------------
 
-* Baremetal hypervisor for OpenStack
-* And for container management platform (Metal3)
-* And just a stand-alone REST API managed tool
+.. image:: demo-deployment-workflow.png
+   :align: center
 
 .. Things to talk about ^
-
-    Ironic is a software that implements baremetal hypervisor for OpenStack.
-    Originally, the goal has been to allocate baremetal machines along the
-    same lines as cloud instances.
-
-    Later on, ironic has also become a stand-alone machine provisioning
-    tool. In the context of this presentation, we will not consider
-    OpenStack at all.
 
 Demo deployment
 ---------------
 
-.. video:: /ironic-ramdisk-static-config.mkv
+.. raw:: html
 
-.. Things to talk about ^
+   <video controls src="_static/edge-deployment.mp4">Deployment at the Edge</video>
+
 
 Summary
 -------
 
-* Edge cloud is raising
-* Better hardware management protocol
-* Better cloud software support
+* Edge cloud drives further innovation
+* Redfish is the future of hardware management
+* Open source projects are heavy players
 
 .. Things to talk about ^
 
