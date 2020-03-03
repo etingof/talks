@@ -4,8 +4,6 @@ PA200 - Cloud Computing
 
 Lecture 3: Virtualization technologies
 
-*by Petr Blaho and Ilya Etingof, Red Hat*
-
 Warm-up
 -------
 
@@ -153,10 +151,10 @@ IBM S/360: single-program, batched jobs
     mainstream computing model of the time has been about non-interactive,
     batched jobs.
 
-Early seventies: S/370
-----------------------
+Early seventies: TSS/360
+------------------------
 
-IBM S/370 introduced virtual memory, privilege separation
+IBM TSS/360 & S/370 introduced virtual memory, privilege separation
 
 - Eventually lost out to batch jobs
 - Security concerns due to multi-tenancy
@@ -176,12 +174,12 @@ IBM S/370 introduced virtual memory, privilege separation
     with batch processing, waiting for I/O was inefficient and program had to
     wait for the queue before the programmer can get a failure.
 
-Dark ages of virtualization
----------------------------
+Raise of virtualization
+-----------------------
 
-- No significant virtualizaton development for 40 years
-- Up to the rise of the Web
-- VM support in PC CPUs since 2005 (Intel VT-x, AMD-V)
+- 1990+: software virtualization in desktop PC
+- 2005+: HW assisted virtualization (Intel VT-x, AMD-V)
+- Web-farms as a driving factor
 
 .. image:: intel-vtx-cpu.jpg
    :align: center
@@ -208,8 +206,8 @@ Dark ages of virtualization
 
     By this moment practical virtualization has become possible.
 
-What exactly is virtualization?
--------------------------------
+Concurrency and isolation
+-------------------------
 
 Many forms of concurrency and isolation:
 
@@ -260,6 +258,22 @@ Sequential processes
 .. image:: multi-programming.png
    :align: center
 
+HW-assisted multitasking
+------------------------
+
+- Resource access separation at CPU level
+
+  - Memory protection, protection rings
+
+- CPU scheduling
+
+  - Cooperative
+  - Preemptive
+  - Real-time
+
+- Intel 80286: protecting apps
+- Intel 30386: protecting kernel and apps
+
 Concurrency: multi-tasking
 --------------------------
 
@@ -284,11 +298,18 @@ Multiple systems, concurrent processes, concurrent threads
 .. image:: multi-threading.png
    :align: center
 
-Full virtualization: VMs
-------------------------
+HW-assisted virtualization
+--------------------------
 
-- Virtual machine emulates a physical computer (can be different architecture)
-- OS executes within a VM (can be different OS types)
+- The concept of VM at the HW level
+- Resource protection and isolation
+- S/360-67, Intel VT-x, AMD-V
+
+Concurrency: Virtual machines
+-----------------------------
+
+- Virtual machine emulates a physical computer
+- OS executes within a VM
 - Tenant OSes are isolated from each other
 - VMs are heavy and expensive
 
@@ -665,21 +686,19 @@ Recap: hypervisor types?
 Recap: what makes up a cloud?
 -----------------------------
 
-1. One hypervisor
-2. One or more hypervisors
-3. Baremetal computers
-4. Baremetal switches and routers
-5. Networking service
+1. Baremetal machines w/ CPU-level virtualizaiton
+2. Hypervisors
+3. Cloud control plane / runtime
+4. cloud services (storage, networking, etc)
 
 Recap: virtualization vs containers?
 ------------------------------------
 
 1. We can run OS in a container
 2. We can run different OS'es in containers
-3. We can run VM in a container
-4. Containers are more secure than VM
-5. Containers consume less resources than VM
-6. We can run Windows app in Linux container
+3. Containers are more secure than VM
+4. Containers consume less resources than VM
+5. We can run Windows app in Linux container
 
 Q&A
 ---
