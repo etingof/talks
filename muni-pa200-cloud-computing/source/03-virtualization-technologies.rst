@@ -138,7 +138,6 @@ Mid sixties: S/360
 
 IBM S/360: single-program, batched jobs
 
-- Expensive idling on I/O
 
 .. image:: ibm-s360.jpg
    :align: center
@@ -150,6 +149,15 @@ IBM S/360: single-program, batched jobs
     provide virtual memory and privilege separation at the CPU level. The
     mainstream computing model of the time has been about non-interactive,
     batched jobs.
+
+Mid sixties: S/360
+------------------
+
+- Expensive idling on I/O
+
+.. image:: punchcard.jpg
+   :align: center
+   :scale: 30%
 
 Early seventies: TSS/360
 ------------------------
@@ -174,11 +182,48 @@ IBM TSS/360 & S/370 introduced virtual memory, privilege separation
     with batch processing, waiting for I/O was inefficient and program had to
     wait for the queue before the programmer can get a failure.
 
-Raise of virtualization
------------------------
+Late seventies: home computers
+------------------------------
 
-- 1990+: software virtualization in desktop PC
-- 2005+: HW assisted virtualization (Intel VT-x, AMD-V)
+- One task at a time
+
+.. image:: trinity77.jpg
+   :align: center
+   :scale: 20%
+
+Late seventies: home computers
+------------------------------
+
+- Tedious program entry
+
+.. image:: BASIC-listings.jpg
+   :align: center
+   :scale: 100%
+
+Early eighties: multitasking
+----------------------------
+
+- Intel 80286: protected operating mode
+- "The brain-dead chip"
+
+.. image:: 80286.jpg
+   :align: center
+   :scale: 45%
+
+Mid-eighties: software virtualization
+-------------------------------------
+
+- Intel 80386: virtualization features
+- Limited use due to software complexity
+
+.. image:: 80386.jpg
+   :align: center
+   :scale: 40%
+
+Early 2000: hardware virtualization
+-----------------------------------
+
+- Intel Pentium 4: Virtual Machine Extensions (VMX)
 - Web-farms as a driving factor
 
 .. image:: intel-vtx-cpu.jpg
@@ -258,8 +303,8 @@ Sequential processes
 .. image:: multi-programming.png
    :align: center
 
-HW-assisted multitasking
-------------------------
+Software virtualization
+-----------------------
 
 - Resource access separation at CPU level
 
@@ -272,7 +317,7 @@ HW-assisted multitasking
   - Real-time
 
 - Intel 80286: protecting apps
-- Intel 30386: protecting kernel and apps
+- Intel 80386: protecting kernel and apps
 
 Concurrency: multi-tasking
 --------------------------
@@ -298,12 +343,13 @@ Multiple systems, concurrent processes, concurrent threads
 .. image:: multi-threading.png
    :align: center
 
-HW-assisted virtualization
---------------------------
+Hardware virtualization
+-----------------------
 
 - The concept of VM at the HW level
 - Resource protection and isolation
-- S/360-67, Intel VT-x, AMD-V
+- Intel 80386: protecting kernel and apps
+- Intel 80586: protecting hypervisor, kernel and apps
 
 Concurrency: Virtual machines
 -----------------------------
