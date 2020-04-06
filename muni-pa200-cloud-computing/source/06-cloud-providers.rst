@@ -4,7 +4,7 @@ PA200 - Cloud Computing
 
 Lecture 6: Cloud providers
 
-*by Petr Blaho and Ilya Etingof, Red Hat*
+*by Ilya Etingof, Red Hat*
 
 In this lecture
 ---------------
@@ -424,7 +424,7 @@ Recap: many forms of PaaS
 -------------------------
 
 * Containers
-* Stackless
+* Serverless
 * FaaS
 
 Recap: cloud can be sticky

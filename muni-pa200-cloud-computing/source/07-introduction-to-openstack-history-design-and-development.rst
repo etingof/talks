@@ -4,12 +4,21 @@ PA200 - Cloud Computing
 
 Lecture 7: Introduction to OpenStack - history, design, and development
 
-*by Petr Blaho and Ilya Etingof, Red Hat*
+*by Ilya Etingof, Red Hat*
 
 Warm-up
 -------
 
 Let's rehearse on the previous lectures...
+
+Q: Cloud delivery models
+------------------------
+
+1. MaaS
+2. SaaS
+3. CaaS
+4. PaaS
+5. IaaS
 
 Q: CSP's operational model?
 ---------------------------
@@ -87,7 +96,7 @@ Demo: request & launch a VM
 - Choose OS to install on the VM
 - Create the VM, boot the OS
 - Log into VM and use it somehow
-- Tier down the VM
+- Tear down the VM
 
 Demo: Choose VM configuration
 -----------------------------
@@ -114,12 +123,12 @@ Demo: Choose OS image
     +--------------------------------------+--------------+--------+
     | ID                                   | Name         | Status |
     +--------------------------------------+--------------+--------+
-    | afa49adf-2831-4a00-9c57-afe1624d5557 | CentOS-6     | active |
-    | 842c207f-6964-4ed7-a41a-06ec66a7c954 | Ubuntu-14    | active |
-    | 30a2a55a-2045-4ed8-a605-2d1c1143edd3 | Ubuntu-16    | active |
-    | 713f2fbc-05c5-491b-9e02-e000861e7b30 | Fedora-24    | active |
+    | afa49adf-2831-4a00-9c57-afe1624d5557 | CentOS-7     | active |
+    | 842c207f-6964-4ed7-a41a-06ec66a7c954 | Ubuntu-16    | active |
+    | 30a2a55a-2045-4ed8-a605-2d1c1143edd3 | Ubuntu-18    | active |
+    | 713f2fbc-05c5-491b-9e02-e000861e7b30 | Fedora-31    | active |
     | 5cb9c233-5867-4e47-80a1-9d774f800444 | Debian-7     | active |
-    | f84868a5-5261-404a-9c54-ec317ea16b94 | CentOS-7     | active |
+    | f84868a5-5261-404a-9c54-ec317ea16b94 | CentOS-8     | active |
     | b105ad3b-7df8-4318-9c3d-4e4fa4cc4563 | Debian-8     | active |
     | b67b74bc-c3a8-4087-9c28-de02161fdedd | CoreOS       | active |
     +--------------------------------------+--------------+--------+
@@ -163,7 +172,7 @@ Demo: Log into VM
     /home/centos
     my_instance $
 
-Demo: Tier down VM
+Demo: Tear down VM
 ------------------
 
 .. code-block:: bash
@@ -400,7 +409,9 @@ OpenStack history
 OpenStack releases (1/2)
 ------------------------
 
-* Train - 2019-10-16 (estimated)
+* Victoria - 2020-10-14
+* Ussuri - 2020-05-13
+* Train - 2019-10-16
 * Stein - 2019-04-10
 * Rocky - 2018-08-30
 * Queens - 2018-02-28
@@ -408,12 +419,12 @@ OpenStack releases (1/2)
 * Ocata - 2017-02-22
 * Newton - 2016-10-06
 * Mitaka - 2016-04-07
-* Liberty - 2015-10-15
-* Kilo - 2015-04-30
 
 OpenStack releases (2/2)
 ------------------------
 
+* Liberty - 2015-10-15
+* Kilo - 2015-04-30
 * Juno - 2014-10-16
 * Icehouse - 2014-04-17
 * Havana - 2013-10-17
@@ -430,13 +441,14 @@ OpenStack operators (1/3)
 
 Superuser award finalists:
 
+* China Mobile
 * AT&T
 * CERN
-* COMCAST
+* Comcast
 * NTT
 * Workday
 * DreamHost
-* Betfair
+* VEXXHOST
 
 OpenStack operators (2/3)
 -------------------------
@@ -452,21 +464,32 @@ OpenStack operators (2/3)
 OpenStack operators (3/3)
 -------------------------
 
-One of the largest deployments by PayPal
+One of the large deployments by PayPal
 
 * Number of VMs: 82,000
 * Number of CPU cores: 400,000
 * Number of bare metal: ~5000 (?)
 
-OpenStack development
----------------------
+OpenStack development (1/3)
+---------------------------
 
-In the year 2018:
+.. image:: openstack-dev-code.png
+   :align: center
+   :scale: 100%
 
-* 65000 commits
-* 1972 developers
-* 182 changes/day for Rocky cycle
-* Biggest contributions from US and China
+OpenStack development (2/3)
+---------------------------
+
+.. image:: openstack-dev-manhour.png
+   :align: center
+   :scale: 100%
+
+OpenStack development (3/3)
+---------------------------
+
+.. image:: openstack-dev-reviews.png
+   :align: center
+   :scale: 100%
 
 OpenStack challenges
 --------------------
