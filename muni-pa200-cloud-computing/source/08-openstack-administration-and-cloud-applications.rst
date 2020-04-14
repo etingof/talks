@@ -2,7 +2,7 @@
 PA200 - Cloud Computing
 =======================
 
-Lecture 8: OpenStack cloud administration and cloud software development
+Lecture 8: How to use and administer OpenStack cloud
 
 *by Ilya Etingof, Red Hat*
 
@@ -11,52 +11,52 @@ Warm-up
 
 Let's rehearse on the previous lectures...
 
-Q: OpenStack instance information
----------------------------------
+OpenStack instance information
+------------------------------
+
+Required:
 
 * Machine flavor
 * Boot image name
+
+Optional:
+
 * Network name
 * Storage options
 * SSH key name
-* Heat template
+* ...
 
-Q: Heat requires
-----------------
+Heat orchestration engine
+-------------------------
+
+Input:
 
 * Heat template (HOT)
 * Environment file
-* User configuration file
-* Stacks
 
-Q: Why Heat?
-------------
+Output:
 
-* Hyperconverged Environment and Automation Tracker (HEAT)
-* Heat evaporates a liquid and raises clouds
-* To honor H.E.A.T. rock band
+* Virtual infrastructure
 
-Q: OpenStack design pillars
----------------------------
+OpenStack design pillars
+------------------------
 
 * Based on open protocols
 * Loosely coupled services
 * Interacting over REST APIs
 * Each service is a project backed by a team
-* Coded in Python programming language
 
-Q: Typical OpenStack service structure
---------------------------------------
+Typical OpenStack service structure
+-----------------------------------
 
 * REST API
 * Database
 * Business logic engine
 * Message bus
-* Remote agent
-* UI
+* Remote agent (sometimes)
 
-Q: OpenStack key services
--------------------------
+OpenStack key services
+----------------------
 
 * Nova (compute service)
 * Neutron (network service)
@@ -67,16 +67,16 @@ Q: OpenStack key services
 * Ironic (bare metal)
 * Keystone (authentication service)
 
-Q: OpenStack development pillars
---------------------------------
+OpenStack development pillars
+-----------------------------
 
 * Open source
 * Open community
 * Open design
 * Open development
 
-Q: OpenStack future
--------------------
+OpenStack future
+----------------
 
 * Integration with PaaS (containers)
 * Software Defined Networking
@@ -87,18 +87,29 @@ Q: OpenStack future
 In this lecture...
 ------------------
 
-* HOT resources
-* Working with Heat
-* Install and manage OpenStack cloud
+* Working with OpenStack @MUNI
+* Heat orchestration hands-on
+* Overview of OpenStack cloud administration
 
-Install OpenStack client
-------------------------
+MUNI OpenStack access
+---------------------
 
-.. code-block:: bash
+* Register at https://metacentrum.cz
+* Go to https://dashboard.cloud.muni.cz/
 
-  $ python3 -m venv osc
-  $ source osc/bin/activate
-  $ pip install openstackclient
+OpenStack Web-UI (Horizon)
+--------------------------
+
+.. image:: os-web-ui.png
+   :align: center
+   :scale: 70%
+
+OpenStack access token
+----------------------
+
+.. image:: os-access-token.png
+   :align: center
+   :scale: 70%
 
 Configure OpenStack for MUNI
 ----------------------------
@@ -109,15 +120,22 @@ Configure OpenStack for MUNI
     clouds:
         muni-cloud:
             auth:
-                auth_url:  https://ostack.ics.muni.cz/...
-                project_name: ...
-                username: <UČO>@ucn.muni.cz
-                password: <secondary password>
-            region_name: ...
+                auth_url: https://identity.cloud.muni.cz/v3
+                application_credential_id: "..."
+                application_credential_secret: "..."
+            region_name: "brno1"
+            interface: "public"
+            identity_api_version: 3
+            auth_type: "v3applicationcredential"
 
-See also:
+Install OpenStack CLI
+---------------------
 
-* https://wiki.ics.muni.cz/openstack
+.. code-block:: bash
+
+  $ python3 -m venv osc
+  $ source osc/bin/activate
+  $ pip install openstackclient
 
 Create SSH keypair
 ------------------
@@ -143,10 +161,10 @@ See also:
 
 https://docs.openstack.org/heat/latest/
 
-HOT parameters
---------------
+HOT parameters (1/2)
+--------------------
 
-Declaring HOT parameters:
+Declare HOT parameters:
 
 .. code-block:: yaml
 
@@ -162,10 +180,35 @@ Declaring HOT parameters:
         constraints:
           - allowed_values: [m1.tiny, m1.small, m1.medium, m1.large, m1.xlarge]
 
+HOT parameters (2/2)
+--------------------
+
+Reference HOT parameters:
+
+.. code-block:: yaml
+
+  my_server:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image_id }
+
+HOT resources
+-------------
+
+Name, type and properties
+
+.. code-block:: yaml
+
+   resource_name:
+     type: OS::Neutron::Net
+     properties:
+       option_1: 123
+       other_options: [ a, b, c]
+
 HOT resource: network (1/2)
 ---------------------------
 
-Allocating virtual network:
+Create network and subnet:
 
 .. code-block:: yaml
 
@@ -187,7 +230,7 @@ Allocating virtual network:
 HOT resource: network (2/2)
 ---------------------------
 
-Allocating virtual router:
+Create router:
 
 .. code-block:: yaml
 
@@ -223,7 +266,7 @@ Set up firewall:
 HOT resource: network port (1/2)
 --------------------------------
 
-Allocate network port (NIC):
+Allocate switch port:
 
 .. code-block:: yaml
 
@@ -248,11 +291,10 @@ Allocate floating (public) IP:
       floating_network: { get_param: public_network}
       port_id: { get_resource: my_server_port}
 
+HOT resource: VM
+----------------
 
-HOT resource: instance
-----------------------
-
-Allocating a compute instance:
+Allocate Compute instance:
 
 .. code-block:: yaml
 
@@ -268,7 +310,7 @@ Allocating a compute instance:
 HOT resource: block storage
 ---------------------------
 
-Allocating block storage device:
+Allocate block storage device:
 
 .. code-block:: yaml
 
@@ -319,9 +361,9 @@ Inspect created stack
 
 .. code-block:: bash
 
-    $ openstack --os-cloud rdo-cloud stack resource list pa200
+    $ openstack --os-cloud muni-cloud stack resource list pa200
     ...
-    $ openstack --os-cloud rdo-cloud stack server list
+    $ openstack --os-cloud muni-cloud stack server list
     ...
     | fc8...588 | pa200-web | ACTIVE  | pa200-net=10.0.0.22, 38.145.35.152                                                                                                                                      | CentOS-7-x86_64-GenericCloud-1804_02 | m1.small  |
     $ ssh centos@38.145.35.152
@@ -356,7 +398,6 @@ Debugging OpenStack project (2/4)
                               specific.
     ...
     $ openstack --os-cloud muni-cloud stack delete -y pa200
-
 
 Debugging OpenStack project (3/4)
 ---------------------------------
@@ -483,11 +524,7 @@ Recap: using Heat (1/2)
 
 * Figure out MUNI OpenStack access
 * Install `openstackclient` into Python venv
-* Create HOT with:
-
-  - Network (port, security groups)
-  - Instance
-  - Block storage
+* Create two-VM infrastructure via HOT
 
 Recap: using Heat (2/2)
 -----------------------
@@ -496,7 +533,7 @@ Recap: using Heat (2/2)
 
   - ...to install and configure software
 
-* Instantiate Hot template
+* Instantiate HOT template
 * Debug the deployment
 
 Recap: cloud administration
