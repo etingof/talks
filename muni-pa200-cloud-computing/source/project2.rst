@@ -5,20 +5,20 @@ MUNI PA200 project 2
 The plot
 --------
 
-You are a cloud administrator at a startup. Your company needs to establish
-its presence on the Internet. For that purpose they plan to purchase a
-service from an IaaS company and maintain a free and open source content
-management system (CMS) there.
+You are an IT technician at a small company. Your employer needs to establish
+its presence on the Internet. For that purpose, they purchased a service from
+some IaaS company and want to set up a web-site with a content management system
+(CMS) there. Incidentally, IaaS software is OpenStack.
 
-Your assignment is to plan and orchestrate the deployment of a CMS platform
-on the OpenStack cloud.
+Your assignment is to implement automatic and repeatable deployment of the
+entire Web/CMS system on the OpenStack cloud.
 
 Technical requirements
 ----------------------
 
 To ensure repeatable and automated deployment of the infrastructure, you
 should rely on the OpenStack HEAT for deployment orchestration. Your
-project two task boils down to creating and instantiating a HOT template
+project 2 task boils down to creating and instantiating a HOT template
 which deploys the `Wordpress <https://en.wikipedia.org/wiki/WordPress>`_
 application.
 
@@ -38,7 +38,8 @@ Configurable HOT template parameters should have some reasonable defaults
 where it makes sense. Though the use of environment file is encouraged for
 easier deployment customization.
 
-The SSH key should be injected into both instances at the deployment time.
+The SSH key should be injected into both instances at the deployment time
+to enable admin access to the instances.
 
 Configuration that needs to be shared between instances (such as DBMS address,
 credentials etc) should be transferred through cloud-init.
@@ -71,28 +72,31 @@ Web instance should have a security group applied that protects OS services
 from attacks over the Internet. Though HTTP and SSH services should be
 made accessible.
 
+.. note::
+
+    Floating IP and security groups are OpenStack terms that refer to
+    public IP address and firewall rules respectively.
+
 Expected outcome
 ----------------
 
 Project result should be uploaded as a HOT template file (.yaml) along with
 a sample environment file to the homework vault at MUNI IS.
 
-Your teacher will evaluate your work by running your HOT template against
-MUNI OpenStack instance.
+Your teacher will evaluate your work by running your HOT template in his
+OpenStack project to see if it works or not quite.
 
 .. warning::
 
     Make sure to remove any sensitive information from the uploaded files!
 
-Project results submission deadline is **15.5.2018**.
+Project results submission deadline is **15.5.2020**.
 
 MUNI OpenStack access
 ---------------------
 
-You should request a personal OpenStack project at
-`MetaCentrum <https://cloud.gitlab-pages.ics.muni.cz/documentation/register/>`_
-by `applying <https://www.metacentrum.cz/en/VO/metavo/>`_ for the MetaCloud
-service. After registration and approval, you will get OpenStack access.
-
-Please refer to the `official OpenStack documentation <https://docs.openstack.org/>`_
-when working on this project.
+You should register at
+`MetaCentrum <https://metavo.metacentrum.cz/osobniv3/wayf/proxy.jsp?locale=en&target=https%3A%2F%2Fperun.cesnet.cz%2Ffed%2Fregistrar%2F%3Fvo%3Dmeta%26locale%3Den>`_
+to get your
+`personal OpenStack project <https://cloud.gitlab-pages.ics.muni.cz/documentation/quick-start/>`_.
+This process is automatic and immediate.
