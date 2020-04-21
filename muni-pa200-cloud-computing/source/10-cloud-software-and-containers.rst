@@ -24,6 +24,44 @@ HEAT orchestration engine
 * Resources stack up to infrastructure
 * HEAT takes HOT template(s) + environment
 
+HOT resources
+-------------
+
+.. code-block:: yaml
+
+  my_server:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image_id }
+
+HOT parameters
+--------------
+
+.. code-block:: yaml
+
+    parameters:
+
+      key_name:
+        type: string
+        default: my_key
+
+      instance_type:
+        type: string
+        default: m1.small
+        constraints:
+          - allowed_values: [m1.tiny, m1.small, m1.medium,
+           m1.large, m1.xlarge]
+
+Create the infrastructure
+-------------------------
+
+.. code-block:: bash
+
+    $ openstack --os-cloud muni-cloud stack create --wait \
+            --template pa200.yaml pa200
+    $ openstack --os-cloud muni-cloud stack list
+    $ openstack --os-cloud muni-cloud stack show pa200
+
 OpenStack administration
 ------------------------
 
@@ -75,7 +113,7 @@ Cloud-native applications
 * Elastic and redundant by design
 * Web-service architecture
 * Rolling updates
-* Agile, DevOps, CI/CI
+* Agile, DevOps, CI/CD
 
 Cloud-native: modularity
 ------------------------
@@ -104,11 +142,11 @@ Cloud-native: application design
 --------------------------------
 
 * Modular and task-specific
-* Statelessness
+* Stateless - horizontally scalable
 * REST API RPC
 * Application databases
 * Web-centric languages (Go, Python, Node.js, Ruby etc.)
-* Automated testing
+* Configure from cloud
 
 Cloud-native: rolling updates
 -----------------------------
@@ -132,7 +170,30 @@ Cloud-native: team changes
 
   - System administrators <-> software developers
 
-* Continuous integration, continuous delivery, continuous deployment
+Cloud-native: tooling
+---------------------
+
+* Multiple teams - multiple tools
+* Toolchains:
+
+  - Source code management
+  - Continuous integration and testing
+  - Infrastructure as a code
+
+Cloud-native: CI/CD
+-------------------
+
+* Continuous integration
+
+  - Test every change
+
+* Continuous delivery
+
+  - Stage every change
+
+* Continuous deployment
+
+  - Automatic release
 
 Cloud-native challenges
 -----------------------
@@ -156,6 +217,12 @@ Multiple systems, VMs, containers, processes, threads
 
 .. image:: containers.png
    :align: center
+
+Containers vs VMs
+-----------------
+
+* Containers: share kernel
+* VMs: share physical hardware
 
 Linux containers
 ----------------
@@ -245,7 +312,7 @@ Kubernetes pros&cons
 Kubernetes vs Docker
 --------------------
 
-* Docker builds and run containers locally
+* Docker (prior to Swarm) builds and run containers locally
 * Kubernetes orchestrates multiple nodes
 * Docker and Kubernetes may or may not be used together
 
